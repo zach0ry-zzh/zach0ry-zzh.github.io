@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>[HDCTF 2023]enc | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="链接 打开进入这个函数  发现TEA加密  分析之后知道 下一步核对的v7和v8都是改变后的密文 v9才是密钥 解密时注意，异或的时候从后往前异或，倒着来 脚本 1234567891011121314151617#tea解密def tea_decrypt(v, k):    v0, v1 &#x3D; v[0], v[1]    delta &#x3D; 0x61C88647    sum &#x3D; -(delta * 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[HDCTF 2023]enc">
+<meta property="og:url" content="http://example.com/2025/07/11/HDCTF-2023-enc/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="链接 打开进入这个函数  发现TEA加密  分析之后知道 下一步核对的v7和v8都是改变后的密文 v9才是密钥 解密时注意，异或的时候从后往前异或，倒着来 脚本 1234567891011121314151617#tea解密def tea_decrypt(v, k):    v0, v1 &#x3D; v[0], v[1]    delta &#x3D; 0x61C88647    sum &#x3D; -(delta * 3">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193541365.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193916614.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711200122360.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711201736025.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711202535475.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711203617747.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711205629161.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711205652624.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711205736124.png">
+<meta property="article:published_time" content="2025-07-11T11:35:05.000Z">
+<meta property="article:modified_time" content="2025-07-11T13:03:01.539Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="TEA">
+<meta property="article:tag" content="SMC">
+<meta property="article:tag" content="RC4">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193541365.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-HDCTF-2023-enc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/11/HDCTF-2023-enc/" class="article-date">
+  <time class="dt-published" datetime="2025-07-11T11:35:05.000Z" itemprop="datePublished">2025-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      [HDCTF 2023]enc
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3790">链接</a></p>
+<p>打开进入这个函数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193541365.png" alt="image-20250711193541365"></p>
+<p>发现TEA加密</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193916614.png" alt="image-20250711193916614"></p>
+<p>分析之后知道</p>
+<p>下一步核对的v7和v8都是改变后的密文</p>
+<p>v9才是密钥</p>
+<p>解密时注意，异或的时候从后往前异或，倒着来</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#tea解密</span><br><span class="line">def tea_decrypt(v, k):</span><br><span class="line">    v0, v1 = v[0], v[1]</span><br><span class="line">    delta = 0x61C88647</span><br><span class="line">    sum = -(delta * 32) &amp; 0xFFFFFFFF</span><br><span class="line">    for _ in range(32):</span><br><span class="line">        v1 = (v1 - ((16*v0 + k[2]) ^ (v0 + sum) ^((v0 &gt;&gt;5) + k[3]))) &amp; 0xFFFFFFFF</span><br><span class="line">        v0 = (v0 - ((16*v1+ k[0]) ^ (v1 + sum) ^((v1 &gt;&gt;5) + k[1]))) &amp; 0xFFFFFFFF </span><br><span class="line">        sum = (sum + delta) &amp; 0xFFFFFFFF</span><br><span class="line">    return [v0, v1] </span><br><span class="line"></span><br><span class="line"># 给定密文v9和密钥v10</span><br><span class="line">v9 = [0x60fcdef7,0x236dbec]</span><br><span class="line">v10 = [0x12,0x34,0x56,0x78]</span><br><span class="line">print(tea_decrypt(v9, v10))</span><br><span class="line"></span><br><span class="line">//key=3</span><br></pre></td></tr></table></figure>
+
+
+
+<p>继续看下面的函数</p>
+<p>sub_4113DE —&gt;sub_414C10—&gt;sub_411046—&gt;sub_414B00—&gt;sub_411221—&gt;sub_415340</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711200122360.png" alt="image-20250711200122360"></p>
+<ul>
+<li><code>(char *)a1</code> 或 <code>(_BYTE *)a1</code> 是将整数地址 <code>a1</code> 转换为内存指针。</li>
+<li>然后通过 <code>*ptr ^= a3</code> 修改该地址上的内容。</li>
+</ul>
+<p>所以是SMC</p>
+<p>那下一步就是找到它改变的地址的范围</p>
+<p>打开x32xdbg</p>
+<p><code>ctrl+g</code>输入00415340</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711201736025.png" alt="image-20250711201736025"></p>
+<p>F9运行后会停在这里</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711202535475.png" alt="image-20250711202535475"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711203617747.png" alt="image-20250711203617747"></p>
+<p>所以修改位置的位置头是0x0041D000</p>
+<p>长度是0下600</p>
+<p>所以在ida中运行脚本</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 导入 ida_bytes 模块，这是现代 IDA Python 推荐的字节操作方式</span><br><span class="line">from ida_bytes import get_byte, patch_byte </span><br><span class="line"></span><br><span class="line"># 定义操作的起始地址、结束地址和异或密钥</span><br><span class="line">start_address = 0x41d000</span><br><span class="line">end_address = 0x41E600 # range函数不包含end_address</span><br><span class="line">xor_key = 3 </span><br><span class="line"></span><br><span class="line">print(&quot;开始批量异或修改...&quot;)</span><br><span class="line"></span><br><span class="line"># 遍历指定范围内的每个字节并进行异或操作</span><br><span class="line">for i in range(start_address, end_address):</span><br><span class="line">    original_byte = get_byte(i)      # 使用 get_byte 从 ida_bytes 模块读取字节</span><br><span class="line">    new_byte = original_byte ^ xor_key</span><br><span class="line">    patch_byte(i, new_byte)          # 使用 patch_byte 从 ida_bytes 模块写入字节</span><br><span class="line"></span><br><span class="line">print(&quot;修改完成&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>之后再在函数头按U结构</p>
+<p>再选中范围去C</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711205629161.png" alt="image-20250711205629161"></p>
+<p>就可以了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711205652624.png" alt="image-20250711205652624"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711205736124.png" alt="image-20250711205736124"></p>
+<p>发现是RC4加密</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">key=list(&#x27;you_are_master&#x27;)</span><br><span class="line">content=[0xf,0x94,0xae,0xf2,0xc0,0x57,0xc2,0xe0,0x9a,0x45,0x37,0x50,0xf5,0xa0,0x5e,0xcb,0x2c,0x16,0x28,0x29,0xfe,0xff,0x33,0x46,0xe,0x57,0x82,0x22,0x52,0x26,0x2b,0x6e,0xe4,0x82,0x24]</span><br><span class="line">rc4number=0x100</span><br><span class="line">s=[0]*rc4number</span><br><span class="line">flag=&#x27;&#x27;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">def rc4_init(s,key,rc4number):</span><br><span class="line">    for i in range(rc4number):</span><br><span class="line">        s[i]=i</span><br><span class="line">    j=0</span><br><span class="line">    for i in range(rc4number):</span><br><span class="line">        j=(j+s[i]+ord(key[i%len(key)]))%rc4number</span><br><span class="line">        temp=s[i]</span><br><span class="line">        s[i]=s[j]</span><br><span class="line">        s[j]=temp</span><br><span class="line"> </span><br><span class="line">def rc4_endecode(s,content,rc4number):</span><br><span class="line">    i=0</span><br><span class="line">    j=0</span><br><span class="line">    for k in range(len(content)):</span><br><span class="line">        i=(i+1)%rc4number</span><br><span class="line">        j=(j+s[i])%rc4number</span><br><span class="line">        temp=s[i]</span><br><span class="line">        s[i]=s[j]</span><br><span class="line">        s[j]=temp</span><br><span class="line">        t=(s[i]+s[j])%rc4number</span><br><span class="line">        content[k]=chr(content[k]^s[t])</span><br><span class="line">    content=&#x27;&#x27;.join(content)</span><br><span class="line">    print(content)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">rc4_init(s,key,rc4number)</span><br><span class="line">rc4_endecode(s,content,rc4number)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/11/HDCTF-2023-enc/" data-id="cmcytxyja0000tg83ftwm3n7y" data-title="[HDCTF 2023]enc" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RC4/" rel="tag">RC4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SMC/" rel="tag">SMC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TEA/" rel="tag">TEA</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/07/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RC4/" rel="tag">RC4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMC/" rel="tag">SMC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEA/" rel="tag">TEA</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/RC4/" style="font-size: 10px;">RC4</a> <a href="/tags/SMC/" style="font-size: 10px;">SMC</a> <a href="/tags/TEA/" style="font-size: 10px;">TEA</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/11/HDCTF-2023-enc/">[HDCTF 2023]enc</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/05/pwn-study/">pwn_study</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
