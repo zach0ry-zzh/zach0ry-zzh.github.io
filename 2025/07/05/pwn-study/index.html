@@ -4,15 +4,69 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>pwn_study | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="基础简介 fun(a,b)调用过程入栈 （1）压入参数  根据调用约定，main函数作为调用者，首先需要将func函数的两个参数a,b压入栈中。 注意压入参数的顺序，首先压入b，接着压入a，也就是说，压入参数的顺序是从右到左。 （2）返回地址压栈 返回地址压栈。main函数为了让func函数调用后正常返回，需要将当前指令（call指令）的下一条指令的地址压入栈中 call指令包含两个步骤：main">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwn_study">
+<meta property="og:url" content="http://example.com/2025/07/05/pwn-study/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基础简介 fun(a,b)调用过程入栈 （1）压入参数  根据调用约定，main函数作为调用者，首先需要将func函数的两个参数a,b压入栈中。 注意压入参数的顺序，首先压入b，接着压入a，也就是说，压入参数的顺序是从右到左。 （2）返回地址压栈 返回地址压栈。main函数为了让func函数调用后正常返回，需要将当前指令（call指令）的下一条指令的地址压入栈中 call指令包含两个步骤：main">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250709144755859.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709153820853.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709155553185.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709203145659.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709161326810.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709201744761.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709201810695.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709202019942.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709202107303.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709215016731.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250709172239551.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710084600378.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710100244362.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710100352186.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710100737155.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710094703368.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710123019921.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710095523860.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/a1f45cd6572f00a22b10553057e87fe.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710103616097.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710121251598.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710121335296.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710122048396.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710122149298.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710123019921.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710142615422.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710144204001.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710171444481.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710175221801.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710172026135.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage//test/image-20250710170654686.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705155723056.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705155733566.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705155949748.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705162151031.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705171441351.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705172417570.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705171617657.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707094351727.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708162004507.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707094020439.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707094320644.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707094404178.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707094643620.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707104732883.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707104718140.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707105645650.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707105444866.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707104240188.png">
+<meta property="article:published_time" content="2025-07-05T04:06:13.000Z">
+<meta property="article:modified_time" content="2025-07-11T06:15:53.519Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250709144755859.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -69,60 +123,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/11/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-07-11T08:45:52.266Z" itemprop="datePublished">2025-07-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/11/hello-world/" data-id="cmcyl7hi20000u8836ao80tjc" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pwn-study" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-pwn-study" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/05/pwn-study/" class="article-date">
   <time class="dt-published" datetime="2025-07-05T04:06:13.000Z" itemprop="datePublished">2025-07-05</time>
@@ -135,8 +136,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/05/pwn-study/">pwn_study</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      pwn_study
     </h1>
   
 
@@ -496,11 +497,23 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/11/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 
 </section>
