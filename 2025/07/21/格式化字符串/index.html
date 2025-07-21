@@ -15,7 +15,7 @@
 
 
 
-<title>ida使用+动调 | Hexo</title>
+<title>格式化字符串 | Hexo</title>
 
 
 
@@ -192,7 +192,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        ida使用+动调
+        格式化字符串
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -247,32 +247,28 @@
 
 <!-- toc -->
 
-  <!-- tocbot -->
-<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
-
-
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        ida使用+动调
+        格式化字符串
       </h1>
       <div>
         <section class="flex items-center gap-3 text-sm">
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
-            <time>2025-07-14</time>
+            <time>2025-07-21</time>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>3 min</span>
+            <span>1 min</span>
           </span>
           <span class="text-gray-400">·</span>
           <span class="flex items-center gap-1">
             <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>948 words</span>
+            <span>0 words</span>
           </span>
           
         </section>
@@ -281,125 +277,23 @@
   </header>
   <!-- content -->
   <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <h1 id="ida动态调试"><a href="#ida动态调试" class="headerlink" title="ida动态调试"></a>ida动态调试</h1><h2 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h2><p>一般打的都是软件断点</p>
-<p>硬件断点的设法：打好断点后</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714152911250.png" alt="image-20250714152911250"></p>
-<p>打开找到刚才打下的断点后右键Edit编辑勾选Hardware</p>
-<p>差别：</p>
-<ul>
-<li><p><strong>1. 实现原理：</strong></p>
-<ul>
-<li>软件断点：<ul>
-<li>软件断点是通过修改程序指令来实现的。在代码中插入一个特定的中断指令（例如，在x86架构中是INT 3指令）。</li>
-<li>调试器会记录被替换的原始指令，并在程序继续执行时恢复它。</li>
-</ul>
-</li>
-<li>硬件断点：<ul>
-<li>硬件断点不需要修改程序代码。</li>
-</ul>
-</li>
-</ul>
-<p><strong>2. 资源限制：</strong></p>
-<ul>
-<li>软件断点：<ul>
-<li>软件断点在数量上没有严格的限制，可以在程序中的任意位置设置。</li>
-</ul>
-</li>
-<li>硬件断点：<ul>
-<li>CPU提供的硬件断点寄存器数量有限，因此可以同时设置的硬件断点数量也有限。（最多四个）</li>
-</ul>
-</li>
-</ul>
-<p><strong>3. 使用场景：</strong></p>
-<ul>
-<li>软件断点：<ul>
-<li>软件断点适用于大多数调试场景，特别是在需要设置大量断点时。</li>
-</ul>
-</li>
-<li>硬件断点：<ul>
-<li>硬件断点适用于以下场景：<ul>
-<li>调试无法修改代码的程序，例如只读内存中的代码。</li>
-<li>调试需要精确控制执行流程的程序，例如内核代码或驱动程序。</li>
-<li>调试数据断点，就是当某个内存地址被读取或者写入的时候出发断点，这是硬件断点特有的功能。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>4. 隐蔽性：</strong></p>
-<ul>
-<li>软件断点：<ul>
-<li>软件断点会修改程序代码，因此可能会被一些反调试技术检测到。</li>
-</ul>
-</li>
-<li>硬件断点：<ul>
-<li>硬件断点不会修改程序代码，因此具有更高的隐蔽性。</li>
-</ul>
-</li>
-</ul>
-<p><strong>总结：</strong></p>
-<ul>
-<li>软件断点灵活方便，适用于大多数调试场景，但可能会被反调试技术检测到。</li>
-<li>硬件断点隐蔽性高，适用于特殊调试场景，但数量有限</li>
-</ul>
-</li>
-</ul>
-<h3 id="条件断点"><a href="#条件断点" class="headerlink" title="条件断点"></a>条件断点</h3><ul>
-<li><p>条件断点是一种在调试器中设置的断点，它仅在满足特定条件时才会触发。在框位置输入条件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714152925276.png" alt="image-20250714152925276"></p>
-</li>
-</ul>
-<h2 id="更改字节"><a href="#更改字节" class="headerlink" title="更改字节"></a>更改字节</h2><p>选中要更改的那个字节</p>
-<p>右键</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714152934057.png" alt="image-20250714152934057"></p>
-<p>更改之后Apply patch to 应用这个补丁</p>
-<p><a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#FlareOn6Overlon">[FlareOn6]Overlong</a></p>
-<h1 id="elf文件动态调试"><a href="#elf文件动态调试" class="headerlink" title="elf文件动态调试"></a>elf文件动态调试</h1><p>1.找到ida的根目录，找到dbgsrv文件，在该文件中找到</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714152946006.png" alt="image-20250714152946006"></p>
-<p>根据elf文件的进制选择（以64进制和snake.elf为例）</p>
-<p>将linux server64和snake拖入文件夹中</p>
-<p>之后在虚拟机终端内输出<code>chmod +x linux_server64</code>赋予文件执行权利</p>
-<p>之后输入<code>./linux_server64</code>运行文件（之后等待主机连接）</p>
-<p>再打开一个终端输入<code>ip addr</code>获取虚拟机ip地址</p>
-<p>检测是否可以成功：</p>
-<p>打开主机终端输入 <code>ping  +虚拟机ip</code>(下图即为来连接成功)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714152958488.png" alt="image-20250714152958488"></p>
-<p>之后打开Debugger&gt;Process options&gt;</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714153020955.png" alt="image-20250714153020955"></p>
-<p>1:填snake在虚拟机中的位置</p>
-<p>2：填snake在虚拟机所在文件的文件位置</p>
-<p>3：填虚拟机ip</p>
-<p>4:运行.&#x2F;linux_server64后，输出Listening on 0.0.0.0:23946（一般默认）</p>
-<p>之后就可以正常运行（下次运行时在此运行.&#x2F;<code>linux_server64</code>，并把文件拖入想相同目录即可）</p>
-<h1 id="显示所有机器码："><a href="#显示所有机器码：" class="headerlink" title="显示所有机器码："></a>显示所有机器码：</h1><p>​	Options&gt;general&gt;改为10</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714153009850.png" alt="image-20250714153009850"></p>
-<h1 id="x64dbg"><a href="#x64dbg" class="headerlink" title="x64dbg"></a>x64dbg</h1><p>F2：设置断点。）<br>F4：运行到光标处<br>F7：单步步入。（遇到call指令，进入call函数的实现处继续执行汇编指令）<br>F8：单步步过。（遇到call指令，执行call函数，之后接着执行call指令的下一条指令）<br>F9：运行程序（如果没有碰到断点，程序会一直执行到结束。）</p>
-<p>Ctrl+F9: 执行到函数返回处，用于跳出函数实现</p>
-<p>Alt+F9:执行到用户代码，用于快速跳出系统函数</p>
-<p>Ctrl+G:输入十六进制地址，快速定位到该地址处</p>
-
+    
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
-    
-      
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/%E5%8A%A8%E8%B0%83/">动调</a>
-        </span>
-      
     
   </div>
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2025/07/05/%E5%88%9D%E8%AF%86%E6%A0%88%E6%BA%A2%E5%87%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          初识栈溢出
-        </a>
-      
     </div>
     <div>
+      
+        <a href="/2025/07/20/HarekazeCTF2019-baby-rop2/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          ret2libc-printf
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
       
     </div>
   </div>
