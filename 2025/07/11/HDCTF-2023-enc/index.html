@@ -187,7 +187,7 @@
     <nav class="flex items-center text-base">
       <a href="/" class="group">
         <h2 class="font-medium tracking-tighterp text-l p-2">
-          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="Hexo" />
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/avatar.jpg" alt="Hexo" />
           Hexo
         </h2>
       </a>
@@ -199,14 +199,14 @@
         
           <a class="hidden sm:flex" href="/archives">Posts</a>
         
+          <a class="hidden sm:flex" href="/categories">Categories</a>
+        
+          <a class="hidden sm:flex" href="/tags">Tags</a>
+        
         
           
-            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/xbmlz">
-              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
-            </a>
-          
         
-        <a class="w-5 h-5 hidden sm:flex" title="Github" href="rss2.xml">
+        <a class="w-5 h-5 hidden sm:flex" title="" href="rss2.xml">
           <iconify-icon width="20" icon="ri:rss-line"></iconify-icon>
         </a>
         <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
@@ -230,6 +230,14 @@
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
           <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/tags" class="flex h-12 sm:h-auto items-center">Tags</a>
         </li>
       
     </ul>
@@ -329,6 +337,14 @@
     
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/NSS/">NSS</a>
+        </span>
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/RE/">RE</a>
+        </span>
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
           <a href="/tags/TEA/">TEA</a>
         </span>
       
@@ -338,14 +354,6 @@
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
           <a href="/tags/RC4/">RC4</a>
-        </span>
-      
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/NSS/">NSS</a>
-        </span>
-      
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/RE/">RE</a>
         </span>
       
     
@@ -517,8 +525,8 @@
 
   <script>
     $(document).ready(function () {
-      const mapleCount = "10";
-      const speed = "0.5";
+      const mapleCount = "20";
+      const speed = "0.7";
       const mapleEl = document.getElementById("maple");
       const maples = Array.from({ length: mapleCount }).map(() => {
         const maple = document.createElement("div");
