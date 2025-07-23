@@ -1,3 +1,3 @@
-var posts=["2025/07/14/HNCTF-2022-WEEK4-flower-plus/","2025/07/11/HDCTF-2023-enc/","2025/07/18/bjdctf-2020-babystack2/","2025/03/19/ida使用-动调/","2025/07/20/HarekazeCTF2019-baby-rop2/","2025/07/17/Youngter-drive/","2025/07/10/picoCTF2022/","2025/07/14/御网杯2025线下/","2025/07/21/格式化字符串/","2025/07/05/初识栈溢出/","2025/07/16/控制命令/","2025/07/22/ciscn-2019-sw-1/"];function toRandomPost(){
+var posts=["2025/07/14/HNCTF-2022-WEEK4-flower-plus/","2025/07/11/HDCTF-2023-enc/","2025/07/18/bjdctf-2020-babystack2/","2025/03/19/ida使用-动调/","2025/07/20/HarekazeCTF2019-baby-rop2/","2025/07/17/Youngter-drive/","2025/07/10/picoCTF2022/","2025/07/14/御网杯2025线下/","2025/07/21/格式化字符串/","2025/07/05/初识栈溢出/","2025/07/16/控制命令/","2025/07/22/ciscn-2019-sw-1/","2025/07/23/栈溢出进阶/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
