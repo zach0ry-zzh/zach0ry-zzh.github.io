@@ -161,120 +161,6 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2025/07/26/pwn49/">
-                            pwn49
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-
-看出是静态编译，考虑用mprotect来修改它的权限
-
-ctrl+s查看bss段，找要修改的范围
-
-因为mprotect的地址选择的限制条件
-我们把页面边界定为0x80DA000
-接着就可以构造payload了
-先调用mprotect函数修改权限...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Mon Aug 04 2025 12:44:35 GMT+0800"
-                >2025-08-04 12:44:35</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/07/26/pwn44/">
-                            pwn44
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-
-
-有system函数，无字符段，可以通过泄露libc基址
-但是也可以通过调用gets函数写入
-脚本1234567891011121314151617from pwn import *p=process(&quot;./pwn44&quot;)#g...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Jul 26 2025 15:18:11 GMT+0800"
-                >2025-07-26 15:18:11</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/26/pwn44/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
                         <a href="/2025/07/24/ciscn-2019-es-2/">
                             ciscn_2019_es_2
                         </a>
@@ -282,13 +168,14 @@ ctrl+s查看bss段，找要修改的范围
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
+                            题目
 
-很明显的栈溢出漏洞，但是可操作空间太小，只能覆盖到返回地址，所以要用栈迁移
 
-有system函数，但是需要自己传参，小问题
-分析题目可知，有两次输入，第一次输入可以用来泄露ebp的地址
-1payload=b&quot;a&quot;*0x27+b...
+很明显的栈溢出漏洞，但是可操作空间太小，只能覆盖到ret，所以要用栈迁移
+
+有system函数，但是需要自己传参，可以把&#x2F;bin&#x2F;sh字符段放在栈上
+有两次输入，第一次输入可以用来泄露ebp的地址
+第二次要根据泄露地址去...
                         
                     </div>
 
@@ -299,8 +186,8 @@ ctrl+s查看bss段，找要修改的范围
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Jul 29 2025 09:46:04 GMT+0800"
-                >2025-07-29 09:46:04</span>
+                                                                                data-updated="Tue Aug 26 2025 16:16:10 GMT+0800"
+                >2025-08-26 16:16:10</span>
             </span>
         
 
@@ -318,56 +205,6 @@ ctrl+s查看bss段，找要修改的范围
 
     
         <a class="home-read-more" href="/2025/07/24/ciscn-2019-es-2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/">
-                            UPX手脱壳
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Jul 24 2025 11:27:06 GMT+0800"
-                >2025-07-24 11:27:06</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/24/UPX%E6%89%8B%E8%84%B1%E5%A3%B3/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -405,8 +242,8 @@ ctrl+s查看bss段，找要修改的范围
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Wed Jul 30 2025 15:43:39 GMT+0800"
-                >2025-07-30 15:43:39</span>
+                                                                                data-updated="Tue Aug 26 2025 17:08:34 GMT+0800"
+                >2025-08-26 17:08:34</span>
             </span>
         
 
@@ -462,8 +299,8 @@ ctrl+s查看bss段，找要修改的范围
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Jul 22 2025 21:31:56 GMT+0800"
-                >2025-07-22 21:31:56</span>
+                                                                                data-updated="Tue Aug 26 2025 16:15:58 GMT+0800"
+                >2025-08-26 16:15:58</span>
             </span>
         
 
@@ -515,8 +352,8 @@ ctrl+s查看bss段，找要修改的范围
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Aug 16 2025 19:59:29 GMT+0800"
-                >2025-08-16 19:59:29</span>
+                                                                                data-updated="Tue Aug 26 2025 17:09:21 GMT+0800"
+                >2025-08-26 17:09:21</span>
             </span>
         
 
@@ -547,7 +384,7 @@ ctrl+s查看bss段，找要修改的范围
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2025/07/20/HarekazeCTF2019-baby-rop2/">
+                        <a href="/2025/07/20/ret2libc-printf/">
                             ret2libc-printf
                         </a>
                     </h3>
@@ -572,8 +409,8 @@ printf 函数的 GOT 地址不能用来泄露 pr...
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Jul 20 2025 17:27:47 GMT+0800"
-                >2025-07-20 17:27:47</span>
+                                                                                data-updated="Tue Aug 26 2025 16:37:08 GMT+0800"
+                >2025-08-26 16:37:08</span>
             </span>
         
 
@@ -590,7 +427,7 @@ printf 函数的 GOT 地址不能用来泄露 pr...
     </div>
 
     
-        <a class="home-read-more" href="/2025/07/20/HarekazeCTF2019-baby-rop2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2025/07/20/ret2libc-printf/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -604,23 +441,21 @@ printf 函数的 GOT 地址不能用来泄露 pr...
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2025/07/18/bjdctf-2020-babystack2/">
-                            bjdctf_2020_babystack2
+                        <a href="/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/">
+                            gdb调试
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
-只有nx保护
+                            TAB：显示所有命令
 
-read是栈溢出漏洞
-且函数中存在后门函数
-分析主函数
-输入长度nbytes（要求小于10）
-但是观察到后面的read函数最多读取nbytesg个字节到buf中
-10个字节无法实现栈溢出覆盖返回地址
-又观察到 (unsigned i...
+start:运行到程序入口处
+run:运行完整个程序
+🔍 x 命令的基本语法：x&#x2F;nfs  address
+
+n ：要显示的内存单元个数（默认是 1）。
+f ：显示格式（format），比如十六进制、十进制、字符串...
                         
                     </div>
 
@@ -631,8 +466,8 @@ read是栈溢出漏洞
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Fri Jul 18 2025 17:30:00 GMT+0800"
-                >2025-07-18 17:30:00</span>
+                                                                                data-updated="Tue Aug 26 2025 17:07:46 GMT+0800"
+                >2025-08-26 17:07:46</span>
             </span>
         
 
@@ -649,7 +484,7 @@ read是栈溢出漏洞
     </div>
 
     
-        <a class="home-read-more" href="/2025/07/18/bjdctf-2020-babystack2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -663,20 +498,22 @@ read是栈溢出漏洞
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2025/07/17/Youngter-drive/">
-                            Youngter-drive
+                        <a href="/2025/07/14/%E5%BE%A1%E7%BD%91%E6%9D%AF2025%E7%BA%BF%E4%B8%8B/">
+                            御网杯线下2025
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
-可以看出是一个多线程
-线程分析1::hObject = CreateMutexW(0, 0, 0);
+                            re_c
+
+FLAG:flag{HNCTFmng1}
+re_python
+得到
 
 
-目的： 创建一个 Mutex（互斥锁），线程之间访问共享资源时用它来保护数据。
-两个线程都会读写全局变量，比如 Dest（flag 存放的地方...
+脚本
+12345678910c = [144, 163, 158, 177, 121, 39, 58, 58, 91, 111, 25, 158, 72, 53, 1...
                         
                     </div>
 
@@ -687,8 +524,8 @@ read是栈溢出漏洞
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Fri Jul 25 2025 17:21:20 GMT+0800"
-                >2025-07-25 17:21:20</span>
+                                                                                data-updated="Tue Aug 26 2025 17:07:19 GMT+0800"
+                >2025-08-26 17:07:19</span>
             </span>
         
 
@@ -705,7 +542,174 @@ read是栈溢出漏洞
     </div>
 
     
-        <a class="home-read-more" href="/2025/07/17/Youngter-drive/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2025/07/14/%E5%BE%A1%E7%BD%91%E6%9D%AF2025%E7%BA%BF%E4%B8%8B/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/14/HNCTF-2022-WEEK4-flower-plus/">
+                            [HNCTF 2022 WEEK4]flower plus
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            链接
+花指令分析
+发现花指令
+db 0C7h 的“垃圾”作用： 0x4012A6 处的 db 0C7h 是一个数据字节。它被 jnz 指令跳转到，但它本身不是一个有意义的执行路径。它的存在是为了干扰反汇编器的线性分析，使其认为这里存在一个实际的代码分...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Aug 26 2025 17:05:52 GMT+0800"
+                >2025-08-26 17:05:52</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/14/HNCTF-2022-WEEK4-flower-plus/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/11/HDCTF-2023-enc/">
+                            [HDCTF 2023]enc
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            链接
+打开进入这个函数
+
+TEA
+分析之后知道
+下一步核对的v7和v8都是改变后的密文
+v9才是密钥
+解密时注意，异或的时候从后往前异或，倒着来
+脚本
+1234567891011121314151617#tea解密def tea_decrypt(v,...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Aug 26 2025 16:57:06 GMT+0800"
+                >2025-08-26 16:57:06</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/11/HDCTF-2023-enc/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/10/picoCTF2022/">
+                            picoCTF2022
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            CRYPTOVigenere题目信息
+key CYLAB
+cipher:  rgnoDVD&#123;O0NU_WQ3_G1G3O3T3_A1AH3S_cc82272b&#125;
+题目给了密文和密钥，用随波逐流打开，解密，发现是维吉尼亚加密
+
+fl...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Aug 26 2025 17:12:57 GMT+0800"
+                >2025-08-26 17:12:57</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/10/picoCTF2022/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 

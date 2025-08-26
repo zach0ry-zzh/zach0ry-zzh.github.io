@@ -195,11 +195,20 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Jul 14 2025 14:49:28 GMT+0800">2025-07-14 14:49:28</span>
+                    <span class="datetime" data-updated="Tue Aug 26 2025 16:57:06 GMT+0800">2025-08-26 16:57:06</span>
                 </span>
             
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-re/">exercise_re</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -210,12 +219,6 @@
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SMC/">SMC</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/RC4/">RC4</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NSS/">NSS</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/RE/">RE</a></li>
@@ -246,8 +249,7 @@
                          <p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3790" >链接<i class="fas fa-external-link-alt"></i></a></p>
 <p>打开进入这个函数</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193541365.png"  alt="image-20250711193541365"></p>
-<p>发现TEA加密</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193916614.png"  alt="image-20250711193916614"></p>
+<h2 id="TEA"><a href="#TEA" class="headerlink" title="TEA"></a>TEA</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711193916614.png"  alt="image-20250711193916614"></p>
 <p>分析之后知道</p>
 <p>下一步核对的v7和v8都是改变后的密文</p>
 <p>v9才是密钥</p>
@@ -255,9 +257,7 @@
 <p>脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#tea解密</span><br><span class="line">def tea_decrypt(v, k):</span><br><span class="line">    v0, v1 = v[0], v[1]</span><br><span class="line">    delta = 0x61C88647</span><br><span class="line">    sum = -(delta * 32) &amp; 0xFFFFFFFF</span><br><span class="line">    for _ in range(32):</span><br><span class="line">        v1 = (v1 - ((16*v0 + k[2]) ^ (v0 + sum) ^((v0 &gt;&gt;5) + k[3]))) &amp; 0xFFFFFFFF</span><br><span class="line">        v0 = (v0 - ((16*v1+ k[0]) ^ (v1 + sum) ^((v1 &gt;&gt;5) + k[1]))) &amp; 0xFFFFFFFF </span><br><span class="line">        sum = (sum + delta) &amp; 0xFFFFFFFF</span><br><span class="line">    return [v0, v1] </span><br><span class="line"></span><br><span class="line"># 给定密文v9和密钥v10</span><br><span class="line">v9 = [0x60fcdef7,0x236dbec]</span><br><span class="line">v10 = [0x12,0x34,0x56,0x78]</span><br><span class="line">print(tea_decrypt(v9, v10))</span><br><span class="line"></span><br><span class="line">//key=3</span><br></pre></td></tr></table></figure>
 
-
-
-<p>继续看下面的函数</p>
+<h2 id="SMC"><a href="#SMC" class="headerlink" title="SMC"></a>SMC</h2><p>继续看下面的函数</p>
 <p>sub_4113DE —&gt;sub_414C10—&gt;sub_411046—&gt;sub_414B00—&gt;sub_411221—&gt;sub_415340</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711200122360.png"  alt="image-20250711200122360"></p>
 <ul>
@@ -268,12 +268,12 @@
 <p>那下一步就是找到它改变的地址的范围</p>
 <p>打开x32xdbg</p>
 <p><code>ctrl+g</code>输入00415340</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711201736025.png"  alt="image-20250711201736025"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250826164227781.png"  alt="image-20250826164227781"></p>
 <p>F9运行后会停在这里</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711202535475.png"  alt="image-20250711202535475"></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711203617747.png"  alt="image-20250711203617747"></p>
 <p>所以修改位置的位置头是0x0041D000</p>
-<p>长度是0下600</p>
+<p>长度是0x600</p>
 <p>所以在ida中运行脚本</p>
 <p>脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 导入 ida_bytes 模块，这是现代 IDA Python 推荐的字节操作方式</span><br><span class="line">from ida_bytes import get_byte, patch_byte </span><br><span class="line"></span><br><span class="line"># 定义操作的起始地址、结束地址和异或密钥</span><br><span class="line">start_address = 0x41d000</span><br><span class="line">end_address = 0x41E600 # range函数不包含end_address</span><br><span class="line">xor_key = 3 </span><br><span class="line"></span><br><span class="line">print(&quot;开始批量异或修改...&quot;)</span><br><span class="line"></span><br><span class="line"># 遍历指定范围内的每个字节并进行异或操作</span><br><span class="line">for i in range(start_address, end_address):</span><br><span class="line">    original_byte = get_byte(i)      # 使用 get_byte 从 ida_bytes 模块读取字节</span><br><span class="line">    new_byte = original_byte ^ xor_key</span><br><span class="line">    patch_byte(i, new_byte)          # 使用 patch_byte 从 ida_bytes 模块写入字节</span><br><span class="line"></span><br><span class="line">print(&quot;修改完成&quot;)</span><br></pre></td></tr></table></figure>
@@ -305,14 +305,6 @@
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SMC/">SMC</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/RC4/">RC4</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/NSS/">NSS</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">

