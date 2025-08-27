@@ -161,6 +161,66 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
+                        <a href="/2025/07/26/pwn49/">
+                            pwn49
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            题目
+
+
+看出是静态编译，考虑用mprotect来修改它的权限
+
+ctrl+s查看bss段，找要修改的范围
+
+因为mprotect的地址选择的限制条件
+我们把页面边界定为0x80DA000
+接着就可以构造payload了
+先调用mprotect函数修...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Aug 26 2025 17:26:44 GMT+0800"
+                >2025-08-26 17:26:44</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
                         <a href="/2025/07/24/ciscn-2019-es-2/">
                             ciscn_2019_es_2
                         </a>
@@ -655,61 +715,6 @@ v9才是密钥
 
     
         <a class="home-read-more" href="/2025/07/11/HDCTF-2023-enc/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/07/10/picoCTF2022/">
-                            picoCTF2022
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            CRYPTOVigenere题目信息
-key CYLAB
-cipher:  rgnoDVD&#123;O0NU_WQ3_G1G3O3T3_A1AH3S_cc82272b&#125;
-题目给了密文和密钥，用随波逐流打开，解密，发现是维吉尼亚加密
-
-fl...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Aug 26 2025 17:12:57 GMT+0800"
-                >2025-08-26 17:12:57</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/10/picoCTF2022/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
