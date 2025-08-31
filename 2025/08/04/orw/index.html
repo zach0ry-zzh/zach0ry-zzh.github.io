@@ -261,7 +261,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Aug 30 2025 19:55:43 GMT+0800">2025-08-30</span>
+                    <span class="datetime" data-updated="Sun Aug 31 2025 09:21:06 GMT+0800">2025-08-31</span>
                 </span>
             
         
@@ -313,9 +313,9 @@
 <p>传统的缓冲区溢出攻击通常会尝试注入一段 shellcode，这段 shellcode 的作用是执行 execve(“&#x2F;bin&#x2F;sh”, NULL, NULL) 来获取一个交互式 shell。然而，在以下两种情况下，这种传统攻击会失败：</p>
 <p>NX（No-eXecute）保护：如果程序的栈是不可执行的，你注入的 shellcode 无法在栈上运行。</p>
 <p>seccomp 沙箱：一些程序会使用 seccomp（安全计算模式）来限制进程可以调用的系统调用。如果 execve 被禁用，即使你成功注入了 shellcode，它也无法执行。</p>
-<p><img   src="D:/Typora/image/image-20250804164745934.png"  alt="image-20250804164745934"></p>
-<p><img   src="D:/Typora/image/image-20250804164759473.png"  alt="image-20250804164759473"></p>
-<p><img   src="D:/Typora/image/image-20250804164828181.png"  alt="image-20250804164828181"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250804164745934.png"  alt="image-20250804164745934"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250804164759473.png"  alt="image-20250804164759473"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250804164828181.png"  alt="image-20250804164828181"></p>
 <p>这个就是典型的orw</p>
 <p>用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seccomp-tools dump ./orw #查看允许的函数调用</span><br></pre></td></tr></table></figure>
