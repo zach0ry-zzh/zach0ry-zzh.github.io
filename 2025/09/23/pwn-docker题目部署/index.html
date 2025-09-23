@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="zach0ry">
+    
+    <title>
+        
+            pwn_docker题目部署 |
+        
+        b1nary
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               b1nary
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        pwn_docker题目部署
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-09-23</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Tue Sep 23 2025 16:35:51 GMT+0800">2025-09-23</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><p>Docker 是一个 <strong>容器化工具</strong>。</p>
+<p>在不同的环境下，程序可能因为处于不同的环境无法正常运行， docker能把 <strong>程序 + 依赖环境</strong> 一起打包成一个标准的“盒子”（镜像），然后在任何地方都能运行（容器），容器就是镜像的动态实例.</p>
+<h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a>组成部分</h3><p><strong>docker主要有四部分：</strong>  </p>
+<p><strong>镜像 (Image)</strong><br> 相当于一个“安装包”或者“模版”。里面写明了操作系统、依赖库、程序文件。  </p>
+<p><strong>容器 (Container)</strong><br> 镜像运行后的实例，就像“安装包”安装出来并运行的程序。容器是活的，可以改动、运行、停止、删除。</p>
+<p><strong>Dockerfile</strong><br> 就是一份“说明书”，写清楚镜像怎么制作。</p>
+<p><strong>仓库 (Registry)</strong><br> 存放镜像的地方，比如：</p>
+<ul>
+<li>Docker Hub（公共仓库）</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances" >阿里云容器镜像服务<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><p>1.查看本地镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923144450966.png"  alt="image-20250923144450966"></p>
+<p>2.构造镜像</p>
+<p>生成一个镜像 (Image)，存在于本地的 Docker 镜像库里。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t &lt;镜像名[:tag]&gt; （构建上下文目录）</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923150108432.png"  alt="image-20250923150108432"></p>
+<p>3.上传镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push &lt;IMAGE&gt;（[&lt;仓库名&gt;/]&lt;命名空间&gt;/&lt;REPO&gt;:&lt;TAG&gt;）</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923151009446.png"  alt="image-20250923151009446"></p>
+<p>4.查看本地镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923151131427.png"  alt="image-20250923151131427"></p>
+<p>5.删除镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -&lt;版本号&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923151337683.png"  alt="image-20250923151337683"></p>
+<h2 id="pwn部署"><a href="#pwn部署" class="headerlink" title="pwn部署"></a>pwn部署</h2><p>首先要创建自己的<a class="link"   target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances" >阿里云<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923161203795.png"  alt="image-20250923161203795"></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923161250351.png"  alt="image-20250923161250351"></h3><p>这些操作好之后在虚拟机中执行以登录自己的阿里云账号（一般登陆一次之后会一直保持登录状态）</p>
+<h3 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923161338580.png"  alt="image-20250923161338580">配置代理</h3><p>1.开启小猫的Allow LAN (允许局域网连接)</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923153535459.png"  alt="image-20250923153535459"></p>
+<p>默认情况下，Clash 只监听 <strong>本机回环地址</strong>（127.0.0.1:7890），只有 Windows 自己能用代理。勾选了 <strong>Allow LAN</strong>，Clash 会监听 <strong>0.0.0.0:7890</strong>，也就是允许 <strong>局域网内其他设备</strong>（虚拟机、Docker 容器、手机等）通过你的电脑的 IP 地址来使用代理</p>
+<p>2.然后去查看Windows 宿主机上的虚拟网卡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig.exe</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923155246437.png"  alt="image-20250923155246437"></p>
+<p>3.文本编辑器打开，写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/dockerproxy</span><br></pre></td></tr></table></figure>
+
+<p>4.改宿主机ip和端口输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Docker 代理管理脚本</span><br><span class="line"># 使用方法: sudo ./docker-proxy.sh [set|unset] [proxy_address]</span><br><span class="line"></span><br><span class="line">set -e</span><br><span class="line"></span><br><span class="line"># 默认代理地址</span><br><span class="line">DEFAULT_PROXY=&quot;网卡:7890&quot;</span><br><span class="line">PROXY_DIR=&quot;/etc/systemd/system/docker.service.d&quot;</span><br><span class="line">PROXY_CONF=&quot;$PROXY_DIR/http-proxy.conf&quot;</span><br><span class="line"></span><br><span class="line"># 显示使用说明</span><br><span class="line">usage() &#123;</span><br><span class="line">    echo &quot;使用方法: $0 [set|unset] [proxy_address]&quot;</span><br><span class="line">    echo &quot;  set [proxy_address]    - 设置 Docker 代理 (默认: $DEFAULT_PROXY)&quot;</span><br><span class="line">    echo &quot;  unset                  - 取消 Docker 代理配置&quot;</span><br><span class="line">    exit 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 检查是否以 root 权限运行</span><br><span class="line">check_root() &#123;</span><br><span class="line">    if [ &quot;$EUID&quot; -ne 0 ]; then</span><br><span class="line">        echo &quot;请使用 sudo 或以 root 权限运行此脚本&quot;</span><br><span class="line">        exit 1</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 设置 Docker 代理</span><br><span class="line">set_proxy() &#123;</span><br><span class="line">    local proxy_addr=$&#123;1:-$DEFAULT_PROXY&#125;</span><br><span class="line">    </span><br><span class="line">    echo &quot;正在设置 Docker 代理: $proxy_addr&quot;</span><br><span class="line">    </span><br><span class="line">    # 创建配置目录</span><br><span class="line">    mkdir -p &quot;$PROXY_DIR&quot;</span><br><span class="line">    </span><br><span class="line">    # 创建代理配置文件</span><br><span class="line">    cat &gt; &quot;$PROXY_CONF&quot; &lt;&lt; EOF</span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;HTTP_PROXY=http://$proxy_addr&quot;</span><br><span class="line">Environment=&quot;HTTPS_PROXY=http://$proxy_addr&quot;</span><br><span class="line">Environment=&quot;NO_PROXY=localhost,127.0.0.1,.docker.internal,.hubproxy.docker.internal&quot;</span><br><span class="line">EOF</span><br><span class="line">    </span><br><span class="line">    # 重新加载配置并重启 Docker</span><br><span class="line">    systemctl daemon-reload</span><br><span class="line">    systemctl restart docker</span><br><span class="line">    </span><br><span class="line">    echo &quot;Docker 代理设置完成&quot;</span><br><span class="line">    echo &quot;当前代理配置:&quot;</span><br><span class="line">    systemctl show --property=Environment docker</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 取消 Docker 代理配置</span><br><span class="line">unset_proxy() &#123;</span><br><span class="line">    echo &quot;正在取消 Docker 代理配置&quot;</span><br><span class="line">    </span><br><span class="line">    # 删除代理配置文件</span><br><span class="line">    if [ -f &quot;$PROXY_CONF&quot; ]; then</span><br><span class="line">        rm -f &quot;$PROXY_CONF&quot;</span><br><span class="line">        echo &quot;已删除代理配置文件: $PROXY_CONF&quot;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;未找到代理配置文件: $PROXY_CONF&quot;</span><br><span class="line">    fi</span><br><span class="line">    </span><br><span class="line">    # 重新加载配置并重启 Docker</span><br><span class="line">    systemctl daemon-reload</span><br><span class="line">    systemctl restart docker</span><br><span class="line">    </span><br><span class="line">    echo &quot;Docker 代理配置已取消&quot;</span><br><span class="line">    echo &quot;当前环境变量:&quot;</span><br><span class="line">    systemctl show --property=Environment docker</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 主程序</span><br><span class="line">main() &#123;</span><br><span class="line">    check_root</span><br><span class="line">    </span><br><span class="line">    case &quot;$1&quot; in</span><br><span class="line">        set)</span><br><span class="line">            set_proxy &quot;$2&quot;</span><br><span class="line">            ;;</span><br><span class="line">        unset)</span><br><span class="line">            unset_proxy</span><br><span class="line">            ;;</span><br><span class="line">        *)</span><br><span class="line">            usage</span><br><span class="line">            ;;</span><br><span class="line">    esac</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 执行主程序</span><br><span class="line">main &quot;$@&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后赋执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/bin/dockerproxy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>网卡（模糊化处理）→ 宿主机的 IP（在虚拟网络环境下 VM&#x2F;容器可达的地址）</li>
+<li><code>7890</code> → 代理软件提供的服务端口（通常是 HTTP&#x2F;HTTPS 代理，常见于 Clash）</li>
+<li>作用：让 Docker 的网络请求走代理，加速&#x2F;绕过网络限制。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_PROXY=&quot;网卡:7890&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在宿主机（Windows）上跑 Clash，开了一个代理：</p>
+<p>但是在 Kali 虚拟机里跑 Docker，要让 Docker 用这个代理：</p>
+<ul>
+<li>在 VM 里写 <code>127.0.0.1:7890</code> 是不对的，因为那是 VM 自己。</li>
+<li>要写宿主机在 VM 眼中的地址，比如 <code>网卡:7890</code>。这样 Docker 请求才会正确发到宿主机的代理。</li>
+</ul>
+<p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dockerproxy set#使用代理</span><br><span class="line">sudo dockerproxy unset#取消代理</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923155629113.png"  alt="image-20250923155629113"></p>
+<p>也可以自定义代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dockerproxy set 172.27.16.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>验证是否走代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep -i proxy</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923155742600.png"  alt="image-20250923155742600"></p>
+<p><strong>HTTP Proxy &#x2F; HTTPS Proxy</strong> → Docker Daemon 的全局网络请求会走 Windows 宿主机上的 Clash 代理</p>
+<p><strong>No Proxy</strong> → 这些地址不走代理（本机回环和 Docker 内部域名）</p>
+<p>（warning是<strong>宿主机内核缺少 blkio（块设备限速）的支持</strong>，跟代理没关系，可以忽略）</p>
+<h3 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h3><p>1.先要拉取镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:22.04</span><br><span class="line">docker pull ubuntu:20.04</span><br><span class="line">docker pull ubuntu:18.04</span><br><span class="line">docker pull ubuntu:16.04</span><br></pre></td></tr></table></figure>
+
+<p>很多时候，<code>Dockerfile</code> 里开头写的是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu:22.04</span><br></pre></td></tr></table></figure>
+
+<p>那么在 <code>docker build</code> 时，如果本地没有 <code>ubuntu:22.04</code>，Docker 就会自动去拉。</p>
+<p>这个操作其实就是提前把它保存在本地，因为它也需要配置代理，刚好测试你的 <strong>代理配置是否生效</strong>。</p>
+<p>2.从Github上下载打包好的项目</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/CTF-Archives/ctf-docker-template" >链接<i class="fas fa-external-link-alt"></i></a>(也需要链接代理)</p>
+<p>然后把对应版本的附件重命名之后替换src中的文件就好了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923160929323.png"  alt="image-20250923160929323"></p>
+<p>3.最后就是build镜像</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923163445494.png"  alt="image-20250923163445494"></p>
+<p>push上去</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923163512286.png"  alt="image-20250923163512286"></p>
+<p>之后在镜像库里就可以找到这个镜像了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923162627949.png" ></p>
+<p>最后把这个镜像的完整引用放入网站就可以了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923162724784.png"  alt="image-20250923162724784"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923163531562.png"  alt="image-20250923163531562"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923163542830.png"  alt="image-20250923163542830"></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/09/22/%E7%AC%AC%E4%B8%89%E5%B1%8A%E9%99%87%E5%89%91%E6%9D%AF%E5%86%B3%E8%B5%9B/"
+                                   title="第三届陇剑杯决赛"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">第三届陇剑杯决赛</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker"><span class="nav-number">1.</span> <span class="nav-text">docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">组成部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">基础操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwn%E9%83%A8%E7%BD%B2"><span class="nav-number">2.</span> <span class="nav-text">pwn部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">配置代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">镜像操作</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker"><span class="nav-number">1.</span> <span class="nav-text">docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">组成部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">基础操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwn%E9%83%A8%E7%BD%B2"><span class="nav-number">2.</span> <span class="nav-text">pwn部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">配置代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">镜像操作</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
