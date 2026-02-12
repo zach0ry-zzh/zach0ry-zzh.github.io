@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="zach0ry">
+    
+    <title>
+        
+            heap_base |
+        
+        b1nary
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               b1nary
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        heap_base
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-08-24</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Feb 09 2026 10:48:30 GMT+0800">2026-02-09</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/heap/">heap</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="堆管理器ptmalloc"><a href="#堆管理器ptmalloc" class="headerlink" title="堆管理器ptmalloc"></a>堆管理器ptmalloc</h2><p>程序运行时堆提供动态分布的内存，从而允许程序申请大小未知的内存，堆由低地址向高地址方向增长，这和栈是相反的（栈是由高地址向低地址方向生长）</p>
+<p>每个系统都有自己的堆管理器，不同平台的堆管理器是不一样的，比如Windows、Linux、Mac的处理机制不一样，用户请求堆块和释放堆块的流程也不一样。</p>
+<p>堆利用就是针对堆管理器的一种利用思路。它就像是中介，为了避免系统与用户频繁交互（因为和操作系统交互非常耗时），就有了堆管理器。实际上，用户平时申请（malloc）和释放（free）堆块的时候，是和堆管理器直接接触的。</p>
+<h3 id="ptmalloc基本功能"><a href="#ptmalloc基本功能" class="headerlink" title="ptmalloc基本功能"></a>ptmalloc基本功能</h3><p>主要负责完成用户的两个需求：malloc（申请堆块）和free（释放堆块）</p>
+<p>在ptmalloc堆管理器中，内核一般会预先分配一块很大的连续的内存，然后让堆管理器通过某种算法管理这块内存，只有当出现堆空间不足的情况时，ptmalloc堆管理器才会再次与操作系统进行交互，通过系统调用申请内存</p>
+<p>释放堆块的时候也是一样，ptmalloc堆管理器需要管理用户释放的堆块，会通过一系列的bin进行管理。bin在ptmalloc中用来保存没有使用的chunk（释放之后的chunk）。根据需求的不同，bin在数据结构上表现为单向链表或者双向循环链表。而且用户请求堆块的时候会优先来自这些释放的堆块</p>
+<h3 id="malloc和free"><a href="#malloc和free" class="headerlink" title="malloc和free"></a>malloc和free</h3><p><strong>malloc</strong></p>
+<p>空间不够 &gt;返回null</p>
+<p>参数为0  &gt;返回一个最小的chunk</p>
+<p>参数为负&gt;申请有个很大的空间（一般不会成功，会返回null）</p>
+<p><strong>free</strong></p>
+<p>参数为null&gt; 无影响</p>
+<p>参数指向的地方已经被释放时&gt; 除非被禁用（使用 mallopt），否则当释放非常大的内存空间时，将尽可能自动触发将未使用的内存返还给系统的操作，从而减小程序占用。</p>
+<h3 id="内存分配背后的系统调用"><a href="#内存分配背后的系统调用" class="headerlink" title="内存分配背后的系统调用"></a>内存分配背后的系统调用</h3><p>ptmalloc通过brk&#x2F;sbrk和mmap&#x2F;munmap这两组系统调用实现交互</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250824203048275.png"  alt="image-20250824203048275"></p>
+<p><strong>brk&#x2F;sbrk</strong></p>
+<p>对于堆的操作，Linux操作系统提供了brk函数，glibc库提供了sbrk函数。我们可以通过增加brk的大小来向操作系统申请内存。</p>
+<p>初始时，堆的起始地址start_brk以及堆的当前末尾brk指向同一地址。</p>
+<p>不开启ASLR保护时，start_brk和brk会指向data&#x2F;bss段的结尾。</p>
+<p>开启ASLR保护时，start_brk和brk也会指向同一位置，即在data&#x2F;bss段结尾后的随机偏移处。</p>
+<p>现代操作系统每次重启时都会开启ASLR，所以堆的起始地址也是随机的</p>
+<p>brk():  brk() 函数接受一个参数，即新的 brk 指针的 绝对地址。</p>
+<p>可以将 brk 指针设置到任何你想要的合法位置，通常是向上移动以申请更多内存。</p>
+<p>它的返回值为 0 表示成功，-1 表示失败。</p>
+<p>这个函数提供的是 设置 功能。</p>
+<p>sbrk(): * sbrk() 函数接受一个 增量 参数（increment）。</p>
+<p>它将当前的 brk 指针 向前或向后移动 指定的字节数。</p>
+<p>它返回移动前的 brk 指针的地址。如果返回 (void*)-1，则表示失败。</p>
+<p>这个函数提供的是 增量 功能。</p>
+<p>当使用 brk() 或 sbrk() 申请内存时，实际上是移动了数据段的末尾（brk 指针），从而获得更大的堆空间。</p>
+<p><strong>mmap&#x2F;munmap</strong></p>
+<p>malloc会使用mmap来映射数据段，内核会为你分配一块物理内存，并将其内容初始化为 0，且mmap 默认创建的是私有映射。在这种模式下，被映射的内存区域属于调用它的进程，即使这个区域是文件映射，该进程对它的修改也不会反映到原文件中，也不会影响到其他同样映射了此文件的进程。</p>
+<p>munmap与mmap对应，其作用是释放申请的内存</p>
+<h2 id="堆相关的数据结构"><a href="#堆相关的数据结构" class="headerlink" title="堆相关的数据结构"></a>堆相关的数据结构</h2><h3 id="malloc-chunk-6"><a href="#malloc-chunk-6" class="headerlink" title="malloc_chunk_6"></a>malloc_chunk_6</h3><p>malloc 分配的内存被称为 chunk，它们在被释放后不会立即归还给系统，而是进入以双向链表形式组织的 bin*中。</p>
+<p>在malloc_chunk的定义中，共有6个字段，即prev_size、size、fd、bk、fd_nextsize、bk_nextsize。</p>
+<p>prev_size和size是两个size_t字段，而fd&#x2F;bk、fd_nextsize&#x2F;bk_nextsize都是指针字段，实际上记录了两个双向链表。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250824215747532.png"  alt="image-20250824215747532"></p>
+<h4 id="prev-size"><a href="#prev-size" class="headerlink" title="prev_size"></a>prev_size</h4><p>存储前一个 chunk 的大小</p>
+<p>在 malloc_chunk结构体中，prev_size 字段位于 size&#96;字段之前</p>
+<p>当前一个物理相邻的chunk是空闲的（free）：</p>
+<p>ptmalloc 库可以通过这个值，快速找到前一个空闲 chunk 的起始位置，从而将两个空闲 chunk 合并成一个更大的空闲 chunk，避免内存碎片</p>
+<p>当前一个物理相邻的chunk正在使用（in use）：</p>
+<p>前一个 <code>chunk</code> 的尾部是用户数据</p>
+<p>那么，你当前 chunk 的prev_size 字段，其实位于前一个 chunk 的用户数据区内部。</p>
+<p>此时，ptmalloc 知道前一个 chunk 是被占用的，所以它不会去读取 prev_size 这个字段。因此，这个字段的空间可以被前一个 <code>chunk</code> 的用户数据所占用（<strong>空间复用</strong>）</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250824215547527.png"  alt="image-20250824215547527"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250824215557981.png"  alt="image-20250824215557981"></p>
+<h4 id="size"><a href="#size" class="headerlink" title="size"></a>size</h4><p>存储着当前chunk的大小，是2＊SIZE_SZ的整数倍</p>
+<p>在32位的系统中size是8的整数倍，64位系统中是16的整数倍</p>
+<p>用户程序申请的大小都会向上取整，比如在32位程序中，用户申请的大小为0x14，那么向上取整后为0x18。但实际上，在分配的时候，因为空间复用，所以分配0x14字节的chunk的时候，结果会和预想的不一样</p>
+<p>把size以二进制写出来会发现后三位都是0，所以将最低的三位用于存储三个标志位，分别是A|M|P，从高位到低位，</p>
+<p>其对应的解释如下：</p>
+<p><strong>A (NON_MAIN_ARENA)</strong>:</p>
+<p>ptmalloc 支持多线程,每个线程可以有自己的内存池,这被称为 arena,标志位表示是不是主arena。</p>
+<p>如果 A 是 1 &gt; 这个 chunk 来自一个非主 arena</p>
+<p>如果 A 是 0 &gt; 这个 chunk 来自主 arena</p>
+<p><strong>M (IS_MMAPED)</strong>:</p>
+<p>表示当前 chunk 是通过 mmap 分配的，还是通过 brk 从主堆中分配的</p>
+<p>M 是 1  &gt; 这个 chunk通过 mmap 系统调用获得的,当它被释放时，ptmalloc 不会把它放入空闲链表（bin），而是直接调用 munmap 将其归还给操作系统</p>
+<p>M 是 0  &gt; 这个 chunk是通过 brk() 从主堆分配的 ,当它被释放时，ptmalloc 会将其放入对应的 bin 中</p>
+<p><strong>P (PREV_INUSE)</strong>:</p>
+<p>表示<strong>前一个</strong>物理相邻的 chunk 是否正在使用中</p>
+<p> P 是 1 &gt; 说明前一个 chunk 正在被占用，ptmalloc 在释放当前 chunk 时，就不需要检查和合并前一个 chunk。</p>
+<p>P 是 0 &gt; 说明前一个 chunk 是空闲的。ptmalloc 在释放当前 chunk 时，会去查看前一个 chunk，并尝试将两个空闲的 chunk 合并成一个更大的块，从而避免内存碎片</p>
+<p>eg:</p>
+<p>0x71，0x71&#x3D;&#x3D;0x70|0b001，表示这个chunk的大小为0x70，对应的三个标志位为：A&#x3D;0，M&#x3D;0，P&#x3D;1，即这个chunk属于主线程，不是由mmap系统调用分配，前一个物理相邻的chunk在使用中。</p>
+<p>❑0x105，0x105&#x3D;&#x3D;0x100|0b101，表示这个chunk的大小为0x100，对应的三个标志位为：A&#x3D;1，M&#x3D;0，P&#x3D;1，即这个chunk不属于主线程，由其他线程分配，不是由mmap系统调用分配，前一个物理相邻的chunk在使用中。</p>
+<p>想象一下 <strong>arena</strong> 是一个内存分配的工厂。每个工厂都有自己的原材料（堆空间）和一套管理流程。</p>
+<p>主 arena：每个进程都有且只有一个主 arena。它使用进程的主堆（main heap，通过 brk() 扩展的数据段）作为原材料。所有线程都可以从主 arena 申请内存。</p>
+<p>非主 arena：在多线程环境中，如果多个线程同时请求内存，为了避免锁竞争，ptmalloc 会为某些线程创建新的 arena。这些新的 arena 不使用主堆，而是通过 mmap() 从操作系统获取独立的堆空间来作为自己的原材料。</p>
+<p>让我们用一个简化的流程来描述 <strong>chunk 和 arena 的关系</strong>:</p>
+<p>线程 A 调用 malloc() 请求 100 字节内存。</p>
+<p>ptmalloc 检查线程 A 是否有自己的 arena。如果这是第一个线程，它会使用主 arena。</p>
+<p>主 arena 检查自己的空闲链表（bin）。如果没有合适的chunk，它会通过 brk() 扩展自己的主堆，然后从新空间中切出 100 字节的chunk，并返回给线程 A。</p>
+<p>线程 B 同时调用 malloc() 请求 200 字节内存。</p>
+<p>如果此时主 arena 被线程 A 锁住，ptmalloc 会为线程 B 创建一个新的 arena。</p>
+<p>这个新 arena 通过 mmap() 获得自己的堆空间。然后从这块新空间中分配一个 200 字节的chunk，并返回给线程 B。</p>
+<p>总而言之，arena 就像一个独立的内存管理单元，它拥有和管理自己的堆空间，并负责分配和回收 chunk。chunk 则是 arena 管理下的最小内存单元。</p>
+<h4 id="fd-bk（forward-backward）"><a href="#fd-bk（forward-backward）" class="headerlink" title="fd&#x2F;bk（forward&#x2F;backward）"></a>fd&#x2F;bk（forward&#x2F;backward）</h4><p>当chunk处于分配状态（使用状态）的时候，从fd这个字段开始是用户的数据，所以如果用户程序分配的堆块大小是0x20，那么实际的开销是0x20+0x10（64位程序），多余的0x10是glibc为了维护所有的chunk而产生的开销。此时fd&#x2F;bk不使用，空间被用户数据复用</p>
+<p>如果一个chunk处于未使用状态，那么fd&#x2F;bk就会记录相应的链表信息。当一个 <code>chunk</code> 被释放后，ptmalloc 会将它放入相应的空闲链表bin</p>
+<p>fd 指针会指向链表中的下一个空闲 chunk，先进入链表</p>
+<p>bk 指针会指向链表中的上一个空闲 chunk，后进入链表</p>
+<h4 id="fd-nextsize-bk-nextsize"><a href="#fd-nextsize-bk-nextsize" class="headerlink" title="fd_nextsize&#x2F;bk_nextsize"></a>fd_nextsize&#x2F;bk_nextsize</h4><p>large_bin中存储着不同大小的chunk</p>
+<p>fd_nextsize (forward next size)：指向下一个尺寸更大的空闲 chunk</p>
+<p>bk_nextsize (backward next size)：指向上一个尺寸更小的空闲 chunk</p>
+<h2 id="tcatch和bin"><a href="#tcatch和bin" class="headerlink" title="tcatch和bin"></a>tcatch和bin</h2><p><code>tcache</code> 和 <code>bin</code> 都是 Glibc（GNU C Library）中 <code>malloc</code> 实现（称为 <code>ptmalloc2</code>）用于<strong>管理空闲内存块</strong>的数据结构。当你调用 <code>free()</code> 释放一块内存时，系统不会立即将它归还给操作系统，而是由这些结构暂时保管，以便后续的 <code>malloc()</code> 请求能够快速分配出去</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/deepseek_mermaid_20250903_d07d92.png"  alt="deepseek_mermaid_20250903_d07d92"></p>
+<h3 id="Tcache-bin"><a href="#Tcache-bin" class="headerlink" title="Tcache bin"></a>Tcache bin</h3><p>glibc-2.26之后引入的，是优先于fast_bin的chunk缓冲区</p>
+<ol>
+<li><p><strong>是什么？</strong></p>
+<ul>
+<li>它把小尺寸按大小类分成若干个 bin，每个 bin 保存最近 freed 的若干个同 size chunk，malloc 会先从 tcache 拿，free 会先放到 tcache。</li>
+<li><strong>free(ptr)</strong>：<ol>
+<li>计算 chunk size → 找对应 tcache bin。</li>
+<li>若该 bin 的条目数 &lt; 最大值（7）(随libc版本有差异)，将 chunk 放入 tcache（在 payload 开头写上 <code>next</code> 指针，链到当前 head）；<strong>不会立即写入 fastbin&#x2F;unsorted</strong>。</li>
+<li>若 bin 已满（≥7），则这个 chunk 按传统路径继续（如放到 fastbin &#x2F; unsorted bin）。</li>
+</ol>
+</li>
+<li><strong>malloc(size)</strong>：<ol>
+<li>先看 tcache 对应 bin 是否非空：若非空，从 tcache pop 出第一个 chunk（LIFO），返回给调用者。</li>
+<li>若 tcache 空，继续到 fastbin&#x2F;smallbin&#x2F;largebin&#x2F;unsorted&#x2F;bin 或调用内核扩展（brk&#x2F;mmap）等。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>重要：tcache 是<strong>LIFO（后进先出）单链表</strong>，且存放在 user area（payload），所以写入&#x2F;读取都是直接对 payload 地址操作</p>
+</blockquote>
+</li>
+<li><p><strong>为什么需要它？</strong></p>
+<ul>
+<li>在多线程程序中，如果所有线程都去一个“公共仓库”（全局的 <code>bin</code>）里取放内存，就必须用锁来防止数据混乱。频繁的加锁解锁操作会成为性能瓶颈。</li>
+<li><code>tcache</code> 为每个线程提供了一个“私人抽屉”，大部分操作都在这个私人空间里完成，避免了去“公共仓库”竞争，所以速度极快。</li>
+</ul>
+</li>
+<li><p><strong>工作原理：</strong></p>
+<ul>
+<li>每个线程的 <code>tcache</code> 包含 <strong>64</strong> 条单链表。</li>
+<li>每条链表专门用于存放一种特定大小的内存块（例如，64位中第一条链表放 24 字节的块，第二条放 32 字节的块…以此类推，32位中最小是12递增为8）</li>
+<li>每条链表最多缓存 <strong>7</strong> 个空闲块。</li>
+</ul>
+</li>
+<li><p><strong>特点总结：</strong></p>
+<ul>
+<li><strong>线程私有</strong>：每个线程都有自己的，不共享。</li>
+<li><strong>无锁操作</strong>：速度快，性能高。</li>
+<li><strong>容量小</strong>：只有64个大小类，每条链表最多7个块。</li>
+<li><strong>优先级最高</strong>：<code>malloc</code>&#x2F;<code>free</code> 会优先操作 <code>tcache</code>。</li>
+</ul>
+<p>glibc是在2.26的版本之后出现的，2.29对它进行了加固</p>
+</li>
+</ol>
+<hr>
+<h3 id="Bin"><a href="#Bin" class="headerlink" title="Bin"></a>Bin</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928164151325.png"  alt="image-20250928164151325"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250903190159927.png"  alt="image-20250903190159927"></p>
+<p><strong>（垃圾桶 &#x2F; 回收站）</strong></p>
+<ol>
+<li><p><strong>是什么？</strong></p>
+<ul>
+<li><code>bin</code> 是 <strong>全局共享的</strong> 空闲内存块链表。它是堆内存管理的基础结构，所有大小的内存块最终如果没被 <code>tcache</code> 接收，都会由对应的 <code>bin</code> 来管理。你可以把它想象成<strong>公共仓库</strong>。</li>
+</ul>
+</li>
+<li><p><strong>为什么需要它？</strong></p>
+<ul>
+<li>它是堆管理器的核心基础设施，用于服务所有大小的内存分配请求，尤其是那些 <code>tcache</code> 处理不了的大块内存，或者当 <code>tcache</code> 已满时。</li>
+</ul>
+</li>
+<li><p><strong>工作原理与分类：</strong><br><code>bin</code> 不是一个单一结构，而是一个系列，根据管理策略不同分为四种：</p>
+<h4 id="Fast-bin：（后进先出）"><a href="#Fast-bin：（后进先出）" class="headerlink" title="Fast_bin：（后进先出）"></a><strong>Fast_bin</strong>：（后进先出）</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928153754473.png"  alt="image-20250928153754473"></p>
+<ul>
+<li><strong>特点</strong>：单链表，<strong>操作最快</strong>。专门用于存放非常小的内存块。</li>
+<li><strong>行为</strong>：同样大小的块才会放在同一个链表中。<code>free</code> 时会有简单的检查来防止连续的 <code>double free</code>。</li>
+<li>不改变使用标志p,也就是说它无法合并（一般不合并）</li>
+<li><code>max_fast</code> 是一个全局变量，它定义了<strong>最大能够被当作“快速块”处理的内存大小</strong>。它的值决定了哪些内存块在释放时会进入分配速度最快的 <code>fastbin</code> 结构</li>
+</ul>
+<h4 id="Unsorted-bin："><a href="#Unsorted-bin：" class="headerlink" title="Unsorted_bin："></a><strong>Unsorted_bin</strong>：</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928163849770.png"  alt="image-20250928163849770"></p>
+<ul>
+<li><strong>特点</strong>：双向链表。这是一个“中转站”或“大杂烩”。unsorted bin中的chunk处于乱序的状态，和时间、大小没有固定的关系。所有不在fast bin范围内的堆块释放后，都会先放入unsorted bin中。</li>
+<li><strong>来源</strong>：一个较大的chunk被分割成两部分后，如果剩下的部分大于MINSIZE（64位系统中为0x20），就会被放到unsorted bin中；释放一个不属于fast bin的chunk，并且该chunk不和top chunk（即最初分配的很大的chunk）紧邻时，该chunk会被首先放到unsorted bin中。</li>
+<li><strong>行为</strong>：当释放的块较大，或者来自 <code>tcache</code>（当 <code>tcache</code> 满时），会先放到这里。分配器在找不到合适块时，会来“整理”这个bin，把里面的块要么分配出去，要么归并到正确的 <code>smallbin</code> 或 <code>largebin</code> 中。</li>
+</ul>
+<h4 id="Small-bin：-先进先出"><a href="#Small-bin：-先进先出" class="headerlink" title="Small_bin：(先进先出)"></a><strong>Small_bin</strong>：(先进先出)</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928153846397.png"  alt="image-20250928153846397"></p>
+<ul>
+<li><p><strong>特点</strong>：双向链表。存放稍大一些的小内存块,大小范围是[0x20,0x400-0x10]。</p>
+</li>
+<li><p>每个bin链的头部的fd和arena相连，每个bin链的尾部的bk和arena相连，这里的arena指的是对应线程的arena（malloc_state结构体），如果我们能打印一个在非fast bin链中的fd&#x2F;bk，就有可能知道libc的基地址。</p>
+</li>
+<li><p>small bin中的每个chunk的大小与其所在的bin的index的关系为：chunk_size&#x3D;2＊SIZE_SZ＊index。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928162103215.png"  alt="image-20250928162103215"></p>
+</li>
+</ul>
+<h4 id="Largebin："><a href="#Largebin：" class="headerlink" title="Largebin："></a><strong>Largebin</strong>：</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928162309317.png"  alt="image-20250928162309317"></p>
+<p>large bin中一共有63个bin，每个bin中的chunk大小不一致，而是处于一定的区间范围内。这63个bin被分成6组，每一组bin的chunk大小公差一致，其大小和下标的对应关系</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250928162835679.png"  alt="image-20250928162835679"></p>
+<p>以64位系统的large bin为例进行说明。第一个large bin的起始chunk大小为1024字节，位于第一组，z这个组内有32个人槽，第一个槽可以存储的chunk的大小范围为[1024,1024+64）；第二个large bin的起始chunk大小为1024+64，位于第一组，该bin可以存储的chunk的大小范围为[1024+64,1024+64*2）。</p>
+<ul>
+<li><strong>特点</strong>：双向链表。用于存放大的内存块。</li>
+<li><strong>行为</strong>：一个链表中存放的是一个<strong>范围</strong>内的块大小，而不是固定大小。这些块会按大小排序，以便快速找到最合适的块。</li>
+</ul>
+</li>
+</ol>
+<p>tcache&gt;fast_bin&gt;undorted_bin&gt;bin</p>
+<h2 id="内存分配的步骤"><a href="#内存分配的步骤" class="headerlink" title="内存分配的步骤"></a>内存分配的步骤</h2><p>锁&gt;fast_bin&gt;small_bin </p>
+<p>如果都不符合，遍历fast_bin，把相邻的bin进行合并，链接到unsorted_bin中</p>
+<p>unsort_bin&gt;申请，切割，&lt;直接放入对应的bin链</p>
+<p>还不符合就会到large_bin,然后是top_chunk</p>
+<p>判断是不是主分配区去增加top_chunk，是用sbrk,不是用mmap(这个要判断是不是在分配阈值内) </p>
+<blockquote>
+<p>分配阈值会映射一段区域返回，&lt;如果是第一次调用malloc,主分配区域会先分配一块作为heap，不是第一次就brk()增加heap大小，非主分配去就切出一个chunk来返回</p>
+</blockquote>
+<p>首先，系统会获取我们分配区的锁，如果找到没有加所的分配区，就先对改分配区上锁，如果所有都上锁了，就可以开新的分配区，有了自己的分配区后</p>
+<p><strong>第 1 步：转换请求大小与对齐</strong></p>
+<ul>
+<li><strong>动作</strong>：<code>malloc(size)</code> 中的 <code>size</code> 是用户请求的字节数。分配器会将其转换为<strong>实际分配的内存块大小</strong>。</li>
+<li><strong>计算</strong>：<code>chunk_size = size + metadata_size + alignment_padding</code><ul>
+<li><code>metadata_size</code>：包含存储块大小（<code>size</code>）和标志位（如 <code>P</code>, <code>M</code>, <code>A</code>）的空间，通常为 <code>2 * sizeof(size_t)</code>。</li>
+<li><code>alignment_padding</code>：确保最终的内存地址满足对齐要求（例如 64 位系统下 16 字节对齐）。</li>
+</ul>
+</li>
+<li><strong>目的</strong>：确保所有分配的内存都正确对齐，并且有空间存放管理信息。</li>
+</ul>
+<p><strong>第 2 步：检查 Tcache（线程本地缓存）</strong></p>
+<ul>
+<li><strong>条件</strong>：如果请求的大小在 <code>tcache</code> 支持的范围内（通常是 64 个大小类，每个最大约 1032 字节）。</li>
+<li><strong>动作</strong>：<ol>
+<li>定位到当前线程的 <code>tcache</code> 结构。</li>
+<li>找到对应大小类的单链表。</li>
+<li><strong>如果链表非空</strong>：直接从链表头部取出（<code>unlink</code>）第一个 chunk，将其地址返回给用户。<strong>整个过程完全无锁，速度极快</strong>。</li>
+<li><strong>如果链表为空</strong>：继续后续步骤。但在从后续步骤获取到块之后，会尝试<strong>填充 <code>tcache</code></strong>。</li>
+</ol>
+</li>
+</ul>
+<p><strong>第 3 步：检查 Fastbin</strong></p>
+<ul>
+<li><strong>条件</strong>：如果请求的大小属于 <code>fastbin</code> 范围（小于等于 <code>global_max_fast</code>，默认 128 字节）。</li>
+<li><strong>动作</strong>：<ol>
+<li>获取 <code>arena</code> 的锁（因为 <code>fastbin</code> 是全局的，需要同步）。</li>
+<li>找到对应大小类的 <code>fastbin</code> 单链表（LIFO）。</li>
+<li><strong>如果链表非空</strong>：取出表头的 chunk。</li>
+<li><strong>Tcache Fill</strong>：检查当前线程的 <code>tcache</code> 对应链表是否还有空位（默认最多7个）。如果有，则尝试从 <code>fastbin</code> 中取出多个块（直到取完或 <code>tcache</code> 被填满）放入 <code>tcache</code>，然后返回最初取出的那个块。</li>
+<li><strong>如果链表为空</strong>：则继续后续步骤。</li>
+</ol>
+</li>
+</ul>
+<p><strong>第 4 步：检查 Smallbin</strong></p>
+<ul>
+<li><strong>条件</strong>：如果请求的大小属于 <code>smallbin</code> 范围（小于 1024 字节）。</li>
+<li><strong>动作</strong>：<ol>
+<li>找到对应大小类的 <code>smallbin</code> 双向链表（FIFO，每个bin中的块大小严格一致）。</li>
+<li><strong>如果链表非空</strong>：取出链表<strong>尾部</strong>的一个 chunk。</li>
+<li><strong>Tcache Fill</strong>：同样，尝试用这个大小的块填充 <code>tcache</code>。</li>
+<li><strong>如果链表为空</strong>：则继续后续步骤。</li>
+</ol>
+</li>
+</ul>
+<p><strong>第 5 步：核心循环 - 处理 Unsorted Bin</strong></p>
+<p>这是最复杂的一步，是分配器的“垃圾处理厂”和“中转站”。</p>
+<ul>
+<li><strong>动作</strong>：<ol>
+<li><strong>遍历 <code>unsorted bin</code></strong>：它是一个双向链表，存放着最近被释放的、还未分类的 chunk。</li>
+<li><strong>检查每一个 chunk</strong>：<ul>
+<li><strong>精确匹配？</strong> 如果遇到一个 chunk 的大小<strong>正好等于</strong>请求的大小，则立即将其取出并返回。</li>
+<li><strong>是 Last Remainder？</strong> 如果遇到 <code>last remainder chunk</code> 且它的大小足够大，则对其进行分割：一部分返回给用户，剩余部分成为新的 <code>last remainder</code>（一种优化局部性的策略）。</li>
+<li><strong>不匹配则分类</strong>：如果当前 chunk 既不匹配也不适合分割，就根据其大小将其从 <code>unsorted bin</code> 中卸下，并链入对应的 <code>smallbin</code> 或 <code>largebin</code> 中。这个过程称为 “<code>unsorted bin</code> 的清理”。</li>
+</ul>
+</li>
+<li>这个循环会一直进行，直到分配到块，或者 <code>unsorted bin</code> 被清空。</li>
+</ol>
+</li>
+</ul>
+<p><strong>第 6 步：检查 Largebin</strong></p>
+<ul>
+<li><strong>条件</strong>：如果请求的大小属于 <code>largebin</code> 范围（大于等于 1024 字节）。</li>
+<li><strong>动作</strong>：此时 <code>unsorted bin</code> 已被清空，分配器开始在对应的 <code>largebin</code> 中查找。<ul>
+<li><code>largebin</code> 中的 chunk 按大小排序。</li>
+<li>分配器使用“最佳匹配”策略，寻找一个大小<strong>大于等于</strong>请求大小的最小 chunk。</li>
+<li>如果找到，就进行分割：一部分返回给用户，剩余部分作为新的空闲块放回 <code>unsorted bin</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>第 7 步：使用 Top Chunk（最后的挣扎）</strong></p>
+<p>如果以上所有步骤都找不到合适的空闲块，分配器只能求助于最后的家底——<strong>Top Chunk</strong>。</p>
+<ul>
+<li><p><strong>检查</strong>：判断 <code>top chunk</code> 的大小是否足够。</p>
+</li>
+<li><p><strong>行动</strong>：</p>
+<ul>
+<li><p><strong>如果足够</strong>：直接从 <code>top chunk</code> 中切割出所需的大小，剩余部分形成新的 <code>top chunk</code>。</p>
+</li>
+<li><p><strong>如果不足</strong>：</p>
+<p>此时就要判断是不是在主分配区了，如果在主分配区就要调用sbrk（）去增大top chunk，如果在非住分配区就要调用mmap（）来增加top  chunk大小或者直接分配，这里好药判断是否在mmap的分配阈值内，大于就会映射一段区域返回给用户。小于就要判断是否是第一次调用malloc,是第一次就先分配一块区域作为我们的heap，如果初始化过了，住分配区就brk（）增加heap的大小，非住分配区就早top chunk中切出一个chunk返回给用户</p>
+<ol>
+<li>先尝试合并 <code>fastbin</code> 中的块（通过调用 <code>malloc_consolidate</code>）来扩充 <code>top chunk</code>。</li>
+<li>如果还不够，则调用 <code>sys_brk</code> 或 <code>sys_mmap</code> 向操作系统申请新的内存来扩大 <code>top chunk</code>。</li>
+<li>然后再从扩大后的 <code>top chunk</code> 中进行切割。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/deepseek_mermaid_20250903_31d4ae.png"  alt="deepseek_mermaid_20250903_31d4ae"></p>
+<h2 id="内存回收的步骤"><a href="#内存回收的步骤" class="headerlink" title="内存回收的步骤"></a>内存回收的步骤</h2><p>锁&gt;  </p>
+<p>1.获取分配区的锁，以此保证线程安全</p>
+<p>2.判断传入的指针是否为0，如果为0就直接返回传入。 <code>free()</code> 函数的指针是之前由 <code>malloc()</code>、<code>calloc()</code> 或 <code>realloc()</code> 分配的内存块的<strong>起始地址</strong>。这个指针至关重要，因为它告诉 <code>free()</code> 函数需要释放哪一块内存。<code>free()</code> 会利用这个地址，以及存储在内存块<strong>元数据</strong>中的信息，来确定要释放的内存块的大小，然后将其归还给内存分配器（或内核）。</p>
+<p>3.不是0的话就判断是否为mmap分配的，是就调用munmap来释放</p>
+<p>4.判断大小，小于max_fast,位于heap的顶端就和top chunk合并。不位于heap的顶端就放在fast_bin中，并且不改变p标志位</p>
+<p>5.大于max_fast,判断前一个chunk是否空闲，如果是free状态就把他们合并在一起，接着判断是否与top_chunk相邻，相邻就合并</p>
+<p>6.如果不与top_chunk合并，就判断下一个chunk是否为空闲的，是就把他们合并放在unsorted bin中，并更新合并后的chunk的大小 </p>
+<p>7.如果合并后的大小&gt;FASTBIN_CONSOLIDATION_THRESHOLD 的，会遍历fast_bin链，和相邻chunk合并，然后链入unsorted_bin</p>
+<p>8.最后判断top_chunk是否在mmap收缩范围内,主函数：会返回top chunk的一部分给系统，但是初始堆大小不会改变，非主分配区:收缩sub_chunk,吧top_chunk还给系统</p>
+<blockquote>
+<p>FASTBIN_CONSOLIDATION_THRESHOLD 是一个在 glibc 内存分配器（ptmalloc）中使用的内部阈值，用于决定何时触发**fastbin 的合并（consolidation）**操作。此时我们的chunk会被遍历并与chunk合并然后链入我们的unsortedbin中，此时fast_bin会空</p>
+<p>此时要判断是否超过这个阈值</p>
+</blockquote>
+<blockquote>
+<p>判断 <code>top chunk</code> 的大小，是否<strong>大于 <code>mmap</code> 的收缩阈值</strong>（即 <code>M_TRIM_THRESHOLD</code>，通常默认值是 128KB）</p>
+<p>主分配区：如果合并后的 top chunk 确实大于这个阈值，glibc 会调用 brk 系统调用，将 top chunk 末尾多余的部分收缩，并将这部分内存归还给操作系统。主分配区最初由 brk 扩展而来，这部分初始内存（通常是 128KB 或更大）是不会被收缩的。只有在程序后续通过 sbrk 进一步扩展的堆内存，才可能被收缩并归还。这是一种优化，因为它避免了频繁地收缩和扩展最初的堆区域</p>
+<p>非主分配区：当非主分配区的 top chunk 在释放时变大，并且满足收缩条件（大于 M_TRIM_THRESHOLD），它会将 top chunk 的一部分或全部还给操作系统。如果一个线程释放了所有它自己分配的内存，并且合并后的 top chunk 包含了整个非主分配区的所有内存，那么 glibc 就会调用 munmap 系统调用，将整个 sub-heap（也就是这个线程的堆）归还给操作系统。这使得其他线程或进程可以立即重用这块内存，极大地提高了多线程环境下的内存回收效率。</p>
+</blockquote>
+<h2 id="特殊的chunk"><a href="#特殊的chunk" class="headerlink" title="特殊的chunk"></a>特殊的chunk</h2><h3 id="Top-Chunk（顶级块-荒野块）"><a href="#Top-Chunk（顶级块-荒野块）" class="headerlink" title="Top Chunk（顶级块 &#x2F; 荒野块）"></a>Top Chunk（顶级块 &#x2F; 荒野块）</h3><p>Top Chunk 是系统已经分配给堆（通过 brk 或 mmap）但还未被 malloc 分配给用户程序的那部分空间。<strong>Top Chunk</strong> 是堆中所有已分配和空闲 chunk 的“边界”和“扩展基地”。它位于当前堆区的最高地址处。(低地址)</p>
+<ul>
+<li>它是堆上<strong>最后一块</strong>也是<strong>最大的一块</strong>空闲 chunk。</li>
+<li>它不属于任何 bin（<code>fastbin</code>, <code>smallbin</code>, <code>unsortedbin</code>, <code>largebin</code>）。</li>
+<li>它的 <code>size</code> 字段记录了它自身的大小。</li>
+</ul>
+<p><strong>内存分配的最后手段</strong>：当所有的 bin（包括 <code>unsortedbin</code>）都无法满足一个内存分配请求时，分配器就会从 <code>Top Chunk</code> 中“切割”出一块来满足请求。</p>
+<ul>
+<li><strong>如果 <code>Top Chunk</code> 的大小足够</strong>：直接从其头部切下所需大小的内存，剩下的部分形成新的、更小的 <code>Top Chunk</code>。</li>
+<li><strong>如果 <code>Top Chunk</code> 的大小不足</strong>：通过 <code>brk()</code> 或 <code>mmap()</code> 系统调用向操作系统申请，扩大 <code>Top Chunk</code> 的大小，然后再进行切割。</li>
+</ul>
+<p><strong>堆的扩展与收缩</strong>：<code>Top Chunk</code> 是堆与操作系统交互的接口。堆通过调整 <code>Top Chunk</code> 的大小来动态增长或缩小。</p>
+<p>整个 <code>malloc</code> 流程是一个精妙的<strong>性能与资源利用率之间的权衡</strong>：</p>
+<ul>
+<li><strong>常见路径（快）</strong>：<code>size convert</code> -&gt; <code>tcache</code> -&gt; <code>fastbin</code> -&gt; <strong>return</strong></li>
+<li><strong>非常见路径（慢但高效）</strong>：<code>smallbin</code> -&gt; <code>unsorted bin</code> -&gt; <code>largebin</code> -&gt; <strong>return</strong></li>
+<li><strong>保障路径（非常慢）</strong>：<code>malloc_consolidate</code> -&gt; <code>grow heap via syscall</code> -&gt; <code>top chunk</code> -&gt; <strong>return</strong>****</li>
+</ul>
+<h3 id="Last-Remainder-Chunk（最后剩余块）"><a href="#Last-Remainder-Chunk（最后剩余块）" class="headerlink" title="Last Remainder Chunk（最后剩余块）"></a>Last Remainder Chunk（最后剩余块）</h3><p>是 <code>unsorted bin</code> 中的一个特殊角色，它是一种优化策略，用于改善<strong>内存局部性</strong>。</p>
+<p><strong>它是什么？</strong></p>
+<ul>
+<li>它是最近一次从一个大 chunk 中分割后<strong>剩余下来的那部分</strong>。</li>
+<li>它被单独记录在 <code>unsorted bin</code> 中，并被打上“特殊”的标记。</li>
+</ul>
+<p><strong>它有什么用？</strong></p>
+<p><strong>场景</strong>：假设程序先申请了一块大内存（<code>A</code>），然后又申请了一小块内存（<code>B</code>），随后释放了 <code>A</code>。此时，<code>A</code> 作为一个大空闲块在 <code>unsorted bin</code> 中。接着，程序又申请一块和 <code>B</code> <strong>大小相同</strong>的小内存。</p>
+<ul>
+<li><strong>如果没有 Last Remainder</strong>：分配器可能会从 <code>unsorted bin</code> 里随便找一块合适的内存进行切割，这可能发生在任何地址。</li>
+<li><strong>有了 Last Remainder</strong>：分配器会<strong>优先</strong>从刚才剩下的那个大块（即 <code>Last Remainder Chunk</code>）中进行切割。因为刚刚使用过的 <code>B</code> 很可能还在 CPU 缓存中，紧挨着 <code>B</code> 的 <code>Last Remainder</code> 也在缓存中的概率很高。从这个位置分配新的内存，<strong>缓存命中率更高，速度更快</strong>。</li>
+</ul>
+<h3 id="mmaped-chunk"><a href="#mmaped-chunk" class="headerlink" title="mmaped chunk"></a>mmaped chunk</h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left"><strong>普通堆块 (brk)</strong></th>
+<th align="left"><strong>MMaped Chunk</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>来源</strong></td>
+<td align="left">从 <code>Top Chunk</code> 分割而来</td>
+<td align="left">直接由 <code>mmap()</code> 系统调用创建</td>
+</tr>
+<tr>
+<td align="left"><strong>位置</strong></td>
+<td align="left">主堆区内</td>
+<td align="left">独立的内存映射区</td>
+</tr>
+<tr>
+<td align="left"><strong>释放行为</strong></td>
+<td align="left">放入各类 <code>bin</code> 中缓存，延迟归还</td>
+<td align="left">立即 <code>munmap()</code>，归还操作系统</td>
+</tr>
+<tr>
+<td align="left"><strong>元数据标志</strong></td>
+<td align="left"><code>PREV_INUSE</code> (P) 等</td>
+<td align="left"><strong><code>IS_MMAPPED</code> (M)</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>大小</strong></td>
+<td align="left">通常小于 <code>mmap阈值</code>（默认128KB）</td>
+<td align="left">通常大于等于 <code>mmap阈值</code></td>
+</tr>
+<tr>
+<td align="left"><strong>速度</strong></td>
+<td align="left">快（无系统调用）</td>
+<td align="left">慢（需要系统调用）</td>
+</tr>
+<tr>
+<td align="left"><strong>主要影响</strong></td>
+<td align="left">可能造成堆碎片</td>
+<td align="left">保持堆整洁，但可能有地址空间碎片</td>
+</tr>
+</tbody></table>
+<p>16.04&gt;2.23</p>
+<p>18.04&gt;2.27</p>
+<p>19.04&gt;2.2</p>
+<p>20.04&gt;2.30</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/heap/">heap</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/08/26/ZJCTF-2019-Login/"
+                                   title="[ZJCTF 2019]Login"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">[ZJCTF 2019]Login</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/08/17/MoeCTF-2025/"
+                                   title="MoeCTF 2025"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">MoeCTF 2025</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%AE%A1%E7%90%86%E5%99%A8ptmalloc"><span class="nav-number">1.</span> <span class="nav-text">堆管理器ptmalloc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ptmalloc%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">ptmalloc基本功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc%E5%92%8Cfree"><span class="nav-number">1.2.</span> <span class="nav-text">malloc和free</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%83%8C%E5%90%8E%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">内存分配背后的系统调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">堆相关的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc-chunk-6"><span class="nav-number">2.1.</span> <span class="nav-text">malloc_chunk_6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prev-size"><span class="nav-number">2.1.1.</span> <span class="nav-text">prev_size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#size"><span class="nav-number">2.1.2.</span> <span class="nav-text">size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fd-bk%EF%BC%88forward-backward%EF%BC%89"><span class="nav-number">2.1.3.</span> <span class="nav-text">fd&#x2F;bk（forward&#x2F;backward）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fd-nextsize-bk-nextsize"><span class="nav-number">2.1.4.</span> <span class="nav-text">fd_nextsize&#x2F;bk_nextsize</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcatch%E5%92%8Cbin"><span class="nav-number">3.</span> <span class="nav-text">tcatch和bin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tcache-bin"><span class="nav-number">3.1.</span> <span class="nav-text">Tcache bin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bin"><span class="nav-number">3.2.</span> <span class="nav-text">Bin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fast-bin%EF%BC%9A%EF%BC%88%E5%90%8E%E8%BF%9B%E5%85%88%E5%87%BA%EF%BC%89"><span class="nav-number">3.2.1.</span> <span class="nav-text">Fast_bin：（后进先出）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unsorted-bin%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">Unsorted_bin：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Small-bin%EF%BC%9A-%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA"><span class="nav-number">3.2.3.</span> <span class="nav-text">Small_bin：(先进先出)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Largebin%EF%BC%9A"><span class="nav-number">3.2.4.</span> <span class="nav-text">Largebin：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">内存分配的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.</span> <span class="nav-text">内存回收的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84chunk"><span class="nav-number">6.</span> <span class="nav-text">特殊的chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-Chunk%EF%BC%88%E9%A1%B6%E7%BA%A7%E5%9D%97-%E8%8D%92%E9%87%8E%E5%9D%97%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">Top Chunk（顶级块 &#x2F; 荒野块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Remainder-Chunk%EF%BC%88%E6%9C%80%E5%90%8E%E5%89%A9%E4%BD%99%E5%9D%97%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">Last Remainder Chunk（最后剩余块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mmaped-chunk"><span class="nav-number">6.3.</span> <span class="nav-text">mmaped chunk</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%AE%A1%E7%90%86%E5%99%A8ptmalloc"><span class="nav-number">1.</span> <span class="nav-text">堆管理器ptmalloc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ptmalloc%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">ptmalloc基本功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc%E5%92%8Cfree"><span class="nav-number">1.2.</span> <span class="nav-text">malloc和free</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E8%83%8C%E5%90%8E%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">内存分配背后的系统调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">堆相关的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#malloc-chunk-6"><span class="nav-number">2.1.</span> <span class="nav-text">malloc_chunk_6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prev-size"><span class="nav-number">2.1.1.</span> <span class="nav-text">prev_size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#size"><span class="nav-number">2.1.2.</span> <span class="nav-text">size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fd-bk%EF%BC%88forward-backward%EF%BC%89"><span class="nav-number">2.1.3.</span> <span class="nav-text">fd&#x2F;bk（forward&#x2F;backward）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fd-nextsize-bk-nextsize"><span class="nav-number">2.1.4.</span> <span class="nav-text">fd_nextsize&#x2F;bk_nextsize</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcatch%E5%92%8Cbin"><span class="nav-number">3.</span> <span class="nav-text">tcatch和bin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tcache-bin"><span class="nav-number">3.1.</span> <span class="nav-text">Tcache bin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bin"><span class="nav-number">3.2.</span> <span class="nav-text">Bin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fast-bin%EF%BC%9A%EF%BC%88%E5%90%8E%E8%BF%9B%E5%85%88%E5%87%BA%EF%BC%89"><span class="nav-number">3.2.1.</span> <span class="nav-text">Fast_bin：（后进先出）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unsorted-bin%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">Unsorted_bin：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Small-bin%EF%BC%9A-%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA"><span class="nav-number">3.2.3.</span> <span class="nav-text">Small_bin：(先进先出)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Largebin%EF%BC%9A"><span class="nav-number">3.2.4.</span> <span class="nav-text">Largebin：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">内存分配的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.</span> <span class="nav-text">内存回收的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84chunk"><span class="nav-number">6.</span> <span class="nav-text">特殊的chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-Chunk%EF%BC%88%E9%A1%B6%E7%BA%A7%E5%9D%97-%E8%8D%92%E9%87%8E%E5%9D%97%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">Top Chunk（顶级块 &#x2F; 荒野块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Remainder-Chunk%EF%BC%88%E6%9C%80%E5%90%8E%E5%89%A9%E4%BD%99%E5%9D%97%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">Last Remainder Chunk（最后剩余块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mmaped-chunk"><span class="nav-number">6.3.</span> <span class="nav-text">mmaped chunk</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

