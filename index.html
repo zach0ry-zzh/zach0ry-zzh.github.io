@@ -264,14 +264,20 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2026/02/12/ciscn%E5%A4%8D%E7%8E%B0/">
-                            ciscn复现
+                        <a href="/2026/03/01/ciscn2024_%E5%8D%8A%E5%86%B3%E8%B5%9B_%E4%B8%9C%E5%8C%97/">
+                            ciscn2024_半决赛_东北
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            
+                            ret2shellcode
+没有NX保护
+有沙盒但不完全
+
+
+有栈溢出和格式化漏洞
+exp12345678910111213141516171819202122232425262728293031323334353637383940414243444...
                         
                     </div>
 
@@ -282,8 +288,87 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Feb 12 2026 11:27:05 GMT+0800"
-                >2026-02-12 11:27:05</span>
+                                                                                data-updated="Sun Mar 01 2026 13:38:10 GMT+0800"
+                >2026-03-01 13:38:10</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/WP/">WP</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/patch/">patch</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/awdp/">awdp</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2026/03/01/ciscn2024_%E5%8D%8A%E5%86%B3%E8%B5%9B_%E4%B8%9C%E5%8C%97/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2026/02/28/ciscn2024_%E5%8D%8A%E5%86%B3%E8%B5%9B_%E5%8D%8E%E4%B8%AD/">
+                            ciscn2024_半决赛_华中
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                             叶际参差patch实例
+patch方法
+lonelywolf
+只能存在一个chunk,存在uaf漏洞，有tcache
+lonelywolf思路先改key构造double free,让fd指针指向该tcache,去泄露heap_base
+123456...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Feb 28 2026 11:27:05 GMT+0800"
+                >2026-02-28 11:27:05</span>
             </span>
         
 
@@ -307,6 +392,12 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WP/">WP</a></li>
                         
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/patch/">patch</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/awdp/">awdp</a></li>
+                        
+                    
                 </ul>
             </span>
         
@@ -318,7 +409,78 @@
     </div>
 
     
-        <a class="home-read-more" href="/2026/02/12/ciscn%E5%A4%8D%E7%8E%B0/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2026/02/28/ciscn2024_%E5%8D%8A%E5%86%B3%E8%B5%9B_%E5%8D%8E%E4%B8%AD/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2026/02/13/house_of_apple/">
+                            house of apple
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            IO结构File结构
+在 Linux&#x2F;glibc 里，stdin/stdout/stderr 不是直接对 fd 操作，而是一个结构体。
+当程序创建一个 FILE 时，例如：
+1FILE *fp = fopen(&quot;a.txt&quo...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri Feb 13 2026 22:11:25 GMT+0800"
+                >2026-02-13 22:11:25</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/heap/">heap</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2026/02/13/house_of_apple/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -821,151 +983,6 @@ d...
 
     
         <a class="home-read-more" href="/2025/11/10/bin/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/10/23/Unlink/">
-                            Unlink
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            unlink 的目的是把一个块从链表中摘除，也就是“解链”。
-unlink 触发的典型情况是：当堆中的 chunk 被释放并合并（consolidate）时，glibc 为了维护双向链表结构，需要从 bin 中移除一个 chunk，而这时就会调用 u...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Oct 23 2025 00:04:58 GMT+0800"
-                >2025-10-23 00:04:58</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/heap/">heap</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/unlink/">unlink</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/10/23/Unlink/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/09/28/UAF%E6%BC%8F%E6%B4%9E%E5%88%9D%E6%8E%A2/">
-                            UAF漏洞初探
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            UAF,全称use after free,即在释放之后使用
-那么具体又代表了什么呢?
-我们首先要知道的是,我们free适当大小的chunk时,我们free掉的chunk会先被放入bins, 在我们再次申请适合大小的chunk时系统会优先从我们bins...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Sep 28 2025 14:42:18 GMT+0800"
-                >2025-09-28 14:42:18</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/heap/">heap</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/UAF/">UAF</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/09/28/UAF%E6%BC%8F%E6%B4%9E%E5%88%9D%E6%8E%A2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
