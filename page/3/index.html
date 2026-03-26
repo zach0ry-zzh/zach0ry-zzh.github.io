@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="blog, tech, hexo">
-    <meta name="description" content="记录技术与思考">
+    <meta name="keywords" content="pwn, awdp, ctf, binary, exploit, heap">
+    <meta name="description" content="zzh 的技术博客，记录 Pwn、AWDP、漏洞利用与学习">
     <meta name="author" content="zach0ry">
     
     <title>
@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#10b981","title":"b1nary","author":"zach0ry","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/favicon.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10b981","title":"b1nary","author":"zach0ry","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/favicon.svg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"记录 Pwn、AWDP 与漏洞利用 || 也记录折腾与思考","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zach0ry-zzh","email":"mailto:2794813078@qq.com","qq":"tencent://message/?uin=2794813078"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["Pwn菜鸟","Heap选手","漏洞猎人","AWDP战士","Binary大师"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD","share":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"local_search":{"enable":true,"preload":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"rss":{"enable":true},"lazyload":{"enable":true},"footer":{"since":2024,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/zach0ry-zzh/zach0ry-zzh.github.io"}},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -43,6 +43,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -227,6 +229,296 @@
                     <div class="home-content-container fade-in-down-animation">
     
     <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/09/23/pwn-docker%E9%A2%98%E7%9B%AE%E9%83%A8%E7%BD%B2/">
+                            pwn_docker题目部署
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            dockerDocker 是一个 容器化工具。
+在不同的环境下，程序可能因为处于不同的环境无法正常运行， docker能把 程序 + 依赖环境 一起打包成一个标准的“盒子”（镜像），然后在任何地方都能运行（容器），容器就是镜像的动态实例.
+组成部分d...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Sep 23 2025 14:32:22 GMT+0800"
+                >2025-09-23 14:32:22</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/09/23/pwn-docker%E9%A2%98%E7%9B%AE%E9%83%A8%E7%BD%B2/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/09/14/%E7%BD%91%E8%B0%B7%E6%9D%AF/">
+                            网谷杯
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            pwn金丝雀-wgb附件
+
+
+分析看到main中的buf可以绕过canary，而gift是很明显的栈溢出
+用read函数去泄露，把canary的值放到bss段，写出来
+之后用retlibc去泄露就好，（把canary放在合适的位置上面）
+
+可以看到
+...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Sep 14 2025 14:16:09 GMT+0800"
+                >2025-09-14 14:16:09</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/WP/">WP</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WP/">WP</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/09/14/%E7%BD%91%E8%B0%B7%E6%9D%AF/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/09/10/SROP/">
+                            SROP
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            syscall_leaverootersctf_2019_srop
+
+
+
+可以看到这个什么都没有，但是存在pop rax的操作，所以可以用SROP来泄露后门函数
+思路用SROP第一次读入执行read函数，第二次向这个read函数读入&#x2F;bin...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Sep 10 2025 15:25:03 GMT+0800"
+                >2025-09-10 15:25:03</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SROP/">SROP</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/09/10/SROP/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/09/09/odd-canary/">
+                            odd_canary
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Sep 09 2025 20:09:33 GMT+0800"
+                >2025-09-09 20:09:33</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/09/09/odd-canary/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
         
             <li class="home-post-item">
 
@@ -552,468 +844,6 @@ MEMORY[0xCAFE0000]: 这部分表示程序正在访问内存地址 0xCAFE0000 处
                 </div>
             </li>
         
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/08/24/heap_base/">
-                            heap_base
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            堆管理器ptmalloc程序运行时堆提供动态分布的内存，从而允许程序申请大小未知的内存，堆由低地址向高地址方向增长，这和栈是相反的（栈是由高地址向低地址方向生长）
-每个系统都有自己的堆管理器，不同平台的堆管理器是不一样的，比如Windows、Linu...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Aug 24 2025 18:07:08 GMT+0800"
-                >2025-08-24 18:07:08</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/heap/">heap</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/08/24/heap_base/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/08/04/orw/">
-                            orw
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            orw基础orw是open、read和write三个系统调用的缩写。orw 攻击是一种绕过沙箱（Sandbox）或NX保护的技术，其核心思想是：不直接获取shell，而是通过这三个系统调用来读取目标文件（通常是flag文件），然后将其内容打印到标准输...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Mon Aug 04 2025 16:23:19 GMT+0800"
-                >2025-08-04 16:23:19</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/orw/">orw</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/08/04/orw/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/08/02/libc%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/">
-                            libc版本切换
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            更换libc版本首先要拿到对应的libc.so文件
-然后查看版本
-1strings libc文件名 |grep ubuntu
-
-
-然后切换clibc版本
-1libc 文件名 libc版本信息
-
-
-查看libc版本通过got表泄露libc版本
-输出一个...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Aug 02 2025 18:43:25 GMT+0800"
-                >2025-08-02 18:43:25</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/08/02/libc%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/08/02/ciscn-2019-s-3/">
-                            ciscn_2019_s_3
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            题目
-
-
-没有后门函数，也没有能用来泄露libc地址的东西
-
-但是看到有execve和一些对寄存器的操作，考虑csu
-在栈上写入&#x2F;bin&#x2F;sh,之后调用它
-数据在栈的位置不是固定的，但是偏移是固定的
-可以通过read和write来...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Aug 02 2025 15:50:19 GMT+0800"
-                >2025-08-02 15:50:19</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/exercise/">exercise</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/gdb/">gdb</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/csu/">csu</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SROP/">SROP</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/08/02/ciscn-2019-s-3/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/08/01/%E6%A0%88%E8%BF%81%E7%A7%BB/">
-                            栈迁移
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            基础两个对buf的输入pwn75
-
-
-位置不够，且有system函数但没有“&#x2F;bin&#x2F;sh”字符串
-思路泄露ebp的地址，然后gdb调试找到buf开头和ebp之间的偏移以找到buf的位置
-之后通过第二次输入对调用system函数，...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Fri Aug 01 2025 15:14:49 GMT+0800"
-                >2025-08-01 15:14:49</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/08/01/%E6%A0%88%E8%BF%81%E7%A7%BB/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/07/29/gyctf-2020-borrowstack/">
-                            gyctf_2020_borrowstack
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            题目
-
-
-思路：
-bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通过buf跳转到bank泄露libc去找到libc基址
-然后加上对应libc的one_gadget偏移，跳转过去执行ong_gadgat就可以了
-脚本12345...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Jul 29 2025 10:28:09 GMT+0800"
-                >2025-07-29 10:28:09</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/exercise/">exercise</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/one-gadget/">one_gadget</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/29/gyctf-2020-borrowstack/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
     </ul>
     
     <div class="paginator border-box flex-center">
@@ -1033,8 +863,8 @@ bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通�
                    type="number"
                    value="3"
                    min="1"
-                   max="5"
-            /><span class="delimiter base-style">/</span><span class="base-style">5</span>
+                   max="6"
+            /><span class="delimiter base-style">/</span><span class="base-style">6</span>
         </div>
 
 
@@ -1063,7 +893,7 @@ bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通�
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2026
     
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
         
@@ -1074,7 +904,36 @@ bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通�
     </div>
 
     
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/zach0ry-zzh/zach0ry-zzh.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
 
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
     
 
     
@@ -1204,6 +1063,10 @@ bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通�
 
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">

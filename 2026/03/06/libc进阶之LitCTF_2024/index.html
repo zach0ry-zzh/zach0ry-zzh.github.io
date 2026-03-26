@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="blog, tech, hexo">
-    <meta name="description" content="记录技术与思考">
+    <meta name="keywords" content="pwn, awdp, ctf, binary, exploit, heap">
+    <meta name="description" content="zzh 的技术博客，记录 Pwn、AWDP、漏洞利用与学习">
     <meta name="author" content="zach0ry">
     
     <title>
@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#10b981","title":"b1nary","author":"zach0ry","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/favicon.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10b981","title":"b1nary","author":"zach0ry","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/favicon.svg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"记录 Pwn、AWDP 与漏洞利用 || 也记录折腾与思考","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zach0ry-zzh","email":"mailto:2794813078@qq.com","qq":"tencent://message/?uin=2794813078"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["Pwn菜鸟","Heap选手","漏洞猎人","AWDP战士","Binary大师"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD","share":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"local_search":{"enable":true,"preload":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"rss":{"enable":true},"lazyload":{"enable":true},"footer":{"since":2024,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/zach0ry-zzh/zach0ry-zzh.github.io"}},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -250,6 +252,8 @@
                             <div class="author border-box">
                                 <span class="name">zach0ry</span>
                                 
+                                    <span class="author-badge">Lv4</span>
+                                
                             </div>
                             <div class="meta-info border-box">
                                 
@@ -300,6 +304,10 @@
         
         
         
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
         
     </div>
 
@@ -490,7 +498,7 @@
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2026
     
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
         
@@ -501,7 +509,36 @@
     </div>
 
     
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/zach0ry-zzh/zach0ry-zzh.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
 
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
     
 
     
@@ -670,6 +707,10 @@
 
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">

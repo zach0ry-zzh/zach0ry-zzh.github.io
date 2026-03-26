@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="blog, tech, hexo">
-    <meta name="description" content="记录技术与思考">
+    <meta name="keywords" content="pwn, awdp, ctf, binary, exploit, heap">
+    <meta name="description" content="zzh 的技术博客，记录 Pwn、AWDP、漏洞利用与学习">
     <meta name="author" content="zach0ry">
     
     <title>
@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#10b981","title":"b1nary","author":"zach0ry","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/favicon.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10b981","title":"b1nary","author":"zach0ry","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/favicon.svg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"记录 Pwn、AWDP 与漏洞利用 || 也记录折腾与思考","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zach0ry-zzh","email":"mailto:2794813078@qq.com","qq":"tencent://message/?uin=2794813078"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["Pwn菜鸟","Heap选手","漏洞猎人","AWDP战士","Binary大师"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD","share":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"local_search":{"enable":true,"preload":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"rss":{"enable":true},"lazyload":{"enable":true},"footer":{"since":2024,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/zach0ry-zzh/zach0ry-zzh.github.io"}},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -43,6 +43,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -227,6 +229,144 @@
                     <div class="home-content-container fade-in-down-animation">
     
     <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2026/01/19/VMpwn/">
+                            VMpwn
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            一般指 CTF Pwn 里“虚拟机解释器类题目”：题目程序自己实现了一套自定义指令集&#x2F;字节码和一个解释器（VM），把很多类似“汇编&#x2F;CPU”的概念（寄存器、栈、内存段、指令执行循环等）用代码模拟出来，然后你要在这套 VM 的实现里...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jan 19 2026 22:39:07 GMT+0800"
+                >2026-01-19 22:39:07</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/VM/">VM</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2026/01/19/VMpwn/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/12/22/house-of/">
+                            house of
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            House Of Einherjar正常free的时候会判断上一个chunk是不是free的，是的话就合并
+让指针对  本chunk处-pre_size处的chunk 执行unlink，把本chunk和pre_chunk都从bin链条中脱出
+1234...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Dec 22 2025 16:55:10 GMT+0800"
+                >2025-12-22 16:55:10</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/12/22/house-of/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
         
             <li class="home-post-item">
 
@@ -667,296 +807,6 @@ unlink 触发的典型情况是：当堆中的 chunk 被释放并合并（consol
                 </div>
             </li>
         
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/09/23/pwn-docker%E9%A2%98%E7%9B%AE%E9%83%A8%E7%BD%B2/">
-                            pwn_docker题目部署
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            dockerDocker 是一个 容器化工具。
-在不同的环境下，程序可能因为处于不同的环境无法正常运行， docker能把 程序 + 依赖环境 一起打包成一个标准的“盒子”（镜像），然后在任何地方都能运行（容器），容器就是镜像的动态实例.
-组成部分d...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Sep 23 2025 14:32:22 GMT+0800"
-                >2025-09-23 14:32:22</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/09/23/pwn-docker%E9%A2%98%E7%9B%AE%E9%83%A8%E7%BD%B2/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/09/14/%E7%BD%91%E8%B0%B7%E6%9D%AF/">
-                            网谷杯
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            pwn金丝雀-wgb附件
-
-
-分析看到main中的buf可以绕过canary，而gift是很明显的栈溢出
-用read函数去泄露，把canary的值放到bss段，写出来
-之后用retlibc去泄露就好，（把canary放在合适的位置上面）
-
-可以看到
-...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sun Sep 14 2025 14:16:09 GMT+0800"
-                >2025-09-14 14:16:09</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/WP/">WP</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WP/">WP</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/09/14/%E7%BD%91%E8%B0%B7%E6%9D%AF/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/09/10/SROP/">
-                            SROP
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            syscall_leaverootersctf_2019_srop
-
-
-
-可以看到这个什么都没有，但是存在pop rax的操作，所以可以用SROP来泄露后门函数
-思路用SROP第一次读入执行read函数，第二次向这个read函数读入&#x2F;bin...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Wed Sep 10 2025 15:25:03 GMT+0800"
-                >2025-09-10 15:25:03</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SROP/">SROP</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/09/10/SROP/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/09/09/odd-canary/">
-                            odd_canary
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Sep 09 2025 20:09:33 GMT+0800"
-                >2025-09-09 20:09:33</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/09/09/odd-canary/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
     </ul>
     
     <div class="paginator border-box flex-center">
@@ -976,8 +826,8 @@ unlink 触发的典型情况是：当堆中的 chunk 被释放并合并（consol
                    type="number"
                    value="2"
                    min="1"
-                   max="5"
-            /><span class="delimiter base-style">/</span><span class="base-style">5</span>
+                   max="6"
+            /><span class="delimiter base-style">/</span><span class="base-style">6</span>
         </div>
 
 
@@ -1006,7 +856,7 @@ unlink 触发的典型情况是：当堆中的 chunk 被释放并合并（consol
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2026
     
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
         
@@ -1017,7 +867,36 @@ unlink 触发的典型情况是：当堆中的 chunk 被释放并合并（consol
     </div>
 
     
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/zach0ry-zzh/zach0ry-zzh.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
 
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
     
 
     
@@ -1147,6 +1026,10 @@ unlink 触发的典型情况是：当堆中的 chunk 被释放并合并（consol
 
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
