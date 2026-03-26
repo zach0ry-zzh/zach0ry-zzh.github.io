@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="blog, tech, hexo">
+    <meta name="description" content="记录技术与思考">
+    <meta name="author" content="zach0ry">
+    
+    <title>
+        
+            ciscn之protobuf壳 |
+        
+        b1nary
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","tags":"/tags                  || fa-solid fa-tags","categories":"/categories      || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":null,"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"],"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               b1nary
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        ciscn之protobuf壳
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-03-16</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Mar 16 2026 21:32:42 GMT+0800">2026-03-16</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/protobuf/">protobuf</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>protobuf：为了方便两个程序之间通信，而把数据变成的一种二进制格式</p>
+<h2 id="核心函数"><a href="#核心函数" class="headerlink" title="核心函数"></a>核心函数</h2><p>**xxx__unpack **    <code>protobuf_c_message_unpack</code></p>
+<p>把收到的 protobuf 字节流解析成 C 结构体。</p>
+<p>eg；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msg = heap_payload__unpack(NULL, size, buf);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>buf</code>：原始输入</li>
+<li><code>size</code>：输入长度</li>
+<li>返回值 <code>msg</code>：解析后的消息对象</li>
+</ul>
+<p><strong>xxx__free_unpacked</strong></p>
+<p>释放 <code>unpack</code> 生成的消息对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heap_payload__free_unpacked(msg, NULL);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>xxx__init</strong></p>
+<p>初始化一个 protobuf message 结构体。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HeapPayload msg;</span><br><span class="line">heap_payload__init(&amp;msg);</span><br></pre></td></tr></table></figure>
+
+<p>意思就是把 msg 初始化成合法 protobuf 对象。</p>
+<p><strong>xxx__pack</strong>     protobuf_c_message_pack</p>
+<p>把 C 结构体序列化成 protobuf 字节流。也就是“打包”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = heap_payload__pack(msg, outbuf);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="protobuf-c"><a href="#protobuf-c" class="headerlink" title="protobuf-c"></a>protobuf-c</h2><p>对使用 <code>protobuf-c</code>可以</p>
+<p>先找到<code>protobuf-c</code> 的 message descriptor 里的一个固定常量：0x28AAEEF9</p>
+<p>SHIFT+F1导入如下结构体</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316190810809.png"  alt="image-20260316190810809"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _ProtobufCFieldDescriptor &#123;</span><br><span class="line">  const char *name;</span><br><span class="line">  unsigned int id;</span><br><span class="line">  int label;</span><br><span class="line">  int type;</span><br><span class="line">  unsigned int quantifier_offset;</span><br><span class="line">  unsigned int offset;</span><br><span class="line">  const void *descriptor;</span><br><span class="line">  const void *default_value;</span><br><span class="line">  unsigned int flags;</span><br><span class="line">  unsigned int reserved_flags;</span><br><span class="line">  void *reserved2;</span><br><span class="line">  void *reserved3;</span><br><span class="line">&#125; ProtobufCFieldDescriptor;</span><br></pre></td></tr></table></figure>
+
+<p>然后转为该结构体</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316191709853.png"  alt="image-20260316191709853"></p>
+<p>然后根据不同字段的定义就可以拿到该程序的.proto</p>
+<p>比如option</p>
+<table>
+<thead>
+<tr>
+<th>IDA中的值</th>
+<th>对应结构体字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>offset aChunkSizes</code></td>
+<td><code>name</code></td>
+<td>字段名字 <code>&quot;chunk_sizes&quot;</code></td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>id</code></td>
+<td>proto字段编号 <code>=2</code></td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>label</code></td>
+<td>字段类型 <code>repeated</code></td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>type</code></td>
+<td>字段数据类型 <code>int32</code></td>
+</tr>
+<tr>
+<td><code>20h</code></td>
+<td><code>quantifier_offset</code></td>
+<td>数组长度字段偏移</td>
+</tr>
+<tr>
+<td><code>28h</code></td>
+<td><code>offset</code></td>
+<td>数组数据指针偏移</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>descriptor</code></td>
+<td>如果是 message 类型才会用</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>default_value</code></td>
+<td>默认值</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><code>flags</code></td>
+<td>packed repeated 标志</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>reserved_flags</code></td>
+<td>保留</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>reserved2</code></td>
+<td>保留</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td><code>reserved3</code></td>
+<td>保留</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>每个字段的偏移分别是0x18,0x20…</p>
+<p>到时候根据函数使用的不同函数的偏移就可以知道它调用的是谁</p>
+</blockquote>
+<p><strong>type</strong></p>
+<table>
+<thead>
+<tr>
+<th>type值</th>
+<th>protobuf类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>int32</td>
+</tr>
+<tr>
+<td>3</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>6</td>
+<td>uint32</td>
+</tr>
+<tr>
+<td>8</td>
+<td>uint64</td>
+</tr>
+<tr>
+<td>12</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>14</td>
+<td>string</td>
+</tr>
+<tr>
+<td>15</td>
+<td>bytes</td>
+</tr>
+<tr>
+<td>16</td>
+<td>message</td>
+</tr>
+</tbody></table>
+<p><strong>label</strong></p>
+<p>表示字段是：</p>
+<table>
+<thead>
+<tr>
+<th>label</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>required    这个字段必须存在</td>
+</tr>
+<tr>
+<td>1</td>
+<td>optional     可以有，也可以没有</td>
+</tr>
+<tr>
+<td>2</td>
+<td>repeated    数组</td>
+</tr>
+<tr>
+<td>3</td>
+<td>none           普通字段</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>repeated</code> 字段会被展开成 <strong>两个 C 结构体成员</strong>：</p>
+<p>size_t n_field;   &#x2F;&#x2F; 元素数量</p>
+<p>type  *field;     &#x2F;&#x2F; 元素数组</p>
+<p>eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;n_chunksize  -&gt; 数组长度</span><br><span class="line">&gt;chunksize    -&gt; 指向数组数据</span><br></pre></td></tr></table></figure>
+
+<p><strong>普通字段 → 直接赋值</strong></p>
+<p><strong>repeated<code>字段 → 列表，要用</code>append()</strong></p>
+</blockquote>
+<p>即（因为存在NONE标签，所以是proto3协议）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;</span><br><span class="line"></span><br><span class="line">message HeapPayload &#123;</span><br><span class="line">    int32 option = 1;</span><br><span class="line">    repeated int32 chunksize = 2;</span><br><span class="line">    repeated int32 heap_chunks_id = 3;</span><br><span class="line">    bytes heap_content = 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后输入<code>protoc-c --c_out=. heap.proto</code>来编译该proto文件，然后在<code>heap.pb-c.h</code>文件找到该message的C结构体（如下）并导入IDA</p>
+<p>在heap.pb-c.h中看到如下结构体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct  _HeapPayload</span><br><span class="line">&#123;</span><br><span class="line">  ProtobufCMessage base;</span><br><span class="line">  int32_t option;</span><br><span class="line">  size_t n_chunksize;</span><br><span class="line">  int32_t *chunksize;</span><br><span class="line">  size_t n_heap_chunks_id;</span><br><span class="line">  int32_t *heap_chunks_id;</span><br><span class="line">  ProtobufCBinaryData heap_content;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>但是没有找到ProtobufCMessage和ProtobufCBinaryData的定定义，这些定义在 protobuf-c 的源码里</p>
+<p>为了完善也要导入以下的结构体定义模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">typedef unsigned long long size_t;</span><br><span class="line">typedef signed int int32_t;</span><br><span class="line">typedef unsigned char uint8_t;</span><br><span class="line"></span><br><span class="line">typedef struct _ProtobufCBinaryData &#123;</span><br><span class="line">  size_t len;</span><br><span class="line">  uint8_t *data;</span><br><span class="line">&#125; ProtobufCBinaryData;</span><br><span class="line"></span><br><span class="line">typedef struct _ProtobufCMessage &#123;</span><br><span class="line">  void *descriptor;</span><br><span class="line">  unsigned int n_unknown_fields;</span><br><span class="line">  void *unknown_fields;</span><br><span class="line">&#125; ProtobufCMessage;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以改参数看它实际调用的是什么了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316194537375.png"  alt="image-20260316194537375"></p>
+<p>光标放在参数处，改定义</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316194624771.png"  alt="image-20260316194624771"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316194848823.png"  alt="image-20260316194848823"></p>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316211918002.png"  alt="image-20260316211918002"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316211952481.png"  alt="image-20260316211952481"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316212101526.png"  alt="image-20260316212101526"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260316212145969.png"  alt="image-20260316212145969"></p>
+<p>exp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import struct</span><br><span class="line">import heap_pb2</span><br><span class="line">p = process(&quot;./pwn&quot;)</span><br><span class="line">def sa(a, b):p.sendafter(a, b)</span><br><span class="line">def add(size, cont = b&#x27;a&#x27;):</span><br><span class="line">    heap = heap_pb2.HeapPayload()</span><br><span class="line">    heap.option = 1</span><br><span class="line">    heap.chunksize.append(size)</span><br><span class="line">    heap.heap_content = cont</span><br><span class="line">    buf = heap.SerializeToString()</span><br><span class="line">    payload = p32(len(buf)) + buf</span><br><span class="line">    sa(&quot;prompt &gt;&gt; &quot;, payload)</span><br><span class="line"></span><br><span class="line">def delete(idx):</span><br><span class="line">    heap = heap_pb2.HeapPayload()</span><br><span class="line">    heap.option = 2</span><br><span class="line">    heap.heap_chunks_id.append(idx)</span><br><span class="line">    buf = heap.SerializeToString()</span><br><span class="line">    payload = p32(len(buf)) + buf</span><br><span class="line">    sa(&quot;prompt &gt;&gt; &quot;, payload)</span><br><span class="line"></span><br><span class="line">def edit(idx, size, cont):</span><br><span class="line">    heap = heap_pb2.HeapPayload()</span><br><span class="line">    heap.option = 3</span><br><span class="line">    heap.chunksize.append(size)</span><br><span class="line">    heap.heap_chunks_id.append(idx)</span><br><span class="line">    heap.heap_content = cont</span><br><span class="line">    buf = heap.SerializeToString()</span><br><span class="line">    payload = p32(len(buf)) + buf</span><br><span class="line">    sa(&quot;prompt &gt;&gt; &quot;, payload)</span><br><span class="line"></span><br><span class="line">def show(idx):</span><br><span class="line">    heap = heap_pb2.HeapPayload()</span><br><span class="line">    heap.option = 4</span><br><span class="line">    heap.heap_chunks_id.append(idx)</span><br><span class="line">    buf = heap.SerializeToString()</span><br><span class="line">    payload = p32(len(buf)) + buf</span><br><span class="line">    sa(&quot;prompt &gt;&gt; &quot;, payload)</span><br><span class="line"></span><br><span class="line">def quit():</span><br><span class="line">    heap = heap_pb2.HeapPayload()</span><br><span class="line">    heap.option = 5</span><br><span class="line">    buf = heap.SerializeToString()</span><br><span class="line">    payload = p32(len(buf)) + buf</span><br><span class="line">    sa(&quot;prompt &gt;&gt; &quot;, payload)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/protobuf/">protobuf</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/03/08/IO-2-1-stdout%E6%B3%84%E9%9C%B2libc/"
+                                   title="_IO_2_1_stdout泄露libc专题练习"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">_IO_2_1_stdout泄露libc专题练习</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">核心函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#protobuf-c"><span class="nav-number">2.</span> <span class="nav-text">protobuf-c</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">2.1.</span> <span class="nav-text">demo</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">核心函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#protobuf-c"><span class="nav-number">2.</span> <span class="nav-text">protobuf-c</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">2.1.</span> <span class="nav-text">demo</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

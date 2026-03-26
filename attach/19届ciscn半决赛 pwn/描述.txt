@@ -1,0 +1,33 @@
+catchme
+catchme if you can
+
+minidb
+攻击描述
+A minidb system
+防御描述
+提交的补丁必须遵循最小改动原则，只允许对漏洞相关位置进行必要修复，不得进行通防、重构或绕过式修改。补丁后的程序文件必须与原始文件长度一致，且二进制层面的改动总量不得超过 5 个字节；除这 5 个字节外，其余所有字节必须与原始附件完全一致。
+
+broken_manager
+攻击描述
+manager努力运行的样子真的很动人呢！tips:内核不一致可能导致某些偏移不一致，需要小范围爆破，成功概率大于1/256
+防御描述
+manager努力运行的样子真的很动人呢！tips:内核不一致可能导致某些偏移不一致，需要小范围爆破，成功概率大于1/256
+
+UpNodeTrap
+攻击描述
+A lightweight Node-based service has been deployed to handle file uploads.
+The developer claims the system is "safe and sandboxed".
+However, strange crashes have been reported under specific inputs.
+Can you discover a way to seize control?
+防御描述
+A lightweight Node-based service has been deployed to handle file uploads.
+The developer claims the system is "safe and sandboxed".
+However, strange crashes have been reported under specific inputs.
+Can you discover a way to seize control?
+
+easy_rw_revenge
+攻击描述
+上次行动中，你用时四小时成功的拿下了某个组织站点，为组织立下大功，该站点已经修复了漏洞，听说你是PWN高手，今天上午四小时请你再次拿下他（flag在/目录下，/flag）
+防御描述
+你发现自己的单位也用了这个开源的站点，同时也存在这个漏洞，你需要给你的程序打补丁，你的领导要求你只能修复漏洞，不能破坏原有的鉴权逻辑，否则会导致功能异常。（一共有两个程序，proxy程序和pwn程序，修补的时候只需要更新pwn程序即可）
+
