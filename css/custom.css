@@ -89,3 +89,25 @@ code,
 pre {
   font-family: "JetBrains Mono", "Fira Code", monospace;
 }
+
+
+
+html,
+body {
+  cursor: default;
+}
+
+a,
+button,
+.menu-item a,
+.pagination a,
+.post-tools-item,
+img {
+  cursor: pointer;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  cursor: text;
+}
