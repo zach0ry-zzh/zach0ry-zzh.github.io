@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="blog, tech, hexo">
     <meta name="description" content="记录技术与思考">
-    <meta name="author" content="Zach0ry">
+    <meta name="author" content="zach0ry">
     
     <title>
         
             标签: mprotect |
         
-        Zach0ry Blog
+        b1nary
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
     
     
 <link rel="stylesheet" href="/font/css/fontawesome.min.css">
@@ -30,18 +32,10 @@
 <link rel="stylesheet" href="/font/css/brands.min.css">
 
     
-        
-            
-                
-<link rel="stylesheet" href="/css/custom.css">
-
-            
-        
-    
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"style":{"primary_color":"#10b981","avatar":{"enable":true,"url":"/images/avatar.jpg"},"favicon":"/images/favicon.svg"},"header":{"enable":true,"menu":{"Home":"/","Archives":"/archives","Tags":"/tags","Categories":"/categories"}},"home_banner":{"enable":true,"text":"Binary · Pwn · AWDP","sub_text":"记录漏洞利用、比赛题解与学习笔记","image":{"enable":true,"url":"/images/bg.svg"}},"social":{"enable":true,"items":[{"name":"github","icon":"fab fa-github","url":"https://github.com/zach0ry-zzh"},{"name":"qq","icon":"fas fa-comment-dots","url":"tencent://message/?uin=2794813078"},{"name":"email","icon":"fas fa-envelope","url":"mailto:2794813078@qq.com"}]},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"post":{"word_count":{"enable":true},"reading_time":{"enable":true},"copyright":{"enable":false}},"code_block":{"enable":true,"copy_button":{"enable":true},"fold":{"enable":false},"highlight_theme":"atom_one_dark","tools":{"enable":true,"style":"mac"}},"local_search":{"enable":true,"preload":true},"scroll":{"progress_bar":{"enable":true}},"busuanzi":{"enable":true},"rss":{"enable":true},"lazyload":{"enable":true},"footer":{"since":2024,"icp":{"enable":false}},"inject":{"enable":true,"css":["/css/custom.css"],"js":null},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -71,8 +65,12 @@
     <div class="border-box header-content">
         <div class="left flex-start border-box">
             
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
             <a class="site-name border-box" href="/">
-               Zach0ry Blog
+               b1nary
             </a>
         </div>
 
@@ -82,9 +80,47 @@
                     
                         
                         <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
                             <a class="menu-text-color border-box" href="/archives">
                                 
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
                                 归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box active">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
                                 
                             </a>
                             
@@ -114,9 +150,61 @@
                 
                 <li class="drawer-menu-item border-box not-sub-menu">
                     <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
                             
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
                             归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu active">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
                         </a>
                         
                     </label>
@@ -182,9 +270,9 @@
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2026
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
     
-            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Zach0ry</a>
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
         
     </div>
 
@@ -324,10 +412,6 @@
 
 <!-- lazyload -->
 
-    
-<script src="/js/lazyload.js"></script>
-
-
 
 <div class="">
     <!-- home page -->
@@ -355,8 +439,6 @@
 <!-- pjax -->
 
 
-
-    
 
 </body>
 </html>

