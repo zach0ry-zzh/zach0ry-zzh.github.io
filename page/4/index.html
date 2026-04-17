@@ -270,12 +270,7 @@
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            基础两个对buf的输入pwn75
-
-
-位置不够，且有system函数但没有“&#x2F;bin&#x2F;sh”字符串
-思路泄露ebp的地址，然后gdb调试找到buf开头和ebp之间的偏移以找到buf的位置
-之后通过第二次输入对调用system函数，...
+                            栈迁移原理栈迁移（Stack Pivoting） 是二进制漏洞利用（Pwn）中的核心 ROP 进阶技术，主要解决栈溢出空间不足的问题。它通过劫持栈指针（ESP&#x2F;RSP），将程序执行流从原始受限栈区，转移到攻击者可控的大片可写内存（如 BSS...
                         
                     </div>
 
@@ -286,8 +281,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Sep 02 2025 09:47:50 GMT+0800"
-                >2025-09-02 09:47:50</span>
+                                                                                data-updated="Tue Apr 14 2026 16:47:04 GMT+0800"
+                >2026-04-14 16:47:04</span>
             </span>
         
 
@@ -421,63 +416,6 @@ ctrl+s查看bss段，找要修改的范围
 
     
         <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/07/24/ciscn-2019-es-2/">
-                            ciscn_2019_es_2
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            题目
-
-
-很明显的栈溢出漏洞，但是可操作空间太小，只能覆盖到ret，所以要用栈迁移
-
-有system函数，但是需要自己传参，可以把&#x2F;bin&#x2F;sh字符段放在栈上
-有两次输入，第一次输入可以用来泄露ebp的地址
-第二次要根据泄露地址去...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Mon Feb 09 2026 10:45:05 GMT+0800"
-                >2026-02-09 10:45:05</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/24/ciscn-2019-es-2/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -759,6 +697,59 @@ re_python
 
     
         <a class="home-read-more" href="/2025/07/14/%E5%BE%A1%E7%BD%91%E6%9D%AF2025%E7%BA%BF%E4%B8%8B/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/14/HNCTF-2022-WEEK4-flower-plus/">
+                            [HNCTF 2022 WEEK4]flower plus
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            链接
+花指令分析
+发现花指令
+db 0C7h 的“垃圾”作用： 0x4012A6 处的 db 0C7h 是一个数据字节。它被 jnz 指令跳转到，但它本身不是一个有意义的执行路径。它的存在是为了干扰反汇编器的线性分析，使其认为这里存在一个实际的代码分...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Feb 09 2026 10:43:52 GMT+0800"
+                >2026-02-09 10:43:52</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/14/HNCTF-2022-WEEK4-flower-plus/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 

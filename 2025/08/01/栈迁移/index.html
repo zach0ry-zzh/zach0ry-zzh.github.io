@@ -239,7 +239,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Sep 02 2025 09:47:50 GMT+0800">2025-09-02 09:47:50</span>
+                    <span class="datetime" data-updated="Tue Apr 14 2026 16:47:04 GMT+0800">2026-04-14 16:47:04</span>
                 </span>
             
         
@@ -287,7 +287,54 @@
                     
 
                     
-                         <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="两个对buf的输入"><a href="#两个对buf的输入" class="headerlink" title="两个对buf的输入"></a>两个对buf的输入</h2><p><a class="link"   target="_blank" rel="noopener" href="https://ctf.show/challenges#pwn75-4085" >pwn75<i class="fas fa-external-link-alt"></i></a></p>
+                         <h1 id="栈迁移原理"><a href="#栈迁移原理" class="headerlink" title="栈迁移原理"></a>栈迁移原理</h1><p><strong>栈迁移（Stack Pivoting）</strong> 是二进制漏洞利用（Pwn）中的核心 ROP 进阶技术，主要解决<strong>栈溢出空间不足</strong>的问题。它通过劫持栈指针（ESP&#x2F;RSP），将程序执行流从原始受限栈区，转移到攻击者可控的<strong>大片可写内存</strong>（如 BSS 段、堆），从而自由构造 ROP 链。</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260414163821528.png"  alt="image-20260414163821528"></p>
+<p><strong>一、核心原理：<code>leave; ret</code> 指令</strong></p>
+<p>栈迁移的关键是利用函数尾声的 <strong><code>leave; ret</code></strong> 指令组合。其汇编行为如下：</p>
+<p><strong>1. <code>leave</code> 指令</strong></p>
+<p>等价于两条指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov esp, ebp   ; 将栈顶指针ESP指向栈底指针EBP的位置</span><br><span class="line">pop ebp        ; 从栈中弹出旧的EBP值，恢复上一层栈帧</span><br></pre></td></tr></table></figure>
+
+<p><strong>栈是向下增长的，pop之后 rsp+8</strong>(就是原来的rbp+8)</p>
+<p>如果把<code>rbp</code> 改成了 <code>bss + 0x30</code>，那么执行完 <code>leave</code> 后，<code>rsp</code> 就精准地指向了 <strong><code>bss + 0x38</code></strong>。</p>
+<p><strong>2. <code>ret</code> 指令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop eip        ; 从栈顶弹出数据，赋值给指令指针EIP，实现跳转</span><br></pre></td></tr></table></figure>
+
+
+
+<p>eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#执行 leave</span><br><span class="line">mov esp, ebp：#ESP 指向被覆盖的新 EBP（bss_addr - 4）</span><br><span class="line">pop ebp：     #EBP = [bss_addr - 4]（此值可忽略）</span><br><span class="line"></span><br><span class="line">#执行 ret</span><br><span class="line">pop eip：     #EIP = [bss_addr]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>read函数的栈迁移</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260414164445275.png"  alt="image-20260414164445275"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#buf = byte ptr -50h</span><br><span class="line">lea     rax, [rbp+buf]  ;rax=rbp+buf</span><br><span class="line">mov     edx, 60h        ; nbytes</span><br><span class="line">mov     rsi, rax        ; buf</span><br><span class="line">mov     edi, 0          ; fd</span><br><span class="line">call    _read</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>行为</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>mov</strong></td>
+<td><strong>取内存里的值</strong></td>
+<td>mov eax, [ebx+4] → 把地址 ebx+4 里<strong>存储的数据</strong>放进 eax</td>
+</tr>
+<tr>
+<td><strong>lea</strong></td>
+<td><strong>计算地址本身</strong></td>
+<td>lea eax, [ebx+4] → 把 <code>ebx+4</code> 这个<strong>地址数值</strong>放进 eax</td>
+</tr>
+</tbody></table>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="两个对buf的输入"><a href="#两个对buf的输入" class="headerlink" title="两个对buf的输入"></a>两个对buf的输入</h2><p><a class="link"   target="_blank" rel="noopener" href="https://ctf.show/challenges#pwn75-4085" >pwn75<i class="fas fa-external-link-alt"></i></a></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250801154953026.png"  alt="image-20250801154953026"></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250801155005544.png"  alt="weizhi "></p>
 <p>位置不够，且有system函数但没有“&#x2F;bin&#x2F;sh”字符串</p>
@@ -333,7 +380,21 @@
 
 <h3 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/9b86515971cb82de7c5bf769e470ca06.png"  alt="9b86515971cb82de7c5bf769e470ca06"></p>
 <p>代表栈不平衡</p>
-<h2 id="lea-read"><a href="#lea-read" class="headerlink" title="lea_read"></a>lea_read</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/zach0ry-zzh/zach0ry-zzh.github.io/raw/refs/heads/main/attach/stacksmall" >附件<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="lea-read"><a href="#lea-read" class="headerlink" title="lea_read"></a>lea_read</h2><p>read形式的栈迁移</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260412203852575.png"  alt="image-20260412203852575"></p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260412204507374.png"  alt="image-20260412204507374"></p>
+<p>在 Linux 进程中，虽然内存布局里有一块专门区域叫 <code>Stack</code>，但对 CPU 来说，它只认寄存器：也就是说CPU是根据寄存器去找执行的函数的</p>
+<blockquote>
+<h3 id="为什么能覆盖到-ret？"><a href="#为什么能覆盖到-ret？" class="headerlink" title="为什么能覆盖到 ret？"></a>为什么能覆盖到 ret？</h3><p>要理解这一点，我们需要看函数退出时的汇编指令：<code>leave</code>。</p>
+<p><code>leave</code> 指令等价于：</p>
+<ol>
+<li><code>mov rsp, rbp</code> (让栈顶指针 $RSP$ 回到基址 $RBP$ 的位置)</li>
+<li><code>pop rbp</code> (把当前栈顶的值弹给 $RBP$)</li>
+</ol>
+<p>ret:本质就是pop rip</p>
+</blockquote>
+<p>比如下面这个例子，CPU 识别出ret距离rbp的偏移是0x38，无论你把rbp覆盖为什么，cpu都会从rbp-0x38处取出对应的返回地址</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/zach0ry-zzh/zach0ry-zzh.github.io/raw/refs/heads/main/attach/stacksmall" >附件<i class="fas fa-external-link-alt"></i></a></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250830211612652.png"  alt="image-20250830211612652"></p>
 <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250830211640302.png"  alt="image-20250830211640302"></p>
 <p>可以看到没有泄露地址的机会，但是read本身的比较特殊</p>
@@ -455,7 +516,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%AF%B9buf%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-text">两个对buf的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAs%E4%B8%80%E4%B8%AAbuf"><span class="nav-text">一个s一个buf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canary-%E8%BF%81%E7%A7%BB"><span class="nav-text">canary+迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7"><span class="nav-text">收获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lea-read"><span class="nav-text">lea_read</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7-1"><span class="nav-text">收获</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86"><span class="nav-text">栈迁移原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%AF%B9buf%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-text">两个对buf的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAs%E4%B8%80%E4%B8%AAbuf"><span class="nav-text">一个s一个buf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canary-%E8%BF%81%E7%A7%BB"><span class="nav-text">canary+迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7"><span class="nav-text">收获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lea-read"><span class="nav-text">lea_read</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A6%86%E7%9B%96%E5%88%B0-ret%EF%BC%9F"><span class="nav-text">为什么能覆盖到 ret？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7-1"><span class="nav-text">收获</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -586,7 +647,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%AF%B9buf%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-text">两个对buf的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAs%E4%B8%80%E4%B8%AAbuf"><span class="nav-text">一个s一个buf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canary-%E8%BF%81%E7%A7%BB"><span class="nav-text">canary+迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7"><span class="nav-text">收获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lea-read"><span class="nav-text">lea_read</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7-1"><span class="nav-text">收获</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%90%86"><span class="nav-text">栈迁移原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%AF%B9buf%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-text">两个对buf的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAs%E4%B8%80%E4%B8%AAbuf"><span class="nav-text">一个s一个buf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-1"><span class="nav-text">脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canary-%E8%BF%81%E7%A7%BB"><span class="nav-text">canary+迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-2"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7"><span class="nav-text">收获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lea-read"><span class="nav-text">lea_read</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%A6%86%E7%9B%96%E5%88%B0-ret%EF%BC%9F"><span class="nav-text">为什么能覆盖到 ret？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC-3"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E8%8E%B7-1"><span class="nav-text">收获</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
