@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -279,6 +287,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -294,19 +306,54 @@
 
                     
                          <p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#ciscn_2019_s_3" >题目<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250909135643904.png"  alt="img"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155218866.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250909135643904.png"
+                        alt="img"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155218866.png"
+                        alt="img"
+                 ></p>
 <p>没有后门函数，也没有能用来泄露libc地址的东西</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155343571.png"  alt="img"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155522017.png"  alt="image-20250802155522017">但是看到有execve和一些对寄存器的操作，考虑csu</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155343571.png"
+                        alt="img"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802155522017.png"
+                        alt="image-20250802155522017"
+                 >但是看到有execve和一些对寄存器的操作，考虑csu</p>
 <p>在栈上写入&#x2F;bin&#x2F;sh,之后调用它</p>
 <p>数据在栈的位置不是固定的，但是偏移是固定的</p>
 <p>可以通过read和write来泄露栈上的地址</p>
-<h2 id="scu"><a href="#scu" class="headerlink" title="scu"></a>scu</h2><h3 id="泄露地址"><a href="#泄露地址" class="headerlink" title="泄露地址"></a>泄露地址</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825165336404.png"  alt="image-20250825165336404"></p>
+<h2 id="scu"><a href="#scu" class="headerlink" title="scu"></a>scu</h2><h3 id="泄露地址"><a href="#泄露地址" class="headerlink" title="泄露地址"></a>泄露地址</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825165336404.png"
+                        alt="image-20250825165336404"
+                 ></p>
 <p>buf的起始位置是0x7fffffffdd70，70到80之间是buf的16空间</p>
 <p>栈上0x7fffffffdd90对应的数据是一个栈 上的地址所以选择读取这个位置的地址</p>
-<p>并计算出它和buf之间的偏移以精准定位buf的头部<img     src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825165806950.png"   alt="image-20250825165806950" style="zoom: 67%;" ></p>
-<p>且<img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802160607786.png"  alt="image-20250802160607786"></p>
+<p>并计算出它和buf之间的偏移以精准定位buf的头部<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825165806950.png"
+                         alt="image-20250825165806950" style="zoom: 67%;" 
+                 ></p>
+<p>且<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250802160607786.png"
+                        alt="image-20250802160607786"
+                 ></p>
 <p>这个函数返回时直接ret，没有进行pop ebp的操作，所以在构造payload的时候不需要覆盖ebp</p>
 <p>脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">payload=b&quot;a&quot;*16+p64(vuln)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.recv(32)</span><br><span class="line">place=u64(p.recv(8))</span><br><span class="line">bin_sh=place-0x118</span><br><span class="line">print(hex(bin_sh))</span><br></pre></td></tr></table></figure>
@@ -317,7 +364,12 @@
 <p>rax&#x3D;59地址已经找到了</p>
 <p>ROPgadgets命令查看，发现只有对rdi和rsi的s操作</p>
 <p>剩下的就是基本的csu了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825170440668.png"  alt="image-20250825170440668"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825170440668.png"
+                        alt="image-20250825170440668"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rbx_rbp_r12_r13_r14_r15</span><br><span class="line"></span><br><span class="line">#r13&gt;rdx r14&gt;rsi r15&gt;edi</span><br><span class="line">#call r12+rbx*8</span><br><span class="line">#add     rbx, 1</span><br><span class="line">#cmp     rbx, rbp</span><br></pre></td></tr></table></figure>
 
 <p><strong>设置好rdx、rsi、rdi，然后调用 syscall</strong></p>
@@ -362,9 +414,19 @@
 
 
 
-<h2 id="SROP"><a href="#SROP" class="headerlink" title="SROP"></a>SROP</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825185946691.png"  alt="image-20250825185946691"></p>
+<h2 id="SROP"><a href="#SROP" class="headerlink" title="SROP"></a>SROP</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825185946691.png"
+                        alt="image-20250825185946691"
+                 ></p>
 <p>题目中也有sigframe</p>
-<h3 id="SROP-攻击的原理"><a href="#SROP-攻击的原理" class="headerlink" title="SROP 攻击的原理"></a>SROP 攻击的原理</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825190005837.png"  alt="image-20250825190005837"></p>
+<h3 id="SROP-攻击的原理"><a href="#SROP-攻击的原理" class="headerlink" title="SROP 攻击的原理"></a>SROP 攻击的原理</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250825190005837.png"
+                        alt="image-20250825190005837"
+                 ></p>
 <ol>
 <li><strong>内核保存上下文（步骤 ①）</strong>：当程序接收到信号时，内核会暂停程序的执行，并自动将当前所有寄存器（<code>rax</code>, <code>rdi</code>, <code>rsi</code>, <code>rdx</code>, <code>rip</code>, <code>rsp</code> 等）的状态保存到一个特殊的结构体中，这个结构体叫做 <code>sigcontext</code>。然后，内核将这个 <code>sigcontext</code> 压入栈中，为执行信号处理函数做准备。</li>
 <li><strong>攻击者伪造上下文</strong>：攻击者利用栈溢出漏洞，在程序接收信号<strong>之前</strong>，就向栈中写入一个<strong>伪造的 <code>sigcontext</code> 结构体</strong>。这个伪造的结构体中包含了攻击者想要设置的所有寄存器值。例如，你可以把 <code>rip</code> 设置为 <code>execve</code> 的地址，把 <code>rdi</code> 设置为 <code>/bin/sh</code> 字符串的地址。</li>
@@ -408,8 +470,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -600,6 +698,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -702,6 +813,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -741,8 +881,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -767,6 +915,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

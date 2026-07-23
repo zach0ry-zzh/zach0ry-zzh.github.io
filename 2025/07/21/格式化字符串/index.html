@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -359,7 +371,17 @@
 <td></td>
 </tr>
 </tbody></table>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721092127879.png"  alt="image-20250721092127879"><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721092639513.png"  alt="image-20250721092639513"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721092127879.png"
+                        alt="image-20250721092127879"
+                 ><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721092639513.png"
+                        alt="image-20250721092639513"
+                 ></p>
 <p>当用户控制了 <code>printf()</code> 的第一个参数（即格式化字符串），而程序没有进行过滤或限制，就可能造成以下问题：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char input[100];</span><br><span class="line">fgets(input, sizeof(input), stdin);</span><br><span class="line">printf(input);  // ⚠️ 危险！用户输入直接作为格式化字符串</span><br></pre></td></tr></table></figure>
 
@@ -376,13 +398,23 @@
 <p>素。对于整型值和浮点值，这没有什么问题，不管栈上是什么数据都能够按照整型值和浮点值解析出来，而字符串形式就不一定能解析出来</p>
 <p>了。如果是一个非法地址，比如NULL，那么在解析的时候就会报错，</p>
 <p>因为这个地址按照字符串解析是无法解析出来的，程序就会崩溃。这就是格式化字符串漏洞的基本原理</p>
-<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><h3 id="leakmemory-泄露栈上内容"><a href="#leakmemory-泄露栈上内容" class="headerlink" title="leakmemory(泄露栈上内容)"></a>leakmemory(泄露栈上内容)</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721102525461.png"  alt="image-20250721102525461"></p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><h3 id="leakmemory-泄露栈上内容"><a href="#leakmemory-泄露栈上内容" class="headerlink" title="leakmemory(泄露栈上内容)"></a>leakmemory(泄露栈上内容)</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721102525461.png"
+                        alt="image-20250721102525461"
+                 ></p>
 <p>用了 <code>%100s</code> 来防止缓冲区溢出，但<strong>并没有限制用户输入的格式符内容</strong> 。也就是说：</p>
 <ul>
 <li><p>用户可以输入 <code>%x</code>、<code>%s</code>、<code>%n</code> 等格式符。</p>
 </li>
 <li><p><code>printf</code> 会根据这些格式符从栈中“猜测”数据，从而造成信息泄露或任意地址写入。</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721102907893.png"  alt="image-20250721102907893"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721102907893.png"
+                        alt="image-20250721102907893"
+                 ></p>
 </li>
 </ul>
 <h3 id="leakmemory-泄露任意地址内存"><a href="#leakmemory-泄露任意地址内存" class="headerlink" title="leakmemory(泄露任意地址内存)"></a>leakmemory(泄露任意地址内存)</h3><p>这里的目标设立泄露isoc99_scanf函数（scanf编译之后是isoc99_scanf在内存中的地址）。</p>
@@ -394,7 +426,12 @@
 <blockquote>
 <p><strong>找到你的输入字符串在栈上的偏移量，才能精准控制读写的内容。</strong> </p>
 </blockquote>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721145854783.png"  alt="image-20250721145854783"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721145854783.png"
+                        alt="image-20250721145854783"
+                 ></p>
 <p>所以偏移量就是4</p>
 <p>所以构造payload &#x3D; p32(scanf_got) + “%4$s”</p>
 <p>相当于print(p32(scanf_got) + “%4$s”)</p>
@@ -464,7 +501,12 @@
 <td>报错：<code>KeyError</code></td>
 </tr>
 </tbody></table>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721150514526.png"  alt="image-20250721150514526"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721150514526.png"
+                        alt="image-20250721150514526"
+                 ></p>
 <h4 id="函数调用完整过程"><a href="#函数调用完整过程" class="headerlink" title="函数调用完整过程"></a>函数调用完整过程</h4><p>🌟 阶段 0️⃣：在 <code>vulnfunc</code> 里（调用 printf 之前）</p>
 <p>这是已经在 <code>vulnfunc</code> 里，且栈帧已经建立好了。<br> 栈顶在 esp，栈低在高地址方向。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">     ↑ 高地址</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 参数n（可能是命令行参数）       |</span><br><span class="line">| 参数2                        |</span><br><span class="line">| 参数1                        |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 返回地址 → main              |</span><br><span class="line">──────────────────────────────</span><br><span class="line">| 上一个 ebp                   | ← ebp (vulnfunc 的 ebp)</span><br><span class="line">──────────────────────────────</span><br><span class="line">| vulnfunc 局部变量            |</span><br><span class="line">| …                            | ← esp （在 vulnfunc 里）</span><br><span class="line">      ↓ 低地址</span><br></pre></td></tr></table></figure>
@@ -498,14 +540,29 @@
 <li>把 ebp 设置为 esp</li>
 <li>esp 再向下留出局部变量空间</li>
 </ul>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721144623118.png"  alt="image-20250721144623118"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721144623118.png"
+                        alt="image-20250721144623118"
+                 ></p>
 <p>scanf函数会把读取到的数放在栈上一个空间，然后%p会把它泄露出来</p>
 <ol>
 <li>使用 <code>scanf</code> 读取一个字符串（最多 100 字节），存入 <code>format</code> 缓冲区；</li>
 <li>然后直接将这个字符串作为参数传给 <code>printf</code>，即：<code>printf(format);</code></li>
 </ol>
-<h3 id="overwrite-覆盖任意地址内存"><a href="#overwrite-覆盖任意地址内存" class="headerlink" title="overwrite(覆盖任意地址内存)"></a>overwrite(覆盖任意地址内存)</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721153203305.png"  alt="image-20250721153203305"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721153247877.png"  alt="image-20250721153247877"></p>
+<h3 id="overwrite-覆盖任意地址内存"><a href="#overwrite-覆盖任意地址内存" class="headerlink" title="overwrite(覆盖任意地址内存)"></a>overwrite(覆盖任意地址内存)</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721153203305.png"
+                        alt="image-20250721153203305"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721153247877.png"
+                        alt="image-20250721153247877"
+                 ></p>
 <p>所以这道题的重点是修改几个数的值</p>
 <p>1）将a覆盖为0x10。</p>
 <p>2）将b覆盖为2。</p>
@@ -566,7 +623,12 @@
 <li><code>printf</code> 会将当前已输出的字符数 <code>12</code> <strong>写入</strong>到 <code>p32(a_addr)</code> 所表示的地址，也就是局部变量 <code>v1</code> 的地址。</li>
 <li>最终，<code>v1</code> 的值被修改为 <code>12</code>。</li>
 </ol>
-<h4 id="b的处理（全局小数）"><a href="#b的处理（全局小数）" class="headerlink" title="b的处理（全局小数）"></a>b的处理（全局小数）</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721202346937.png"  alt="image-20250721202346937"></p>
+<h4 id="b的处理（全局小数）"><a href="#b的处理（全局小数）" class="headerlink" title="b的处理（全局小数）"></a>b的处理（全局小数）</h4><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721202346937.png"
+                        alt="image-20250721202346937"
+                 ></p>
 <p>b,c的地址可以直接找到</p>
 <h5 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a><strong>脚本</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./overwrite&quot;)</span><br><span class="line">elf = ELF(&quot;./overwrite&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b printf&quot;)</span><br><span class="line">a=int(p.recvuntil(&quot;\n&quot;,drop=True),16)</span><br><span class="line">print(hex(a))</span><br><span class="line">b=0x0804A028</span><br><span class="line">payload=b&#x27;aa&#x27;+b&#x27;%10$n&#x27;+b&#x27;b&#x27;+p32(b)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">info=p.recvline()</span><br><span class="line">if b&quot;overwrite b for a small value&quot; in info:</span><br><span class="line">  print(b&quot;Success\n&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
@@ -625,7 +687,12 @@
 <li><code>p32(b_addr)</code>：4 字节 (假设 <code>b_addr</code> 是 <code>0x0804A028</code>)</li>
 </ol>
 <p><strong>总字节数 &#x3D; 2 + 5 + 1 + 4 &#x3D; 12 字节</strong>,在这里，b是为了补足字节</p>
-<h4 id="c的处理（全局大数）"><a href="#c的处理（全局大数）" class="headerlink" title="c的处理（全局大数）"></a>c的处理（全局大数）</h4><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721200707341.png"  alt="image-20250721200707341"></p>
+<h4 id="c的处理（全局大数）"><a href="#c的处理（全局大数）" class="headerlink" title="c的处理（全局大数）"></a>c的处理（全局大数）</h4><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721200707341.png"
+                        alt="image-20250721200707341"
+                 ></p>
 <p>这是一个很大的数，考虑逐字节写入</p>
 <p>这里想把c覆盖为0x12345678，而c的地址是0x0804A02C，所以基本目标是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0x0804A02C:\x78</span><br><span class="line">0x0804A02D:\x56</span><br><span class="line">0x0804A02E:\x34</span><br><span class="line">0x0804A02F:\x12</span><br></pre></td></tr></table></figure>
@@ -686,8 +753,18 @@
 
 
 
-<h3 id="fmt-demo（格式化字符串的综合利用）"><a href="#fmt-demo（格式化字符串的综合利用）" class="headerlink" title="fmt_demo（格式化字符串的综合利用）"></a>fmt_demo（格式化字符串的综合利用）</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721203303330.png"  alt="image-20250721203303330"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721212854956.png"  alt="image-20250721212854956"></p>
+<h3 id="fmt-demo（格式化字符串的综合利用）"><a href="#fmt-demo（格式化字符串的综合利用）" class="headerlink" title="fmt_demo（格式化字符串的综合利用）"></a>fmt_demo（格式化字符串的综合利用）</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721203303330.png"
+                        alt="image-20250721203303330"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250721212854956.png"
+                        alt="image-20250721212854956"
+                 ></p>
 <p>可以先泄露libc的基址，得到system函数的地址</p>
 <p>再根据此把printf的got表存储的地址换为system函数的地址</p>
 <p>之后输入参数“&#x2F;bin&#x2F;sh”,就可以实现</p>
@@ -774,8 +851,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -966,6 +1079,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -1068,6 +1194,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -1107,8 +1262,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -1133,6 +1296,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

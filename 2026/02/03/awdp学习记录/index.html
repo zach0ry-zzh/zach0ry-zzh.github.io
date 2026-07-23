@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -270,6 +278,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -292,7 +304,12 @@
 <p>❑能够防御想要防御的攻击</p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://github.com/keystone-engine/keypatch?utm_source=chatgpt.com" >keypatch下载<i class="fas fa-external-link-alt"></i></a></p>
 <p><code>tar -czvf patch.tar.gz notekeeper patch.sh</code></p>
-<h2 id="patch实例入门"><a href="#patch实例入门" class="headerlink" title="patch实例入门"></a>patch实例入门</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260630141044043.png"  alt="image-20260630141044043"></p>
+<h2 id="patch实例入门"><a href="#patch实例入门" class="headerlink" title="patch实例入门"></a>patch实例入门</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260630141044043.png"
+                        alt="image-20260630141044043"
+                 ></p>
 <p>这个题的漏洞主要是get函数的无限制读入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">text:00000000004009CC                  call    _puts</span><br><span class="line">.text:00000000004009D1                 lea     rax, [rbp+s]</span><br><span class="line">.text:00000000004009D5                 mov     rdi, rax</span><br><span class="line">.text:00000000004009D8                 mov     eax, 0</span><br><span class="line">.text:00000000004009DD                 call    _gets</span><br><span class="line">.text:00000000004009E2                 jmp     loc_400AB4</span><br></pre></td></tr></table></figure>
 
@@ -312,7 +329,12 @@
 <p>1.有x权限</p>
 <p>2.更改之后不会影响函数正常运行</p>
 <p>一般会选取eh_frame或者eh_frame_hdr</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417154645991.png"  alt="image-20260417154645991"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417154645991.png"
+                        alt="image-20260417154645991"
+                 ></p>
 </blockquote>
 <blockquote>
 <p>“填补 NOP 指令直到下一条指令边界”</p>
@@ -332,11 +354,26 @@
 </ul>
 </blockquote>
 <p>在_eh_frame上放read函数</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260203173819783.png"  alt="image-20260203173819783"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260203173819783.png"
+                        alt="image-20260203173819783"
+                 ></p>
 <p>patch call get过去到jmp_addr</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260203173543916.png"  alt="image-20260203173543916"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260203173543916.png"
+                        alt="image-20260203173543916"
+                 ></p>
 <p>之后应用就可以了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260203174951575.png"  alt="image-20260203174951575"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260203174951575.png"
+                        alt="image-20260203174951575"
+                 ></p>
 <h2 id="基础前置"><a href="#基础前置" class="headerlink" title="基础前置"></a>基础前置</h2><h3 id="字节"><a href="#字节" class="headerlink" title="字节"></a>字节</h3><p>在 x86 指令中，<code>mov</code> 指令是一个极其通用的操作。当你写 <code>mov [rax+rdx], 0</code> 时，CPU 产生歧义：</p>
 <ul>
 <li>你是要存 1 个字节（byte）？</li>
@@ -518,23 +555,48 @@
 <h2 id="常见漏洞"><a href="#常见漏洞" class="headerlink" title="常见漏洞"></a>常见漏洞</h2><h3 id="uaf"><a href="#uaf" class="headerlink" title="uaf"></a>uaf</h3><p><strong>1.跳转到可执行段进行指针清空</strong></p>
 <p>0x15AC 前12字节改成48 C7 04 10 00 00 00 00 90 90 90 90</p>
 <p>即<code>mov qword ptr [rax+rdx], 0</code>指针清空</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/1ed80dffde76bcdf2cb189308eb7f9d6.png"  alt="	"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/9461e8517a51b7f113d52185e3f65af8.png"  alt="9461e8517a51b7f113d52185e3f65af8"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/1ed80dffde76bcdf2cb189308eb7f9d6.png"
+                        alt="	"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/9461e8517a51b7f113d52185e3f65af8.png"
+                        alt="9461e8517a51b7f113d52185e3f65af8"
+                 ></p>
 <p>这里放一个<a class="link"   target="_blank" rel="noopener" href="https://github.com/zach0ry-zzh/zach0ry-zzh.github.io/blob/main/attach/catchme_fix.pdf" >ciscncatchme的patch演示<i class="fas fa-external-link-alt"></i></a></p>
 <p><strong>2.直接重写free操作</strong></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417155011022.png"  alt="image-20260417155011022"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417155011022.png"
+                        alt="image-20260417155011022"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">; --- 第一部分：寻址与取值 (Locating the Pointer) ---</span><br><span class="line"></span><br><span class="line">mov eax, [rbp+var_14]    ; 从栈中加载用户输入的数组索引 (index) 到 eax</span><br><span class="line">cdqe                     ; 将 32 位 eax 符号扩展为 64 位 rax，为 64 位寻址做准备</span><br><span class="line">lea rdx, ds:0[rax*8]     ; 计算偏移量：index * 8 (每个指针占 8 字节)，存入 rdx</span><br><span class="line">lea rax, unk_4060        ; 加载全局指针数组的基地址到 rax</span><br><span class="line">mov rax, [rdx+rax]       ; 从数组中取出存储的内存块地址：rax = array[index]</span><br><span class="line"></span><br><span class="line">; --- 第二部分：执行释放 (Executing Free) ---</span><br><span class="line"></span><br><span class="line">mov rdi, rax             ; 将目标地址存入 rdi (x64 下第一个参数寄存器)</span><br><span class="line">call _free               ; 调用标准库函数 free(ptr) 释放堆内存</span><br><span class="line"></span><br><span class="line">; --- 第三部分：安全补丁 (Security Patch/Mitigation) ---</span><br><span class="line">; 注意：这是防止 UAF 和 Double Free 的核心操作，原题中通常缺失</span><br><span class="line"></span><br><span class="line">lea rax, unk_4060        ; 再次加载数组基地址</span><br><span class="line">mov eax, [rbp+var_14]    ; 再次获取索引</span><br><span class="line">cdqe                     ; 扩展为 64 位</span><br><span class="line">lea rdx, ds:0[rax*8]     ; 重新定位该指针在数组中的物理偏移</span><br><span class="line">mov qword ptr [rdx+rax], 0 ; 将数组中的指针清零 (ptr = NULL)，切断悬挂指针</span><br><span class="line"></span><br><span class="line">; --- 第四部分：返回与检查 (Cleanup &amp; Safety) ---</span><br><span class="line"></span><br><span class="line">lea rdi, aDone           ; 加载 &quot;done&quot; 字符串地址</span><br><span class="line">call _puts               ; 打印提示信息</span><br><span class="line">nop                      ; 指令对齐</span><br><span class="line">mov rax, [rbp+var_8]     ; 获取栈上的 Canary 值</span><br><span class="line">xor rax, fs:28h          ; 校验 Stack Canary 是否被篡改</span><br><span class="line">jz short locret_15CA     ; 如果校验通过 (结果为 0)，跳转至函数返回逻辑</span><br></pre></td></tr></table></figure>
 
 
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mov rax, qword ptr [rbp+var_4]  ; 取idx</span><br><span class="line">shl eax, 3                      ; idx 乘以 8</span><br><span class="line">lea rdx, qword ptr [0x4060]     ; 取 heap_list 的地址</span><br><span class="line">add rdx, rax                    ; 计算索引的地址</span><br><span class="line">push rdx                        ; 将堆指针 压到stack 上</span><br><span class="line">mov rdi,[rdx]                   ; 取heap地址</span><br><span class="line">call _free                      ; free heap ;ret 后 rdi 寄存器是空的</span><br><span class="line">pop rdx                         ; 取出指向heap的指针</span><br><span class="line">mov [rdx], rdi                  ; 清空指针的内容</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417155046540.png"  alt="image-20260417155046540"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417155046540.png"
+                        alt="image-20260417155046540"
+                 ></p>
 <h3 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h3><p>strcpy会把最后的&#x2F;0也收进去造成of by null</p>
 <p>把strcpy改成memcpy,按字节收入</p>
 <p>strcpy(dest, src);</p>
 <p>memcpy(dest, src, 3);</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417153310770.png"  alt="image-20260417153310770"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417153310770.png"
+                        alt="image-20260417153310770"
+                 ></p>
 <p>空间不足，让它到其它地方</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">patch_stub:</span><br><span class="line">    lea     rcx, [rbp+s]#换一个寄存器</span><br><span class="line">    mov     rax, [rbp+dest]</span><br><span class="line">    mov     rdx, [rbp+size]#把size放进去</span><br><span class="line">    mov     rsi, rcx</span><br><span class="line">    mov     rdi, rax</span><br><span class="line">    call    memcpy</span><br><span class="line">    jmp     return_addr</span><br></pre></td></tr></table></figure>
 
@@ -547,13 +609,33 @@
 <p><strong>方法二</strong></p>
 <p><strong>给printf函数添加参数</strong></p>
 <p>首先需要在.eh_frame写入参数%s</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314135953219.png"><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250314135953219.png"  alt="image-20250314135953219"></a></p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314135953219.png"><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250314135953219.png"
+                        alt="image-20250314135953219"
+                 ></a></p>
 <p>然后改变printf参数</p>
 <p><strong>改变前</strong></p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314140046965.png"><img   src="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314140046965.png"  alt="image-20250314140046965"></a></p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314140046965.png"><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314140046965.png"
+                        alt="image-20250314140046965"
+                 ></a></p>
 <p><strong>改变后</strong></p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314140146839.png"><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250314140146839.png"  alt="image-20250314140146839"></a></p>
-<h3 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417165929854.png"  alt="image-20260417165929854"></p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/p0ach1l/Picture/main/test/image-20250314140146839.png"><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250314140146839.png"
+                        alt="image-20250314140146839"
+                 ></a></p>
+<h3 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417165929854.png"
+                        alt="image-20260417165929854"
+                 ></p>
 <p>n0x100是unsorted int，在malloc的时候会转化为int,若输入是一个负数会转为非常大的数</p>
 <p>所以，漏洞是由于没有检查输入的size有负数的情况造成的。完成修补</p>
 <p>有两个思路：</p>
@@ -656,7 +738,12 @@
 </tr>
 </tbody></table>
 <p>把int改成unsorted int</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417172716254.png"  alt="image-20260417172716254"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260417172716254.png"
+                        alt="image-20260417172716254"
+                 ></p>
 <h2 id="通防"><a href="#通防" class="headerlink" title="通防"></a>通防</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/TTY-flag/evilPatcher#/" >沙箱通防<i class="fas fa-external-link-alt"></i></a></p>
 <p>把文件放入该目录下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 evilPatcher.py ./文件名 sandboxs/对应的asm脚本名</span><br></pre></td></tr></table></figure>
@@ -693,8 +780,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -885,6 +1008,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -987,6 +1123,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -1026,8 +1191,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -1052,6 +1225,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

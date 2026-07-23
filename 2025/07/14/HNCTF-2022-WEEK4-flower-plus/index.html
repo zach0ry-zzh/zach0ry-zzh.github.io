@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +281,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -288,7 +300,12 @@
 
                     
                          <p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3107" >链接<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="花指令分析"><a href="#花指令分析" class="headerlink" title="花指令分析"></a>花指令分析</h2><p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714095208126.png"  alt="image-20250714095208126"></p>
+<h2 id="花指令分析"><a href="#花指令分析" class="headerlink" title="花指令分析"></a>花指令分析</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714095208126.png"
+                        alt="image-20250714095208126"
+                 ></p>
 <p>发现花指令</p>
 <p><strong><code>db 0C7h</code> 的“垃圾”作用：</strong> <code>0x4012A6</code> 处的 <code>db 0C7h</code> 是一个数据字节。它被 <code>jnz</code> 指令跳转到，但它本身不是一个有意义的执行路径。它的存在是为了干扰反汇编器的线性分析，使其认为这里存在一个实际的代码分支。反汇编器可能会将 <code>0C7h</code> 解码为 <code>MOV EDI, EBP</code> (如果加上前缀的话)，或者只是一个数据字节，无论哪种，都与正常逻辑不符。</p>
 <p>为了不影响汇编器的分析</p>
@@ -302,7 +319,12 @@
 </li>
 </ol>
 <p>第二个花指令</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714090620492.png"  alt="image-20250714090620492"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714090620492.png"
+                        alt="image-20250714090620492"
+                 ></p>
 <ol>
 <li><strong>执行 <code>0x401358: call loc_40135E</code>:</strong><ul>
 <li><code>call</code> 指令本身占用 5 个字节 (<code>E8 01 00 00 00</code>)。</li>
@@ -335,7 +357,12 @@
 <p>这意味着当 <code>retn</code> 执行时，程序会直接从 <code>0x401365</code> 开始执行，</p>
 <p>所以，<code>add dword ptr [esp], 8</code> 的作用就是<strong>人为地调整了 <code>retn</code> 的目标地址，使其跳过了 <code>0x40135D</code> 到 <code>0x401364</code>（包含 <code>0x401364</code>）这段区域，直接跳转到 <code>0x401365</code> 去执行。</strong> 这就是这种花指令用于混淆控制流的一种常见手法。</p>
 <p>所以NOP的范围包括0x401364</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714090555001.png"  alt="image-20250714090555001"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714090555001.png"
+                        alt="image-20250714090555001"
+                 ></p>
 <p>为什么是花指令</p>
 <p>正常情况下，<code>call</code> 指令会直接跳转到被调用函数的<strong>入口点</strong>。这个入口点应该是一条合法的可执行指令。</p>
 <p>但是在这里，当 <code>call</code> 指令跳转到 <code>0x40135E</code> 时，它遇到的第一个字节是 <code>db 36h</code>。</p>
@@ -355,18 +382,48 @@
 <h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">stae=0x00401006</span><br><span class="line">end=0x00401402 </span><br><span class="line">for i in range(stae, end+1):</span><br><span class="line">   if get_wide_dword(i)== 0x01740275:</span><br><span class="line">       patch_dword(i,0x90909090)</span><br><span class="line">       patch_dword(i-4,0x90909090)</span><br><span class="line">       patch_word(i+4,0x9090)</span><br><span class="line">       patch_word(i-5,0x90)</span><br><span class="line">   if get_wide_dword(i)== 0x000001E8:</span><br><span class="line">        if get_wide_dword(i+4)== 0x8336E800:</span><br><span class="line">            patch_dword(i,0x90909090)</span><br><span class="line">            patch_dword(i+4,0x90909090)</span><br><span class="line">            patch_dword(i+8,0x90909090)</span><br><span class="line">            patch_byte(i+12,0x90)</span><br></pre></td></tr></table></figure>
 
 <p>然后选中函数头U解构</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714104214872.png"  alt="c"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714104214872.png"
+                        alt="c"
+                 ></p>
 <p>C重构一下就好</p>
 <p>就可以看待main函数了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714104404831.png"  alt="image-20250714104404831"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714104404831.png"
+                        alt="image-20250714104404831"
+                 ></p>
 <p>在这个函数中看到RC4的标志</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714104602767.png"  alt="image-20250714104602767"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714104602767.png"
+                        alt="image-20250714104602767"
+                 ></p>
 <p>之后经过一个异或</p>
 <p>然后进入sub_40128F进行核验</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714105749583.png"  alt="image-20250714105749583"></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714105802146.png" ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714105749583.png"
+                        alt="image-20250714105749583"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714105802146.png"
+                       
+                 ></p>
 <p>这是其加密后的值</p>
-<p>右键<img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714110528278.png"  alt="image-20250714110528278"></p>
+<p>右键<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20250714110528278.png"
+                        alt="image-20250714110528278"
+                 ></p>
 <p>提取数据</p>
 <p>异或脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">a=[0x0000004D, 0xFFFFFFE6, 0x00000049, 0xFFFFFF95, 0x00000003, 0x0000002D, 0x0000002B, 0xFFFFFFBA, </span><br><span class="line">    0xFFFFFFEA, 0x0000006D, 0xFFFFFFFF, 0x00000059, 0x00000070, 0x00000000, 0x0000001B, 0xFFFFFFA9, </span><br><span class="line">    0x0000002C, 0xFFFFFFB0, 0x00000032, 0xFFFFFF98, 0x0000006F, 0xFFFFFF8C, 0x00000056, 0xFFFFFFA2, </span><br><span class="line">    0x0000004C, 0x00000079, 0x0000007F]</span><br><span class="line">for i in range(len(a)-1,-1,-1):</span><br><span class="line">    a[i]^=a[(i+1)%len(a)]</span><br><span class="line">    print(a[i], end=&#x27; &#x27;)</span><br><span class="line">decimal_numbers =a</span><br><span class="line"></span><br><span class="line">hex_output = []</span><br><span class="line">for num in decimal_numbers:</span><br><span class="line"></span><br><span class="line">    unsigned_32bit_num = num &amp; 0xFFFFFFFF</span><br><span class="line"></span><br><span class="line">    hex_str = hex(unsigned_32bit_num)[2:].upper().zfill(8)</span><br><span class="line">    hex_output.append(&quot;0x&quot; + hex_str)</span><br><span class="line"></span><br><span class="line">for i in range(0, len(hex_output), 4):</span><br><span class="line">    print(&quot;, &quot;.join(hex_output[i:i+4]))</span><br><span class="line">    #十进制50 75 7 4294967205 4294967283 127 16 4294967176 4294967226 10 38 4294967183 4294967188 4294967188 4294967268 4294967229 66 47 4294967237 127 84 121 122 4294967279 4294967206 64 13</span><br><span class="line">    #十六进制0x0000000D, 0x00000040, 0xFFFFFFA6, 0xFFFFFFEF</span><br><span class="line">0x0000007A, 0x00000079, 0x00000054, 0x0000007F</span><br><span class="line">0xFFFFFFC5, 0x0000002F, 0x00000042, 0xFFFFFFBD</span><br><span class="line">0xFFFFFFE4, 0xFFFFFF94, 0xFFFFFF94, 0xFFFFFF8F</span><br><span class="line">0x00000026, 0x0000000A, 0xFFFFFFBA, 0xFFFFFF88</span><br><span class="line">0x00000010, 0x0000007F, 0xFFFFFFF3, 0xFFFFFFA5</span><br><span class="line">0x00000007, 0x0000004B, 0x00000032</span><br></pre></td></tr></table></figure>
@@ -415,8 +472,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -607,6 +700,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -709,6 +815,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -748,8 +883,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -774,6 +917,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

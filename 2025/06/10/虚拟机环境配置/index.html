@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -270,6 +278,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -291,16 +303,36 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh#终端美化</span><br></pre></td></tr></table></figure>
 
 <h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p><a class="link"   target="_blank" rel="noopener" href="https://yumi1.top/linux-proxy/index.html" >教程<i class="fas fa-external-link-alt"></i></a></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030012159681.png"  alt="image-20251030012159681"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030012159681.png"
+                        alt="image-20251030012159681"
+                 ></p>
 <p>主机cmd输入 <code>ipconfig</code> 找到WLAN适配器的IPv4地址 并复制</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030012404060.png"  alt="image-20251030012404060"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030012404060.png"
+                        alt="image-20251030012404060"
+                 ></p>
 <p>小猫clash for windows</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030012604541.png"  alt="image-20251030012604541"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030012604541.png"
+                        alt="image-20251030012604541"
+                 ></p>
 <p>打开 allow-lan 允许局域网<br>clash配置用tun模式和系统代理都可以</p>
 <p>保持随机混合端口为关闭状态(7890左边那个)</p>
 <p>同时记住端口号,我这里是7890</p>
 <p>虚拟机配置：打开系统设置 找到网络-&gt;proxy-&gt;manual</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030181827459.png"  alt="image-20251030181827459"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030181827459.png"
+                        alt="image-20251030181827459"
+                 ></p>
 <p>之后保存就可以了</p>
 <h2 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a><strong>vim</strong></h3><p><strong>文本编辑工具</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
@@ -315,13 +347,33 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x install.sh#赋执行权限</span><br><span class="line">./install.sh#运行</span><br></pre></td></tr></table></figure>
 
 <h3 id="常用工具解释"><a href="#常用工具解释" class="headerlink" title="常用工具解释"></a>常用工具解释</h3><h4 id="git"><a href="#git" class="headerlink" title="git"></a><strong>git</strong></h4><p><strong>用于在github上拽工具</strong></p>
-<p>校验<img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030015107450.png"  alt="image-20251030015107450"></p>
+<p>校验<img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030015107450.png"
+                        alt="image-20251030015107450"
+                 ></p>
 <h4 id="gcc-编译器"><a href="#gcc-编译器" class="headerlink" title="gcc 编译器"></a><strong>gcc 编译器</strong></h4><p><strong>自己写一些demo然后编译为elf文件去调试</strong></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030015330855.png"  alt="image-20251030015330855"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030015330855.png"
+                        alt="image-20251030015330855"
+                 ></p>
 <h4 id="python3-pip"><a href="#python3-pip" class="headerlink" title="python3-pip"></a><strong>python3-pip</strong></h4><p><strong>安装 Python 的包管理工具 pip，从python官方库中下载工具</strong></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030015828084.png"  alt="image-20251030015828084"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030015828084.png"
+                        alt="image-20251030015828084"
+                 ></p>
 <h4 id="python-is-python3"><a href="#python-is-python3" class="headerlink" title="python-is-python3"></a><strong>python-is-python3</strong></h4><p><strong>把python默认python3</strong></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030020201790.png"  alt="image-20251030020201790"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030020201790.png"
+                        alt="image-20251030020201790"
+                 ></p>
 <h4 id="qemu"><a href="#qemu" class="headerlink" title="qemu"></a>qemu</h4><p> 它能让你在自己的电脑上“假装”成另一种 CPU（比如 ARM、MIPS、RISC-V）去运行程序。</p>
 <p>在 CTF &#x2F; PWN 题目中，很多程序不是 x86_64 的，而是：</p>
 <ul>
@@ -363,11 +415,21 @@
 <td>启动一个虚拟机（类似 VirtualBox）</td>
 </tr>
 </tbody></table>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030020749567.png"  alt="image-20251030020749567"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030020749567.png"
+                        alt="image-20251030020749567"
+                 ></p>
 <h4 id="gdb-multiarch"><a href="#gdb-multiarch" class="headerlink" title="gdb-multiarch"></a>gdb-multiarch</h4><p>你在 x86_64 主机上要调试 ARM&#x2F;MIPS&#x2F;RISCV 二进制时，直接使用 <code>gdb-multiarch</code> 就可：它能识别并切换架构，支持 remote target。</p>
 <p>与 qemu（qemu-user &#x2F; qemu-system）的 gdb remote 调试配合使用非常方便（常见场景：<code>qemu-arm -g &lt;port&gt; ./vuln</code> + <code>gdb-multiarch ./vuln</code> -&gt; <code>target remote :&lt;port&gt;</code>）。</p>
 <p>在 CTF 中处理异构题目（嵌入式、IoT）几乎必备。</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030021218358.png"  alt="image-20251030021218358"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030021218358.png"
+                        alt="image-20251030021218358"
+                 ></p>
 <h2 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h2><p>建议要下载的工具文件都放在一个文件夹下,方便管理</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir tools</span><br><span class="line">cd tools</span><br></pre></td></tr></table></figure>
 
@@ -387,7 +449,12 @@
 
 <p>用 <strong>Python 2</strong>&#x2F;3 的 pip，把 pwntools 安装或升级到系统 Python2&#x2F;3 的 site-packages（因为有 <code>sudo</code>，是全局安装）。</p>
 <p>校验</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030180306226.png"  alt="image-20251030180306226"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030180306226.png"
+                        alt="image-20251030180306226"
+                 ></p>
 <h3 id="pwndbg"><a href="#pwndbg" class="headerlink" title="pwndbg"></a>pwndbg</h3><p><strong>pwndbg</strong> 是一个为 GDB 写的插件 &#x2F; 扩展，目标是把 GDB 变成一个更适合漏洞利用（pwn）和二进制逆向的交互式调试器。它的主要作用和优点：</p>
 <ul>
 <li>自动美化 <code>context</code>：运行时自动显示寄存器、栈、反汇编、堆&#x2F;映射等信息（比原生 GDB 更清晰）。</li>
@@ -405,9 +472,19 @@
 <p><strong>方法2:</strong></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://github.com/pwndbg/pwndbg/releases" >网址<i class="fas fa-external-link-alt"></i></a></p>
 <p><a href="%E3%80%90pwndbg%E7%AE%80%E6%98%93%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E3%80%91https://www.bilibili.com/video/BV1XDKyzmEmq?vd_source=9ae873ef6c4569def611fe99ede7cf0b">教学视频</a></p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030182802623.png"  alt="image-20251030182802623"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030182802623.png"
+                        alt="image-20251030182802623"
+                 ></p>
 <p>把下好的deb文件拖入tools中(建议建一个共享文件夹把文件传入虚拟机中)</p>
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030204616771.png"  alt="image-20251030204616771"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030204616771.png"
+                        alt="image-20251030204616771"
+                 ></p>
 <blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;ln -s /mnt/hgfs/myDesktop ~/Desktop/共享桌面</span><br></pre></td></tr></table></figure>
 
@@ -426,7 +503,12 @@
 <h3 id="Ropgadget"><a href="#Ropgadget" class="headerlink" title="Ropgadget"></a>Ropgadget</h3><p>和ropper相似,都是查找</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H python3 -m pip install ROPgadget</span><br></pre></td></tr></table></figure>
 
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030210635460.png"  alt="image-20251030210635460"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030210635460.png"
+                        alt="image-20251030210635460"
+                 ></p>
 <h3 id="one-gadget"><a href="#one-gadget" class="headerlink" title="one_gadget"></a>one_gadget</h3><p><strong>one_gadget</strong> 是一个专门用于在 glibc（libc）中查找能够直接执行 <code>execve(&quot;/bin/sh&quot;, NULL, NULL)</code> 的代码片段（即 “gadget”）的工具。这些 gadget 可以让你在控制程序执行流后，无需构造复杂的 ROP 链，直接获取 shell。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install one_gadget</span><br></pre></td></tr></table></figure>
 
@@ -468,7 +550,12 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123; &quot;keys&quot;: [&quot;f5&quot;], &quot;command&quot;: &quot;build&quot; &#125;</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img   src="/pwn%E5%85%A5%E9%97%A8/image-20251030212608899.png"  alt="image-20251030212608899"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/pwn%E5%85%A5%E9%97%A8/image-20251030212608899.png"
+                        alt="image-20251030212608899"
+                 ></p>
 <ol>
 <li>保存文件（Ctrl+S）。</li>
 <li>重启 Sublime Text。</li>
@@ -506,8 +593,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -698,6 +821,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -800,6 +936,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -839,8 +1004,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -865,6 +1038,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 

@@ -35,7 +35,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":false,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
@@ -45,6 +45,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -119,9 +121,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -239,7 +247,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Thu Jul 23 2026 12:21:08 GMT+0800">2026-07-23 12:21:08</span>
+                    <span class="datetime" data-updated="Thu Jul 23 2026 16:07:24 GMT+0800">2026-07-23 16:07:24</span>
                 </span>
             
         
@@ -270,6 +278,10 @@
         
         
         
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
     </div>
 
     
@@ -289,9 +301,19 @@
 <p>漏洞文件：&#x2F;bin&#x2F;boa</p>
 <p>漏洞函数：start_wps()</p>
 <p>函数地址：0x45aa28</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722205248908.png"  alt="image-20260722205248908"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722205248908.png"
+                        alt="image-20260722205248908"
+                 ></p>
 <p>该函数的调用方式不太一样</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723114533289.png"  alt="image-20260723114533289"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723114533289.png"
+                        alt="image-20260723114533289"
+                 ></p>
 <p>HTTP请求-&gt;获取pin参数-&gt;start_wps()-&gt;sprintf拼接系统命令-&gt;system执行</p>
 <p>在函数中，程序首先通过：v2 &#x3D; *(_DWORD *)(a1 + 268)获取 HTTP 请求中的用户输入参数。</p>
 <p>然后通过：v3 &#x3D; strstr(v2,”pin&#x3D;”);查找用户提交的 PIN 参数。</p>
@@ -301,19 +323,44 @@
 <p>由于用户输入未经过任何过滤，可以通过插入 Shell 特殊字符控制最终执行命令。</p>
 <h2 id="环境模拟"><a href="#环境模拟" class="headerlink" title="环境模拟"></a>环境模拟</h2><p>解包之后首先尝试运行</p>
 <p>看文件架构</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102257932.png"  alt="image-20260723102257932"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102257932.png"
+                        alt="image-20260723102257932"
+                 ></p>
 <p>拷贝合适的调试工具</p>
 <p><code>cp $(which qemu-mips-static ) .</code></p>
 <p>运行boa文件发现初始化错误</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102809099.png"  alt="image-20260723102809099"> </p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102809099.png"
+                        alt="image-20260723102809099"
+                 > </p>
 <p>直接去ida查找报错字符<code>Initialize AP MIB failed!</code></p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722195130210.png"  alt="image-20260722195130210"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722195130210.png"
+                        alt="image-20260722195130210"
+                 ></p>
 <p>所以这里需要apmib_init返回true才能让函数继续执行</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102951467.png"  alt="image-20260723102951467"> </p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102951467.png"
+                        alt="image-20260723102951467"
+                 > </p>
 <p>apmib_init()不在 boa 主程序里面，它来自外部动态库(.so)</p>
 <p>去找它的函数主体，在&#x2F;lib&#x2F;apmib.so文件中</p>
 <p>用ida打开</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/PixPin_2026-07-22_19-58-10.png"  alt="PixPin_2026-07-22_19-58-10"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/PixPin_2026-07-22_19-58-10.png"
+                        alt="PixPin_2026-07-22_19-58-10"
+                 ></p>
 <p>分析可知apmib_init()的作用：</p>
 <p>初始化路由器配置数据库（MIB），从Flash读取硬件配置、软件配置、用户配置，然后建立内存中的配置结构，供 boa 后面的 Web 页面调用。</p>
 <p>所以可以直接修改apmib_init函数执行函数，让它直接返回1</p>
@@ -325,7 +372,12 @@
 <p>之后重新运行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ \</span><br><span class="line">./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=&quot;/apmib-ld.so&quot; \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723104810257.png"  alt="image-20260723104810257"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723104810257.png"
+                        alt="image-20260723104810257"
+                 ></p>
 <p>qemu: uncaught target signal 11 (Segmentation fault) - core dumped</p>
 <p>ida调试去寻找报错位置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ \</span><br><span class="line">./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=&quot;/apmib-ld.so&quot; \</span><br><span class="line">-g 1234 \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
@@ -334,14 +386,34 @@
 
 <p>配置一下ida的远端调试信息</p>
 <p>hostname设置为虚拟机的ip,port为你起的那个端口</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722200257340.png"  alt="image-20260722200257340"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722200257340.png"
+                        alt="image-20260722200257340"
+                 ></p>
 <p>在apmib_get的跳转报错了</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105111125.png"  alt="image-20260723105111125"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105111125.png"
+                        alt="image-20260723105111125"
+                 ></p>
 <p>真正触发程序崩溃的是 0x43B1A4 处的指令</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202457645.png"  alt="image-20260722202457645"> </p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202457645.png"
+                        alt="image-20260722202457645"
+                 > </p>
 <p>查看 apmib.so 中apmib_get()函数的汇编代码</p>
 <p>int __fastcall apmib_get(int n500, unsigned __int8 *p_boot_ver)</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202743083.png"  alt="image-20260722202743083"> </p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202743083.png"
+                        alt="image-20260722202743083"
+                 > </p>
 <p>这个函数实际上是从路由器的配置数据库（MIB）里，根据编号 n500，把对应配置值读取出来，复制到调用者提供的缓冲区 p_boot_ver</p>
 <p>apmib_get(配置项编号, 存放结果的地址)</p>
 <p>分析调用的实际情况知道每个pid对应的是什么 </p>
@@ -352,17 +424,42 @@
 <p><code>mips-linux-gnu-gcc ./apmib.c -o apmib-ld.so -fPIC -shared</code></p>
 <p>然后就可以运行了</p>
 <p><code> sudo chroot ./ ./qemu-mips-static -E LD_PRELOAD=&quot;/apmib-ld.so&quot;  ./bin/boa</code></p>
-<p> <img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105150452.png"  alt="image-20260723105150452"></p>
+<p> <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105150452.png"
+                        alt="image-20260723105150452"
+                 ></p>
 <p>但是跳转的页面是错的</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105220920.png"  alt="image-20260723105220920"> </p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105220920.png"
+                        alt="image-20260723105220920"
+                 > </p>
 <p>需要改动 web 目录下的 first.asp 文件</p>
 <p>将代码 self.location.href&#x3D;”Basic&#x2F;Wizard_Easy_LangSelect.asp”;注释掉，</p>
 <p>然后将self.location.href&#x3D;”Basic&#x2F;Wizard_Easy_Welcome.asp”;复制到else 代码块</p>
 <p>即</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105452385.png"  alt="image-20260723105452385"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105452385.png"
+                        alt="image-20260723105452385"
+                 ></p>
 <p>之后就可以成功访问</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723110100491.png"  alt="image-20260723110100491"> 接着对start_wps函数进行详细分析</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723120443884.png"  alt="image-20260723120443884"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723110100491.png"
+                        alt="image-20260723110100491"
+                 > 接着对start_wps函数进行详细分析</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723120443884.png"
+                        alt="image-20260723120443884"
+                 ></p>
 <p>要想执行到system命令注入入口</p>
 <p>程序会对var&#x2F;run&#x2F;wscd-wlan0.pid和&#x2F;var&#x2F;tmp&#x2F;wscd_status两个文件进行校验，要先创建出这两个文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p var/run</span><br><span class="line">mkdir -p var/tmp</span><br><span class="line">touch var/run/wscd-wlan0.pid</span><br><span class="line">touch var/tmp/wscd_status</span><br></pre></td></tr></table></figure>
@@ -382,7 +479,12 @@
 <p>在进入system函数之前下断点，方便观察system函数的参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b *0x45ab80</span><br></pre></td></tr></table></figure>
 
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121054106.png"  alt="image-20260723121054106"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121054106.png"
+                        alt="image-20260723121054106"
+                 ></p>
 <p>之后按<code>c</code>让它继续运行，期间他会停住等待输入</p>
 <p>开另一个窗口发送参数（这里以echo&gt;&#x2F;var&#x2F;run&#x2F;cnvd_test为例去测试执行）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --path-as-is \</span><br><span class="line">&#x27;http://127.0.0.1/Basic/wifisc_add_sta.asp?pin=12345678;echo&gt;/var/run/cnvd_test&#x27;</span><br></pre></td></tr></table></figure>
@@ -390,9 +492,19 @@
 
 
 <p>回到gdb调试窗口看参数</p>
-<p><img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121326353.png"  alt="image-20260723121326353"></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121326353.png"
+                        alt="image-20260723121326353"
+                 ></p>
 <p>看到我们伪造的命令已注入，C让它执行命令</p>
-<p> <img   src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121456508.png"  alt="image-20260723121456508"></p>
+<p> <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121456508.png"
+                        alt="image-20260723121456508"
+                 ></p>
 <p>命令注入漏洞实现 </p>
 
                     
@@ -414,8 +526,44 @@
                     </div>
                     <div>
                         
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
                     </div>
                 </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
 
                 
 
@@ -590,6 +738,19 @@
     
 
     
+        <div class="count-info info-item">
+            
+
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
 
     
 </footer>
@@ -692,6 +853,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -731,8 +921,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
@@ -757,6 +955,10 @@
         
 
         <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
         
     
 
