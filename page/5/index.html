@@ -213,6 +213,81 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
+                        <a href="/2025/07/26/pwn49/">
+                            pwn49
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            题目
+
+
+看出是静态编译，考虑用mprotect来修改它的权限
+
+ctrl+s查看bss段，找要修改的范围
+
+因为mprotect的地址选择的限制条件
+我们把页面边界定为0x80DA000
+接着就可以构造payload了
+先调用mprotect函数修...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat Jul 26 2025 16:00:42 GMT+0800"
+                >2025-07-26 16:00:42</span>
+            </span>
+        
+
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mprotect/">mprotect</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91/">静态编译</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
                         <a href="/2025/07/23/%E6%A0%88%E6%BA%A2%E5%87%BA%E8%BF%9B%E9%98%B6/">
                             栈溢出进阶
                         </a>
@@ -815,66 +890,6 @@ fun(a,b)调用过程入栈
                 </div>
             </li>
         
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/03/20/PWN%E5%85%A5%E9%97%A8/">
-                            pwn右键入门
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            PWN入门CTF（Capture The Flag，夺旗赛）中的 “pwn”（发音类似 “pone”）是 “own” 这个词的一种黑客俚语写法，通常表示**“完全控制”、“取得支配权”或“击败”**
-起源于早期的网络游尤其是《魔兽争霸》，当时人们打字...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Mar 20 2025 14:53:58 GMT+0800"
-                >2025-03-20 14:53:58</span>
-            </span>
-        
-
-        
-
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/03/20/PWN%E5%85%A5%E9%97%A8/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
     </ul>
     
     <div class="paginator border-box flex-center">
@@ -894,18 +909,18 @@ fun(a,b)调用过程入栈
                    type="number"
                    value="5"
                    min="1"
-                   max="5"
-            /><span class="delimiter base-style">/</span><span class="base-style">5</span>
+                   max="6"
+            /><span class="delimiter base-style">/</span><span class="base-style">6</span>
         </div>
 
 
-        <div class="border-box paginator-btn">
+        <div class="border-box paginator-btn allowed">
             <a class="border-box"
-               href="/"
+               href="/page/6/"
             ><i class="fa-solid fa-chevron-right"></i></a>
         </div>
 
-        <div class="border-box last-page paginator-btn not-allow">
+        <div class="border-box last-page paginator-btn allowed">
             <a class="border-box"><i class="fa-solid fa-angle-double-right"></i></a>
         </div>
     </div>

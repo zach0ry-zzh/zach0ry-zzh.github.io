@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Zach0ry">
+    
+    <title>
+        
+            wifi渗透入门 |
+        
+        Zach0ry&#39;s home
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/123.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/123.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zach0ry&#39;s home
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        wifi渗透入门
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/av.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Zach0ry</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-08-20 17:05:27</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Wed Sep 09 2026 18:39:48 GMT+0800">2026-09-09 18:39:48</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E8%BD%A6%E8%81%94%E7%BD%91/">车联网</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">            云端服务器 / 手机APP</span><br><span class="line">                    ↑</span><br><span class="line">                    |</span><br><span class="line">              4G/5G网络</span><br><span class="line">                    |</span><br><span class="line">                 TBOX</span><br><span class="line">                    |</span><br><span class="line">          CAN / Ethernet 总线</span><br><span class="line"></span><br><span class="line">                    |</span><br><span class="line">     --------------------------------</span><br><span class="line"></span><br><span class="line">    |              |              |</span><br><span class="line">   ECU            BCM           车机</span><br><span class="line">发动机/电池      车身控制       娱乐系统</span><br></pre></td></tr></table></figure>
+
+<p>车机是一个硬件设备；IVI（In-Vehicle Infotainment）是车机里面负责信息娱乐的软件&#x2F;系统。</p>
+<p>TBOX：车载远程通信终端，车的联网盒子，负责车辆 ↔ 云端 ↔ 手机APP</p>
+<p>负责4G&#x2F;5G，通信GPS定位，远程控车，上报车辆状态，接收云端命令</p>
+<h2 id="can"><a href="#can" class="headerlink" title="can"></a>can</h2><p>CAN：ECU平时交换状态和控制消息。</p>
+<p>因为CAN设计年代比较早，目标是可靠通信，没有身份验证，</p>
+<p>can报文 广播</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123#1122334455667788</span><br></pre></td></tr></table></figure>
+
+<p>如果一个恶意设备接入CAN，它也可能监听所有消息，或者伪装成车门ECU发送同样的报文。</p>
+<p>ID越小优先级越高</p>
+<p><strong>监测实操</strong></p>
+<p>接好 USB-CAN 后，Kali 里应该能看到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br></pre></td></tr></table></figure>
+
+<p>里面多出：can0</p>
+<p>修改can参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ip link set can0 down</span><br><span class="line">sudo ip link set can0 type can bitrate 500000 #listen-only on</span><br><span class="line">sudo ip link set can0 up</span><br></pre></td></tr></table></figure>
+
+<p>然后抓：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">candump -tz can0</span><br><span class="line">timeout 20s candump -tz can0</span><br></pre></td></tr></table></figure>
+
+<p>如果有数据，会看到类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">can0  123   [8]  11 22 33 44 55 66 77 88</span><br><span class="line">can0  188   [8]  00 00 01 00 00 00 00 00</span><br><span class="line">can0  201   [8]  10 20 00 00 00 00 00 00</span><br></pre></td></tr></table></figure>
+
+<p><strong>伪造发包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cansend can0 188#0000000000000000</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DoIP"><a href="#DoIP" class="headerlink" title="DoIP"></a>DoIP</h2><p>DoIP &#x3D; 车里的“网线版诊断接口”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">手机热点：192.168.43.1</span><br><span class="line">车机：192.168.43.20</span><br><span class="line">电脑：192.168.43.30</span><br></pre></td></tr></table></figure>
+
+<p>这时电脑可以试着扫：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.43.0/24</span><br><span class="line">nmap -sV 192.168.43.20</span><br></pre></td></tr></table></figure>
+
+<p>如果扫到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13400/tcp open</span><br></pre></td></tr></table></figure>
+
+<p>那可以怀疑：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">车机或网关暴露了 DoIP</span><br></pre></td></tr></table></figure>
+
+<p>但现实里，这种通过手机热点直接扫到 DoIP 的概率不高，因为手机热点更多是给车机上网，不一定能通到车辆诊断网络。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">车机       192.168.0.10</span><br><span class="line">TBOX       192.168.0.20</span><br><span class="line">网关       192.168.0.1</span><br><span class="line">ADAS       192.168.0.30</span><br><span class="line"></span><br><span class="line">车门 ECU   没有 IP，走 CAN</span><br><span class="line">发动机 ECU 没有 IP，走 CAN</span><br><span class="line">刹车 ECU   没有 IP，走 CAN</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="adb"><a href="#adb" class="headerlink" title="adb"></a>adb</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722130600648.png"
+                        alt="image-20260722130600648"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722130609203.png"
+                        alt="image-20260722130609203"
+                 ></p>
+<p>ADB（Android Debug Bridge）进入的是<strong>Android系统里的一个调试入口</strong></p>
+<p>根据实际情况，要先打开车的<strong>adb调试模式</strong></p>
+<p>在车机中打开开发者选项：<br><code>设置 → 关于设备 → 连续点击版本号 7 次</code></p>
+<p>进入 <code>开发者选项</code>，开启<code>USB 调试</code></p>
+<h3 id="有线连接"><a href="#有线连接" class="headerlink" title="有线连接"></a><strong>有线连接</strong></h3><p>用支持数据传输的 USB 线连接电脑，优先尝试车机标注为 <code>USB/OTG/调试</code> 的接口。</p>
+<p>电脑安装 Android SDK Platform-Tools，然后执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb kill-server</span><br><span class="line">adb start-server</span><br><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<p>车机屏幕出现 RSA 授权提示时选择“允许”。看到类似下面的结果即连接成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxxxx    device</span><br></pre></td></tr></table></figure>
+
+<p>如果显示 <code>unauthorized</code>，解锁车机并确认授权；如果没有设备，检查数据线、驱动、USB 接口及车机是否仅支持 Android Auto。部分车机不开放 USB ADB，只能在同一局域网下通过网络 ADB 连接：</p>
+<h3 id="TCP无线调试"><a href="#TCP无线调试" class="headerlink" title="TCP无线调试"></a><strong>TCP无线调试</strong></h3><p>先查找IP</p>
+<blockquote>
+<ol>
+<li>车机设置中查看<br> 设置 → WLAN&#x2F;Wi-Fi → 当前连接的热点 → 详细信息，查看 IP 地址。</li>
+<li>手机热点查看已连接设备<br> 打开手机热点页面，查看已连接设备列表，有些手机会直接显示车机 IP。</li>
+<li>路由器&#x2F;热点管理页面查看<br> 查看 DHCP 客户端列表，找到车机名称或 MAC 地址。</li>
+<li>电脑查看局域网设备<br> Windows 执行：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;ipconfig</span><br><span class="line">&gt;arp -a</span><br></pre></td></tr></table></figure>
+
+<p>找到与电脑处于同一网段的未知设备 IP，再尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;adb connect 192.168.43.25:5555</span><br><span class="line">&gt;adb devices</span><br></pre></td></tr></table></figure>
+
+<p>前提是车机已启用 <strong>网络 ADB&#x2F;TCP 5555</strong>。如果连接失败，可能是车机未开启无线调试、热点启用了客户端隔离，或车机使用的端口不是 <code>5555</code>。</p>
+</blockquote>
+<p>同一个局域网，常见端口是5555</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 5555 192.168.43.9/24</span><br></pre></td></tr></table></figure>
+
+<p>之后执行连接操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb connect 192.168.1.23:5555</span><br><span class="line">adb devices -l</span><br><span class="line">adb shell</span><br></pre></td></tr></table></figure>
+
+<p>出现ABC123    device代表成功连接</p>
+<p>之后调试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">id#查看权限，</span><br></pre></td></tr></table></figure>
+
+<p>普通ADB权限一般是：uid&#x3D;2000(shell)</p>
+<p>高权限调试版本可能是：uid&#x3D;0(root)</p>
+<p>若显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.23:5555    unauthorized</span><br></pre></td></tr></table></figure>
+
+<p>需要在车机上确认 RSA 授权弹窗：是否允许此计算机进行USB调试？</p>
+<p>确认后再次执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">adb shell</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="新型无线调试"><a href="#新型无线调试" class="headerlink" title="新型无线调试"></a>新型无线调试</h3><p>是 Android 11 及以上常见的 ADB 连接方式。它通常需要先配对，再连接：</p>
+<ol>
+<li>车机打开：<code>开发者选项 → 无线调试</code></li>
+<li>选择“使用配对码配对设备”，记下：<ul>
+<li>车机 IP</li>
+<li>配对端口</li>
+<li>6 位配对码</li>
+</ul>
+</li>
+<li>电脑执行：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pair 192.168.1.23:37099</span><br></pre></td></tr></table></figure>
+
+<p>按提示输入配对码。</p>
+<ol>
+<li>回到无线调试页面查看“IP 地址和端口”，再连接：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb connect 192.168.1.23:42135</span><br><span class="line">adb devices</span><br><span class="line">adb shell</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>37099</code> 和 <code>42135</code> 只是示例，实际端口以车机显示为准。传统 TCP ADB 才常用固定端口 <code>5555</code>，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect 192.168.1.23:5555</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="漏洞探查"><a href="#漏洞探查" class="headerlink" title="漏洞探查"></a>漏洞探查</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ADB入口</span><br><span class="line"> |</span><br><span class="line"> +--- 权限过高（提root权限）</span><br><span class="line"> |</span><br><span class="line"> +--- 服务漏洞</span><br><span class="line"> |</span><br><span class="line"> +--- 信息泄露/system;/vendor/data</span><br><span class="line"> |</span><br><span class="line"> +--- 调试接口滥用</span><br><span class="line"> |</span><br><span class="line"> +--- Android漏洞</span><br><span class="line"> |</span><br><span class="line"> +--- 车机业务漏洞</span><br><span class="line"> |</span><br><span class="line"> +--- 横向攻击</span><br><span class="line"> |</span><br><span class="line"> +--- 恶意安装APK</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一步：确认权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;id</span><br><span class="line">&gt;whoami</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;root/shell/system?</span><br></pre></td></tr></table></figure>
+
+<p>第二步：系统信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;uname -a</span><br><span class="line">&gt;getprop</span><br></pre></td></tr></table></figure>
+
+<p>第三步：查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;/system#核心</span><br><span class="line">&gt;adb pull xxx.apk</span><br><span class="line">&gt;/vendor#厂家代码</span><br><span class="line">&gt;/data#用户数据</span><br></pre></td></tr></table></figure>
+
+<p>看看APK&#x2F;so&#x2F;配置&#x2F;密钥</p>
+<p>第四步：找服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;ps -ef</span><br></pre></td></tr></table></figure>
+
+<p>看：root运行服务</p>
+<p>第五步：看车辆接口：找车机和车辆其他模块怎么通信</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;ip addr</span><br><span class="line">&gt;ifconfig</span><br><span class="line">&gt;ls /dev</span><br></pre></td></tr></table></figure>
+
+<p>寻找：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;can0</span><br><span class="line">&gt;ttyUSB</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="抓取实时日志"><a href="#抓取实时日志" class="headerlink" title="抓取实时日志"></a>抓取实时日志</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell logcat -c#删除之前的</span><br><span class="line">adb shell logcat &gt; 1.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="未授权服务"><a href="#未授权服务" class="headerlink" title="未授权服务"></a>未授权服务</h4><p><strong>确认当前权限和系统</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">id</span><br><span class="line">getprop ro.build.version.release</span><br><span class="line">getenforce</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看车机本机监听的端口</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss -lnt</span><br></pre></td></tr></table></figure>
+
+<p>如果没有 <code>ss</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnt</span><br></pre></td></tr></table></figure>
+
+<p>重点记录类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0.0.0.0:8080</span><br><span class="line">127.0.0.1:8080</span><br><span class="line">192.168.1.23:5555</span><br></pre></td></tr></table></figure>
+
+<p>含义：</p>
+<ul>
+<li><code>0.0.0.0:8080</code>：可能对局域网开放</li>
+<li><code>192.168.1.23:8080</code>：绑定车机网卡，可能对局域网开放</li>
+<li><code>127.0.0.1:8080</code>：只允许车机本机访问</li>
+</ul>
+<p><strong>从车机本机做低影响访问测试</strong></p>
+<p>如果车机有 <code>curl</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -i --max-time 5 http://127.0.0.1:8080/</span><br><span class="line">curl -i --max-time 5 http://车机IP:8080/</span><br></pre></td></tr></table></figure>
+
+<p>如果没有 <code>curl</code>，可以先在电脑上测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl.exe -i http://车机IP:8080/</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>判断是否需要认证</li>
+</ol>
+<ul>
+<li><code>200 OK</code>：页面无需认证即可访问，值得进一步审计</li>
+<li><code>401 Unauthorized</code>：要求认证</li>
+<li><code>403 Forbidden</code>：服务存在但拒绝当前请求</li>
+<li><code>404 Not Found</code>：服务存在，但路径不对</li>
+<li>连接失败：可能只监听回环地址、被防火墙阻止或服务已停止</li>
+</ul>
+<h2 id="linux提权"><a href="#linux提权" class="headerlink" title="linux提权"></a>linux提权</h2><h3 id="SUID提权"><a href="#SUID提权" class="headerlink" title="SUID提权"></a>SUID提权</h3><p>寻找高权限二进制文件</p>
+<p><strong>核心思路</strong>：在车机系统中，寻找被错误地设置了SUID权限的可执行文件。如果该文件允许执行命令或加载外部库，就能劫持它来获取root shell。 </p>
+<p><strong>车机应用</strong>： </p>
+<ol>
+<li><ol>
+<li><strong>信息收集</strong>：使用 <code>find / -perm -u=s -type f 2&gt;/dev/null</code> 命令扫描车机。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>常见目标</strong>：车机上可能存在用于系统维护、日志收集或硬件调试的定制二进制程序，这些是首要检查目标。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>利用</strong>：如果发现 <code>find</code>、<code>cp</code>、<code>mount</code> 等命令具有SUID权限，即可直接利用（如 <code>find . -exec /bin/sh \;</code>）。对于自定义程序，可尝试参数注入或路径劫持。</li>
+</ol>
+</li>
+</ol>
+<h3 id="Sudo提权"><a href="#Sudo提权" class="headerlink" title="Sudo提权"></a>Sudo提权</h3><p>滥用配置不当的sudo规则</p>
+<p> <strong>核心思路</strong>：车机开发或测试人员可能为了方便，在 <code>/etc/sudoers</code> 中配置了无需密码即可以root身份运行特定命令的规则。 </p>
+<p><strong>车机应用</strong>： </p>
+<ol>
+<li><ol>
+<li><strong>检查配置</strong>：执行 <code>sudo -l</code> 查看当前用户无需密码即可运行的命令。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>利用</strong>：如果发现可以无密码运行 <code>python</code>、<code>perl</code>、<code>less</code>、<code>vi</code>、<code>tar</code> 等，即可直接提权。</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><ul>
+<li><code>sudo python -c &#39;import os; os.system(&quot;/bin/sh&quot;)&#39;</code></li>
+</ul>
+</li>
+<li><ul>
+<li><code>sudo less /etc/hosts</code> → 在less中输入 <code>!bash</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="内核漏洞提权"><a href="#内核漏洞提权" class="headerlink" title="内核漏洞提权"></a>内核漏洞提权</h3><p>利用系统底层漏洞</p>
+<p><strong>核心思路</strong>：车机系统内核版本往往滞后且长期不更新，存在公开的提权漏洞（如经典的Dirty Cow）。 </p>
+<p><strong>车机应用</strong>： </p>
+<ol>
+<li><ol>
+<li><strong>信息收集</strong>：使用 <code>uname -a</code> 查看内核版本和系统架构。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>寻找Exp</strong>：根据内核版本，在Kali的 <code>searchsploit</code> 或GitHub上搜索对应的提权Exp。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>交叉编译与执行</strong>：将Exp源码通过交叉编译工具链编译成车机架构（通常是arm&#x2F;arm64）的可执行文件，然后上传到车机执行。这是最直接、最有效的root手段之一。</li>
+</ol>
+</li>
+</ol>
+<h3 id="Cron-Jobs提权"><a href="#Cron-Jobs提权" class="headerlink" title="Cron Jobs提权"></a>Cron Jobs提权</h3><p><strong>利用定时任务</strong></p>
+<p><strong>核心思路</strong>：利用以root权限运行的定时任务脚本的弱点。 </p>
+<p><strong>车机应用</strong>： </p>
+<ul>
+<li><p><strong>通配符注入</strong>：如果定时任务中使用 <code>tar *</code> 等带通配符的命令打包文件，可以在该目录下创建以命令行参数命名的文件（如 <code>--checkpoint=1</code>）来执行任意命令。 </p>
+</li>
+<li><p><strong>脚本覆盖</strong>：如果发现一个以root权限运行且普通用户有写权限的脚本文件，可以直接修改该脚本，插入反向Shell等命令，等待定时任务执行。</p>
+</li>
+</ul>
+<h3 id="环境变量劫持"><a href="#环境变量劫持" class="headerlink" title="环境变量劫持"></a>环境变量劫持</h3><p>PATH滥用</p>
+<p><strong>核心思路</strong>：利用SUID程序在调用系统命令（如 <code>cat</code>、<code>id</code>）时，是从 <code>PATH</code> 环境变量中查找路径的这一特性。 </p>
+<p><strong>车机应用</strong>： </p>
+<ol>
+<li><ol>
+<li>找到一个调用了系统命令的SUID程序（例如一个自定义的日志查看工具）。</li>
+</ol>
+</li>
+<li><ol>
+<li>编写一个与它所调用的命令同名的恶意程序（如 <code>/tmp/cat</code>）。</li>
+</ol>
+</li>
+<li><ol>
+<li>通过 <code>export PATH=/tmp:$PATH</code> 将 <code>/tmp</code> 目录置于系统路径最前。</li>
+</ol>
+</li>
+<li><ol>
+<li>运行该SUID程序，它会优先执行位于 <code>/tmp</code> 的恶意程序，从而以root权限获得Shell。</li>
+</ol>
+</li>
+</ol>
+<h3 id="etc-passwd-提权"><a href="#etc-passwd-提权" class="headerlink" title="&#x2F;etc&#x2F;passwd 提权"></a>&#x2F;etc&#x2F;passwd 提权</h3><p>接添加用户</p>
+<p> <strong>核心思路</strong>：如果 <code>/etc/passwd</code> 文件意外地具有写权限，可以直接添加一个密码为空的root用户。 </p>
+<p><strong>车机应用</strong>： </p>
+<ol>
+<li><ol>
+<li><strong>检查权限</strong>：<code>ls -l /etc/passwd</code></li>
+</ol>
+</li>
+<li><ol>
+<li><strong>生成密码</strong>：使用 <code>openssl passwd -1</code> 或 <code>mkpasswd</code> 生成一个密码哈希。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>添加用户</strong>：将 <code>test:generatedhash:0:0:root:/root:/bin/bash</code> 追加到 <code>/etc/passwd</code> 文件中。</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>切换用户</strong>：使用 <code>su test</code> 并输入密码，即可获得root权限。</li>
+</ol>
+</li>
+</ol>
+<p>实战情况是在进入adb 模式后，尝试搜索suid文件提权，发现后门文件，尝试执行，成功提权root</p>
+<h2 id="扫描TCP未授权服务"><a href="#扫描TCP未授权服务" class="headerlink" title="扫描TCP未授权服务"></a>扫描TCP未授权服务</h2><p>比赛里你要这样判断它是不是漏洞：</p>
+<p>第一步，发现服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.1.0/24#扫活着的设备</span><br><span class="line">nmap -p- 192.168.43.213</span><br><span class="line">nmap -p 22,23,80,443,5555,8080,8888,20000,13400 192.168.1.0/24</span><br><span class="line"></span><br><span class="line">nmap -sV -p 22,23,80,5555,8080,20000,13400 192.168.1.23#看服务</span><br></pre></td></tr></table></figure>
+
+<p>看到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20000/tcp open</span><br></pre></td></tr></table></figure>
+
+<p>只能说明端口开了。</p>
+<p>第二步，连接服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 目标IP 20000</span><br></pre></td></tr></table></figure>
+
+<p>如果进去后有 console，说明服务可交互。</p>
+<p>第三步，看是否鉴权：</p>
+<p>如果它没有问：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">username:</span><br><span class="line">password:</span><br><span class="line">token:</span><br><span class="line">certificate:</span><br></pre></td></tr></table></figure>
+
+<p>而是直接让你输入命令，那就是未授权访问。</p>
+<p>第四步，看命令能力：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>help</code> 里有控制类、文件类、配置类命令，那就危险。</p>
+<p>第五步，确认影响：</p>
+<p>比如能不能：</p>
+<ul>
+<li>读设备信息；</li>
+<li>下载配置；</li>
+<li>上传文件；</li>
+<li>修改分辨率；</li>
+<li>修改相机矩阵；</li>
+<li>修改 PTS 侧边告警；</li>
+<li>修改倒车辅助逻辑。</li>
+</ul>
+<p>做到这里，就不是普通信息泄露了，而是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未授权访问 + 高权限调试接口暴露 + 车辆感知/辅助功能可被篡改</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="GPS欺骗"><a href="#GPS欺骗" class="headerlink" title="GPS欺骗"></a>GPS欺骗</h2><p>GPS欺骗（GPS Spoofing）是指攻击者通过发送伪造的GPS卫星信号，使GPS接收设备错误计算自身的位置、速度或时间信息。</p>
+<p>GPS正常工作时，接收机通过接收多颗卫星发送的时间和位置信息，利用信号传播时间差计算当前位置。GPS欺骗通过模拟真实卫星信号，使接收机无法区分真实信号和伪造信号，从而输出攻击者指定的位置。</p>
+<p>GPS欺骗与GPS干扰（Jamming）的区别：</p>
+<ul>
+<li>GPS干扰：发送噪声阻断真实GPS信号，使设备无法定位。</li>
+<li>GPS欺骗：发送伪造GPS信号，使设备得到错误但看似正常的定位结果。</li>
+</ul>
+<p>在车联网系统中，GPS模块通常集成在TBOX中，GPS数据经过TBOX处理后上传云端或提供给车辆系统使用。攻击者可以通过GPS欺骗改变车辆的定位信息，导致云端平台、车辆追踪、导航系统等产生错误数据。</p>
+<p>GPS欺骗的主要风险：</p>
+<ol>
+<li>车辆位置被伪造；</li>
+<li>轨迹记录出现异常；</li>
+<li>远程车辆管理系统收到错误位置信息；</li>
+<li>依赖GPS的导航和定位功能受到影响。</li>
+</ol>
+<p>常见检测方法：</p>
+<ol>
+<li>检查GPS位置是否存在不符合车辆运动规律的跳变；</li>
+<li>对比GPS数据与CAN总线中的车速、轮速等车辆状态信息；</li>
+<li>融合IMU、摄像头、高精地图等其他传感器进行交叉验证。</li>
+</ol>
+<p>GPS欺骗攻击的核心问题是攻击GPS数据的可信性，而不是直接控制车辆。与CAN注入相比，GPS欺骗主要影响车辆定位和数据服务，而CAN注入主要影响车辆控制功能。</p>
+<p>攻击者通过发送<strong>伪造的卫星导航信号</strong>，让 GPS 接收设备计算出错误的位置、速度或时间。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260721160130408.png"
+                        alt="image-20260721160130408"
+                 ></p>
+<h2 id="蓝牙控制-star"><a href="#蓝牙控制-star" class="headerlink" title="蓝牙控制:star:"></a>蓝牙控制:star:</h2><p><strong>蓝牙 HID 未授权按键注入</strong>。攻击设备伪装成蓝牙键盘，目标系统没有正确要求配对&#x2F;绑定授权，就接受了键盘输入，于是攻击者可以“远程按键”。如果这些按键打开浏览器、输入 URL、打开终端、执行命令，就表现成“零点击代码执行”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">伪装蓝牙键盘 -&gt; 目标接受连接 -&gt; 发送按键 -&gt; 系统当成真实键盘输入 -&gt; 触发操作</span><br></pre></td></tr></table></figure>
+
+<p>具体流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[启动车机]</span><br><span class="line">      |</span><br><span class="line">[插入 UD100 并确认连接]  </span><br><span class="line">      |</span><br><span class="line">[扫描蓝牙设备]          </span><br><span class="line">      |</span><br><span class="line">[运行 BlueDucky.py]       </span><br><span class="line">      |</span><br><span class="line">[检查蓝牙服务状态]        </span><br><span class="line">      |</span><br><span class="line">[分析/修改脚本蓝牙模块]   </span><br><span class="line">      |</span><br><span class="line">[进入 bluetoothctl 查看适配器状态]  </span><br><span class="line">      |</span><br><span class="line">[scan on 扫描附近设备]    </span><br><span class="line">      |</span><br><span class="line">[重新运行 BlueDucky.py（另一个终端）]  </span><br><span class="line">      |</span><br><span class="line">[执行 payload]</span><br><span class="line">      |</span><br><span class="line">[实现零点击代码执行漏洞 ]</span><br></pre></td></tr></table></figure>
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.iotsec-zone.com/article/521" >零点击代码执行漏洞复现（CVE-2023-45866） <i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="APK安全"><a href="#APK安全" class="headerlink" title="APK安全"></a>APK安全</h2><p>首先要知道如何拿到车机中的apk</p>
+<p>在已由车企&#x2F;供应商开启并授权的 USB 调试测试车机上，可直接用电脑导出指定已安装应用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">adb shell pm list packages | findstr &quot;关键字&quot;</span><br></pre></td></tr></table></figure>
+
+<p>找到包名后，例如 <code>com.example.headunit</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm path com.example.headunit</span><br></pre></td></tr></table></figure>
+
+<p>会返回类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package:/data/app/~~xxx/com.example.headunit-xxx/base.apk</span><br></pre></td></tr></table></figure>
+
+<p>将该路径复制到电脑当前目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull &quot;/data/app/~~xxx/com.example.headunit-xxx/base.apk&quot; &quot;.\headunit.apk&quot;</span><br></pre></td></tr></table></figure>
+
+<p>若 <code>pm path</code> 返回多条 <code>split_*.apk</code>，说明是拆分 APK；应将每一条都分别导出，不能只取 <code>base.apk</code>。</p>
+<p>导出后核验：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-FileHash .\headunit.apk -Algorithm SHA256</span><br></pre></td></tr></table></figure>
+
+<p>注意：不要尝试绕过未开启的 USB 调试、安装限制或访问控制；没有授权调试通道时，应让车企&#x2F;供应商通过研发工具导出目标包。</p>
+<h3 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h3><h4 id="网络流量"><a href="#网络流量" class="headerlink" title="网络流量"></a>网络流量</h4><p><strong>无线网卡抓包</strong></p>
+<ol>
+<li>插上 USB 无线网卡</li>
+</ol>
+<p>插到电脑 USB 口。</p>
+<p>如果系统提示安装驱动，就安装官方驱动。</p>
+<ol start="2">
+<li>电脑先连手机热点</li>
+</ol>
+<p>用电脑自带 Wi‑Fi 连接你的手机热点，保证电脑可以上网。</p>
+<ol start="3">
+<li>打开 Windows 移动热点</li>
+</ol>
+<p>路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置 → 网络和 Internet → 移动热点</span><br></pre></td></tr></table></figure>
+
+<p>设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">共享我的 Internet 连接来源：手机热点对应的 WLAN</span><br><span class="line">共享方式：Wi‑Fi</span><br></pre></td></tr></table></figure>
+
+<p>然后点开启。</p>
+<p>如果能选择“通过哪个网卡发热点”，优先选 USB 无线网卡。</p>
+<ol start="4">
+<li>设置热点名和密码</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">热点名：car_test</span><br><span class="line">密码：12345678</span><br><span class="line">频段：2.4GHz</span><br></pre></td></tr></table></figure>
+
+<p>建议选 2.4GHz，因为车机兼容性更好。</p>
+<ol start="5">
+<li>车机连接这个热点</li>
+</ol>
+<p>车机 Wi‑Fi 设置里连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car_test</span><br></pre></td></tr></table></figure>
+
+<p>连接成功后 Windows 页面会显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">已连接的设备：1 台</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>打开 Wireshark 抓包</li>
+</ol>
+<p>选择对应接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">USB 无线网卡</span><br><span class="line">Microsoft Wi-Fi Direct Virtual Adapter</span><br><span class="line">Local Area Connection*</span><br><span class="line">WLAN 2</span><br></pre></td></tr></table></figure>
+
+<p>如果不知道选哪个，看哪个接口流量在跳。</p>
+<ol start="7">
+<li>过滤车机流量</li>
+</ol>
+<p>先查车机 IP：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p>通常热点网段是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.137.x</span><br></pre></td></tr></table></figure>
+
+<p>Wireshark 过滤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip.addr == 192.168.137.x &amp;&amp; http</span><br></pre></td></tr></table></figure>
+
+<p>看 HTTP：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http</span><br></pre></td></tr></table></figure>
+
+<p>看 DNS：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dns</span><br></pre></td></tr></table></figure>
+
+<p>看 HTTPS 域名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tls.handshake.extensions_server_name</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260816144419477.png"
+                        alt="image-20260816144419477"
+                 ></p>
+<p><strong>adb直接在车机内部抓：</strong></p>
+<p>进去后看有没有 tcpdump：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which tcpdump</span><br></pre></td></tr></table></figure>
+
+<p>没有可以尝试上传</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push tcpdump /data/local/tmp/</span><br></pre></td></tr></table></figure>
+
+<p>然后车机给他赋个权限</p>
+<p>如果有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i any -s 0 -w /sdcard/car.pcap</span><br></pre></td></tr></table></figure>
+
+<p>在车机上操作，比如打开地图、账号、音乐、设置、联网功能，然后 <code>Ctrl+C</code> 停止。</p>
+<p>退出后拉出来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /sdcard/car.pcap .</span><br></pre></td></tr></table></figure>
+
+<p>用 Wireshark 打开：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wireshark car.pcap</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="本地存储敏感信息"><a href="#本地存储敏感信息" class="headerlink" title="本地存储敏感信息"></a>本地存储敏感信息</h4><p><strong>先看可访问目录</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell ls -la /sdcard/</span><br><span class="line">adb shell find /sdcard -type f 2&gt;/dev/null</span><br><span class="line">adb shell ls -la /data/local/tmp/</span><br></pre></td></tr></table></figure>
+
+<p>重点目录：</p>
+<ul>
+<li><code>/sdcard/Android/data/&lt;包名&gt;/files/</code></li>
+<li><code>/sdcard/Download/</code></li>
+<li><code>/sdcard/DCIM/</code></li>
+<li><code>/sdcard/Documents/</code></li>
+<li>应用导出的日志、备份、数据库、<code>.json</code>、<code>.xml</code>、<code>.txt</code>、<code>.db</code> 文件</li>
+</ul>
+<p><strong>搜索敏感关键词</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell grep -RniE &quot;token|apikey|api_key|secret|password|passwd|authorization|bearer|cookie|session|jwt|手机号|身份|key&quot; /sdcard 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p><strong>检查日志</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat -d | findstr /i &quot;token password authorization bearer session api_key&quot;</span><br></pre></td></tr></table></figure>
+
+<p>看是否把登录密码、JWT、Cookie、接口响应、手机号或身份证等写入日志。</p>
+<p><strong>检查应用自身数据</strong><br>仅适用于可调试应用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell run-as com.example.app ls -la files shared_prefs databases cache</span><br><span class="line">adb shell run-as com.example.app cat shared_prefs/*.xml</span><br><span class="line">adb shell run-as com.example.app ls databases</span><br></pre></td></tr></table></figure>
+
+<p>重点看：</p>
+<ul>
+<li><code>shared_prefs/*.xml</code>：登录态、Token、用户资料、开关配置</li>
+<li><code>databases/*.db</code>：SQLite 用户表、聊天记录、缓存接口响应</li>
+<li><code>files/</code>、<code>cache/</code>：导出的文件、图片、WebView 内容、下载缓存</li>
+<li><code>no_backup/</code>：本不应被备份但仍可能包含敏感状态的数据</li>
+</ul>
+<p><strong>检查 APK 静态配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /path/to/app.apk</span><br></pre></td></tr></table></figure>
+
+<p>反编译后搜索：</p>
+<ul>
+<li>写死的 API Key、第三方云服务凭据</li>
+<li>测试账号、测试环境地址</li>
+<li>调试接口、内部域名</li>
+<li><code>android:allowBackup=&quot;true&quot;</code>、<code>android:debuggable=&quot;true&quot;</code></li>
+</ul>
+<p>判断是否为问题，核心看敏感信息是否以<strong>明文</strong>保存在外部存储、日志、可备份数据或不受权限保护的组件中，以及这些信息能否被低权限应用或拿到 ADB 的人读取。</p>
+<h4 id="应用缓存"><a href="#应用缓存" class="headerlink" title="应用缓存"></a>应用缓存</h4><p>例如：<code>cache/</code></p>
+<p>有些 App 会把：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP响应</span><br><span class="line">JSON</span><br><span class="line">图片</span><br><span class="line">用户数据</span><br><span class="line">Token</span><br></pre></td></tr></table></figure>
+
+<p>缓存下来。</p>
+<p>比如：<code>weather_cache.json</code></p>
+<p>里面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;city&quot;: &quot;xxx&quot;,</span><br><span class="line">    &quot;api_token&quot;: &quot;xxxxxxxx&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样可能造成敏感信息泄露。</p>
+<h4 id="Native-so文件"><a href="#Native-so文件" class="headerlink" title="Native.so文件"></a>Native.so文件</h4><p>APK：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lib/</span><br><span class="line">├── arm64-v8a/</span><br><span class="line">│   └── libweather.so</span><br><span class="line">└── armeabi-v7a/</span><br><span class="line">    └── libweather.so</span><br></pre></td></tr></table></figure>
+
+<p>有些开发者会把：API Key&#x2F;服务器地址&#x2F;加密Key&#x2F;协议Key</p>
+<p>硬编码到 C&#x2F;C++ Native代码。</p>
+<p>可以：<code>strings libweather.so</code></p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">api.weathercn.com</span><br><span class="line">apikey</span><br><span class="line">secret</span><br><span class="line">xxxxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p>然后再用IDA&#x2F;Ghidra分析引用位置。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260816104640325.png"
+                        alt="image-20260816104640325"
+                 ></p>
+<p>某些应用传输信息可能是明文，导致信息泄露<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260816104646942.png"
+                        alt="image-20260816104646942"
+                 ></p>
+<p>在车载平板天气应用中发现API密钥明文传输漏洞，导致付费天气服务API密钥暴露，可能造成经济损失和服务滥用。</p>
+<p> 车机存在任意文件安装，或者白名单，导致可以进行安卓欺骗攻击等</p>
+<h3 id="任意软件安装"><a href="#任意软件安装" class="headerlink" title="任意软件安装"></a>任意软件安装</h3><blockquote>
+<p><strong>检测使得否允许恶意软件</strong></p>
+<p><strong>USB &#x2F; 文件管理器</strong></p>
+<ol>
+<li>将测试 APK 放入 FAT32 格式 U 盘根目录。</li>
+<li>插入车机 USB 口，打开系统自带“文件管理器&#x2F;媒体浏览器&#x2F;下载管理”。</li>
+<li>查找 <code>.apk</code> 文件是否可见、点击后是否弹出安装器。</li>
+<li>记录是否要求：</li>
+</ol>
+<ul>
+<li>开启“允许此来源安装应用”；</li>
+<li>输入密码或进入管理员模式；</li>
+<li>APK 签名&#x2F;包名在白名单中；</li>
+<li>系统明确拒绝安装。</li>
+</ul>
+<p>**风险证据：**普通用户插入 U 盘即可对任意自签名 APK 发起并完成安装。</p>
+<p><strong>浏览器下载</strong></p>
+<ol>
+<li>在车机浏览器访问你控制的测试下载页面，下载测试 APK。</li>
+<li>打开下载完成通知或“下载”目录。</li>
+<li>点击 APK，观察系统是否允许进入安装流程。</li>
+<li>重点看浏览器是否被授予“安装未知应用”权限，以及安装器是否验证签名来源。</li>
+</ol>
+<p>**风险证据：**下载的非官方 APK 可被直接安装，无身份验证、签名白名单或来源约束。</p>
+<p><strong>蓝牙 &#x2F; Wi‑Fi 文件传输</strong></p>
+<ol>
+<li>使用手机向车机发送同一测试 APK，或通过车机允许的局域网文件传输功能传入。</li>
+<li>确认文件落地目录，例如“接收文件”“Download”。</li>
+<li>从该目录打开 APK，记录是否能调用系统安装器。</li>
+<li>测试完成后删除文件并卸载测试 APK。</li>
+</ol>
+<p>**风险证据：**任意配对设备可向车机投递 APK，且车机可无约束安装。</p>
+<p><strong>应用商店与第三方商店</strong></p>
+<ol>
+<li>检查系统是否只有官方商店，还是允许安装第三方商店客户端。</li>
+<li>对官方商店：确认上架应用是否必须经过签名、账号、车型&#x2F;区域适配校验。</li>
+<li>对第三方商店：只验证其安装包能否被安装，不下载或安装带系统工具、调试工具的应用。</li>
+<li>观察是否存在“开发者渠道”“测试渠道”“企业分发”等未受限入口。</li>
+</ol>
+<p>**风险证据：**可安装不受车企控制的软件分发渠道，且该渠道能继续安装任意 APK。</p>
+<p><strong>OTA &#x2F; 本地升级包</strong></p>
+<ol>
+<li>进入“系统更新&#x2F;软件更新”，仅查看是否存在“本地升级”“从 USB 更新”等选项。</li>
+<li>记录系统对升级包的提示：是否显示版本、签名、车型匹配、校验结果。</li>
+<li>不要导入或刷写未知升级包；这里的目标是确认<strong>是否有完整性和签名校验提示</strong>。</li>
+</ol>
+<p>**风险证据：**本地更新入口接受未签名、型号不匹配或来源不明的包。</p>
+<p><strong>维护菜单 &#x2F; 工程模式</strong></p>
+<ol>
+<li>从车机设置、关于页面、售后维护入口中查看是否存在工程模式。</li>
+<li>只记录进入条件：是否需诊断账号、物理介质、一次性授权或维修工具认证。</li>
+<li>若菜单中有“USB 安装、调试、日志导出、开发者选项”等项目，仅截图记录其默认状态；不要开启或修改。</li>
+</ol>
+<p>**风险证据：**普通用户无需认证即可进入维护菜单，并开启应用安装或调试能力。</p>
+<p>最终把每个入口的结果归为三类：  </p>
+<ul>
+<li>**安全：**安装被签名&#x2F;白名单&#x2F;认证策略拒绝；  </li>
+<li>**待确认：**可进入安装器，但尚未完成安装；  </li>
+<li>**高风险：**非官方、自签名测试 APK 被普通用户成功安装并启动。</li>
+</ul>
+</blockquote>
+<h4 id="msf注入apk捆板木马"><a href="#msf注入apk捆板木马" class="headerlink" title="msf注入apk捆板木马"></a>msf注入apk捆板木马</h4><p><strong>520ApkHook</strong> 是一款由 Java 编写的专业工具，它主要用于将安卓远程控制应用(Apk)嵌入到常规的Android应用程序中。当生成的新应用运行时，原应用能够正常运作，同时远程控制功能亦能无缝上线。此项目由 BaoGuo 开发，旨在提供一种方式绕过应用的安全检查，并具备加载远程控制组件的能力。<br>详细安装操作可以参考<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/gitblog_09273/article/details/142232575" >富礼照Lolita<i class="fas fa-external-link-alt"></i></a>师傅文章</p>
+<h4 id="脚本提权限"><a href="#脚本提权限" class="headerlink" title="脚本提权限"></a>脚本提权限</h4><p>下载python等软件进行提权和越权执行了</p>
+<p>权限提升路径：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">任意软件安装 → 系统工具获取 → 漏洞利用 → 权限提升</span><br><span class="line">      ↓                ↓           ↓          ↓</span><br><span class="line"> 安装Python     →  安装adb工具 → 调试接口利用 → 获取root权限</span><br></pre></td></tr></table></figure>
+
+<p>示例脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过安装的Python执行系统命令</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试访问系统文件</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 读取系统配置文件</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;/system/build.prop&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="built_in">print</span>(f.read())</span><br><span class="line"><span class="keyword">except</span> PermissionError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;需要更高权限&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试提权</span></span><br><span class="line">subprocess.run([<span class="string">&#x27;su&#x27;</span>, <span class="string">&#x27;-c&#x27;</span>, <span class="string">&#x27;whoami&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>或者其他提权脚本</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/08/16/wifi%E6%B8%97%E9%80%8F%E5%85%A5%E9%97%A8/"
+                                   title="wifi渗透入门"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">wifi渗透入门</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'zach0ry-zzh/zach0ry-zzh.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOPKvC2Q')
+              script.setAttribute('data-category', 'Comments')
+              script.setAttribute('data-category-id', 'DIC_kwDOPKvC2c4DByYU')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'en')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#can"><span class="nav-text">can</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DoIP"><span class="nav-text">DoIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb"><span class="nav-text">adb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5"><span class="nav-text">有线连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95"><span class="nav-text">TCP无线调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%9E%8B%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95"><span class="nav-text">新型无线调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%8E%A2%E6%9F%A5"><span class="nav-text">漏洞探查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%93%E5%8F%96%E5%AE%9E%E6%97%B6%E6%97%A5%E5%BF%97"><span class="nav-text">抓取实时日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AA%E6%8E%88%E6%9D%83%E6%9C%8D%E5%8A%A1"><span class="nav-text">未授权服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E6%8F%90%E6%9D%83"><span class="nav-text">linux提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID%E6%8F%90%E6%9D%83"><span class="nav-text">SUID提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sudo%E6%8F%90%E6%9D%83"><span class="nav-text">Sudo提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="nav-text">内核漏洞提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cron-Jobs%E6%8F%90%E6%9D%83"><span class="nav-text">Cron Jobs提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%AB%E6%8C%81"><span class="nav-text">环境变量劫持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd-%E6%8F%90%E6%9D%83"><span class="nav-text">&#x2F;etc&#x2F;passwd 提权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%AB%E6%8F%8FTCP%E6%9C%AA%E6%8E%88%E6%9D%83%E6%9C%8D%E5%8A%A1"><span class="nav-text">扫描TCP未授权服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPS%E6%AC%BA%E9%AA%97"><span class="nav-text">GPS欺骗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%93%9D%E7%89%99%E6%8E%A7%E5%88%B6-star"><span class="nav-text">蓝牙控制:star:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APK%E5%AE%89%E5%85%A8"><span class="nav-text">APK安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="nav-text">信息泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F"><span class="nav-text">网络流量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="nav-text">本地存储敏感信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98"><span class="nav-text">应用缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Native-so%E6%96%87%E4%BB%B6"><span class="nav-text">Native.so文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-text">任意软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#msf%E6%B3%A8%E5%85%A5apk%E6%8D%86%E6%9D%BF%E6%9C%A8%E9%A9%AC"><span class="nav-text">msf注入apk捆板木马</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%8F%90%E6%9D%83%E9%99%90"><span class="nav-text">脚本提权限</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#can"><span class="nav-text">can</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DoIP"><span class="nav-text">DoIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb"><span class="nav-text">adb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5"><span class="nav-text">有线连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95"><span class="nav-text">TCP无线调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%9E%8B%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95"><span class="nav-text">新型无线调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%8E%A2%E6%9F%A5"><span class="nav-text">漏洞探查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%93%E5%8F%96%E5%AE%9E%E6%97%B6%E6%97%A5%E5%BF%97"><span class="nav-text">抓取实时日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AA%E6%8E%88%E6%9D%83%E6%9C%8D%E5%8A%A1"><span class="nav-text">未授权服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E6%8F%90%E6%9D%83"><span class="nav-text">linux提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SUID%E6%8F%90%E6%9D%83"><span class="nav-text">SUID提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sudo%E6%8F%90%E6%9D%83"><span class="nav-text">Sudo提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="nav-text">内核漏洞提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cron-Jobs%E6%8F%90%E6%9D%83"><span class="nav-text">Cron Jobs提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%AB%E6%8C%81"><span class="nav-text">环境变量劫持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd-%E6%8F%90%E6%9D%83"><span class="nav-text">&#x2F;etc&#x2F;passwd 提权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%AB%E6%8F%8FTCP%E6%9C%AA%E6%8E%88%E6%9D%83%E6%9C%8D%E5%8A%A1"><span class="nav-text">扫描TCP未授权服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPS%E6%AC%BA%E9%AA%97"><span class="nav-text">GPS欺骗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%93%9D%E7%89%99%E6%8E%A7%E5%88%B6-star"><span class="nav-text">蓝牙控制:star:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APK%E5%AE%89%E5%85%A8"><span class="nav-text">APK安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="nav-text">信息泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F"><span class="nav-text">网络流量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="nav-text">本地存储敏感信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98"><span class="nav-text">应用缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Native-so%E6%96%87%E4%BB%B6"><span class="nav-text">Native.so文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-text">任意软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#msf%E6%B3%A8%E5%85%A5apk%E6%8D%86%E6%9D%BF%E6%9C%A8%E9%A9%AC"><span class="nav-text">msf注入apk捆板木马</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%8F%90%E6%9D%83%E9%99%90"><span class="nav-text">脚本提权限</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

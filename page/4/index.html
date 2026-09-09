@@ -213,6 +213,77 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
+                        <a href="/2025/09/09/odd-canary/">
+                            [湾区杯]odd_canary
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            附件
+
+
+
+
+
+思路让函数通过good函数吧name和bss段连接在一起，然后再次进入good函数读取泄露出来的puts地址，之后进入exit函数让bss段数值为char的地址，然后用同样的方式泄露它的地址，最后进入vuln函数去把后门函数布置在bs...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Sep 09 2025 20:09:33 GMT+0800"
+                >2025-09-09 20:09:33</span>
+            </span>
+        
+
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88%E8%BF%81%E7%A7%BB/">栈迁移</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B3%84%E9%9C%B2%E5%9C%B0%E5%9D%80/">泄露地址</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/09/09/odd-canary/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
                         <a href="/2025/09/08/HNCTF-2022-WEEK2-ret2csu/">
                             [HNCTF 2022 WEEK2]ret2csu
                         </a>
@@ -828,81 +899,6 @@ bank是bss段上的，栈空间不足,把泄露libc的东西放在bank上，通�
                 </div>
             </li>
         
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/07/26/pwn49/">
-                            pwn49
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            题目
-
-
-看出是静态编译，考虑用mprotect来修改它的权限
-
-ctrl+s查看bss段，找要修改的范围
-
-因为mprotect的地址选择的限制条件
-我们把页面边界定为0x80DA000
-接着就可以构造payload了
-先调用mprotect函数修...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Jul 26 2025 16:00:42 GMT+0800"
-                >2025-07-26 16:00:42</span>
-            </span>
-        
-
-        
-
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mprotect/">mprotect</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91/">静态编译</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/07/26/pwn49/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
     </ul>
     
     <div class="paginator border-box flex-center">
@@ -922,8 +918,8 @@ ctrl+s查看bss段，找要修改的范围
                    type="number"
                    value="4"
                    min="1"
-                   max="5"
-            /><span class="delimiter base-style">/</span><span class="base-style">5</span>
+                   max="6"
+            /><span class="delimiter base-style">/</span><span class="base-style">6</span>
         </div>
 
 
