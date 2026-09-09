@@ -549,35 +549,50 @@ KEEP.initUtils = () => {
         const tmpId = 'busuanzi-js'
         let script = document.body.querySelector(`#${tmpId}`)
 
-        if (!script) {
-          script = document.createElement('script')
-          script.setAttribute('data-pjax', '')
-          script.setAttribute('id', tmpId)
-          script.async = true
-          script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
-          document.body.appendChild(script)
-        }
-
         const getText = (selector) => {
           return document.querySelector(selector)?.innerText
         }
 
-        script.onload = () => {
-          setTimeout(() => {
-            if (
-              getText('#busuanzi_value_site_uv') ||
-              getText('#busuanzi_value_site_pv') ||
-              getText('#busuanzi_value_page_pv')
-            ) {
-              const tmpDom1 = document.querySelector('.footer .count-info .uv')
-              const tmpDom2 = document.querySelector('.footer .count-info .pv')
-              const tmpDom3 = document.querySelector('.post-meta-info .post-pv')
-              tmpDom1 && (tmpDom1.style.display = 'flex')
-              tmpDom2 && (tmpDom2.style.display = 'flex')
-              tmpDom3 && (tmpDom3.style.display = 'inline-block')
-            }
-          }, 1000)
+        const showCountInfo = () => {
+          if (
+            getText('#busuanzi_value_site_uv') ||
+            getText('#busuanzi_value_site_pv') ||
+            getText('#busuanzi_value_page_pv')
+          ) {
+            const tmpDom1 = document.querySelector('.footer .count-info .uv')
+            const tmpDom2 = document.querySelector('.footer .count-info .pv')
+            const tmpDom3 = document.querySelector('.post-meta-info .post-pv')
+            tmpDom1 && (tmpDom1.style.display = 'flex')
+            tmpDom2 && (tmpDom2.style.display = 'flex')
+            tmpDom3 && (tmpDom3.style.display = 'inline-block')
+            return true
+          }
+          return false
         }
+
+        const waitForCountInfo = () => {
+          let retryCount = 0
+          const timer = setInterval(() => {
+            retryCount += 1
+            if (showCountInfo() || retryCount >= 20) {
+              clearInterval(timer)
+            }
+          }, 500)
+        }
+
+        if (!script) {
+          script = document.createElement('script')
+          script.setAttribute('data-pjax', '')
+          script.setAttribute('data-prefix', 'busuanzi_value')
+          script.setAttribute('id', tmpId)
+          script.async = true
+          script.onload = waitForCountInfo
+          script.src = 'https://busuanzi.9420.ltd/js'
+          document.body.appendChild(script)
+        } else {
+          waitForCountInfo()
+        }
+
       }
     },
 

