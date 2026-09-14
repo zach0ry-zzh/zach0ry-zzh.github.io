@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Zach0ry">
+    
+    <title>
+        
+            PE文件格式 |
+        
+        Zach0ry&#39;s home
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/123.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Zach0ry's home","author":"Zach0ry","avatar":"/images/av.jpg","logo":"/images/123.png","favicon":"/images/123.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":true,"img_link":"/images/zfb.jpg","text":"请作者喝杯咖啡","icon":"/images/tea.svg"}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"zach0ry-zzh/zach0ry-zzh.github.io","repo_id":"R_kgDOPKvC2Q","category":"Comments","category_id":"DIC_kwDOPKvC2c4DByYU","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/123.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zach0ry&#39;s home
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        PE文件格式
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/av.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Zach0ry</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026-09-10 20:45:06</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Sep 13 2026 11:26:20 GMT+0800">2026-09-13 11:26:20</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/">病毒分析</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PE%E6%A0%BC%E5%BC%8F/">PE格式</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IAT-hook/">IAT hook</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/inline-hook/">inline hook</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>本文是参考<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cXT4z7Etf?p=2&vd_source=9ae873ef6c4569def611fe99ede7cf0b" >【保姆级教程】16 节吃透 Windows PE 文件格式！从解析到 Hook 攻防全覆盖<i class="fas fa-external-link-alt"></i></a>进行的个人总结</p>
+<p>想要进一步学习的师傅很推荐去看看原视频以及该师傅的其它课程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://bbs.kanxue.com/upload/attach/202112/941431_E3RUWZ7EBBPNUCM.jpg"
+                        alt="img"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/02.png"
+                        alt="PE格式"
+                 ><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260910213835039.png"
+                        alt="image-20260910213835039"
+                 ></p>
+<h2 id="DOS头"><a href="#DOS头" class="headerlink" title="DOS头"></a>DOS头</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260910204649384.png"
+                        alt="img"
+                 ></p>
+<p>dos头中有两个字段是最关键的</p>
+<p><code>e_magic</code> ：标识这是一个有效的 DOS 可执行文件格式。一般展现为MZ（4D 5A）的形式</p>
+<p><code>e_lfanew</code>：PE Header（NT Headers）在整个文件中的偏移位置。</p>
+<p>如图所示</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260913103808573.png"
+                        alt="image-20260913103808573"
+                 ></p>
+<p>文件在硬盘和运行过程中不太一样，他在运行中的对齐值会比在文件中大</p>
+<p>DOS Stub:当一个 PE 文件被老式 DOS 系统运行时，DOS Stub 负责显示一段提示；现代 Windows 加载 PE 时基本不执行它。</p>
+<h2 id="PE头-NT头部"><a href="#PE头-NT头部" class="headerlink" title="PE头&#x2F;NT头部"></a>PE头&#x2F;NT头部</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_NT_HEADERS &#123;</span><br><span class="line">  DWORD Signature;//PE标志</span><br><span class="line">  IMAGE_FILE_HEADER FileHeader;//文件头</span><br><span class="line">  IMAGE_OPTIONAL_HEADER32 OptionalHeader;//可选 PE 头</span><br><span class="line">&#125;IMAGE_NT_HEADERS32,*PIMAGE_NT_HEADERS32;</span><br></pre></td></tr></table></figure>
+
+<h3 id="标准PE头"><a href="#标准PE头" class="headerlink" title="标准PE头"></a>标准PE头</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_FILE_HEADER &#123;</span><br><span class="line">  WORD Machine;//程序允许的CPU型号如果为0表示能在任何CPU上允许 0x14C 386及后续</span><br><span class="line">  WORD NumberOfSections;//文件中存在的区段的数量</span><br><span class="line">  DWORD TimeDateStamp;</span><br><span class="line">  DWORD PointerToSymbolTable;</span><br><span class="line">  DWORD NumberOfSymbols;</span><br><span class="line">  WORD SizeOfOptionalHeader;//可选 PE头的大小，32 位 pe文件默认 E0，64 位默认F0</span><br><span class="line">  WORD Characteristics;//文件属性，每个位有不同的含义。</span><br><span class="line">&#125; IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;</span><br></pre></td></tr></table></figure>
+
+<h3 id="可选PE头"><a href="#可选PE头" class="headerlink" title="可选PE头"></a>可选PE头</h3><p>在x86平台下的 <code>OPTIONAL_HEADER32</code> 结构体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_OPTIONAL_HEADER32 &#123;</span><br><span class="line">    // 标准域</span><br><span class="line">    WORD  Magic;                     //表示32位/64位PE文件 32位(0x10B)</span><br><span class="line">    BYTE  MajorLinkerVersion;                 </span><br><span class="line">    BYTE  MinorLinkerVersion;  </span><br><span class="line">    DWORD SizeOfCode;                //所有代码段的总大小，按照FileAlignment对齐</span><br><span class="line">    DWORD SizeOfInitializedData;     //已初始化数据大小，按照FileAlignment对齐</span><br><span class="line">    DWORD SizeOfUninitializedData;   //未初始化节数据大小，按照FileAlignment对齐</span><br><span class="line">    DWORD AddressOfEntryPoint;       //程序执行入口OEP(偏移值)</span><br><span class="line">    DWORD BaseOfCode;                         </span><br><span class="line">    DWORD BaseOfData;                         </span><br><span class="line">    // NT附加域                           </span><br><span class="line">    DWORD ImageBase;                 //程序载入基地址 // 4字节</span><br><span class="line">    DWORD SectionAlignment;          //内存的对齐值</span><br><span class="line">    DWORD FileAlignment;             //文件中的对齐值</span><br><span class="line">    WORD  MajorOperatingSystemVersion;       </span><br><span class="line">    WORD  MinorOperatingSystemVersion;        </span><br><span class="line">    WORD  MajorImageVersion;                 </span><br><span class="line">    WORD  MinorImageVersion;              </span><br><span class="line">    WORD  MajorSubsystemVersion;              </span><br><span class="line">    WORD  MinorSubsystemVersion;              </span><br><span class="line">    DWORD Win32VersionValue;                  </span><br><span class="line">    DWORD SizeOfImage;              //文件在内存中的大小，按SectionAlignment;对齐</span><br><span class="line">    DWORD SizeOfHeaders;            //DOS头+NT头+区段头，按SectionAlignment;对齐</span><br><span class="line">    DWORD CheckSum;                        </span><br><span class="line">    WORD  Subsystem;                         </span><br><span class="line">    WORD  DllCharacteristics;        </span><br><span class="line">    DWORD SizeOfStackReserve;               </span><br><span class="line">    DWORD SizeOfStackCommit;                 </span><br><span class="line">    DWORD SizeOfHeapReserve;                </span><br><span class="line">    DWORD SizeOfHeapCommit;                  </span><br><span class="line">    DWORD LoaderFlags;                       </span><br><span class="line">    DWORD NumberOfRvaAndSizes;         //数据目录表的数量16</span><br><span class="line">    IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES]; </span><br><span class="line">&#125; IMAGE_OPTIONAL_HEADER32, *PIMAGE_OPTIONAL_HEADER32;</span><br></pre></td></tr></table></figure>
+
+<p>实际SizeOfCode，SizeOfInitializedData，SizeOfUninitializedData;  只是作为展示，改变他们的值不影响程序运行</p>
+<p>一般是第一行代码的执行地址，即odb拖入停下的地址，但是由于动态基址，编译时基址不会按照两值相加</p>
+<p>DllCharacteristics中的DLLCHARACTERISTICS_DYNAMIC_BASE记录基址是否改变</p>
+<p>可选PE头的大小不固定，32位的话时e0，64位的大小是f0。其它几个块都是固定的</p>
+<h2 id="区段头"><a href="#区段头" class="headerlink" title="区段头"></a>区段头</h2><p>区段头的个数是由区段决定的，区段头可看作是区段的脑袋，区段头存放的是下面区段的头部信息</p>
+<p>如区段位置，区段大小等</p>
+<blockquote>
+<p>区段头（Section Header）-&gt;一个“说明书&#x2F;目录项”</p>
+<p>区段（Section)-&gt;真正的代码、数据等内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_SECTION_HEADER &#123;</span><br><span class="line">    BYTE   Name[IMAGE_SIZEOF_SHORT_NAME]；//区段的名字，最长8字节，此处和字符串不一样，不会/0 结尾</span><br><span class="line">    union &#123;</span><br><span class="line">            DWORD   PhysicalAddress;			</span><br><span class="line">            DWORD   VirtualSize;</span><br><span class="line">    &#125; Misc;	//该区段在内存中的真实大小（未对齐）</span><br><span class="line">    DWORD   VirtualAddress;// 区段在内存中的偏移位置，+ImageBase为真实地址</span><br><span class="line">    DWORD   SizeOfRawData;// 区段在文件中对齐后的大小</span><br><span class="line">    DWORD   PointerToRawData;// 区段的在文件中的偏移位置</span><br><span class="line">    DWORD   PointerToRelocations;				</span><br><span class="line">    DWORD   PointerToLinenumbers;</span><br><span class="line">    WORD    NumberOfRelocations;</span><br><span class="line">    WORD    NumberOfLinenumbers;</span><br><span class="line">    DWORD   Characteristics;//区段属性，是否可读可写可执行</span><br><span class="line">&#125; IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;</span><br></pre></td></tr></table></figure>
+
+<p>C 字符串要求：字符 + 字符 + 字符 + \0</p>
+<p>但 PE 的 <code>Name[8]</code> 是：8 个字节的固定长度字段，**协议规定这 8 个字节就是区段名称字段，并不要求一定以 <code>\0</code> 结尾。**也就是说只有8个字符空位，没有位置放置\0</p>
+<p><code>Name[8]</code> 更准确地说是：<strong>8 字节定长字符数组（fixed-length character field）</strong></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911095150542.png"
+                        alt="image-20260911095150542"
+                 ></p>
+<p>DOS Header、NT Header、Section Header构成：<strong>PE Headers</strong>，其在文件和人内存中的偏移没有变化.他通过字段SizeOfHeaders对齐</p>
+<p>当我们点击exe程序去运行时，会先复制文件对齐的各个部分，接着按内存对齐，增大区段头和区段1 之间的灰色部分让PE头+灰色的大小为0x1000,之后扩展每个区段间的白色部分，让各个区段大小以及开始地址都是FileAlignment的整数倍</p>
+<h2 id="数据目录表"><a href="#数据目录表" class="headerlink" title="数据目录表"></a>数据目录表</h2><p>一个 <code>IMAGE_DATA_DIRECTORY</code> 结构体数组，数组中的每一个元素描述一个 PE 数据目录。</p>
+<p>这里以导入表为例</p>
+<p>这个并不是导出表，只是存放导出表的位置和大小</p>
+<p>size是表的大小，但是修改不影响</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_DATA_DIRECTORY &#123;</span><br><span class="line">    DWORD VirtualAddress;//RVA 内存中导出表相对于PE映像基址（ImageBase）的偏移。</span><br><span class="line">                         //	FOA+FileBuff=文件中导出表的偏移位置</span><br><span class="line">    DWORD Size;</span><br><span class="line">&#125; IMAGE_DATA_DIRECTORY;</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911200648908.png"
+                        alt="image-20260911200648908"
+                 ></p>
+<h3 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h3><p>数据目录表索引是0</p>
+<p>导出表（Export Table）是Windows可执行文件中的一个结构，记录了可执行文件中某些函数或变量的名称和地址，这些名称和地址可以供其他程序调用或使用。当PE文件执行时Windows装载器将文件装入内存并将导入表中登记的DLL文件一并装入，再根据DLL文件中函数的导出信息对可执行文件的导入表(IAT)进行修正。</p>
+<p>可选PE头的DataDirectory第0项即为我们的导出表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_EXPORT_DIRECTORY</span><br><span class="line">&#123;</span><br><span class="line">    DWORD   Characteristics;    </span><br><span class="line">    DWORD   TimeDateStamp;        </span><br><span class="line">    WORD    MajorVersion;         </span><br><span class="line">    WORD    MinorVersion;     </span><br><span class="line">    DWORD   Name;                  //指向导出表文件名 RVA --&gt;FOA+FileBuff=char *name;</span><br><span class="line">    DWORD   Base;                  // 导出函数的起始序号</span><br><span class="line">    DWORD   NumberOfFunctions;     // 导出函数个数</span><br><span class="line">    DWORD   NumberOfNames;         // 以名称导出函数的总数</span><br><span class="line">    </span><br><span class="line">    DWORD   AddressOfFunctions;    // 导出函数地址表的RVA</span><br><span class="line">    DWORD   AddressOfNames;        // 函数名称地址表的RVA</span><br><span class="line">    DWORD   AddressOfNameOrdinals; // 函数名序号表的RVA</span><br><span class="line">&#125; IMAGE_EXPORT_DIRECTORY, *PIMAGE_EXPORT_DIRECTORY;</span><br></pre></td></tr></table></figure>
+
+<p>但NumberOfFunctions！&#x3D;导出函数个数，他等于导入函数的最大序号-最小序号+1</p>
+<p>以下面这个def为例，NumberOfFunctions&#x3D;7-2+1&#x3D;6</p>
+<p>NumberOfNames由于div是noname,它的数值是2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LIBRPARY &quot;mydll&quot;</span><br><span class="line">EXPORTS</span><br><span class="line">sum @2</span><br><span class="line">div @3 NONAME</span><br><span class="line">fun1 @7</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911170519659.png"
+                        alt="image-20260911170519659"
+                 ></p>
+<blockquote>
+<p>AddressOfFunctions&#x2F;AddressOfNames&#x2F;AddressOfNameOrdinals;</p>
+<p>已知函数名字，通过AddressOfNames知道函数名字编号</p>
+<p>接着通过AddressOfNameOrdinals，把名字编号对应到地址编号</p>
+<p>最后通过AddressOfFunctions，用地址编号拿到RVA</p>
+<p>三个表可以相互调用，名称-&gt;地址，地址-&gt;名称都是可以的</p>
+<p>函数的 Ordinal（序号） &#x3D; 地址编号 + Base。</p>
+</blockquote>
+<p>这里解释一下</p>
+<p>图中所标注的WORD&#x2F;DWORD是指表中所存储元素的大小</p>
+<p>结构体中的DWORD代表对应表的起始 RVA大小</p>
+<h4 id="RVA转FOA"><a href="#RVA转FOA" class="headerlink" title="RVA转FOA"></a>RVA转FOA</h4><p>一个 Section(区段) 同时有两个位置：</p>
+<p>Section RVA：Section 在内存映像中的起始位置<br>Section FOA：Section 在 PE 文件中的起始位置</p>
+<p>假设：</p>
+<p>Section RVA &#x3D; 0x1000   数据 RVA    &#x3D; 0x1500</p>
+<p>那么数据距离 Section 开头：0x1500 - 0x1000 &#x3D; 0x500</p>
+<p>文件中：</p>
+<p>Section FOA &#x3D; 0x400  数据 FOA    &#x3D; 0x900</p>
+<p>那么：0x900 - 0x400 &#x3D; 0x500</p>
+<p>所以：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据RVA - SectionRVA=数据FOA - SectionFOA</span><br></pre></td></tr></table></figure>
+
+<p>原因：</p>
+<p><strong>虽然文件空间和内存映像空间的绝对位置不同，但是同一个数据相对于同一个 Section 开头的距离不变。</strong></p>
+<h3 id="导入表"><a href="#导入表" class="headerlink" title="导入表"></a>导入表</h3><p>数据目录表索引是1</p>
+<h4 id="前置基础"><a href="#前置基础" class="headerlink" title="前置基础"></a>前置基础</h4><blockquote>
+<p>1.调用dll文件函数原理<br>2.一个进程空间中的 exe dll文件如何被加载到内存的。<br>3.Exe文件调用的动态链接库在内存中与在硬盘中有什么不同。</p>
+</blockquote>
+<p>设计c++代码调用dll文件中的sum函数</p>
+<p>mydll.h</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#pragma once </span><br><span class="line">#pragma comment (lib,&quot;mydll.lib&quot;) </span><br><span class="line">extern &quot;C&quot; _declspec (dllimport) int sum (int a, int b); </span><br><span class="line">extern &quot;C&quot; _declspec (dllimport) void fun1 (char a, char c);</span><br></pre></td></tr></table></figure>
+
+<p>main.cpp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt; </span><br><span class="line">#include&quot;mydll.h&quot; </span><br><span class="line">int main () </span><br><span class="line">&#123;  	</span><br><span class="line">	int b = sum (1, 2); 	</span><br><span class="line">	return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>call mydll</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911191255607.png"
+                        alt="image-20260911191255607"
+                 ></p>
+<p>RVA&#x3D;0x5191BC-0x40000(imagebase)&#x3D;0x1191bc</p>
+<p>接着看区段头看他落在了哪个位置，看到是在区段[4],且区段起始RVA&#x3D;0x119000 ,	区段FOA&#x3D;0xc9000</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911191544324.png"
+                        alt="image-20260911191544324"
+                 ></p>
+<p>计算偏移0x1191bc-119000&#x3D;0x1bc</p>
+<p>再次加上区段的FOA就得到了他在文件中的位置&#x3D;0xc9000+0x1bc&#x3D;0xc91bc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911192013788.png"
+                        alt="image-20260911192013788"
+                 ></p>
+<p>追踪过去可以看到他存储的是0x119414</p>
+<p>而我们的RVA&#x3D;0x5191BC在内存中存储的是0x6073F35F,dll函数内部的一个地址</p>
+<p>实际这里存储的0x119414也是一个偏移，由于他们是在一个区段中</p>
+<p>其文件地址为0x119414-0x119000+0xc9000&#x3D;0xc9414</p>
+<p>如下图所示，文件的函数地址部分存储的是函数名称</p>
+<p>exec程序执行的时候可通过函数名来找函数地址，这个过程是由操作系统去实现的</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911194849586.png"
+                        alt="image-20260911194849586"
+                 ></p>
+<p>程序在调用dll文件函数时，并不是把dll文件函数的代码编译到当前文件中，而是把d11文件对应的函数地址保存到了当前文件中</p>
+<p> 对于32位的程序来说都有一个4GB的内存空间，高2G是内核空间，低2G 是应用空间、</p>
+<p>在文件当中对应的函数地址部分存储的是函数名称。</p>
+<p>HMODULE &#x3D;LoadLibrayA &#x3D;IMAGEBASE</p>
+<p>先加载EXE文件，之后看exe中调用了什么dll文件，之后通过LoadLibray把对应的dll文件也加载进应用空间中就拿到了模块基地址</p>
+<p>GetProcessAddr (HMODULE, fun1) 之后就是拿到地址并填入<code>call dword ptr ds: [0x51918C]</code>中<code>[0x51918C]</code>处</p>
+<p>Exe文件调用的动态链接库在内存中是一个地址，在文件中是一个函数名，在操作系统把dll文件加载到内存的时候就会调用几个API把它转化为地址</p>
+<h4 id="结构分析"><a href="#结构分析" class="headerlink" title="结构分析"></a>结构分析</h4><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260911202233450.png"
+                        alt="image-20260911202233450"
+                 ></p>
+<p>一个导入表只有一份，但是一个导出表有多份，因为一个文件可能引入多个dll文件</p>
+<p>引入几个文件就会有几个typedef struct _IMAGE_IMPORT_DESCRIPTOR</p>
+<p>可以把<code>IMAGE_IMPORT_DESCRIPTOR</code>理解成 描述“当前 PE 文件需要哪个 DLL，以及这个 DLL 的导入信息在哪里”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_IMPORT_DESCRIPTOR &#123;</span><br><span class="line">    union &#123;</span><br><span class="line">        DWORD Characteristics;</span><br><span class="line">        DWORD OriginalFirstThunk;//INT导入名称表RVA-&gt;_IMAGE_THUNK_DATA32</span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line"></span><br><span class="line">    DWORD TimeDateStamp;//时间戳/当可执行文件不与被输入的DLL进行绑定时，此字段为0</span><br><span class="line">    DWORD ForwarderChain;</span><br><span class="line">    DWORD Name;         //指向DLL的RVA</span><br><span class="line">    DWORD FirstThunk;   //IAT导入地址表rva，未运行时是函数名，运行后是函数地址</span><br><span class="line"></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR, *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>INT 不是一个单独的数据。</p>
+<p>它是一组：IMAGE_THUNK_DATA32。对应一个导入函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_THUNK_DATA32 &#123;//或IMAGE_THUNK_DATA64</span><br><span class="line">	  union &#123;</span><br><span class="line">		DWORD ForwarderString;</span><br><span class="line">		DWORD Function;</span><br><span class="line">		DWORD Ordinal;</span><br><span class="line">		DWORD AddressOfData;</span><br><span class="line">	&#125; u1;</span><br><span class="line">&#125; IMAGE_THUNK_DATA32;</span><br></pre></td></tr></table></figure>
+
+<p>这个结构体大小是：4 字节。因为里面是一个 <code>DWORD</code></p>
+<p>该函数不只是存储的名称，也可以存储函数序号，如果最高位为1就是按照序号导入的，否则就是按照函数名RVA</p>
+<p>第一位作为用来区分按序号&#x2F;函数名导入，之后的31位就是存储的序号</p>
+<p>之后通过 AddressOfData 指向 IMAGE_IMPORT_BY_NAME，其里面存贮真正的函数名字 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_IMPORT_BY_NAME &#123;</span><br><span class="line">    WORD Hint;//不同编译器放置的内容不一</span><br><span class="line">    CHAR Name[1];//真正的函数名</span><br><span class="line">&#125; IMAGE_IMPORT_BY_NAME;</span><br></pre></td></tr></table></figure>
+
+<p>INT调用流程</p>
+<p>OriginalFirstThunk               &#x2F;&#x2F;imagebase+OriginalFirstThunk&#x3D;文件中INT的位置<br>        ↓<br>      INT<br>        ↓dll<br>IMAGE_THUNK_DATA         &#x2F;&#x2F;找到对应函数<br>        ↓<br>IMAGE_IMPORT_BY_NAME&#x2F;&#x2F;name字段存储函数名<br>        ↓<br>     “sum”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INT                              IAT</span><br><span class="line"> │                                │</span><br><span class="line"> ↓                                ↓</span><br><span class="line">THUNK                            THUNK</span><br><span class="line"> │                                │</span><br><span class="line"> ↓                                ↓</span><br><span class="line">IMAGE_IMPORT_BY_NAME             导入项</span><br><span class="line"> │</span><br><span class="line"> ↓</span><br><span class="line">&quot;sum&quot;</span><br></pre></td></tr></table></figure>
+
+<p>之后就是去导出表中进行下一步操作</p>
+<p>有一种情况是IAT在文件中也存储的是一个dll真实地址,但是要满足所有的dll文件的位置都是确定的，否则会冲突</p>
+<p>当TimeDateStamp为0时，IAT指向导入名称表</p>
+<p>若不为0，IAT中就会存储真实的地址</p>
+<h3 id="重定位表"><a href="#重定位表" class="headerlink" title="重定位表"></a>重定位表</h3><p>数据目录表索引是5</p>
+<p>重定位表主要用于解决：EXE&#x2F;DLL 实际加载地址和编译时的首选加载地址不一致时，修正程序内部保存的绝对地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_BASE_RELOCATION &#123;</span><br><span class="line">    DWORD   VirtualAddress;   // PageRVA;当前页起始RVA（相对模块基址）</span><br><span class="line">    DWORD   SizeOfBlock;      // 本块总字节数（包含本结构体 + 后面所有TypeOffset数组）</span><br><span class="line">&#125; IMAGE_BASE_RELOCATION, *PIMAGE_BASE_RELOCATION;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>重定位表由一串连续的重定位块串联组成，每一个重定位块对应一个 4KB（0x1000 ）的内存页，每个块头部保存当前页面的起始 RVA 与本块总字节大小，蓝色块<code>VirtualAddress=0x4000</code>，代表这一页从 RVA&#x3D;0x4000 开始；头部之后紧跟着多个 16bit 的 TypeOffset 单元，用来记录本页面内部需要重定位的偏移，页内偏移分别为 0x02、0x18、0x88，和页面起始 RVA 相加就能得到完整 RVA（0x4002、0x4018、0x4088）；所有落在同一个 4KB 页面范围内的待重定位位置，都会被收纳到同一个重定位块中，不同页面的数据则放到下一个新的重定位块。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912133521165.png"
+                        alt="image-20260912133521165"
+                 ></p>
+<p>TypeOffset是16位WORD</p>
+<p><strong>高 4bit：重定位类型</strong></p>
+<p><strong>低 12bit：页内偏移</strong></p>
+<p>如0011 011101111010：高4位：0011&#x3D;3，低12位：000000000010页内偏移是2</p>
+<p>此时目标 RVA &#x3D; 块的 VirtualAddress (0x4000) + 页内偏移 (0x2) &#x3D; 0x4002</p>
+<p>但是拿到的地址不一定是需要修复的，看它的高4位作为标识，当他的十进制值等于3时才代表他需要被修复</p>
+<h3 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h3><p>数据目录表索引是0</p>
+<p>TLS（Thread Local Storage，线程局部存储，PE 中的 TLS 目录）</p>
+<p>一句话概括：TLS 是让每个线程拥有自己私有变量副本的机制；PE 文件里的 TLS 目录，用来告诉 Windows 加载器，在创建线程时自动分配、初始化这份线程私有数据</p>
+<p>进程中的全局变量与函数内定义的静态(static)变量，是各个线程都可以访问的共享变量。在一个线程修改的内存内容，对所有线程都生效。这是一个优点也是一个缺点。优点：线程的数据交换变得非常快捷。缺点：多个线程访问共享数据，需要昂贵的同步开销，也容易造成同步相关的 BUG。<br>如果需要在一个线程内部的各个函数调用都能访问、但其它线程不能访问的变量（被称为static memory local to a thread 线程局部静态变量），就需要新的机制来实现。这就是 TLS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_TLS_DIRECTORY32 &#123;</span><br><span class="line">    DWORD StartAddressOfRawData;  // VA：TLS模板数据起始地址，无TLS变量填0</span><br><span class="line">    DWORD EndAddressOfRawData;    // VA：TLS模板数据结束地址，无TLS变量填0</span><br><span class="line">    DWORD AddressOfIndex;         // VA：TLS索引变量地址，不用填0</span><br><span class="line">    DWORD AddressOfCallBacks;     // VA：TLS回调函数指针数组的VA，数组以NULL结尾</span><br><span class="line">    DWORD SizeOfZeroFill;         </span><br><span class="line">    DWORD Characteristics;        </span><br><span class="line">&#125; IMAGE_TLS_DIRECTORY32, *PIMAGE_TLS_DIRECTORY32;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如何创建TLS变量<code>__declspec(thread) int g_number=100;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">__declspec(thread) int g_number=100;</span><br><span class="line">HANDLE hEvent = NULL;</span><br><span class="line"></span><br><span class="line">DWORD WINAPI threadProc1(LPVOID lpParam)</span><br><span class="line">&#123;</span><br><span class="line">	g_number = 200;</span><br><span class="line">	printf(&quot;thread 1: %d\n&quot;, g_number);</span><br><span class="line">	SetEvent(hEvent);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">DWORD WINAPI threadProc2(LPVOID lpParam)</span><br><span class="line">&#123;</span><br><span class="line">HANDLE hEvent = NULL;</span><br><span class="line">	WaitForSingleObject(hEvent,-1);</span><br><span class="line">	printf(&quot;thread 2: %d\n&quot;, g_number);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">	hEvent=CreateEventA(NULL,FALSE,FALSE,NULL);</span><br><span class="line">//CreateThread`仅向操作系统申请创建线程，将线程置入就绪队列；</span><br><span class="line">// 不保证线程立刻执行，线程何时上 CPU 由 Windows 线程调度器决定。	</span><br><span class="line">    HANDLE hThread1 = CreateThread(NULL, NULL, threadProc1, NULL, NULL, NULL);</span><br><span class="line">	HANDLE hThread2 = CreateThread(NULL, NULL, threadProc2, NULL, NULL, NULL);</span><br><span class="line">	WaitForSingleObject(hThread2, -1);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>线程 1 只修改线自己的副本，修改为 200，不会改动线程 2 的副本。</p>
+<p>线程 2 读取的是属于线程 2 自己的副本，没有被修改，所以读取结果始终是 100。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912143438822.png"
+                        alt="image-20260912143438822"
+                 ></p>
+<h4 id="TLS回调函数"><a href="#TLS回调函数" class="headerlink" title="TLS回调函数"></a>TLS回调函数</h4><p>首先加上编译选项：<br>1、 <code>#pragma comment(linker,&quot;/INCLUDE:_tls_used&quot;)</code><br>2、<br>&#x2F;*注册 TLS 函数.CRT$XLX 的作用<br>CRT 表示使用CRuntime 机制 X 表示表示名随机<br>L表示 TLS Callback section<br>X也可以换成B~Y任意一个字符 *&#x2F;<br><code>#pragma data_seg(&quot;.CRT$XLX&quot;)</code><br>&#x2F;&#x2F;存储回调函数地址 PIMAGE_TLS_CALLBACK pTLS CALLBACKs[] &#x3D;{ TLS_CALLBACK1, TLS_CALLBACK2, 0 };<br><code>#pragma data_seg()</code> </p>
+<p>TLS 回调不是普通函数，<strong>必须严格匹配 PIMAGE_TLS_CALLBACK 原型</strong>，并且要构造回调数组、填充 TLS 目录，让 PE 加载器识别。 </p>
+<p> 约束：</p>
+<ol>
+<li>函数名自定义，但<strong>调用约定、返回类型、参数类型不能改动</strong>。</li>
+<li>Reserved 是系统保留，只读，不要修改。</li>
+<li>回调内部代码尽量简洁；<strong>不要随意调用复杂 API</strong>，容易死锁。</li>
+</ol>
+<p>且构造 TLS 回调指针数组<strong>末尾必须用 NULL 哨兵标记数组结束</strong>，否则系统越界访问内存。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PIMAGE_TLS_CALLBACK TlsCallbackArray[] = &#123;</span><br><span class="line">    TlsCallbackFunc,</span><br><span class="line">    NULL    // 终止哨兵，不可省略</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#pragma comment(linker,&quot;/INCLUDE:__tls_used&quot;)</span><br><span class="line">__declspec(thread) int g_number=100;</span><br><span class="line">HANDLE hEvent = NULL;</span><br><span class="line"></span><br><span class="line">DWORD WINAPI threadProc1(LPVOID lpParam)</span><br><span class="line">&#123;</span><br><span class="line">	g_number = 200;</span><br><span class="line">	printf(&quot;thread 1: %d\n&quot;, g_number);</span><br><span class="line">	SetEvent(hEvent);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">DWORD WINAPI threadProc2(LPVOID lpParam)</span><br><span class="line">&#123;</span><br><span class="line">	WaitForSingleObject(hEvent,-1);</span><br><span class="line">	printf(&quot;thread 2: %d\n&quot;, g_number);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void NTAPI t_TlsCal1Back_A(PVOID D1lHandle, DWORD Reason, PVOID Reserved)</span><br><span class="line">//钩子函数的参数列表、参数类型、顺序、返回值、`WINAPI`调用约定，全部必须和原版 API 一模一样。</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;TLS Callback executed\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">/*注册 TLS 函数.CRT$XLX 的作用</span><br><span class="line">CRT 表示使用CRuntime 机制 </span><br><span class="line">X 表示标识名随机</span><br><span class="line">L表示 TLS Callback section</span><br><span class="line">X也可以换成B~Y任意一个字符 */</span><br><span class="line"></span><br><span class="line">#pragma data_seg(&quot;.CRT$XLX&quot;)</span><br><span class="line">//存储回调函数地址 </span><br><span class="line">PIMAGE_TLS_CALLBACK pTLS_CALLBACKs[] =&#123; t_TlsCal1Back_A, 0 &#125;;</span><br><span class="line">#pragma data_seg()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">	hEvent=CreateEventA(NULL,FALSE,FALSE,NULL);</span><br><span class="line">//CreateThread`仅向操作系统申请创建线程，将线程置入就绪队列；</span><br><span class="line">// 不保证线程立刻执行，线程何时上 CPU 由 Windows 线程调度器决定。	</span><br><span class="line">    HANDLE hThread1 = CreateThread(NULL, NULL, threadProc1, NULL, NULL, NULL);</span><br><span class="line">	HANDLE hThread2 = CreateThread(NULL, NULL, threadProc2, NULL, NULL, NULL);</span><br><span class="line">	WaitForSingleObject(hThread2, -1);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912145425428.png"
+                        alt="image-20260912145425428"
+                 ></p>
+<p>TLS 函数在以下四种情况都会被调用：<br>#define DLL_PROCESS_ATTACH 1&#x2F;&#x2F;进程创建时<br>#define DLL_THREAD_ATTACH 2 &#x2F;&#x2F;线程创建时<br>#define DLL_THREAD_DETACH 3&#x2F;&#x2F;线程销毁时<br>#define DLL_PROCESS_DETACH 0&#x2F;&#x2F;进程销毁时</p>
+<p>OD加载一个程序，程序最先执行的代码是OEP 但是TLS函数在OEP之前就执行了</p>
+<p>所以很多人会把反调试加到TLS中，在真正执行函数之前就检测反调试并退出</p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>每个进程都有自己独立的 4G 虚拟内存空间（32 位系统），<strong>高 2G 归操作系统内核，低 2G 给用户程序使用</strong>。 进程里代码操作的全部是<strong>虚拟地址</strong>；虚拟地址→物理地址的转换，由操作系统内核 + CPU 的 MMU 内存管理单元一起完成。 所以正常情况下，<strong>不能直接用指针访问别的进程内存</strong>（虚拟地址是进程私有的，别的进程相同虚拟地址指向完全不同的内容）。</p>
+<p>Windows 会做<strong>内存共享（写时复制 COW）</strong>：多进程加载同一个 dll&#x2F;exe，<strong>代码段在物理内存只保存一份</strong>，然后映射到每个进程各自的虚拟地址空间，节省物理内存。</p>
+<p>当所有进程占用内存总和超过物理内存大小，操作系统会把物理内存里<strong>暂时不用的数据，换到硬盘上的页面文件（pagefile.sys）</strong>。需要的时候再换回物理内存，这就是<strong>虚拟内存 &#x2F; 页面置换</strong>。</p>
+<p>windows有三种管理内存的方式</p>
+<p><strong>堆（Heap）</strong></p>
+<p>适合分配大量小型对象。使用简单，由系统自动管理内存空间；缺点是效率偏低，内存控制不够灵活，容易产生内存碎片。常用 API：HeapAlloc，C 语言 malloc 底层基于堆实现。<strong>堆是操作系统在虚拟内存基础上封装实现的。</strong></p>
+<p><strong>虚拟内存（Virtual Memory）</strong></p>
+<p>适合分配大型对象或大型数组。以内存页为单位操作，提供丰富接口，可以精确控制内存的状态与读写执行权限。常用 API：VirtualAlloc、VirtualFree、VirtualProtect。</p>
+<p><strong>文件映射（内存映射文件 File Mapping）</strong></p>
+<p>适合处理大型数据流，也用于本机不同进程间共享数据。可以把文件映射到进程虚拟地址空间，直接用指针访问内容，支持多进程共享内存。常用 API：CreateFileMapping、MapViewOfFile。</p>
+<p>堆在 Windows 中以对象形式管理。我们可以手动创建堆对象，在该堆上分配、释放内存。C&#x2F;C++ 的<code>malloc</code>、<code>new</code>底层都是依赖 Windows 堆对象完成内存分配。进程创建时，Windows 会自动给进程创建<strong>默认堆</strong>。进程的默认堆<strong>不允许销毁</strong>。一个进程可以有<strong>多个堆</strong>（自己 HeapCreate 新建），但只有一个系统自带默认堆</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>HeapCreate</strong></td>
+<td>在进程内创建一个新的堆对象，返回堆句柄</td>
+<td>创建后可被 HeapDestroy 销毁</td>
+</tr>
+<tr>
+<td><strong>GetProcessHeap</strong></td>
+<td>获取当前进程<strong>默认堆</strong>的句柄</td>
+<td>进程创建时系统自动生成</td>
+</tr>
+<tr>
+<td><strong>GetProcessHeaps</strong></td>
+<td>获取进程中<strong>全部堆</strong>的句柄数组</td>
+<td>含默认堆和所有新建堆</td>
+</tr>
+<tr>
+<td><strong>HeapAlloc</strong></td>
+<td>在指定堆上分配一块内存，返回指针</td>
+<td>核心分配函数，对应<strong>HeapFree</strong></td>
+</tr>
+<tr>
+<td><strong>HeapReAlloc</strong></td>
+<td>重新分配已分配的内存块（改大小）</td>
+<td>可扩展或缩小内存块</td>
+</tr>
+<tr>
+<td><strong>HeapFree</strong></td>
+<td>释放堆上已分配的内存块</td>
+<td>释放后指针失效</td>
+</tr>
+<tr>
+<td><strong>HeapSize</strong></td>
+<td>查询某内存块在堆中的大小</td>
+<td>调试 &#x2F; 校验用</td>
+</tr>
+<tr>
+<td><strong>HeapDestroy</strong></td>
+<td>销毁手动创建的堆对象</td>
+<td><strong>默认堆不可销毁</strong></td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HeapCreate（建堆）→ HeapAlloc（分配）→ HeapReAlloc（调整）→ HeapFree（释放）→ HeapDestroy（销毁）</span><br></pre></td></tr></table></figure>
+
+<p>理解一下代码就好，这个用的不是很多</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	//1. 创建一个堆对象</span><br><span class="line">	HANDLE hHeap = HeapCreate(0, 0, 0);</span><br><span class="line">	//2. 申请堆内存</span><br><span class="line">	char* str = (char*)HeapAlloc(hHeap, HEAP_ZERO_MEMORY, 10);</span><br><span class="line">	strcpy_s(str, 10, &quot;helloword&quot;);</span><br><span class="line">	printf(&quot;%s\n&quot;, str);</span><br><span class="line">	HeapFree(hHeap, 0, str);</span><br><span class="line">	HeapDestroy(hHeap);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><p>操作系统采用分页机制管理内存，将虚拟地址空间划分为大小固定的内存页。32 位系统默认页面大小为 4KB（0x1000），4GB 虚拟地址空间一共包含 1M 个页面。</p>
+<p>开启分页后，虚拟地址空间中的每一个页面，有三种状态：映射到物理内存、映射到硬盘上的页面交换文件，或者不映射到任何存储介质。应用程序 4GB 虚拟地址空间里，只有少量页面映射在物理内存中，大部分虚拟区域没有有效映射。</p>
+<p>32 位下每个进程都拥有独立的 4GB 虚拟地址空间。不同进程可以使用相同的虚拟地址，但这些相同虚拟地址对应的物理内存可以完全不同。操作系统为<strong>每个进程维护一套独立的页目录与页表</strong>，虚拟地址到物理地址的映射关系就保存在这两级结构中。页表项记录虚拟页对应的位置：物理内存 &#x2F; 硬盘交换文件 &#x2F; 无映射。</p>
+<p>CPU 地址转换流程：进程给出虚拟地址 → CPU 查询当前进程的页目录、页表 → 将虚拟地址翻译为物理地址，再访问物理内存条。</p>
+<p>当物理内存资源紧张时，操作系统执行页面置换：把长时间较少访问的页面<strong>换出（swap out）</strong>，写入硬盘的页面交换文件（pagefile.sys），释放物理页给正在频繁使用的页面。同时修改页表项标记，不再指向物理内存，而是标记页面数据存放在交换文件。当程序后续访问该页面时，触发缺页异常，操作系统将页面从交换文件**换入（swap in）**物理内存，更新页表映射，程序继续执行。</p>
+<p><strong>页交换文件逻辑：</strong></p>
+<p>程序访问虚拟内存地址，操作系统判断数据是否在内存中，如果在就从虚拟地址映射到的物理地址，如果不在就判断是否在页交换文件当中，如果在就查看物理内存是否有闲置空间，有的话，就将页交换文件载入到物理内存，如果没有闲置内存，就从物理内存中找到一个可以释放的页，然后将页保存到页交换文件中。</p>
+<p>每个进程都拥有<strong>独立的页目录</strong>，页目录的物理地址会存入 CPU 的<code>CR3</code>寄存器。</p>
+<p>页目录中的每一项，指向一张页表；<strong>页表里面存放虚拟页到物理页的映射条目（PTE，页表项）</strong>，记录虚拟页面对应的物理页号、页面属性。</p>
+<ol>
+<li>进程切换时，操作系统把当前进程页目录的物理地址写入 CR3，CPU 就拿到这个进程的整套映射表。</li>
+<li>CPU 做地址翻译：虚拟地址 → 查询页目录 → 找到对应页表 → 查询页表项 → 得到物理地址。</li>
+<li>页目录、页表本身<strong>存放在物理内存</strong>中，不是放在虚拟地址空间。</li>
+</ol>
+<p>Windows 虚拟内存页面有三种状态：空闲、保留、提交。</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空闲（FREE）</td>
+<td>内存页不可用，没有预定，也没有映射。</td>
+</tr>
+<tr>
+<td>保留 (Reserve)</td>
+<td>预定一段虚拟地址空间，<strong>没有映射到物理内存</strong>，内存仍然不可访问。只是占用虚拟地址，防止别的内存分配占用这片虚拟地址。</td>
+</tr>
+<tr>
+<td>提交 (Commit)</td>
+<td>虚拟内存页完成分配，建立了到物理内存（或页面文件）的映射，进程可以正常读写使用。</td>
+</tr>
+</tbody></table>
+<p> Windows 虚拟内存映射到物理内存分为三种方式：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>补充考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Private（私有内存）</td>
+<td>进程私有内存，不会被其他进程共享；典型为堆、栈。</td>
+<td>写时复制 COW，修改时会单独分配物理页，其他进程不受影响。</td>
+</tr>
+<tr>
+<td>Mapped（文件映射 &#x2F; 共享内存）</td>
+<td>由其他内存或者文件映射生成，可以用于进程间共享内存。</td>
+<td>调用<code>CreateFileMapping</code>、<code>MapViewOfFile</code>，多个进程可映射到同一块物理内存。</td>
+</tr>
+<tr>
+<td>Image（映像内存）</td>
+<td>从 PE 映像（exe、dll 文件）映射而来，程序加载时使用。</td>
+<td>EXE&#x2F;DLL 的代码段、只读数据段，多个进程加载同一个 DLL，共用同一份物理内存。</td>
+</tr>
+</tbody></table>
+<p>Private（私有内存）：A和B和互不影响</p>
+<p>Mapped（文件映射 &#x2F; 共享内存）：A和B和相互影响<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912164013613.png"
+                        alt="image-20260912164013613"
+                 ></p>
+<p>Windows 虚拟内存管理最小单位是**内存页，默认 4KB（0x1000）**划分属性的最小单位</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>考点说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ReadOnly</td>
+<td>只读</td>
+<td>只能读，尝试写入会触发异常；PE 文件的常量段常用。</td>
+</tr>
+<tr>
+<td>READ_WRITE</td>
+<td>读写</td>
+<td>可读、可修改；进程堆、全局变量常用此属性。</td>
+</tr>
+<tr>
+<td>EXECUTE</td>
+<td>执行</td>
+<td>内存里面是机器代码，可以运行；<strong>默认不可写</strong>。</td>
+</tr>
+<tr>
+<td>EXECUTE_READ_WRITE</td>
+<td>可读可写可执行</td>
+<td>RWX，最危险权限，恶意代码经常申请这种页面放 shellcode。</td>
+</tr>
+<tr>
+<td>WRITE_COPY</td>
+<td>写时拷贝（写时复制 COW）</td>
+<td>页面只读共享，一旦进程尝试写入，系统复制一份独立页面给该进程，之后修改互不影响。</td>
+</tr>
+</tbody></table>
+<p>虚拟地址API</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>功能</th>
+<th>考点说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>VirtualAlloc</code></td>
+<td>在<strong>本进程</strong>分配 &#x2F; 预定一块虚拟内存</td>
+<td>两种模式：1. <strong>预定</strong>（Reserve）：只占虚拟地址，不分配物理内存2. <strong>提交</strong>（Commit）：分配物理内存，建立映射</td>
+</tr>
+<tr>
+<td><code>VirtualAllocEx</code></td>
+<td>可在<strong>其他（远程）进程</strong>分配 &#x2F; 预定虚拟内存</td>
+<td>注入常用 API，给目标进程开辟一块虚拟地址空间</td>
+</tr>
+<tr>
+<td><code>VirtualFree</code></td>
+<td>释放<strong>本进程</strong>虚拟内存</td>
+<td>可以只 Decommit（释放物理内存，保留虚拟地址预订），或者直接 Release 释放整个虚拟区域</td>
+</tr>
+<tr>
+<td><code>VirtualFreeEx</code></td>
+<td>释放<strong>其他进程</strong>的虚拟内存</td>
+<td>远程释放内存</td>
+</tr>
+<tr>
+<td><code>VirtualLock</code></td>
+<td>锁定内存，<strong>禁止页面被交换到硬盘 pagefile</strong></td>
+<td>锁定后的页面永久留在物理内存，不会被置换出去</td>
+</tr>
+<tr>
+<td><code>VirtualUnlock</code></td>
+<td>解锁内存</td>
+<td>解除锁定，页面可以被操作系统换出到交换文件</td>
+</tr>
+<tr>
+<td><code>VirtualProtect</code></td>
+<td>修改<strong>本进程</strong>内存页的读写执行权限属性</td>
+<td>就是前面学的<code>ReadOnly/READ_WRITE/RWX</code>，<strong>以页 (4KB) 为单位修改</strong></td>
+</tr>
+<tr>
+<td><code>VirtualProtectEx</code></td>
+<td>修改<strong>其他进程</strong>内存页权限</td>
+<td>注入必备：分配内存后改成可执行，存放 shellcode</td>
+</tr>
+<tr>
+<td><code>ReadProcessMemory</code></td>
+<td>读取远程进程内存数据</td>
+<td>跨进程读内存</td>
+</tr>
+<tr>
+<td><code>WriteProcessMemory</code></td>
+<td>写入数据到远程进程内存</td>
+<td>注入常用，把 shellcode 写入目标进程</td>
+</tr>
+<tr>
+<td><code>VirtualQuery</code></td>
+<td>查询<strong>本进程</strong>内存区域状态</td>
+<td>查询这块虚拟地址：预定 &#x2F; 提交、页面属性、大小</td>
+</tr>
+<tr>
+<td><code>VirtualQueryEx</code></td>
+<td>查询<strong>其他进程</strong>内存状态</td>
+<td>远程查询内存信息</td>
+</tr>
+</tbody></table>
+<p>这里放一个代码可供调试观察</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	// VirtualAlloc：预定+提交1字节虚拟内存，页面属性读写</span><br><span class="line">	// 虽然申请大小写1，底层操作系统分配完整一整个4KB页面</span><br><span class="line">	char* str = (char*)VirtualAlloc(0, 1, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);</span><br><span class="line">	strcpy_s(str, 10, &quot;helloword&quot;);</span><br><span class="line">	printf(&quot;%s\n&quot;, str);</span><br><span class="line">	// MEM_RELEASE：释放整块虚拟地址区域（预定+提交全部回收）</span><br><span class="line">	VirtualFree(str, 0, MEM_RELEASE);</span><br><span class="line"></span><br><span class="line">	char name[] = &quot;51hook&quot;;  // 栈上数组，字符串存放在栈内存，栈内存默认可写</span><br><span class="line">	char* cname = (char*)&quot;51hook&quot;; //字符串放在PE的只读代码段(.rdata)，指针变量在栈上，指针指向的字符串内容不可写</span><br><span class="line">	name[1] = &#x27;2&#x27;;</span><br><span class="line"></span><br><span class="line">	DWORD oldProtect = 0;</span><br><span class="line">	// 修改cname指向页面的内存属性：改为PAGE_READWRITE读写，保存原来的页面权限到oldProtect</span><br><span class="line">	// VirtualProtect修改粒度：整页4KB</span><br><span class="line">	VirtualProtect(cname, 7, PAGE_READWRITE, &amp;oldProtect);</span><br><span class="line">	cname[1] = &#x27;2&#x27;; // 修改常量字符串，修改成功的前提是VirtualProtect修改页面权限成功</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><p>文件映射（Mapping）是一种<strong>将文件内容映射到进程虚拟内存</strong>的技术。 </p>
+<p>映射成功的文件可以用<strong>视图（View）</strong>，来引用这段内存，从而达到操作位于此段内存中的文件的目的。 </p>
+<p>文件映射最大的一个特点：<strong>可以在不同的进程间共享数据（跨进程 IPC）</strong></p>
+<p>文件映射：建立虚拟内存地址和磁盘文件的映射绑定。修改这块虚拟内存，本质就是修改磁盘文件对应的区域（操作系统自动同步） </p>
+<p>ReadFile 普通读写：把文件内容拷贝一份到虚拟内存缓冲区，改的只是这份副本；最后还要调用 WriteFile，再把副本拷贝回磁盘</p>
+<p><strong>Mapping 内核对象 &#x3D; 内核里的一张 “登记卡片”</strong>，记录一件事： 这块映射对应的后备存储（磁盘文件 &#x2F; 页面文件）、大小、权限、名字（可选，用于进程间共享）。它<strong>不是文件本身，也不是内存视图</strong>，只是内核的一个记录。</p>
+<p><code>CreateFileMapping</code> &#x2F; <code>OpenFileMapping</code> → 操作<strong>内核 Mapping 对象</strong>（内核里的东西，还没绑定到你的进程虚拟地址） <code>MapViewOfFile</code> &#x2F; <code>UnmapViewOfFile</code> → 操作<strong>当前进程虚拟地址空间</strong>，把映射挂到你的程序内存里 <code>FlushViewOfFile</code> → 强制把内存修改刷回磁盘文件</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>含义 + 大白话</th>
+<th>什么时候用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CreateFileMapping</strong></td>
+<td>创建一个 Mapping 内核对象登记：我准备把某个文件做成内存映射，指定大小、页面权限</td>
+<td>【进程 A，创建方】新建映射对象，可给对象起名字，供别的进程打开</td>
+</tr>
+<tr>
+<td><strong>OpenFileMapping</strong></td>
+<td>打开已经存在的 Mapping 内核对象</td>
+<td>【进程 B，通信方】别的进程已经建好 Mapping，B 用名字打开这个现成对象（进程间共享内存核心 API）</td>
+</tr>
+<tr>
+<td><strong>MapViewOfFile</strong></td>
+<td>将 mapping 对象的文件映射到内存中👉生成<strong>视图 View</strong>：在当前进程虚拟地址空间分配一块虚拟地址，返回指针。拿到指针就能读写，就像普通内存</td>
+<td>必须在 CreateFileMapping &#x2F; OpenFileMapping 之后！<strong>没有调用这个，你拿不到内存指针，没法读写</strong></td>
+</tr>
+<tr>
+<td><strong>UnmapViewOfFile</strong></td>
+<td>取消文件映射（销毁 View 视图）解绑虚拟地址和文件映射关系</td>
+<td>用完内存指针之后调用。释放进程虚拟地址。⚠️ 注意：<strong>只是解除视图，Mapping 内核对象还在！</strong></td>
+</tr>
+<tr>
+<td><strong>FlushViewOfFile</strong></td>
+<td>刷新缓存区，将映射在内存中的文件写回到硬盘中</td>
+<td>可选！修改映射内存后，OS 默认延迟刷盘；这个 API 强制立刻把改动写入磁盘，防止程序崩溃丢数据</td>
+</tr>
+</tbody></table>
+<p><strong>文件映射使用</strong></p>
+<p>在c++源码文件的同一目录下创建test.txt,随便给他个内容为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1111111111111111111111111111111111111111111111111111111111111111</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	//创建文件句柄</span><br><span class="line">	HANDLE hFile = CreateFileA(&quot;test.txt&quot;,</span><br><span class="line">		GENERIC_READ | GENERIC_WRITE,</span><br><span class="line">		FILE_SHARE_READ, NULL,</span><br><span class="line">		OPEN_ALWAYS,</span><br><span class="line">		FILE_ATTRIBUTE_NORMAL,</span><br><span class="line">		0);</span><br><span class="line">	//创建Mapping对象</span><br><span class="line">	HANDLE hMapping = CreateFileMappingA(hFile,</span><br><span class="line">		NULL,</span><br><span class="line">		PAGE_READWRITE,</span><br><span class="line">		0,</span><br><span class="line">		GetFileSize(hFile, 0),</span><br><span class="line">		NULL);</span><br><span class="line">	//建立映射</span><br><span class="line">	char* fileBuff = (char*)MapViewOfFile(hMapping, FILE_MAP_ALL_ACCESS, 0, 0, 0);</span><br><span class="line">	printf(&quot; · &quot;);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912173043763.png"
+                        alt="image-20260912173043763"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912173145048.png"
+                        alt="image-20260912173145048"
+                 ></p>
+<p>直接在VS中修改，可以看到txt中的内容也会跟着改变</p>
+<p><strong>共享内存</strong></p>
+<p>即多个进程的修改可以相互影响</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	HANDLE hMapping = INVALID_HANDLE_VALUE;</span><br><span class="line">	hMapping = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, &quot;FILE_MAPPING_51HOOK&quot;);</span><br><span class="line">	if (hMapping == NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		//创建Mapping对象</span><br><span class="line">		 hMapping = CreateFileMappingA(INVALID_HANDLE_VALUE,</span><br><span class="line">			NULL,</span><br><span class="line">			PAGE_READWRITE,</span><br><span class="line">			0,</span><br><span class="line">			4,</span><br><span class="line">			&quot;FILE_MAPPING_51HOOK&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//建立映射</span><br><span class="line">	DWORD* number = (DWORD*)MapViewOfFile(hMapping, FILE_MAP_ALL_ACCESS, 0, 0, 4);</span><br><span class="line">	if (*number &gt;= 3)</span><br><span class="line">	&#123;</span><br><span class="line">		MessageBoxA(0, &quot;The number of running programs exceeds 3&quot;, &quot;Tip&quot;, MB_OK);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	*number += 1;</span><br><span class="line">	printf(&quot;Running program count: %d\n&quot;, *number);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	*number -= 1;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912174339709.png"
+                        alt="image-20260912174339709"
+                 ></p>
+<h2 id="IAT-hook"><a href="#IAT-hook" class="headerlink" title="IAT hook"></a>IAT hook</h2><p>如图看到了MessageBoxA函数的IAT表中的调用地址</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912211419497.png"
+                        alt="image-20260912211419497"
+                 ></p>
+<p>可以考虑修改IAT表，当程序去调用如messageBOX的函数时，让程序去调用我们的函数</p>
+<p>hook应用</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">DWORD* g_iatAddr = <span class="literal">NULL</span>;</span><br><span class="line">DWORD* g_unHookAddr = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> WINAPI <span class="title function_">HookMessageBoxW</span><span class="params">(</span></span><br><span class="line"><span class="params">	HWND     hWnd,</span></span><br><span class="line"><span class="params">	LPCWSTR  lpText,</span></span><br><span class="line"><span class="params">	LPCWSTR  lpCaption,</span></span><br><span class="line"><span class="params">	UINT     uType</span></span><br><span class="line"><span class="params">)</span>;</span><br><span class="line"></span><br><span class="line">BOOL <span class="title function_">InstallHook</span><span class="params">()</span>;</span><br><span class="line">BOOL <span class="title function_">UninstallHook</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">DWORD* <span class="title function_">GetIatAddr</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* dllName, <span class="type">const</span> <span class="type">char</span>* dllFunName)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">DWORD* g_iatAddr = <span class="literal">NULL</span>;     <span class="comment">//存放MessageBoxW函数指针的那个内存位置</span></span><br><span class="line">DWORD* g_unHookAddr = <span class="literal">NULL</span>;  <span class="comment">// 保存原版系统MessageBoxW的地址（用来卸载时恢复）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义MessageBoxW函数指针类型</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span><span class="params">(WINAPI* PFN_MessageBoxW)</span><span class="params">(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType)</span></span>;</span><br><span class="line"><span class="comment">//要 Hook 哪个 API，钩子函数的参数列表、参数类型、顺序、返回值、`WINAPI`调用约定，全部必须和原版 API 一模一样。</span></span><br><span class="line"><span class="function"><span class="type">int</span> WINAPI <span class="title">HookMessageBoxW</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	HWND    hWnd,</span></span></span><br><span class="line"><span class="params"><span class="function">	LPCWSTR lpText,</span></span></span><br><span class="line"><span class="params"><span class="function">	LPCWSTR lpCaption,</span></span></span><br><span class="line"><span class="params"><span class="function">	UINT    uType)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	PFN_MessageBoxW OriginalMsgBox = (PFN_MessageBoxW)g_unHookAddr;</span><br><span class="line">	<span class="type">int</span> result = <span class="built_in">OriginalMsgBox</span>(<span class="number">0</span>, <span class="string">L&quot;Hooked&quot;</span>, <span class="string">L&quot;Tip&quot;</span>, MB_OK);</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//安装钩子</span></span><br><span class="line"><span class="function">BOOL <span class="title">InstallHook</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	DWORD dwOldProtect = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">VirtualProtect</span>(g_iatAddr, <span class="number">4</span>, PAGE_EXECUTE_READWRITE, &amp;dwOldProtect);</span><br><span class="line">	*g_iatAddr = (DWORD)HookMessageBoxW;</span><br><span class="line">	<span class="built_in">VirtualProtect</span>(g_iatAddr, <span class="number">4</span>, dwOldProtect, &amp;dwOldProtect);</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//卸载钩子</span></span><br><span class="line"><span class="function">BOOL <span class="title">UninstallHook</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	DWORD dwOldProtect = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">VirtualProtect</span>(g_iatAddr, <span class="number">4</span>, PAGE_EXECUTE_READWRITE, &amp;dwOldProtect);</span><br><span class="line">	*g_iatAddr = (DWORD)g_unHookAddr;</span><br><span class="line">	<span class="built_in">VirtualProtect</span>(g_iatAddr, <span class="number">4</span>, dwOldProtect, &amp;dwOldProtect);</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取替换函数的地址</span></span><br><span class="line"><span class="function">DWORD* <span class="title">GetIatAddr</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* dllName, <span class="type">const</span> <span class="type">char</span>* dllFunName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//获取当前进程EXE文件模块句柄</span></span><br><span class="line">	HMODULE hModule = <span class="built_in">GetModuleHandleA</span>(<span class="number">0</span>);</span><br><span class="line">	DWORD dwhModule = (DWORD)hModule;</span><br><span class="line">	<span class="comment">//获取DOS头和NT头以及可选PE头的数据目录表</span></span><br><span class="line">	PIMAGE_DOS_HEADER pDosHeader = (PIMAGE_DOS_HEADER)dwhModule;</span><br><span class="line">	PIMAGE_NT_HEADERS pNtHeader = (PIMAGE_NT_HEADERS)(dwhModule + pDosHeader-&gt;e_lfanew);</span><br><span class="line">	PIMAGE_DATA_DIRECTORY dataDirectory = &amp;pNtHeader-&gt;OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT];</span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取导入表</span></span><br><span class="line">	PIMAGE_IMPORT_DESCRIPTOR pImageImportTable =</span><br><span class="line">		(PIMAGE_IMPORT_DESCRIPTOR)(dataDirectory-&gt;VirtualAddress + dwhModule);</span><br><span class="line">	<span class="comment">//遍历导入表获取符合条件的函数</span></span><br><span class="line">	<span class="keyword">while</span> (pImageImportTable-&gt;Name)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">char</span>* iatDllName = (<span class="type">char</span>*)(pImageImportTable-&gt;Name + dwhModule);</span><br><span class="line">		<span class="keyword">if</span> (_stricmp(iatDllName, dllName) == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//获取导入名称表</span></span><br><span class="line">			PIMAGE_THUNK_DATA pINT =</span><br><span class="line">				(PIMAGE_THUNK_DATA)(pImageImportTable-&gt;OriginalFirstThunk + dwhModule);</span><br><span class="line">			<span class="comment">//获取导入地址表</span></span><br><span class="line">			PIMAGE_THUNK_DATA pIAT =</span><br><span class="line">				(PIMAGE_THUNK_DATA)(pImageImportTable-&gt;FirstThunk + dwhModule);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span> (pINT-&gt;u<span class="number">1.F</span>unction)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> ((pINT-&gt;u<span class="number">1.</span>Ordinal &amp; <span class="number">0x80000000</span>) == <span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					PIMAGE_IMPORT_BY_NAME pImorotName =</span><br><span class="line">						(PIMAGE_IMPORT_BY_NAME)(pINT-&gt;u<span class="number">1.F</span>unction + dwhModule);</span><br><span class="line">					<span class="keyword">if</span> (<span class="built_in">strcmp</span>(pImorotName-&gt;Name, dllFunName) == <span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">return</span> (DWORD*)pIAT;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				pINT++;</span><br><span class="line">				pIAT++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		pImageImportTable++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL WINAPI <span class="title">DllMain</span><span class="params">(HINSTANCE hInstance, DWORD callReason, LPVOID lpReserved)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (callReason == DLL_PROCESS_ATTACH)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//获取IAT表</span></span><br><span class="line">		g_iatAddr = <span class="built_in">GetIatAddr</span>(<span class="string">&quot;user32.dll&quot;</span>, <span class="string">&quot;MessageBoxW&quot;</span>);</span><br><span class="line">		<span class="comment">//保存要HOOK的函数地址</span></span><br><span class="line">		g_unHookAddr = (DWORD*)*g_iatAddr;</span><br><span class="line">		<span class="comment">//安装钩子</span></span><br><span class="line">		<span class="built_in">InstallHook</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (callReason == DLL_PROCESS_DETACH)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">UninstallHook</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>假设<strong>不执行 UninstallHook，直接 FreeLibrary</strong>：</p>
+<ol>
+<li><p>IAT 表里仍然保存着<code>HookMessageBoxW</code>的地址</p>
+</li>
+<li><p><code>HookMessageBoxW</code>这个函数代码在DLL 中</p>
+</li>
+<li><p>FreeLibrary → Windows 把你的 DLL 从内存卸载，DLL 代码被清空</p>
+</li>
+<li><p>后面程序再调用</p>
+</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MessageBoxW</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>去 IAT 拿到地址，尝试跳转到<code>HookMessageBoxW</code></li>
+<li>但是这块内存已经被释放，里面是垃圾数据 → <strong>访问非法内存，程序直接崩溃闪退！</strong></li>
+</ul>
+<blockquote>
+<p>这就是需要卸载函数的原因：在 DLL 被系统释放前，<strong>修好 IAT</strong>，让 IAT 不再指向 DLL 内部的钩子函数。</p>
+</blockquote>
+<p>注意：编译出的文件不要用中文</p>
+<p>此代码为32位dll，注入的exe文件也只能是32位</p>
+</blockquote>
+<p>这里放一下编译后的[文件](通过网盘分享的文件：iatHook.dll<br>链接: <a class="link"   target="_blank" rel="noopener" href="https://pan.baidu.com/s/1FudMMGdisflogsnAb8kPSw?pwd=mryp" >https://pan.baidu.com/s/1FudMMGdisflogsnAb8kPSw?pwd=mryp<i class="fas fa-external-link-alt"></i></a> 提取码: mryp 复制这段内容后打开百度网盘手机App，操作更方便哦)</p>
+<p>测试dll文件，新建项目，把该dll文件与C++源码置于同一目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	HMODULE hModule = LoadLibraryA(&quot;iatHook.dll&quot;);</span><br><span class="line">	if (hModule)</span><br><span class="line">	&#123;</span><br><span class="line">		MessageBoxW(0, L&quot;halou&quot;, L&quot;1111&quot;, MB_OK);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912210300590.png"
+                        alt="image-20260912210300590"
+                 ></p>
+<p>或者自己去编译一个exe去尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    MessageBoxW(NULL, L&quot;base text&quot;, L&quot;title&quot;, MB_OK);</span><br><span class="line">    getchar(); // 卡住程序，不会自动退出，方便注入、测试弹窗</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260913110648972.png"
+                        alt="image-20260913110648972"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260913110656692.png"
+                        alt="image-20260913110656692"
+                 ></p>
+<h2 id="inline-hook"><a href="#inline-hook" class="headerlink" title="inline hook"></a>inline hook</h2><p>hook的本质就是</p>
+<p>IAThook缺点：不在 IAT表的函数没办法实现 hook。<br>Inline hook（内联 hook）：让正常程序执行的流程跳转到我们写好的代码中，执行完后，跳转回原始地址</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912212153229.png"
+                        alt="image-20260912212153229"
+                 ></p>
+<p>jmp指令本身是5字节</p>
+<p>目标地址-JMP指令所在地址-5&#x3D;E9后跟着的数值</p>
+<p><strong>流程</strong></p>
+<p>1.找到要hook的函数地址</p>
+<p>2.保存要hook函数的前5个字节</p>
+<p>3.计算目标函数距离jmp指令下一条指令的距离</p>
+<p>4.改变函数的前5个字节，改成jmp 0xxxxxxxx （0xE9 offset）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line">BOOL InitHook();</span><br><span class="line">int WINAPI MyMessageBoxW(</span><br><span class="line">	_In_opt_ HWND hWnd,</span><br><span class="line">	_In_opt_ LPCWSTR lpText,</span><br><span class="line">	_In_opt_ LPCWSTR lpCaption,</span><br><span class="line">	_In_ UINT uType);</span><br><span class="line">BOOL InstallHook();</span><br><span class="line">BOOL UninstallHook();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line"></span><br><span class="line">// 全局变量，改成unsigned char存机器码，解决C4309/C4838警告</span><br><span class="line">DWORD g_unhookfun = NULL;</span><br><span class="line">unsigned char g_oldcode[5] = &#123; 0 &#125;;</span><br><span class="line">unsigned char g_newcode[5] = &#123; 0xE9 &#125;; // 0xE9 jmp</span><br><span class="line"></span><br><span class="line">// 前置声明，解决C3861找不到标识符</span><br><span class="line">BOOL InitHook();</span><br><span class="line">int WINAPI MyMessageBoxW(</span><br><span class="line">	_In_opt_ HWND hWnd,</span><br><span class="line">	_In_opt_ LPCWSTR lpText,</span><br><span class="line">	_In_opt_ LPCWSTR lpCaption,</span><br><span class="line">	_In_ UINT uType</span><br><span class="line">);</span><br><span class="line">BOOL InstallHook();</span><br><span class="line">BOOL UninstallHook();</span><br><span class="line"></span><br><span class="line">//自定义钩子函数</span><br><span class="line">int WINAPI MyMessageBoxW(</span><br><span class="line">	_In_opt_ HWND hWnd,</span><br><span class="line">	_In_opt_ LPCWSTR lpText,</span><br><span class="line">	_In_opt_ LPCWSTR lpCaption,</span><br><span class="line">	_In_ UINT uType)</span><br><span class="line">&#123;</span><br><span class="line">	UninstallHook();</span><br><span class="line">	int result = MessageBoxW(hWnd, L&quot;51HOOK&quot;, lpCaption, uType);</span><br><span class="line">	InstallHook();</span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//安装钩子</span><br><span class="line">BOOL InstallHook()</span><br><span class="line">&#123;</span><br><span class="line">	DWORD oldProtect = 0;</span><br><span class="line">	if (!VirtualProtect((LPVOID)g_unhookfun, 5, PAGE_EXECUTE_READWRITE, &amp;oldProtect))</span><br><span class="line">	&#123;</span><br><span class="line">		return FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	memcpy((LPVOID)g_unhookfun, g_newcode, 5);</span><br><span class="line">	VirtualProtect((LPVOID)g_unhookfun, 5, oldProtect, &amp;oldProtect);</span><br><span class="line">	return TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//卸载钩子</span><br><span class="line">BOOL UninstallHook()</span><br><span class="line">&#123;</span><br><span class="line">	DWORD oldProtect = 0;</span><br><span class="line">	if (!VirtualProtect((LPVOID)g_unhookfun, 5, PAGE_EXECUTE_READWRITE, &amp;oldProtect))</span><br><span class="line">	&#123;</span><br><span class="line">		return FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	memcpy((LPVOID)g_unhookfun, g_oldcode, 5);</span><br><span class="line">	VirtualProtect((LPVOID)g_unhookfun, 5, oldProtect, &amp;oldProtect);</span><br><span class="line">	return TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//初始化hook</span><br><span class="line">BOOL InitHook()</span><br><span class="line">&#123;</span><br><span class="line">	HMODULE hModule = LoadLibraryA(&quot;user32.dll&quot;);</span><br><span class="line">	if (hModule == 0)</span><br><span class="line">	&#123;</span><br><span class="line">		return FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	g_unhookfun = (DWORD)GetProcAddress(hModule, &quot;MessageBoxW&quot;);//找到要修改的函数地址</span><br><span class="line">	if (g_unhookfun == NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		FreeLibrary(hModule);</span><br><span class="line">		return FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	memcpy(g_oldcode, (unsigned char*)g_unhookfun, 5);</span><br><span class="line">	DWORD offset = (DWORD)MyMessageBoxW - (g_unhookfun + 5);//计算偏移</span><br><span class="line">	memcpy(&amp;g_newcode[1], &amp;offset, 4);//存储用于钩子替换</span><br><span class="line">	FreeLibrary(hModule);</span><br><span class="line">	return TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD callReason, LPVOID lpReserved)</span><br><span class="line">&#123;</span><br><span class="line">	if (callReason == DLL_PROCESS_ATTACH)</span><br><span class="line">	&#123;</span><br><span class="line">		InitHook();</span><br><span class="line">		InstallHook();</span><br><span class="line">	&#125;</span><br><span class="line">	else if (callReason == DLL_PROCESS_DETACH)</span><br><span class="line">	&#123;</span><br><span class="line">		UninstallHook();</span><br><span class="line">	&#125;</span><br><span class="line">	return TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>inline hook的实战程序可用[这个](通过网盘分享的文件：crack.exe<br>链接: <a class="link"   target="_blank" rel="noopener" href="https://pan.baidu.com/s/1td8I-hZVC7UK5_82oCDWiQ?pwd=ytxu" >https://pan.baidu.com/s/1td8I-hZVC7UK5_82oCDWiQ?pwd=ytxu<i class="fas fa-external-link-alt"></i></a> 提取码: ytxu 复制这段内容后打开百度网盘手机App，操作更方便哦),这是之前在网上找的一个逆向题</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://cdn.jsdelivr.net/gh/zach0ry-zzh/Inage//test/image-20260912214942254.png"
+                        alt="image-20260912214942254"
+                 ></p>
+<p>这里也是同样放一下编译后的[dll文件](通过网盘分享的文件：test.dll<br>链接: <a class="link"   target="_blank" rel="noopener" href="https://pan.baidu.com/s/1n7gUMdiz0t4_epmkvmSgTQ?pwd=jgm7" >https://pan.baidu.com/s/1n7gUMdiz0t4_epmkvmSgTQ?pwd=jgm7<i class="fas fa-external-link-alt"></i></a> 提取码: jgm7 复制这段内容后打开百度网盘手机App，操作更方便哦)</p>
+<p>以及我的dll注入工具[Extreme Injector v3](通过网盘分享的文件：Extreme Injector v3.exe<br>链接: <a class="link"   target="_blank" rel="noopener" href="https://pan.baidu.com/s/1AUNdOF5yi8CMRXoa27xeig?pwd=vuvp" >https://pan.baidu.com/s/1AUNdOF5yi8CMRXoa27xeig?pwd=vuvp<i class="fas fa-external-link-alt"></i></a> 提取码: vuvp 复制这段内容后打开百度网盘手机App，操作更方便哦)</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/PE%E6%A0%BC%E5%BC%8F/">PE格式</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/IAT-hook/">IAT hook</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/inline-hook/">inline hook</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/zfb.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="/images/tea.svg"></i>&nbsp;请作者喝杯咖啡
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2026/08/20/%E8%BD%A6%E8%81%94%E7%BD%91%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/"
+                                   title="车联网初步学习汇总"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">车联网初步学习汇总</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'zach0ry-zzh/zach0ry-zzh.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOPKvC2Q')
+              script.setAttribute('data-category', 'Comments')
+              script.setAttribute('data-category-id', 'DIC_kwDOPKvC2c4DByYU')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'en')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOS%E5%A4%B4"><span class="nav-text">DOS头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PE%E5%A4%B4-NT%E5%A4%B4%E9%83%A8"><span class="nav-text">PE头&#x2F;NT头部</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86PE%E5%A4%B4"><span class="nav-text">标准PE头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%80%89PE%E5%A4%B4"><span class="nav-text">可选PE头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E6%AE%B5%E5%A4%B4"><span class="nav-text">区段头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95%E8%A1%A8"><span class="nav-text">数据目录表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E8%A1%A8"><span class="nav-text">导出表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RVA%E8%BD%ACFOA"><span class="nav-text">RVA转FOA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="nav-text">导入表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%9F%BA%E7%A1%80"><span class="nav-text">前置基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-text">结构分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8"><span class="nav-text">重定位表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TLS"><span class="nav-text">TLS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TLS%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">TLS回调函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86"><span class="nav-text">堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="nav-text">虚拟内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98"><span class="nav-text">共享内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IAT-hook"><span class="nav-text">IAT hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-hook"><span class="nav-text">inline hook</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Zach0ry</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOS%E5%A4%B4"><span class="nav-text">DOS头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PE%E5%A4%B4-NT%E5%A4%B4%E9%83%A8"><span class="nav-text">PE头&#x2F;NT头部</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86PE%E5%A4%B4"><span class="nav-text">标准PE头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%80%89PE%E5%A4%B4"><span class="nav-text">可选PE头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E6%AE%B5%E5%A4%B4"><span class="nav-text">区段头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95%E8%A1%A8"><span class="nav-text">数据目录表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E8%A1%A8"><span class="nav-text">导出表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RVA%E8%BD%ACFOA"><span class="nav-text">RVA转FOA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="nav-text">导入表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%9F%BA%E7%A1%80"><span class="nav-text">前置基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-text">结构分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8"><span class="nav-text">重定位表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TLS"><span class="nav-text">TLS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TLS%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">TLS回调函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86"><span class="nav-text">堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="nav-text">虚拟内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98"><span class="nav-text">共享内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IAT-hook"><span class="nav-text">IAT hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-hook"><span class="nav-text">inline hook</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
